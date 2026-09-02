@@ -1,1 +1,594 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>หลังร้าน | คุดสึหม่าล่าทอด</title>
 
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
+  "Segoe UI",sans-serif;
+  background:#f5f5f7;
+  color:#171717;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  padding:18px;
+  background:rgba(255,255,255,.82);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+
+.head{
+  max-width:900px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+h1{
+  font-size:22px;
+  margin:0;
+}
+
+.online{
+  font-size:13px;
+  color:#16803c;
+  background:#e8f7ed;
+  padding:7px 12px;
+  border-radius:999px;
+}
+
+main{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.stat{
+  background:rgba(255,255,255,.8);
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 8px 30px rgba(0,0,0,.05);
+}
+
+.stat small{
+  color:#777;
+}
+
+.stat strong{
+  display:block;
+  font-size:28px;
+  margin-top:6px;
+}
+
+.section-title{
+  margin:25px 0 12px;
+  font-size:18px;
+  font-weight:700;
+}
+
+.order{
+  background:white;
+  border-radius:25px;
+  padding:18px;
+  margin-bottom:14px;
+  box-shadow:0 8px 30px rgba(0,0,0,.06);
+}
+
+.order-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+
+.order-number{
+  font-size:20px;
+  font-weight:800;
+}
+
+.time{
+  font-size:12px;
+  color:#777;
+}
+
+.status{
+  display:inline-block;
+  padding:7px 12px;
+  border-radius:999px;
+  font-size:12px;
+  margin-bottom:12px;
+  background:#f1f1f1;
+}
+
+.items{
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
+  padding:12px 0;
+  margin:8px 0;
+}
+
+.item{
+  display:flex;
+  justify-content:space-between;
+  padding:5px 0;
+}
+
+.total{
+  display:flex;
+  justify-content:space-between;
+  font-size:18px;
+  font-weight:800;
+  margin-top:12px;
+}
+
+.info{
+  background:#f7f7f7;
+  border-radius:15px;
+  padding:12px;
+  margin-top:12px;
+  font-size:14px;
+}
+
+.buttons{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-top:15px;
+}
+
+button{
+  border:0;
+  border-radius:14px;
+  padding:12px 5px;
+  font-size:13px;
+  cursor:pointer;
+  background:#eee;
+}
+
+button.active{
+  background:#171717;
+  color:white;
+}
+
+button:hover{
+  opacity:.85;
+}
+
+.empty{
+  text-align:center;
+  padding:60px 20px;
+  color:#888;
+}
+
+@media(max-width:600px){
+  .stats{
+    grid-template-columns:1fr 1fr 1fr;
+  }
+
+  .stat{
+    padding:13px;
+  }
+
+  .stat strong{
+    font-size:22px;
+  }
+
+  .buttons{
+    grid-template-columns:1fr 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="head">
+    <div>
+      <h1>หลังร้าน</h1>
+      <div style="font-size:13px;color:#777">
+        คุดสึหม่าล่าทอด
+      </div>
+    </div>
+
+    <div class="online">
+      ● ระบบออนไลน์
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div class="stats">
+    <div class="stat">
+      <small>ออเดอร์วันนี้</small>
+      <strong id="orderCount">0</strong>
+    </div>
+
+    <div class="stat">
+      <small>รอทำ</small>
+      <strong id="waitingCount">0</strong>
+    </div>
+
+    <div class="stat">
+      <small>ยอดขาย</small>
+      <strong id="sales">฿0</strong>
+    </div>
+  </div>
+
+  <div class="section-title">
+    ออเดอร์ล่าสุด
+  </div>
+
+  <div id="orders">
+    <div class="empty">
+      ยังไม่มีออเดอร์
+    </div>
+  </div>
+
+</main>
+
+<script type="module">
+
+/*
+====================================================
+  FIREBASE CONFIG
+  เดี๋ยวเราจะเอาค่าจาก Firebase มาใส่ตรงนี้
+====================================================
+*/
+
+const firebaseConfig = {
+
+  apiKey: "ใส่ของคุณตรงนี้",
+
+  authDomain: "ใส่ของคุณตรงนี้",
+
+  projectId: "ใส่ของคุณตรงนี้",
+
+  storageBucket: "ใส่ของคุณตรงนี้",
+
+  messagingSenderId: "ใส่ของคุณตรงนี้",
+
+  appId: "ใส่ของคุณตรงนี้"
+
+};
+
+
+/*
+====================================================
+  FIREBASE
+====================================================
+*/
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+  doc,
+  updateDoc
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+/*
+====================================================
+  ฟังออเดอร์แบบ REAL-TIME
+====================================================
+*/
+
+const ordersQuery = query(
+  collection(db,"orders"),
+  orderBy("createdAt","desc")
+);
+
+
+onSnapshot(ordersQuery,(snapshot)=>{
+
+  const container =
+    document.getElementById("orders");
+
+  container.innerHTML = "";
+
+  let totalOrders = 0;
+  let waiting = 0;
+  let sales = 0;
+
+  snapshot.forEach((orderDoc)=>{
+
+    const order = orderDoc.data();
+
+    totalOrders++;
+
+    if(
+      order.status === "รับออเดอร์" ||
+      order.status === "กำลังทอด"
+    ){
+      waiting++;
+    }
+
+    sales += Number(order.total || 0);
+
+    container.innerHTML += renderOrder(
+      orderDoc.id,
+      order
+    );
+
+  });
+
+
+  document.getElementById("orderCount")
+    .textContent = totalOrders;
+
+  document.getElementById("waitingCount")
+    .textContent = waiting;
+
+  document.getElementById("sales")
+    .textContent =
+    "฿" + sales.toLocaleString();
+
+});
+
+
+/*
+====================================================
+  แสดงออเดอร์
+====================================================
+*/
+
+function renderOrder(id,order){
+
+  const items =
+    (order.items || [])
+    .map(item=>`
+
+      <div class="item">
+
+        <span>
+          ${item.name}
+          × ${item.qty}
+        </span>
+
+        <span>
+          ฿${(
+            Number(item.price || 0)
+            *
+            Number(item.qty || 0)
+          ).toLocaleString()}
+        </span>
+
+      </div>
+
+    `)
+    .join("");
+
+
+  const buttons = [
+
+    "รับออเดอร์",
+    "กำลังทอด",
+    "พร้อมรับ",
+    "รับแล้ว"
+
+  ];
+
+
+  return `
+
+    <div class="order">
+
+      <div class="order-head">
+
+        <div>
+
+          <div class="order-number">
+            #${order.orderNumber || id.slice(0,6)}
+          </div>
+
+          <div class="time">
+            ${formatTime(order.createdAt)}
+          </div>
+
+        </div>
+
+        <div class="status">
+          ${order.status || "รับออเดอร์"}
+        </div>
+
+      </div>
+
+
+      <div class="items">
+
+        ${items || `
+          <div class="item">
+            ไม่มีรายการ
+          </div>
+        `}
+
+      </div>
+
+
+      <div class="info">
+
+        <b>ระดับความเผ็ด:</b>
+        ${order.spice || "-"}
+
+        <br><br>
+
+        <b>การชำระเงิน:</b>
+        ${order.payment || "-"}
+
+        ${
+          order.customer?.name
+          ?
+          `<br><br>
+           <b>ชื่อ:</b>
+           ${order.customer.name}`
+          :
+          ""
+        }
+
+        ${
+          order.customer?.phone
+          ?
+          `<br>
+           <b>โทร:</b>
+           ${order.customer.phone}`
+          :
+          ""
+        }
+
+        ${
+          order.customer?.note
+          ?
+          `<br><br>
+           <b>เพิ่มเติม:</b>
+           ${order.customer.note}`
+          :
+          ""
+        }
+
+      </div>
+
+
+      <div class="total">
+
+        <span>รวม</span>
+
+        <span>
+          ฿${Number(order.total || 0).toLocaleString()}
+        </span>
+
+      </div>
+
+
+      <div class="buttons">
+
+        ${
+          buttons.map(status => `
+
+            <button
+              class="${
+                order.status === status
+                ? "active"
+                : ""
+              }"
+              onclick="
+                changeStatus(
+                  '${id}',
+                  '${status}'
+                )
+              "
+            >
+              ${status}
+
+            </button>
+
+          `).join("")
+        }
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/*
+====================================================
+  เปลี่ยนสถานะ
+====================================================
+*/
+
+window.changeStatus =
+async function(id,status){
+
+  try{
+
+    await updateDoc(
+      doc(db,"orders",id),
+      {
+        status:status
+      }
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "เปลี่ยนสถานะไม่สำเร็จ"
+    );
+
+  }
+
+};
+
+
+/*
+====================================================
+  เวลา
+====================================================
+*/
+
+function formatTime(timestamp){
+
+  if(!timestamp)
+    return "";
+
+  try{
+
+    const date =
+      timestamp.toDate();
+
+    return date.toLocaleString(
+      "th-TH",
+      {
+        day:"2-digit",
+        month:"2-digit",
+        hour:"2-digit",
+        minute:"2-digit"
+      }
+    );
+
+  }catch{
+
+    return "";
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
