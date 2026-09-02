@@ -1,40 +1,603 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1">
+
 <title>หลังร้าน | คุดสึหม่าล่าทอด</title>
 
 <style>
+
 *{box-sizing:border-box}
 
 body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
-  "Segoe UI",sans-serif;
-  background:#f5f5f7;
-  color:#171717;
+margin:0;
+background:#f4f4f6;
+color:#111;
+font-family:
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+sans-serif
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:20px
 }
 
 header{
-  position:sticky;
-  top:0;
-  z-index:10;
-  padding:18px;
-  background:rgba(255,255,255,.82);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(0,0,0,.06);
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px
 }
 
-.head{
-  max-width:900px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+.logo{
+font-size:25px;
+font-weight:900
 }
 
-h1{
+.live{
+background:#e8f7ed;
+color:#16803c;
+padding:8px 12px;
+border-radius:20px;
+font-size:12px
+}
+
+.stats{
+display:grid;
+grid-template-columns:
+repeat(3,1fr);
+gap:12px;
+margin-bottom:20px
+}
+
+.stat{
+background:white;
+border-radius:20px;
+padding:18px;
+box-shadow:0 5px 20px #00000008
+}
+
+.stat b{
+font-size:28px;
+display:block
+}
+
+.stat span{
+color:#888;
+font-size:13px
+}
+
+.order{
+background:white;
+border-radius:22px;
+padding:18px;
+margin-bottom:14px;
+box-shadow:0 5px 20px #00000008
+}
+
+.orderTop{
+display:flex;
+justify-content:space-between;
+align-items:start
+}
+
+.number{
+font-size:25px;
+font-weight:900
+}
+
+.time{
+font-size:12px;
+color:#999
+}
+
+.badge{
+background:#eee;
+padding:7px 10px;
+border-radius:20px;
+font-size:12px
+}
+
+.items{
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+margin:14px 0;
+padding:10px 0
+}
+
+.item{
+display:flex;
+justify-content:space-between;
+padding:6px 0
+}
+
+.customer{
+background:#f7f7f9;
+border-radius:15px;
+padding:13px;
+font-size:14px
+}
+
+.total{
+display:flex;
+justify-content:space-between;
+font-size:21px;
+font-weight:900;
+margin:16px 0
+}
+
+.actions{
+display:grid;
+grid-template-columns:
+repeat(4,1fr);
+gap:7px
+}
+
+.actions button{
+border:0;
+padding:12px 5px;
+border-radius:12px;
+background:#eee
+}
+
+.actions button.active{
+background:#111;
+color:white
+}
+
+.empty{
+text-align:center;
+color:#999;
+padding:60px
+}
+
+@media(max-width:650px){
+
+.stats{
+grid-template-columns:
+repeat(2,1fr)
+}
+
+.stats .stat:last-child{
+grid-column:1/-1
+}
+
+.actions{
+grid-template-columns:
+repeat(2,1fr)
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+<header>
+
+<div>
+
+<div class="logo">
+คุดสึหม่าล่าทอด
+</div>
+
+<div style="color:#888">
+ระบบจัดการออเดอร์
+</div>
+
+</div>
+
+<div class="live">
+● REALTIME
+</div>
+
+</header>
+
+
+<div class="stats">
+
+<div class="stat">
+<b id="orderCount">0</b>
+<span>ออเดอร์ทั้งหมด</span>
+</div>
+
+<div class="stat">
+<b id="pendingCount">0</b>
+<span>กำลังดำเนินการ</span>
+</div>
+
+<div class="stat">
+<b id="sales">฿0</b>
+<span>ยอดรวม</span>
+</div>
+
+</div>
+
+
+<div id="orders">
+<div class="empty">
+กำลังเชื่อมต่อ...
+</div>
+</div>
+
+
+</div>
+
+
+<script type="module">
+
+import {initializeApp}
+from
+"https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+query,
+orderBy,
+onSnapshot,
+doc,
+updateDoc
+}
+from
+"https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+
+const firebaseConfig={
+
+apiKey:
+"AIzaSyAOcPmnQrhHh058ozPrb1CgvUI1pOesU",
+
+authDomain:
+"mala-order-645ed.firebaseapp.com",
+
+projectId:
+"mala-order-645ed",
+
+storageBucket:
+"mala-order-645ed.firebasestorage.app",
+
+messagingSenderId:
+"897411378069",
+
+appId:
+"1:897411378069:web:81c0db8a0b5c899a4c649c",
+
+measurementId:
+"G-276HMQGECP"
+
+};
+
+
+const app=
+initializeApp(firebaseConfig);
+
+const db=
+getFirestore(app);
+
+
+const statuses=[
+"รับออเดอร์",
+"กำลังทอด",
+"พร้อมรับ",
+"รับแล้ว"
+];
+
+
+function money(value){
+
+return "฿"+
+Number(value||0)
+.toLocaleString("th-TH");
+
+}
+
+
+function renderOrders(docs){
+
+let sales=0;
+let pending=0;
+
+
+docs.forEach(
+docSnap=>{
+
+const d=docSnap.data();
+
+sales+=Number(d.total||0);
+
+if(d.status!=="รับแล้ว")
+pending++;
+
+});
+
+
+document
+.getElementById("orderCount")
+.textContent=
+docs.length;
+
+
+document
+.getElementById("pendingCount")
+.textContent=
+pending;
+
+
+document
+.getElementById("sales")
+.textContent=
+money(sales);
+
+
+const box=
+document.getElementById("orders");
+
+
+if(!docs.length){
+
+box.innerHTML=
+`
+<div class="empty">
+ยังไม่มีออเดอร์
+</div>
+`;
+
+return;
+
+}
+
+
+box.innerHTML=
+docs.map(
+snap=>{
+
+const d=snap.data();
+
+const current=
+statuses.indexOf(
+d.status
+);
+
+
+let time="";
+
+if(d.createdAt?.toDate){
+
+time=
+d.createdAt
+.toDate()
+.toLocaleString(
+"th-TH"
+);
+
+}
+
+
+return `
+
+<div class="order">
+
+<div class="orderTop">
+
+<div>
+
+<div class="number">
+#${d.orderNumber||snap.id}
+</div>
+
+<div class="time">
+${time}
+</div>
+
+</div>
+
+<div class="badge">
+${d.status||"รับออเดอร์"}
+</div>
+
+</div>
+
+
+<div class="items">
+
+${
+(d.items||[])
+.map(
+item=>`
+
+<div class="item">
+
+<span>
+${item.name}
+× ${item.qty}
+</span>
+
+<b>
+${money(
+item.price*item.qty
+)}
+</b>
+
+</div>
+
+`
+)
+.join("")
+}
+
+</div>
+
+
+<div class="customer">
+
+<b>ลูกค้า:</b>
+${d.customer?.name||"-"}
+
+<br>
+
+<b>โทร:</b>
+${d.customer?.phone||"-"}
+
+<br>
+
+<b>ความเผ็ด:</b>
+${d.spice||"-"}
+
+<br>
+
+<b>ชำระเงิน:</b>
+${d.payment||"-"}
+
+${
+d.customer?.note
+?
+`
+<br>
+<b>หมายเหตุ:</b>
+${d.customer.note}
+`
+:""
+}
+
+</div>
+
+
+<div class="total">
+
+<span>
+รวม
+</span>
+
+<span>
+${money(d.total)}
+</span>
+
+</div>
+
+
+<div class="actions">
+
+${statuses.map(
+(status,index)=>
+`
+
+<button
+class="${
+index<=current
+?"active":""
+}"
+onclick="
+setStatus(
+'${snap.id}',
+'${status}'
+)
+">
+
+${status}
+
+</button>
+
+`
+).join("")}
+
+</div>
+
+
+</div>
+
+`;
+
+}
+).join("");
+
+}
+
+
+window.setStatus=
+async function(id,status){
+
+try{
+
+await updateDoc(
+doc(db,"orders",id),
+{
+status
+}
+);
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"เปลี่ยนสถานะไม่สำเร็จ"
+);
+
+}
+
+};
+
+
+const ordersQuery=
+query(
+collection(db,"orders"),
+orderBy(
+"createdAt",
+"desc"
+)
+);
+
+
+onSnapshot(
+
+ordersQuery,
+
+snapshot=>{
+
+renderOrders(
+snapshot.docs
+);
+
+},
+
+error=>{
+
+console.error(error);
+
+document
+.getElementById("orders")
+.innerHTML=
+`
+<div class="empty">
+เชื่อมต่อ Firebase ไม่สำเร็จ
+</div>
+`;
+
+}
+
+);
+
+</script>
+
+</body>
+
+</html>h1{
   font-size:22px;
   margin:0;
 }
