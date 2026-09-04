@@ -18,6 +18,7 @@
   --blue:#007aff;
   --green:#34c759;
   --red:#ff3b30;
+  --gold:#c89b3c;
   --shadow:0 8px 30px rgba(0,0,0,.07)
 }
 
@@ -198,42 +199,109 @@ header{
   font-size:12px
 }
 
-/* PROMO */
+/* PROMOTION */
 
 .promo-row{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:1fr;
   gap:12px
 }
 
 .promo{
-  min-height:105px;
-  border-radius:20px;
-  padding:17px;
+  position:relative;
+  min-height:150px;
+  border-radius:24px;
+  padding:20px;
   color:#fff;
-  background:#161616
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 90% 10%,rgba(255,255,255,.15),transparent 30%),
+    linear-gradient(135deg,#111,#292929);
+  box-shadow:0 8px 28px rgba(0,0,0,.09)
 }
 
-.promo:nth-child(2){background:#252525}
-.promo:nth-child(3){background:#363636}
+.promo:after{
+  content:"🎁";
+  position:absolute;
+  right:20px;
+  bottom:-13px;
+  font-size:78px;
+  opacity:.12;
+  transform:rotate(-10deg)
+}
+
+.promo-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  position:relative;
+  z-index:2
+}
 
 .promo small{
   display:block;
-  opacity:.7;
+  opacity:.62;
   font-size:10px;
-  margin-bottom:6px
+  letter-spacing:1px;
+  font-weight:700
+}
+
+.promo-badge{
+  padding:6px 9px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  font-size:10px;
+  font-weight:700
 }
 
 .promo strong{
   display:block;
-  font-size:18px
+  font-size:24px;
+  margin-top:12px;
+  position:relative;
+  z-index:2
 }
 
 .promo span{
   display:block;
-  margin-top:6px;
+  margin-top:7px;
   font-size:12px;
-  opacity:.8
+  color:rgba(255,255,255,.72);
+  position:relative;
+  z-index:2
+}
+
+.promo-progress{
+  margin-top:16px;
+  height:5px;
+  background:rgba(255,255,255,.13);
+  border-radius:99px;
+  overflow:hidden;
+  position:relative;
+  z-index:2
+}
+
+.promo-progress i{
+  display:block;
+  height:100%;
+  width:0;
+  border-radius:99px;
+  background:#fff;
+  transition:.3s
+}
+
+.promo-note{
+  margin-top:8px;
+  font-size:10px;
+  color:rgba(255,255,255,.55);
+  position:relative;
+  z-index:2
+}
+
+.promo.disabled{
+  background:#8b8b8b
 }
 
 /* CATEGORY */
@@ -575,10 +643,68 @@ header{
 .total-row{
   display:flex;
   justify-content:space-between;
-  align-items:center
+  align-items:center;
+  gap:12px
 }
 
 .total-row strong{font-size:21px}
+
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  font-size:13px;
+  margin-bottom:9px
+}
+
+.summary-row:last-child{
+  margin-bottom:0
+}
+
+.summary-row.muted{
+  color:#777
+}
+
+.summary-row.discount{
+  color:#16833c;
+  font-weight:700
+}
+
+.summary-row.final{
+  padding-top:12px;
+  margin-top:10px;
+  border-top:1px solid #ddd
+}
+
+.summary-row.final span{
+  font-weight:750
+}
+
+.summary-row.final strong{
+  font-size:22px
+}
+
+.promo-cart-note{
+  margin-top:12px;
+  padding:11px 12px;
+  border-radius:13px;
+  background:#fff;
+  border:1px solid #e9e9eb;
+  color:#555;
+  font-size:11px;
+  line-height:1.5
+}
+
+.free-badge{
+  display:inline-block;
+  padding:4px 7px;
+  border-radius:999px;
+  background:#e9f9ee;
+  color:#16833c;
+  font-size:10px;
+  font-weight:800
+}
 
 /* FORMS */
 
@@ -849,14 +975,6 @@ footer{
     padding:24px
   }
 
-  .promo-row{
-    display:flex;
-    overflow-x:auto;
-    scrollbar-width:none
-  }
-
-  .promo{min-width:220px}
-
   .menu-grid{
     grid-template-columns:repeat(2,1fr);
     gap:10px
@@ -941,33 +1059,14 @@ MALA FRIED
 </div>
 
 <div class="section-sub">
-เลือกเซตที่คุ้มกว่า
+ยิ่งหยิบเยอะ ยิ่งคุ้ม
 </div>
 
 </div>
 </div>
 
-<div class="promo-row">
+<div id="promoRow" class="promo-row"></div>
 
-<div class="promo">
-<small>SET 01</small>
-<strong>10 ไม้ ฿100</strong>
-<span>แถมฟรี 1 ไม้</span>
-</div>
-
-<div class="promo">
-<small>SET 02</small>
-<strong>20 ไม้ ฿200</strong>
-<span>แถมฟรี 3 ไม้</span>
-</div>
-
-<div class="promo">
-<small>SET 03</small>
-<strong>30 ไม้ ฿300</strong>
-<span>แถมฟรี 5 ไม้</span>
-</div>
-
-</div>
 </section>
 
 
@@ -1138,13 +1237,7 @@ MALA FRIED
 
 <div class="total-box">
 
-<div class="total-row">
-
-<span>ยอดรวม</span>
-
-<strong id="sheetTotal">฿0</strong>
-
-</div>
+<div id="cartSummary"></div>
 
 </div>
 
@@ -1255,17 +1348,7 @@ MALA FRIED
 
 <div class="total-box">
 
-<div class="total-row">
-
-<span>
-ยอดที่ต้องชำระ
-</span>
-
-<strong id="checkoutTotal">
-฿0
-</strong>
-
-</div>
+<div id="checkoutSummary"></div>
 
 </div>
 
@@ -1360,8 +1443,6 @@ import {
 
 const firebaseConfig={
 
-  /* แก้แล้ว — API KEY ที่ถูกต้อง */
-
   apiKey:"AIzaSyAOcPmnQrhHh058ozPr1bCgvUI1pOesU",
 
   authDomain:"mala-order-645ed.firebaseapp.com",
@@ -1439,6 +1520,28 @@ let siteData={
     "เลือกเมนูที่ชอบ ใส่ตะกร้า แล้วสั่งได้เลย",
 
   heroBadge:"🔥 หม่าล่าทอดกรอบ"
+
+};
+
+
+/* =====================================================
+   PROMOTION
+   ===================================================== */
+
+let promotionData={
+
+  enabled:true,
+
+  name:"10 ฟรี 1 ไม้",
+
+  buyQty:10,
+
+  freeQty:1,
+
+  method:"cheapest",
+
+  customerText:
+    "หยิบครบ 11 ไม้ ฟรี 1 ไม้"
 
 };
 
@@ -1702,23 +1805,14 @@ function isStoreOpen(){
 
   const s=storeData||{};
 
-  /* บังคับเปิด */
-
   if(s.mode==="open")
     return true;
-
-  /* บังคับปิด */
 
   if(s.mode==="closed")
     return false;
 
   if(s.closedToday===true)
     return false;
-
-  /*
-    ถ้า admin เดิมใช้ open:true
-    และไม่มีเวลา ก็เปิดได้
-  */
 
   const hasSchedule=
     s.openTime||
@@ -1869,6 +1963,49 @@ onSnapshot(
 }
 
 
+/* =====================================================
+   PROMOTION FIREBASE
+   ===================================================== */
+
+if(db){
+
+onSnapshot(
+
+  doc(db,"settings","promotion"),
+
+  snap=>{
+
+    if(snap.exists()){
+
+      promotionData={
+        ...promotionData,
+        ...snap.data()
+      };
+
+    }
+
+    renderPromotion();
+
+    renderCart();
+
+  },
+
+  err=>{
+
+    console.error(
+      "PROMOTION ERROR:",
+      err
+    );
+
+    renderPromotion();
+
+  }
+
+);
+
+}
+
+
 function applySiteSettings(){
 
   $("shopName").textContent=
@@ -1980,10 +2117,6 @@ onSnapshot(
         ...d.data()
 
       }));
-
-    /*
-      ล้างสินค้าที่ไม่มีอยู่จริงออกจากตะกร้า
-    */
 
     let changed=false;
 
@@ -2248,6 +2381,385 @@ function getCartTotal(){
 }
 
 
+/* =====================================================
+   PROMOTION CALCULATION
+   ===================================================== */
+
+function calculatePromotion(items){
+
+  const enabled=
+    promotionData.enabled!==false;
+
+  const buyQty=
+    Math.max(
+      1,
+      Number(
+        promotionData.buyQty??10
+      )
+    );
+
+  const freeQtyPerSet=
+    Math.max(
+      1,
+      Number(
+        promotionData.freeQty??1
+      )
+    );
+
+  const threshold=
+    buyQty+
+    freeQtyPerSet;
+
+
+  const totalQty=
+    items.reduce(
+      (sum,p)=>
+        sum+
+        Number(p.qty||0),
+      0
+    );
+
+
+  const sets=
+    enabled
+      ? Math.floor(
+          totalQty/
+          threshold
+        )
+      : 0;
+
+
+  const freeQty=
+    sets*
+    freeQtyPerSet;
+
+
+  const sorted=[];
+
+
+  items.forEach(p=>{
+
+    for(
+      let i=0;
+      i<Number(p.qty||0);
+      i++
+    ){
+
+      sorted.push({
+
+        id:p.id,
+
+        productId:
+          p.productId||p.id,
+
+        name:p.name,
+
+        price:
+          Number(p.price)||0
+
+      });
+
+    }
+
+  });
+
+
+  /*
+    ถูกที่สุดก่อน
+  */
+
+  sorted.sort(
+    (a,b)=>
+      a.price-b.price
+  );
+
+
+  const freeItems=
+    sorted.slice(
+      0,
+      freeQty
+    );
+
+
+  const discount=
+    freeItems.reduce(
+      (sum,x)=>
+        sum+x.price,
+      0
+    );
+
+
+  return {
+
+    enabled,
+
+    buyQty,
+
+    freeQtyPerSet,
+
+    threshold,
+
+    totalQty,
+
+    sets,
+
+    freeQty,
+
+    discount,
+
+    freeItems
+
+  };
+
+}
+
+
+/* =====================================================
+   CART PRICING
+   ===================================================== */
+
+function getCartPricing(){
+
+  const items=
+    buildOrderItems();
+
+  const subtotal=
+    items.reduce(
+      (sum,item)=>
+        sum+
+        Number(item.price)*
+        Number(item.qty),
+      0
+    );
+
+
+  const promo=
+    calculatePromotion(items);
+
+
+  const total=
+    Math.max(
+      0,
+      subtotal-
+      promo.discount
+    );
+
+
+  return {
+
+    items,
+
+    subtotal,
+
+    ...promo,
+
+    total
+
+  };
+
+}
+
+
+/* =====================================================
+   PROMOTION UI
+   ===================================================== */
+
+function renderPromotion(){
+
+  const row=
+    $("promoRow");
+
+  if(!row)return;
+
+
+  const enabled=
+    promotionData.enabled!==false;
+
+
+  if(!enabled){
+
+    row.innerHTML=`
+
+      <div class="promo disabled">
+
+        <div class="promo-top">
+
+          <small>
+            PROMOTION
+          </small>
+
+          <div class="promo-badge">
+            ปิดอยู่
+          </div>
+
+        </div>
+
+        <strong>
+          โปรโมชั่นปิดอยู่
+        </strong>
+
+        <span>
+          ขณะนี้ยังไม่มีโปรโมชั่น
+        </span>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  const buyQty=
+    Math.max(
+      1,
+      Number(
+        promotionData.buyQty??10
+      )
+    );
+
+
+  const freeQty=
+    Math.max(
+      1,
+      Number(
+        promotionData.freeQty??1
+      )
+    );
+
+
+  const threshold=
+    buyQty+
+    freeQty;
+
+
+  const count=
+    getCartCount();
+
+
+  const current=
+    count%
+    threshold;
+
+
+  const remaining=
+    current===0
+      ? threshold
+      : threshold-current;
+
+
+  const progress=
+    current===0
+      ? 0
+      : Math.min(
+          100,
+          current/
+          threshold*
+          100
+        );
+
+
+  const sets=
+    Math.floor(
+      count/
+      threshold
+    );
+
+
+  let mainText=
+    `${buyQty} ฟรี ${freeQty} ไม้`;
+
+
+  if(
+    freeQty===1 &&
+    buyQty===10
+  ){
+
+    mainText=
+      "10 ฟรี 1 ไม้";
+
+  }
+
+
+  let statusText;
+
+
+  if(count<=0){
+
+    statusText=
+      `หยิบครบ ${threshold} ไม้ รับฟรี ${freeQty} ไม้`;
+
+  }else if(
+    count>=threshold
+  ){
+
+    statusText=
+      `คุณได้ฟรีแล้ว ${sets*freeQty} ไม้`;
+
+  }else{
+
+    statusText=
+      `อีก ${remaining} ไม้ รับฟรี ${freeQty} ไม้`;
+
+  }
+
+
+  row.innerHTML=`
+
+    <div class="promo">
+
+      <div class="promo-top">
+
+        <small>
+          SPECIAL OFFER
+        </small>
+
+        <div class="promo-badge">
+          🎁 คุ้มกว่า
+        </div>
+
+      </div>
+
+
+      <strong>
+        ${escapeHTML(
+          promotionData.name||
+          mainText
+        )}
+      </strong>
+
+
+      <span>
+        ${escapeHTML(statusText)}
+      </span>
+
+
+      <div class="promo-progress">
+
+        <i style="width:${progress}%"></i>
+
+      </div>
+
+
+      <div class="promo-note">
+
+        ครบ ${threshold} ไม้ = ฟรี ${freeQty} ไม้
+        · ระบบเลือกไม้ราคาถูกที่สุดเป็นไม้ฟรี
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   ADD TO CART
+   ===================================================== */
+
 window.addToCart=(id)=>{
 
   const p=
@@ -2314,6 +2826,8 @@ window.addToCart=(id)=>{
 
   renderCart();
 
+  renderPromotion();
+
   toast(
     `เพิ่ม ${p.name||"สินค้า"} แล้ว`
   );
@@ -2379,16 +2893,35 @@ window.changeQty=(id,amount)=>{
 
   renderCart();
 
+  renderPromotion();
+
 };
 
+
+/* =====================================================
+   RENDER CART
+   ===================================================== */
 
 function renderCart(){
 
   const count=
     getCartCount();
 
+
+  const pricing=
+    getCartPricing();
+
+
+  const subtotal=
+    pricing.subtotal;
+
+
+  const discount=
+    pricing.discount;
+
+
   const total=
-    getCartTotal();
+    pricing.total;
 
 
   const bar=
@@ -2411,15 +2944,10 @@ function renderCart(){
 
 
   $("cartCount").textContent=
-    `${count} รายการ`;
+    `${count} ไม้`;
+
 
   $("cartTotal").textContent=
-    money(total);
-
-  $("sheetTotal").textContent=
-    money(total);
-
-  $("checkoutTotal").textContent=
     money(total);
 
 
@@ -2449,6 +2977,24 @@ function renderCart(){
     `;
 
     $("checkoutBtn").disabled=true;
+
+    $("cartSummary").innerHTML=`
+
+      <div class="summary-row final">
+
+        <span>
+          ยอดที่ต้องชำระ
+        </span>
+
+        <strong>
+          ฿0
+        </strong>
+
+      </div>
+
+    `;
+
+    renderPromotion();
 
     return;
 
@@ -2542,6 +3088,169 @@ function renderCart(){
 
     });
 
+
+  const promo=
+    calculatePromotion(
+      pricing.items
+    );
+
+
+  let promoNote="";
+
+
+  if(
+    promo.enabled &&
+    promo.freeQty>0
+  ){
+
+    const names=
+      promo.freeItems
+        .map(
+          x=>
+            `${x.name} ${money(x.price)}`
+        )
+        .join(" • ");
+
+
+    promoNote=`
+
+      <div class="promo-cart-note">
+
+        🎁 <b>
+          ${escapeHTML(
+            promotionData.name||
+            "10 ฟรี 1 ไม้"
+          )}
+        </b>
+
+        <br>
+
+        ฟรี
+        <span class="free-badge">
+          ${promo.freeQty} ไม้
+        </span>
+
+        <br>
+
+        <span style="font-size:10px;color:#777">
+          ระบบเลือกไม้ราคาถูกที่สุดเป็นไม้ฟรี
+          ${
+            names
+              ? " · "+escapeHTML(names)
+              : ""
+          }
+        </span>
+
+      </div>
+
+    `;
+
+  }else if(promo.enabled){
+
+    const remaining=
+      promo.threshold-
+      (
+        promo.totalQty%
+        promo.threshold
+      );
+
+
+    promoNote=`
+
+      <div class="promo-cart-note">
+
+        🎁 <b>
+          ${escapeHTML(
+            promotionData.name||
+            "10 ฟรี 1 ไม้"
+          )}
+        </b>
+
+        <br>
+
+        อีก
+        <b>${remaining}</b>
+        ไม้ รับฟรี ${promo.freeQtyPerSet} ไม้
+
+      </div>
+
+    `;
+
+  }
+
+
+  $("cartSummary").innerHTML=`
+
+    <div class="summary-row">
+
+      <span>
+        จำนวนไม้
+      </span>
+
+      <span>
+        ${count} ไม้
+      </span>
+
+    </div>
+
+
+    <div class="summary-row">
+
+      <span>
+        ยอดรวม
+      </span>
+
+      <span>
+        ${money(subtotal)}
+      </span>
+
+    </div>
+
+
+    ${
+      discount>0
+
+        ? `
+
+          <div class="summary-row discount">
+
+            <span>
+              🎁 โปรโมชั่น
+            </span>
+
+            <span>
+              -${money(discount)}
+            </span>
+
+          </div>
+
+        `
+
+        : ""
+
+    }
+
+
+    <div class="summary-row final">
+
+      <span>
+        ยอดที่ต้องชำระ
+      </span>
+
+      <strong>
+        ${money(total)}
+      </strong>
+
+    </div>
+
+
+    ${promoNote}
+
+  `;
+
+
+  renderPromotion();
+
 }
 
 
@@ -2597,10 +3306,98 @@ window.setPayment=(value,button)=>{
 
 function updateCheckoutTotal(){
 
-  $("checkoutTotal").textContent=
-    money(
-      getCartTotal()
-    );
+  const pricing=
+    getCartPricing();
+
+
+  $("checkoutSummary").innerHTML=`
+
+    <div class="summary-row">
+
+      <span>
+        จำนวนไม้
+      </span>
+
+      <span>
+        ${pricing.totalQty} ไม้
+      </span>
+
+    </div>
+
+
+    <div class="summary-row">
+
+      <span>
+        ยอดรวม
+      </span>
+
+      <span>
+        ${money(pricing.subtotal)}
+      </span>
+
+    </div>
+
+
+    ${
+      pricing.discount>0
+
+        ? `
+
+          <div class="summary-row discount">
+
+            <span>
+              🎁 ส่วนลดโปรโมชั่น
+            </span>
+
+            <span>
+              -${money(pricing.discount)}
+            </span>
+
+          </div>
+
+        `
+
+        : ""
+
+    }
+
+
+    <div class="summary-row final">
+
+      <span>
+        ยอดที่ต้องชำระ
+      </span>
+
+      <strong>
+        ${money(pricing.total)}
+      </strong>
+
+    </div>
+
+
+    ${
+      pricing.freeQty>0
+
+        ? `
+
+          <div class="promo-cart-note">
+
+            🎁
+            <b>
+              ฟรี ${pricing.freeQty} ไม้
+            </b>
+
+            · ระบบเลือกไม้ราคาถูกที่สุดเป็นไม้ฟรี
+
+          </div>
+
+        `
+
+        : ""
+
+    }
+
+  `;
 
 }
 
@@ -2652,8 +3449,6 @@ window.submitOrder=async()=>{
   clearSubmitError();
 
 
-  /* Firebase */
-
   if(!db){
 
     showSubmitError(
@@ -2664,8 +3459,6 @@ window.submitOrder=async()=>{
 
   }
 
-
-  /* ร้าน */
 
   if(!isStoreOpen()){
 
@@ -2679,8 +3472,6 @@ window.submitOrder=async()=>{
   }
 
 
-  /* ตะกร้า */
-
   if(getCartCount()<=0){
 
     showSubmitError(
@@ -2691,8 +3482,6 @@ window.submitOrder=async()=>{
 
   }
 
-
-  /* ลูกค้า */
 
   const name=
     $("customerName")
@@ -2735,8 +3524,6 @@ window.submitOrder=async()=>{
 
   }
 
-
-  /* QR */
 
   if(
     payment==="scan" &&
@@ -2781,15 +3568,11 @@ window.submitOrder=async()=>{
 
   try{
 
-    /* Order ID */
-
     const orderRef=
       doc(
         collection(db,"orders")
       );
 
-
-    /* เลขออเดอร์ */
 
     const orderNumber=
       "A"+
@@ -2799,6 +3582,37 @@ window.submitOrder=async()=>{
         .toUpperCase()+
       Math.floor(
         Math.random()*90+10
+      );
+
+
+    /*
+      คำนวณโปรโมชั่น
+    */
+
+    const promo=
+      calculatePromotion(
+        items
+      );
+
+
+    const subtotal=
+      items.reduce(
+        (sum,item)=>
+          sum+
+          Number(item.price)*
+          Number(item.qty),
+        0
+      );
+
+
+    const discount=
+      promo.discount;
+
+
+    const finalTotal=
+      Math.max(
+        0,
+        subtotal-discount
       );
 
 
@@ -2815,9 +3629,7 @@ window.submitOrder=async()=>{
         const stockReads=[];
 
         /*
-          สำคัญ:
-          Firestore Transaction ต้องอ่านเอกสาร
-          ทั้งหมดก่อน แล้วค่อย update
+          อ่านสินค้าทั้งหมดก่อน
         */
 
         for(
@@ -2905,6 +3717,10 @@ window.submitOrder=async()=>{
 
         /*
           หัก Stock
+          
+          สำคัญ:
+          ไม้ฟรีก็ถือว่าเป็นสินค้าที่ลูกค้าได้รับ
+          ดังนั้นต้องหัก Stock ด้วย
         */
 
         for(
@@ -2924,20 +3740,6 @@ window.submitOrder=async()=>{
           );
 
         }
-
-
-        /*
-          คำนวณยอดใหม่จากข้อมูลในตะกร้า
-        */
-
-        const total=
-          items.reduce(
-            (sum,item)=>
-              sum+
-              Number(item.price)*
-              Number(item.qty),
-            0
-          );
 
 
         /*
@@ -2973,7 +3775,76 @@ window.submitOrder=async()=>{
                 ? "รอตรวจสอบ"
                 : "ยังไม่ชำระ",
 
-            total,
+            /*
+              ยอดก่อนลด
+            */
+
+            subtotal,
+
+            /*
+              ส่วนลดจากโปรโมชั่น
+            */
+
+            discount,
+
+            /*
+              ยอดสุทธิ
+            */
+
+            total:
+              finalTotal,
+
+            /*
+              รายละเอียดโปรโมชั่น
+            */
+
+            promotion:{
+
+              enabled:
+                promo.enabled,
+
+              name:
+                promotionData.name||
+                "10 ฟรี 1 ไม้",
+
+              buyQty:
+                promo.buyQty,
+
+              freeQtyPerSet:
+                promo.freeQtyPerSet,
+
+              threshold:
+                promo.threshold,
+
+              totalQty:
+                promo.totalQty,
+
+              freeQty:
+                promo.freeQty,
+
+              discount:
+                promo.discount,
+
+              method:
+                "cheapest",
+
+              freeItems:
+                promo.freeItems.map(
+                  x=>({
+
+                    productId:
+                      x.productId,
+
+                    name:
+                      x.name,
+
+                    price:
+                      x.price
+
+                  })
+                )
+
+            },
 
             status:
               payment==="scan"
@@ -3006,16 +3877,6 @@ window.submitOrder=async()=>{
     );
 
 
-    const finalTotal=
-      items.reduce(
-        (sum,item)=>
-          sum+
-          Number(item.price)*
-          Number(item.qty),
-        0
-      );
-
-
     orderHistory.unshift({
 
       id:
@@ -3023,8 +3884,26 @@ window.submitOrder=async()=>{
 
       orderNumber,
 
+      subtotal,
+
+      discount,
+
       total:
         finalTotal,
+
+      promotion:{
+
+        enabled:
+          promo.enabled,
+
+        name:
+          promotionData.name||
+          "10 ฟรี 1 ไม้",
+
+        freeQty:
+          promo.freeQty
+
+      },
 
       createdAt:
         Date.now(),
@@ -3059,6 +3938,8 @@ window.submitOrder=async()=>{
     saveCart();
 
     renderCart();
+
+    renderPromotion();
 
 
     /* ล้างฟอร์ม */
@@ -3113,10 +3994,6 @@ window.submitOrder=async()=>{
       err?.message||
       "ไม่สามารถส่งออเดอร์ได้";
 
-
-    /*
-      แปลง Error Firebase
-    */
 
     if(
       err?.code===
@@ -3358,11 +4235,6 @@ function renderTracking(order){
     );
 
 
-  /*
-    ถ้ารอตรวจเงิน
-    ยังไม่เริ่มขั้นตอนทอด
-  */
-
   if(current<0){
 
     current=-1;
@@ -3390,6 +4262,28 @@ function renderTracking(order){
 
       `
     ).join("");
+
+
+  const subtotal=
+    Number(
+      order.subtotal??
+      order.total??
+      0
+    );
+
+
+  const discount=
+    Number(
+      order.discount||
+      0
+    );
+
+
+  const total=
+    Number(
+      order.total||
+      0
+    );
 
 
   $("trackingContent").innerHTML=`
@@ -3456,17 +4350,78 @@ function renderTracking(order){
       <div class="total-box"
            style="margin-top:10px">
 
-        <div class="total-row">
+        ${
+          discount>0
+
+            ? `
+
+              <div class="summary-row">
+
+                <span>
+                  ยอดรวม
+                </span>
+
+                <span>
+                  ${money(subtotal)}
+                </span>
+
+              </div>
+
+
+              <div class="summary-row discount">
+
+                <span>
+                  🎁 โปรโมชั่น
+                </span>
+
+                <span>
+                  -${money(discount)}
+                </span>
+
+              </div>
+
+            `
+
+            : ""
+
+        }
+
+
+        <div class="summary-row final">
 
           <span>
-            ยอดรวม
+            ยอดที่ต้องชำระ
           </span>
 
           <strong>
-            ${money(order.total)}
+            ${money(total)}
           </strong>
 
         </div>
+
+
+        ${
+          order.promotion?.freeQty>0
+
+            ? `
+
+              <div class="promo-cart-note">
+
+                🎁
+                ฟรี
+                <b>
+                  ${Number(
+                    order.promotion.freeQty
+                  )} ไม้
+                </b>
+
+              </div>
+
+            `
+
+            : ""
+
+        }
 
       </div>
 
@@ -3542,8 +4497,32 @@ window.showOrderHistory=()=>{
         </div>
 
 
-        <div class="history-total">
-          ${money(item.total)}
+        <div style="text-align:right">
+
+          <div class="history-total">
+            ${money(item.total)}
+          </div>
+
+          ${
+            Number(item.discount||0)>0
+
+              ? `
+
+                <div style="
+                  color:#16833c;
+                  font-size:10px;
+                  margin-top:3px">
+
+                  🎁 ลด ${money(item.discount)}
+
+                </div>
+
+              `
+
+              : ""
+
+          }
+
         </div>
 
       `;
@@ -3655,6 +4634,8 @@ function escapeAttr(value){
 renderMenu();
 
 renderCart();
+
+renderPromotion();
 
 updateStoreUI();
 
