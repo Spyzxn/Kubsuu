@@ -2,430 +2,586 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f5f5f7">
-<title>หลังร้าน • คุดสึหม่าล่าทอด</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Admin — คุดสึหม่าล่าทอด</title>
 
 <style>
-*{box-sizing:border-box}
-:root{
-  --bg:#f5f5f7;
-  --card:rgba(255,255,255,.82);
-  --text:#111;
-  --muted:#777;
-  --line:#e5e5e7;
-  --red:#ff3b30;
-  --orange:#ff9500;
-  --green:#34c759;
-  --blue:#007aff;
-  --shadow:0 10px 35px rgba(0,0,0,.08);
+*{
+ box-sizing:border-box;
+ -webkit-tap-highlight-color:transparent
 }
+
 body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
-  "Segoe UI",sans-serif;
+ margin:0;
+ background:#f5f5f7;
+ color:#1d1d1f;
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
 }
-button,input,select{
-  font:inherit;
+
+button,input,textarea,select{
+ font:inherit
 }
+
 button{
-  border:0;
-  cursor:pointer;
+ cursor:pointer
 }
+
 .app{
-  min-height:100vh;
-  padding-bottom:90px;
+ display:flex;
+ min-height:100vh
 }
 
-/* HEADER */
-.top{
-  position:sticky;
-  top:0;
-  z-index:50;
-  padding:14px 16px 12px;
-  background:rgba(245,245,247,.78);
-  backdrop-filter:blur(25px);
-  border-bottom:1px solid rgba(0,0,0,.06);
+
+/* =========================
+ SIDEBAR
+========================= */
+
+.sidebar{
+ width:245px;
+ position:fixed;
+ inset:0 auto 0 0;
+ background:#fff;
+ border-right:1px solid #ddd;
+ padding:25px 15px;
+ z-index:20
 }
-.top-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
+
 .brand{
-  display:flex;
-  align-items:center;
-  gap:11px;
-}
-.logo{
-  width:42px;
-  height:42px;
-  border-radius:14px;
-  background:#111;
-  color:white;
-  display:grid;
-  place-items:center;
-  font-size:20px;
-}
-.brand h1{
-  margin:0;
-  font-size:17px;
-}
-.brand span{
-  font-size:12px;
-  color:var(--muted);
-}
-.shop-status{
-  padding:8px 12px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:700;
-  background:#e8f8ed;
-  color:#16883a;
-}
-.shop-status.closed{
-  background:#ffe9e7;
-  color:#d9291c;
+ padding:5px 12px 25px;
+ font-size:20px;
+ font-weight:800
 }
 
-/* CONTENT */
-.content{
-  max-width:1100px;
-  margin:auto;
-  padding:20px 16px;
-}
-.page{
-  display:none;
-}
-.page.active{
-  display:block;
-}
-.title{
-  margin:4px 0 4px;
-  font-size:28px;
-  letter-spacing:-.8px;
-}
-.subtitle{
-  color:var(--muted);
-  margin-bottom:20px;
+.brand small{
+ display:block;
+ margin-top:4px;
+ color:#999;
+ font-size:10px;
+ letter-spacing:2px
 }
 
-/* DASHBOARD */
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-}
-.stat{
-  background:var(--card);
-  border:1px solid rgba(255,255,255,.9);
-  border-radius:22px;
-  padding:18px;
-  box-shadow:var(--shadow);
-}
-.stat-icon{
-  font-size:23px;
-}
-.stat strong{
-  display:block;
-  margin-top:10px;
-  font-size:27px;
-}
-.stat span{
-  font-size:12px;
-  color:var(--muted);
-}
-
-/* ORDER */
-.order-list{
-  display:grid;
-  gap:12px;
-}
-.order{
-  background:var(--card);
-  border:1px solid rgba(255,255,255,.9);
-  border-radius:22px;
-  padding:17px;
-  box-shadow:var(--shadow);
-}
-.order-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.order-no{
-  font-size:19px;
-  font-weight:800;
-}
-.order-time{
-  color:var(--muted);
-  font-size:12px;
-}
-.order-customer{
-  margin:13px 0;
-  font-size:14px;
-}
-.order-items{
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  padding:10px 0;
-}
-.item{
-  display:flex;
-  justify-content:space-between;
-  padding:5px 0;
-  font-size:14px;
-}
-.order-bottom{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-top:13px;
-}
-.total{
-  font-size:18px;
-  font-weight:800;
-}
-.status{
-  display:inline-flex;
-  padding:7px 11px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:700;
-}
-.s-new{background:#ffe8e5;color:#d9281c}
-.s-cook{background:#fff1d9;color:#a85e00}
-.s-ready{background:#e7f8ec;color:#17863a}
-.s-done{background:#e9e9eb;color:#666}
-.s-pay{background:#fff0d8;color:#a55d00}
-
-.action{
-  padding:10px 14px;
-  border-radius:13px;
-  background:#111;
-  color:white;
-  font-weight:700;
-}
-
-/* CARDS */
-.card{
-  background:var(--card);
-  border-radius:24px;
-  padding:20px;
-  box-shadow:var(--shadow);
-  margin-bottom:15px;
-}
-.card h3{
-  margin:0 0 15px;
-}
-.form-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-label{
-  display:block;
-  font-size:12px;
-  color:var(--muted);
-  margin-bottom:6px;
-}
-input,select{
-  width:100%;
-  border:1px solid var(--line);
-  background:white;
-  padding:12px 14px;
-  border-radius:14px;
-  outline:none;
-}
-input:focus,select:focus{
-  border-color:#999;
-}
-
-/* MENU */
-.menu-list{
-  display:grid;
-  gap:10px;
-}
-.menu-row{
-  display:flex;
-  align-items:center;
-  gap:13px;
-  background:var(--card);
-  padding:12px;
-  border-radius:19px;
-}
-.menu-img{
-  width:62px;
-  height:62px;
-  border-radius:15px;
-  object-fit:cover;
-  background:#eee;
-}
-.menu-info{
-  flex:1;
-}
-.menu-info strong{
-  display:block;
-}
-.menu-info span{
-  color:var(--muted);
-  font-size:12px;
-}
-.toggle{
-  padding:8px 12px;
-  border-radius:999px;
-  background:#e7f8ec;
-  color:#17863a;
-  font-size:12px;
-  font-weight:700;
-}
-.toggle.off{
-  background:#eee;
-  color:#777;
-}
-
-/* SHOP */
-.shop-switch{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.big-switch{
-  padding:13px 20px;
-  border-radius:999px;
-  color:white;
-  background:var(--green);
-  font-weight:800;
-}
-.big-switch.closed{
-  background:var(--red);
-}
-
-/* BOTTOM NAV */
 .nav{
-  position:fixed;
-  left:50%;
-  bottom:12px;
-  transform:translateX(-50%);
-  width:min(700px,calc(100% - 20px));
-  z-index:100;
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  padding:8px;
-  border-radius:25px;
-  background:rgba(255,255,255,.82);
-  backdrop-filter:blur(25px);
-  box-shadow:0 10px 40px rgba(0,0,0,.16);
-  border:1px solid rgba(255,255,255,.9);
+ display:grid;
+ gap:7px
 }
+
 .nav button{
-  background:transparent;
-  padding:9px 4px;
-  color:#777;
-  border-radius:17px;
-  font-size:11px;
-  position:relative;
+ width:100%;
+ border:0;
+ background:transparent;
+ padding:13px;
+ border-radius:14px;
+ text-align:left;
+ font-weight:650;
+ color:#666
 }
+
 .nav button.active{
-  background:#111;
-  color:white;
+ background:#1d1d1f;
+ color:#fff
 }
-.nav-icon{
-  display:block;
-  font-size:19px;
-  margin-bottom:3px;
+
+
+/* =========================
+ MAIN
+========================= */
+
+.main{
+ width:100%;
+ margin-left:245px;
+ padding:25px;
+ max-width:1400px
 }
+
+.top{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ margin-bottom:25px
+}
+
+.top h1{
+ margin:0;
+ font-size:28px
+}
+
+.top p{
+ margin:5px 0 0;
+ color:#888;
+ font-size:13px
+}
+
+.mobile-menu{
+ display:none
+}
+
+
+/* =========================
+ VIEWS
+========================= */
+
+.view{
+ display:none
+}
+
+.view.active{
+ display:block
+}
+
+
+/* =========================
+ DASHBOARD
+========================= */
+
+.cards{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:15px
+}
+
+.card{
+ background:#fff;
+ padding:20px;
+ border-radius:22px;
+ box-shadow:0 5px 25px #0000000a
+}
+
+.card small{
+ color:#888
+}
+
+.card strong{
+ display:block;
+ margin-top:8px;
+ font-size:30px
+}
+
+.card.green strong{
+ color:#16834a
+}
+
+.card.red strong{
+ color:#d71920
+}
+
+
+/* =========================
+ STORE CONTROL
+========================= */
+
+.store-panel{
+ margin-top:20px;
+ background:#fff;
+ padding:25px;
+ border-radius:25px;
+ box-shadow:0 5px 25px #0000000a
+}
+
+.store-head{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:15px
+}
+
+.store-head h2{
+ margin:0
+}
+
+.live{
+ display:flex;
+ align-items:center;
+ gap:7px;
+ padding:8px 12px;
+ border-radius:999px;
+ background:#e9f8ef;
+ color:#16834a;
+ font-size:12px;
+ font-weight:700
+}
+
+.live.closed{
+ background:#f1f1f3;
+ color:#777
+}
+
+.live i{
+ width:8px;
+ height:8px;
+ border-radius:50%;
+ background:#20a35a
+}
+
+.live.closed i{
+ background:#999
+}
+
+.big-status{
+ margin:25px 0;
+ padding:25px;
+ border-radius:22px;
+ background:#e9f8ef;
+ color:#16834a;
+ text-align:center
+}
+
+.big-status.closed{
+ background:#f1f1f3;
+ color:#777
+}
+
+.big-status strong{
+ display:block;
+ font-size:30px
+}
+
+.big-status span{
+ display:block;
+ margin-top:5px;
+ font-size:12px
+}
+
+.control-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:15px
+}
+
+.control{
+ padding:18px;
+ border:1px solid #e1e1e5;
+ border-radius:18px
+}
+
+.control label{
+ display:block;
+ margin-bottom:8px;
+ font-size:12px;
+ color:#777;
+ font-weight:650
+}
+
+.control input,
+.control textarea{
+ width:100%;
+ border:1px solid #ddd;
+ border-radius:13px;
+ padding:12px;
+ outline:none;
+ background:#fff
+}
+
+.control textarea{
+ min-height:80px;
+ resize:none
+}
+
+.switch-row{
+ display:flex;
+ justify-content:space-between;
+ align-items:center
+}
+
+
+/* SWITCH */
+
+.switch{
+ position:relative;
+ width:54px;
+ height:32px
+}
+
+.switch input{
+ display:none
+}
+
+.slider{
+ position:absolute;
+ inset:0;
+ border-radius:30px;
+ background:#d1d1d6;
+ transition:.2s
+}
+
+.slider:before{
+ content:"";
+ position:absolute;
+ width:26px;
+ height:26px;
+ left:3px;
+ top:3px;
+ border-radius:50%;
+ background:#fff;
+ box-shadow:0 2px 5px #0003;
+ transition:.2s
+}
+
+.switch input:checked+.slider{
+ background:#20a35a
+}
+
+.switch input:checked+.slider:before{
+ transform:translateX(22px)
+}
+
+
+/* =========================
+ BUTTON
+========================= */
+
+.primary{
+ border:0;
+ padding:14px 20px;
+ border-radius:15px;
+ background:#1d1d1f;
+ color:#fff;
+ font-weight:750
+}
+
+.danger{
+ border:0;
+ padding:14px 20px;
+ border-radius:15px;
+ background:#ffe9e9;
+ color:#d71920;
+ font-weight:750
+}
+
+.success{
+ border:0;
+ padding:14px 20px;
+ border-radius:15px;
+ background:#e9f8ef;
+ color:#16834a;
+ font-weight:750
+}
+
+.actions{
+ margin-top:20px;
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap
+}
+
+
+/* =========================
+ ORDERS
+========================= */
+
+.order-list{
+ display:grid;
+ gap:12px
+}
+
+.order{
+ background:#fff;
+ padding:20px;
+ border-radius:20px;
+ box-shadow:0 4px 20px #00000008
+}
+
+.order-top{
+ display:flex;
+ justify-content:space-between;
+ gap:10px
+}
+
+.order-number{
+ font-size:20px;
+ font-weight:850
+}
+
 .badge{
-  position:absolute;
-  top:3px;
-  right:22%;
-  background:var(--red);
-  color:white;
-  min-width:17px;
-  height:17px;
-  border-radius:99px;
-  font-size:10px;
-  display:grid;
-  place-items:center;
-  font-weight:800;
+ display:inline-block;
+ padding:6px 10px;
+ border-radius:999px;
+ background:#eee;
+ font-size:11px;
+ font-weight:700
 }
 
-/* NEW ORDER POPUP */
-.overlay{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:300;
-  background:rgba(0,0,0,.38);
-  backdrop-filter:blur(8px);
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+.order-items{
+ margin:15px 0;
+ color:#555;
+ font-size:13px;
+ line-height:1.8
 }
-.overlay.show{
-  display:flex;
+
+.order-total{
+ font-size:18px;
+ font-weight:850
 }
-.alert-box{
-  width:min(390px,100%);
-  background:white;
-  border-radius:30px;
-  padding:25px;
+
+.order-buttons{
+ display:flex;
+ gap:7px;
+ margin-top:15px;
+ flex-wrap:wrap
+}
+
+.order-buttons button{
+ border:0;
+ padding:10px 13px;
+ border-radius:12px;
+ background:#eeeef0
+}
+
+
+/* =========================
+ MENU
+========================= */
+
+.menu-head{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:15px
+}
+
+.menu-list{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:15px
+}
+
+.menu-card{
+ background:#fff;
+ border-radius:22px;
+ overflow:hidden
+}
+
+.menu-img{
+ width:100%;
+ aspect-ratio:1;
+ background:#eee
+}
+
+.menu-img img{
+ width:100%;
+ height:100%;
+ object-fit:cover
+}
+
+.menu-info{
+ padding:16px
+}
+
+.menu-info h3{
+ margin:0
+}
+
+.menu-info p{
+ color:#888;
+ font-size:12px
+}
+
+
+/* =========================
+ TOAST
+========================= */
+
+.toast{
+ position:fixed;
+ z-index:100;
+ left:50%;
+ bottom:25px;
+ transform:translate(-50%,20px);
+ background:#1d1d1f;
+ color:#fff;
+ padding:12px 18px;
+ border-radius:999px;
+ font-size:12px;
+ opacity:0;
+ pointer-events:none;
+ transition:.2s
+}
+
+.toast.show{
+ opacity:1;
+ transform:translate(-50%,0)
+}
+
+
+/* =========================
+ MOBILE
+========================= */
+
+@media(max-width:850px){
+
+ .sidebar{
+  width:72px;
+  padding:15px 8px
+ }
+
+ .brand{
+  font-size:0;
+  text-align:center
+ }
+
+ .brand:first-letter{
+  font-size:25px
+ }
+
+ .brand small{
+  display:none
+ }
+
+ .nav button{
   text-align:center;
-  box-shadow:0 30px 80px rgba(0,0,0,.3);
-  animation:pop .3s ease;
-}
-.alert-icon{
-  width:70px;
-  height:70px;
-  margin:auto;
-  border-radius:24px;
-  background:#111;
-  color:white;
-  display:grid;
-  place-items:center;
-  font-size:34px;
-}
-.alert-box h2{
-  margin:16px 0 5px;
-}
-.alert-box p{
-  color:var(--muted);
-  margin:0 0 20px;
-}
-.alert-btn{
-  width:100%;
-  padding:14px;
-  border-radius:16px;
-  background:#111;
-  color:white;
-  font-weight:800;
-}
-@keyframes pop{
-  from{transform:scale(.9);opacity:0}
-  to{transform:scale(1);opacity:1}
+  font-size:0;
+  padding:14px 5px
+ }
+
+ .nav button:first-letter{
+  font-size:20px
+ }
+
+ .main{
+  margin-left:72px;
+  padding:15px
+ }
+
+ .cards{
+  grid-template-columns:repeat(2,1fr)
+ }
+
+ .menu-list{
+  grid-template-columns:repeat(2,1fr)
+ }
+
 }
 
-/* EMPTY */
-.empty{
-  text-align:center;
-  padding:55px 20px;
-  color:var(--muted);
-}
-.empty-icon{
-  font-size:42px;
-  margin-bottom:10px;
-}
+@media(max-width:600px){
 
-/* RESPONSIVE */
-@media(max-width:700px){
-  .stats{
-    grid-template-columns:1fr 1fr;
-  }
-  .form-row{
-    grid-template-columns:1fr;
-  }
+ .control-grid{
+  grid-template-columns:1fr
+ }
+
+ .cards{
+  gap:10px
+ }
+
+ .card{
+  padding:15px
+ }
+
+ .card strong{
+  font-size:23px
+ }
+
+ .store-panel{
+  padding:18px
+ }
+
+ .menu-list{
+  grid-template-columns:1fr
+ }
+
+ .top h1{
+  font-size:23px
+ }
+
 }
 </style>
 </head>
@@ -434,327 +590,481 @@ input:focus,select:focus{
 
 <div class="app">
 
-<header class="top">
-  <div class="top-row">
+<!-- =========================
+ SIDEBAR
+========================= -->
 
-    <div class="brand">
-      <div class="logo">🔥</div>
-      <div>
-        <h1 id="shopName">คุดสึหม่าล่าทอด</h1>
-        <span>ระบบจัดการร้าน</span>
-      </div>
-    </div>
+<aside class="sidebar">
 
-    <div id="shopStatus" class="shop-status">
-      🟢 เปิดรับออเดอร์
-    </div>
+ <div class="brand">
+  🍢
+  <small>MALA FRIED ADMIN</small>
+ </div>
+
+ <nav class="nav">
+
+  <button
+   class="active"
+   onclick="showView('dashboard',this)">
+   📊 Dashboard
+  </button>
+
+  <button
+   onclick="showView('orders',this)">
+   📦 ออเดอร์
+  </button>
+
+  <button
+   onclick="showView('menu',this)">
+   🍢 เมนู
+  </button>
+
+  <button
+   onclick="showView('store',this)">
+   🏪 ร้าน
+  </button>
+
+ </nav>
+
+</aside>
+
+
+<!-- =========================
+ MAIN
+========================= -->
+
+<main class="main">
+
+<div class="top">
+
+ <div>
+  <h1 id="pageTitle">
+   Dashboard
+  </h1>
+
+  <p>
+   คุดสึหม่าล่าทอด
+  </p>
+ </div>
+
+</div>
+
+
+<!-- =========================
+ DASHBOARD
+========================= -->
+
+<section id="dashboard"
+ class="view active">
+
+ <div class="cards">
+
+  <div class="card">
+   <small>ออเดอร์ทั้งหมด</small>
+   <strong id="allOrders">0</strong>
+  </div>
+
+  <div class="card">
+   <small>ออเดอร์ใหม่</small>
+   <strong id="newOrders">0</strong>
+  </div>
+
+  <div class="card">
+   <small>กำลังทอด</small>
+   <strong id="fryingOrders">0</strong>
+  </div>
+
+  <div class="card green">
+   <small>พร้อมรับ</small>
+   <strong id="readyOrders">0</strong>
+  </div>
+
+ </div>
+
+
+ <div class="store-panel">
+
+  <div class="store-head">
+
+   <h2>สถานะร้าน</h2>
+
+   <div
+    id="dashboardStatus"
+    class="live">
+
+    <i></i>
+    <span>กำลังตรวจสอบ</span>
+
+   </div>
 
   </div>
-</header>
 
-<main class="content">
+  <div
+   id="dashboardBigStatus"
+   class="big-status">
 
-<!-- DASHBOARD -->
-<section id="dashboardPage" class="page active">
+   <strong>
+    กำลังโหลด...
+   </strong>
 
-  <h2 class="title">ภาพรวมร้าน</h2>
-  <div class="subtitle">ดูสถานะร้านและออเดอร์ทั้งหมด</div>
-
-  <div class="stats">
-
-    <div class="stat">
-      <div class="stat-icon">🔔</div>
-      <strong id="newCount">0</strong>
-      <span>ออเดอร์ใหม่</span>
-    </div>
-
-    <div class="stat">
-      <div class="stat-icon">🔥</div>
-      <strong id="cookCount">0</strong>
-      <span>กำลังทอด</span>
-    </div>
-
-    <div class="stat">
-      <div class="stat-icon">🟢</div>
-      <strong id="readyCount">0</strong>
-      <span>พร้อมรับ</span>
-    </div>
-
-    <div class="stat">
-      <div class="stat-icon">💰</div>
-      <strong id="todaySales">฿0</strong>
-      <span>ยอดขายวันนี้</span>
-    </div>
+   <span>
+    กำลังอ่านสถานะจาก Firebase
+   </span>
 
   </div>
 
-  <div class="card" style="margin-top:15px">
-    <h3>🛎️ ออเดอร์ล่าสุด</h3>
-    <div id="dashboardOrders"></div>
-  </div>
+  <button
+   class="primary"
+   onclick="showView('store')">
+
+   ⚙️ จัดการร้าน
+
+  </button>
+
+ </div>
 
 </section>
 
 
-<!-- ORDERS -->
-<section id="ordersPage" class="page">
+<!-- =========================
+ ORDERS
+========================= -->
 
-  <h2 class="title">ออเดอร์</h2>
-  <div class="subtitle">จัดการออเดอร์แบบ Real-time</div>
+<section id="orders"
+ class="view">
 
-  <div id="ordersList" class="order-list"></div>
+ <div class="store-panel">
+
+  <div class="store-head">
+
+   <div>
+    <h2>ออเดอร์</h2>
+    <p style="color:#888">
+     ออเดอร์จะอัปเดตแบบ Real-time
+    </p>
+   </div>
+
+  </div>
+
+  <br>
+
+  <div
+   id="orderList"
+   class="order-list">
+
+   กำลังโหลด...
+
+  </div>
+
+ </div>
 
 </section>
 
 
-<!-- MENU -->
-<section id="menuPage" class="page">
+<!-- =========================
+ MENU
+========================= -->
 
-  <h2 class="title">เมนูอาหาร</h2>
-  <div class="subtitle">เพิ่ม แก้ไข และเปิด/ปิดเมนู</div>
+<section id="menu"
+ class="view">
 
-  <div class="card">
-    <h3>➕ เพิ่มเมนูใหม่</h3>
+ <div class="store-panel">
 
-    <div class="form-row">
+  <div class="menu-head">
 
-      <div>
-        <label>ชื่อเมนู</label>
-        <input id="newName" placeholder="เช่น สามชั้นทอด">
-      </div>
+   <div>
+    <h2>จัดการเมนู</h2>
+    <p style="color:#888">
+     เมนูที่ Active จะแสดงในเว็บลูกค้า
+    </p>
+   </div>
 
-      <div>
-        <label>ราคา</label>
-        <input id="newPrice" type="number" placeholder="10">
-      </div>
+   <button
+    class="primary"
+    onclick="addMenu()">
 
-    </div>
+    ＋ เพิ่มเมนู
 
-    <div class="form-row" style="margin-top:12px">
-
-      <div>
-        <label>หมวดหมู่</label>
-        <select id="newCategory">
-          <option value="meat">🥩 เนื้อ</option>
-          <option value="sea">🦑 ทะเล</option>
-          <option value="veg">🥦 ผัก</option>
-          <option value="other">🍢 อื่น ๆ</option>
-        </select>
-      </div>
-
-      <div>
-        <label>สต็อก</label>
-        <input id="newStock" type="number" value="20">
-      </div>
-
-    </div>
-
-    <div style="margin-top:12px">
-      <label>URL รูปอาหาร</label>
-      <input id="newImage" placeholder="https://...">
-    </div>
-
-    <button
-      class="action"
-      style="width:100%;margin-top:14px"
-      onclick="addProduct()">
-      เพิ่มเมนู
-    </button>
+   </button>
 
   </div>
 
-  <div id="menuList" class="menu-list"></div>
+  <div
+   id="menuList"
+   class="menu-list">
+
+   กำลังโหลด...
+
+  </div>
+
+ </div>
 
 </section>
 
 
-<!-- WEBSITE -->
-<section id="websitePage" class="page">
+<!-- =========================
+ STORE
+========================= -->
 
-  <h2 class="title">หน้าเว็บไซต์</h2>
-  <div class="subtitle">ตั้งค่าหน้าร้านที่ลูกค้าเห็น</div>
+<section id="store"
+ class="view">
 
-  <div class="card">
+ <div class="store-panel">
 
-    <h3>🏪 ข้อมูลร้าน</h3>
+  <div class="store-head">
 
-    <label>ชื่อร้าน</label>
-    <input id="settingShopName">
+   <div>
+    <h2>ควบคุมร้าน</h2>
 
-    <label style="margin-top:12px">โลโก้ URL</label>
-    <input id="settingLogo" placeholder="https://...">
+    <p style="
+     margin:5px 0 0;
+     color:#888;
+     font-size:13px">
 
-    <label style="margin-top:12px">ภาพพื้นหลัง URL</label>
-    <input id="settingBackground" placeholder="https://...">
+     ตั้งเวลาและเปิด–ปิดร้านจากหน้านี้
 
-    <label style="margin-top:12px">ภาพโปรโมชั่น URL</label>
-    <input id="settingHero" placeholder="https://...">
+    </p>
+   </div>
 
-    <label style="margin-top:12px">QR Code รับเงิน URL</label>
-    <input id="settingQR" placeholder="https://...">
+   <div
+    id="storeLive"
+    class="live">
 
-    <button
-      class="action"
-      style="width:100%;margin-top:15px"
-      onclick="saveSettings()">
-      บันทึกการตั้งค่า
-    </button>
+    <i></i>
+
+    <span>
+     กำลังตรวจสอบ
+    </span>
+
+   </div>
 
   </div>
 
-</section>
+
+  <div
+   id="bigStatus"
+   class="big-status">
+
+   <strong>
+    กำลังโหลด...
+   </strong>
+
+   <span>
+    -
+   </span>
+
+  </div>
 
 
-<!-- SHOP -->
-<section id="shopPage" class="page">
+  <div class="control-grid">
 
-  <h2 class="title">ร้านค้า</h2>
-  <div class="subtitle">ควบคุมการเปิดรับออเดอร์</div>
 
-  <div class="card">
+   <!-- เปิดร้าน -->
 
-    <div class="shop-switch">
+   <div class="control">
 
-      <div>
-        <h3 style="margin:0">สถานะร้าน</h3>
-        <span id="shopText" style="color:#777">
-          กำลังเปิดรับออเดอร์
-        </span>
+    <div class="switch-row">
+
+     <div>
+
+      <b>
+       เปิดรับออเดอร์
+      </b>
+
+      <div style="
+       color:#888;
+       font-size:11px;
+       margin-top:4px">
+
+       อนุญาตให้เว็บลูกค้าสั่งซื้อ
+
       </div>
 
-      <button
-        id="shopButton"
-        class="big-switch"
-        onclick="toggleShop()">
-        เปิดอยู่
-      </button>
+     </div>
+
+     <label class="switch">
+
+      <input
+       id="openSwitch"
+       type="checkbox"
+       onchange="toggleOpen(this)">
+
+      <span class="slider"></span>
+
+     </label>
 
     </div>
 
-  </div>
+   </div>
 
-  <div class="card">
 
-    <h3>🕐 เวลาทำการ</h3>
+   <!-- ปิดวันนี้ -->
 
-    <div class="form-row">
+   <div class="control">
 
-      <div>
-        <label>เวลาเปิด</label>
-        <input id="openTime" type="time" value="16:00">
+    <div class="switch-row">
+
+     <div>
+
+      <b>
+       ปิดร้านวันนี้
+      </b>
+
+      <div style="
+       color:#888;
+       font-size:11px;
+       margin-top:4px">
+
+       ปิดตลอดทั้งวัน
+
       </div>
 
-      <div>
-        <label>เวลาปิด</label>
-        <input id="closeTime" type="time" value="21:30">
-      </div>
+     </div>
+
+     <label class="switch">
+
+      <input
+       id="closedToday"
+       type="checkbox"
+       onchange="saveStore()">
+
+      <span class="slider"></span>
+
+     </label>
 
     </div>
 
-    <button
-      class="action"
-      style="width:100%;margin-top:15px"
-      onclick="saveShopTime()">
-      บันทึกเวลา
-    </button>
+   </div>
+
+
+   <!-- เวลาเปิด -->
+
+   <div class="control">
+
+    <label>
+     เวลาเปิดร้าน
+    </label>
+
+    <input
+     id="openTime"
+     type="time"
+     value="16:00"
+     onchange="saveStore()">
+
+   </div>
+
+
+   <!-- เวลาปิด -->
+
+   <div class="control">
+
+    <label>
+     เวลาปิดร้าน
+    </label>
+
+    <input
+     id="closeTime"
+     type="time"
+     value="21:30"
+     onchange="saveStore()">
+
+   </div>
+
+
+   <!-- ข้อความ -->
+
+   <div class="control"
+    style="grid-column:1/-1">
+
+    <label>
+     ข้อความเมื่อร้านปิด
+    </label>
+
+    <textarea
+     id="closedMessage"
+     placeholder="เช่น วันนี้ร้านติดธุระ"></textarea>
+
+   </div>
 
   </div>
+
+
+  <div class="actions">
+
+   <button
+    class="success"
+    onclick="openShop()">
+
+    🟢 เปิดร้านทันที
+
+   </button>
+
+   <button
+    class="danger"
+    onclick="closeShop()">
+
+    🔴 ปิดร้านทันที
+
+   </button>
+
+   <button
+    class="primary"
+    onclick="saveStore()">
+
+    💾 บันทึกการตั้งค่า
+
+   </button>
+
+  </div>
+
+ </div>
 
 </section>
 
 </main>
 
-
-<!-- NAV -->
-<nav class="nav">
-
-  <button class="active" onclick="showPage('dashboardPage',this)">
-    <span class="nav-icon">⌂</span>
-    หน้าหลัก
-  </button>
-
-  <button onclick="showPage('ordersPage',this)">
-    <span class="nav-icon">🧾</span>
-    ออเดอร์
-    <span id="navBadge" class="badge" style="display:none">0</span>
-  </button>
-
-  <button onclick="showPage('menuPage',this)">
-    <span class="nav-icon">🍢</span>
-    เมนู
-  </button>
-
-  <button onclick="showPage('websitePage',this)">
-    <span class="nav-icon">🎨</span>
-    หน้าเว็บ
-  </button>
-
-  <button onclick="showPage('shopPage',this)">
-    <span class="nav-icon">⚙️</span>
-    ร้านค้า
-  </button>
-
-</nav>
-
 </div>
 
 
-<!-- NEW ORDER ALERT -->
-<div id="alertOverlay" class="overlay">
-
-  <div class="alert-box">
-
-    <div class="alert-icon">🔔</div>
-
-    <h2>ออเดอร์ใหม่!</h2>
-
-    <p id="alertText">
-      มีลูกค้าส่งออเดอร์เข้ามา
-    </p>
-
-    <button
-      class="alert-btn"
-      onclick="openNewOrder()">
-      เปิดออเดอร์
-    </button>
-
-  </div>
-
-</div>
+<div id="toast" class="toast"></div>
 
 
 <script type="module">
 
 import {
-  initializeApp
+ initializeApp
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 
 import {
-  getFirestore,
-  collection,
-  doc,
-  getDocs,
-  setDoc,
-  updateDoc,
-  onSnapshot,
-  query,
-  orderBy,
-  limit
+ getFirestore,
+ collection,
+ doc,
+ onSnapshot,
+ setDoc,
+ updateDoc
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 
 /* =========================
-   FIREBASE
+ FIREBASE
 ========================= */
 
-const firebaseConfig = {
-  apiKey:"AIzaSyAOcPmnQrhHh058ozPrb1CgvUI1pOesU",
-  authDomain:"mala-order-645ed.firebaseapp.com",
-  projectId:"mala-order-645ed",
-  storageBucket:"mala-order-645ed.firebasestorage.app",
-  messagingSenderId:"897411378069",
-  appId:"1:897411378069:web:81c0db8a0b5c899a4c649c",
-  measurementId:"G-276HMQGECP"
+const firebaseConfig={
+
+ apiKey:"AIzaSyAOcPmnQrhHh058ozPr1b1OesU",
+
+ authDomain:"mala-order-645ed.firebaseapp.com",
+
+ projectId:"mala-order-645ed",
+
+ storageBucket:"mala-order-645ed.firebasestorage.app",
+
+ messagingSenderId:"897411378069",
+
+ appId:"1:897411378069:web:81c0db8a0b5c899a4c649c",
+
+ measurementId:"G-276HMQGECP"
+
 };
 
 const app=initializeApp(firebaseConfig);
@@ -762,786 +1072,834 @@ const db=getFirestore(app);
 
 
 /* =========================
-   DATA
+ GLOBAL
 ========================= */
+
+let store={
+ open:true,
+ closedToday:false,
+ openTime:"16:00",
+ closeTime:"21:30",
+ message:"",
+ qrImage:""
+};
 
 let orders=[];
-let products=[];
-let settings={};
-
-let previousOrderIds=new Set();
-let firstOrderLoad=true;
-let newOrderId=null;
 
 
 /* =========================
-   PAGE
+ TOAST
 ========================= */
 
-window.showPage=function(id,button){
+function toast(text){
 
-  document.querySelectorAll(".page")
-    .forEach(x=>x.classList.remove("active"));
+ const el=
+  document.getElementById("toast");
 
-  document.getElementById(id)
-    .classList.add("active");
+ el.textContent=text;
+ el.classList.add("show");
 
-  document.querySelectorAll(".nav button")
-    .forEach(x=>x.classList.remove("active"));
+ clearTimeout(window.tt);
 
+ window.tt=setTimeout(()=>{
+  el.classList.remove("show");
+ },1800);
+}
+
+
+/* =========================
+ NAVIGATION
+========================= */
+
+window.showView=function(name,button){
+
+ document.querySelectorAll(".view")
+  .forEach(v=>v.classList.remove("active"));
+
+ document.getElementById(name)
+  .classList.add("active");
+
+ document.querySelectorAll(".nav button")
+  .forEach(b=>b.classList.remove("active"));
+
+ if(button)
   button.classList.add("active");
-};
 
+ const titles={
+  dashboard:"Dashboard",
+  orders:"ออเดอร์",
+  menu:"จัดการเมนู",
+  store:"ควบคุมร้าน"
+ };
 
-/* =========================
-   SOUND
-========================= */
-
-let audioContext=null;
-
-function unlockAudio(){
-
-  if(!audioContext){
-
-    audioContext=
-      new (window.AudioContext||window.webkitAudioContext)();
-
-  }
-
-  if(audioContext.state==="suspended")
-    audioContext.resume();
-}
-
-document.addEventListener("click",unlockAudio,{once:true});
-
-
-function notificationSound(){
-
-  try{
-
-    unlockAudio();
-
-    const osc=
-      audioContext.createOscillator();
-
-    const gain=
-      audioContext.createGain();
-
-    osc.frequency.value=880;
-
-    gain.gain.setValueAtTime(
-      .0001,
-      audioContext.currentTime
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-      .3,
-      audioContext.currentTime+.02
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-      .0001,
-      audioContext.currentTime+.7
-    );
-
-    osc.connect(gain);
-    gain.connect(audioContext.destination);
-
-    osc.start();
-    osc.stop(audioContext.currentTime+.7);
-
-  }catch(e){}
-
-}
-
-
-/* =========================
-   ORDERS REALTIME
-========================= */
-
-const ordersQuery=query(
-  collection(db,"orders"),
-  orderBy("createdAt","desc"),
-  limit(100)
-);
-
-onSnapshot(ordersQuery,(snapshot)=>{
-
-  orders=[];
-
-  snapshot.forEach(item=>{
-
-    orders.push({
-      id:item.id,
-      ...item.data()
-    });
-
-  });
-
-  checkNewOrders();
-
-  renderOrders();
-  renderDashboard();
-
-});
-
-
-function checkNewOrders(){
-
-  const currentIds=
-    new Set(orders.map(x=>x.id));
-
-  if(!firstOrderLoad){
-
-    const fresh=
-      orders.find(x=>
-        !previousOrderIds.has(x.id)
-        &&
-        x.status!=="รับแล้ว"
-    );
-
-    if(fresh){
-
-      newOrderId=fresh.id;
-
-      notificationSound();
-
-      if(navigator.vibrate){
-        navigator.vibrate([
-          250,100,250,100,500
-        ]);
-      }
-
-      document.getElementById("alertText")
-        .textContent=
-        `Order #${fresh.orderNumber||fresh.id} • ฿${Number(fresh.total||0).toLocaleString()}`;
-
-      document.getElementById("alertOverlay")
-        .classList.add("show");
-
-    }
-
-  }
-
-  previousOrderIds=currentIds;
-  firstOrderLoad=false;
-
-}
-
-
-/* =========================
-   OPEN NEW ORDER
-========================= */
-
-window.openNewOrder=function(){
-
-  document.getElementById("alertOverlay")
-    .classList.remove("show");
-
-  const nav=
-    document.querySelectorAll(".nav button")[1];
-
-  showPage("ordersPage",nav);
-
-  setTimeout(()=>{
-
-    const el=
-      document.querySelector(
-        `[data-order-id="${newOrderId}"]`
-      );
-
-    if(el){
-      el.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-      });
-    }
-
-  },100);
+ document.getElementById("pageTitle")
+  .textContent=titles[name];
 
 };
 
 
 /* =========================
-   RENDER ORDERS
+ STORE LISTENER
 ========================= */
 
-function renderOrders(){
+function listenStore(){
 
-  const box=
-    document.getElementById("ordersList");
+ onSnapshot(
 
-  if(!orders.length){
+  doc(
+   db,
+   "settings",
+   "store"
+  ),
 
-    box.innerHTML=`
-      <div class="empty">
-        <div class="empty-icon">🧾</div>
-        ยังไม่มีออเดอร์
-      </div>
-    `;
+  snap=>{
 
-    return;
+   if(snap.exists()){
+
+    store={
+     ...store,
+     ...snap.data()
+    };
+
+   }
+
+   fillStoreForm();
+   renderStoreStatus();
+
+  },
+
+  error=>{
+
+   console.error(error);
+
+   toast(
+    "อ่านสถานะร้านไม่ได้"
+   );
+
   }
 
-  box.innerHTML=
-    orders.map(orderHTML).join("");
-
-}
-
-
-function orderHTML(o){
-
-  const status=o.status||"รับออเดอร์";
-
-  let cls="s-new";
-
-  if(status==="กำลังทอด") cls="s-cook";
-  if(status==="พร้อมรับ") cls="s-ready";
-  if(status==="รับแล้ว") cls="s-done";
-  if(status==="รอตรวจสอบการชำระเงิน") cls="s-pay";
-
-  const items=
-    (o.items||[]).map(item=>`
-
-      <div class="item">
-
-        <span>
-          ${item.name}
-          × ${item.qty}
-        </span>
-
-        <strong>
-          ฿${Number(item.price||0)*Number(item.qty||0)}
-        </strong>
-
-      </div>
-
-    `).join("");
-
-  return `
-
-    <div
-      class="order"
-      data-order-id="${o.id}">
-
-      <div class="order-head">
-
-        <div>
-          <div class="order-no">
-            #${o.orderNumber||o.id}
-          </div>
-
-          <div class="order-time">
-            ${formatTime(o.createdAt)}
-          </div>
-        </div>
-
-        <span class="status ${cls}">
-          ${status}
-        </span>
-
-      </div>
-
-
-      <div class="order-customer">
-
-        👤
-        ${o.customer?.name||"ไม่ระบุชื่อ"}
-
-        <br>
-
-        📞
-        ${o.customer?.phone||"-"}
-
-        ${
-          o.spice
-          ? `<br>🌶️ ${o.spice}`
-          :""
-        }
-
-        ${
-          o.payment
-          ? `<br>💳 ${o.payment}`
-          :""
-        }
-
-      </div>
-
-
-      <div class="order-items">
-        ${items}
-      </div>
-
-
-      <div class="order-bottom">
-
-        <div class="total">
-          ฿${Number(o.total||0).toLocaleString()}
-        </div>
-
-        ${statusButtons(o)}
-
-      </div>
-
-    </div>
-  `;
-
-}
-
-
-function statusButtons(o){
-
-  const s=o.status||"รับออเดอร์";
-
-  if(s==="รับออเดอร์"){
-    return `
-      <button class="action"
-        onclick="changeStatus('${o.id}','กำลังทอด')">
-        เริ่มทอด 🔥
-      </button>
-    `;
-  }
-
-  if(s==="กำลังทอด"){
-    return `
-      <button class="action"
-        onclick="changeStatus('${o.id}','พร้อมรับ')">
-        พร้อมรับ 🟢
-      </button>
-    `;
-  }
-
-  if(s==="พร้อมรับ"){
-    return `
-      <button class="action"
-        onclick="changeStatus('${o.id}','รับแล้ว')">
-        รับแล้ว ✓
-      </button>
-    `;
-  }
-
-  return `<span style="color:#777;font-size:12px">เสร็จสิ้น ✓</span>`;
-}
-
-
-window.changeStatus=async function(id,status){
-
-  await updateDoc(
-    doc(db,"orders",id),
-    {status}
-  );
-
-};
-
-
-/* =========================
-   DASHBOARD
-========================= */
-
-function renderDashboard(){
-
-  const newOrders=
-    orders.filter(x=>
-      x.status==="รับออเดอร์"
-      ||
-      !x.status
-    );
-
-  const cooking=
-    orders.filter(x=>
-      x.status==="กำลังทอด"
-    );
-
-  const ready=
-    orders.filter(x=>
-      x.status==="พร้อมรับ"
-    );
-
-  document.getElementById("newCount")
-    .textContent=newOrders.length;
-
-  document.getElementById("cookCount")
-    .textContent=cooking.length;
-
-  document.getElementById("readyCount")
-    .textContent=ready.length;
-
-
-  const today=new Date();
-
-  let sales=0;
-
-  orders.forEach(o=>{
-
-    if(!o.createdAt) return;
-
-    const d=o.createdAt.toDate
-      ? o.createdAt.toDate()
-      : new Date(o.createdAt);
-
-    if(
-      d.getDate()===today.getDate()
-      &&
-      d.getMonth()===today.getMonth()
-      &&
-      d.getFullYear()===today.getFullYear()
-      &&
-      o.status!=="รับแล้ว"
-    ){
-      sales+=Number(o.total||0);
-    }
-
-  });
-
-  document.getElementById("todaySales")
-    .textContent=
-    "฿"+sales.toLocaleString();
-
-
-  document.getElementById("dashboardOrders")
-    .innerHTML=
-    orders.slice(0,5)
-    .map(orderHTML)
-    .join("") ||
-    `<div class="empty">ยังไม่มีออเดอร์</div>`;
-
-
-  const count=newOrders.length;
-
-  const badge=
-    document.getElementById("navBadge");
-
-  badge.textContent=count;
-  badge.style.display=
-    count ? "grid":"none";
+ );
 
 }
 
 
 /* =========================
-   PRODUCTS
+ FILL FORM
 ========================= */
 
-onSnapshot(
-  collection(db,"products"),
-  snapshot=>{
+function fillStoreForm(){
 
-    products=[];
+ document.getElementById("openSwitch")
+  .checked=store.open===true;
 
-    snapshot.forEach(item=>{
+ document.getElementById("closedToday")
+  .checked=store.closedToday===true;
 
-      products.push({
-        id:item.id,
-        ...item.data()
-      });
+ document.getElementById("openTime")
+  .value=store.openTime||"16:00";
 
-    });
+ document.getElementById("closeTime")
+  .value=store.closeTime||"21:30";
 
-    renderProducts();
-
-  }
-);
-
-
-function renderProducts(){
-
-  const box=
-    document.getElementById("menuList");
-
-  if(!products.length){
-
-    box.innerHTML=`
-      <div class="empty">
-        <div class="empty-icon">🍢</div>
-        ยังไม่มีเมนู
-      </div>
-    `;
-
-    return;
-  }
-
-  box.innerHTML=
-    products.map(p=>`
-
-      <div class="menu-row">
-
-        <img
-          class="menu-img"
-          src="${p.image||''}"
-          onerror="this.style.display='none'"
-        >
-
-        <div class="menu-info">
-
-          <strong>${p.name||"ไม่มีชื่อ"}</strong>
-
-          <span>
-            ฿${Number(p.price||0)}
-            • สต็อก ${Number(p.stock||0)}
-          </span>
-
-        </div>
-
-        <button
-          class="toggle ${p.active===false?'off':''}"
-          onclick="toggleProduct('${p.id}',${p.active!==false})">
-
-          ${p.active===false?'ปิด':'เปิด'}
-
-        </button>
-
-      </div>
-
-    `).join("");
+ document.getElementById("closedMessage")
+  .value=store.message||"";
 
 }
 
 
-window.toggleProduct=async function(id,current){
-
-  await updateDoc(
-    doc(db,"products",id),
-    {active:!current}
-  );
-
-};
-
-
-window.addProduct=async function(){
-
-  const name=
-    document.getElementById("newName").value.trim();
-
-  const price=
-    Number(document.getElementById("newPrice").value);
-
-  const stock=
-    Number(document.getElementById("newStock").value);
-
-  const category=
-    document.getElementById("newCategory").value;
-
-  const image=
-    document.getElementById("newImage").value.trim();
-
-  if(!name||!price){
-
-    alert("กรุณากรอกชื่อและราคา");
-    return;
-
-  }
-
-  const id=
-    "p_"+Date.now();
-
-  await setDoc(
-    doc(db,"products",id),
-    {
-      id,
-      name,
-      price,
-      stock,
-      category,
-      image,
-      active:true,
-      featured:false
-    }
-  );
-
-  document.getElementById("newName").value="";
-  document.getElementById("newPrice").value="";
-  document.getElementById("newImage").value="";
-
-  alert("เพิ่มเมนูแล้ว");
-
-};
-
-
 /* =========================
-   SETTINGS
+ RENDER STATUS
 ========================= */
 
-onSnapshot(
-  doc(db,"settings","main"),
-  snapshot=>{
+function renderStoreStatus(){
 
-    settings=
-      snapshot.exists()
-      ? snapshot.data()
-      : {};
+ const now=new Date();
 
-    document.getElementById("shopName")
-      .textContent=
-      settings.shopName ||
-      "คุดสึหม่าล่าทอด";
+ const current=
+  now.getHours()*60+
+  now.getMinutes();
 
-    document.getElementById("settingShopName")
-      .value=
-      settings.shopName||"";
+ const [oh,om]=
+  String(store.openTime||"16:00")
+  .split(":")
+  .map(Number);
 
-    document.getElementById("settingLogo")
-      .value=
-      settings.logo||"";
+ const [ch,cm]=
+  String(store.closeTime||"21:30")
+  .split(":")
+  .map(Number);
 
-    document.getElementById("settingBackground")
-      .value=
-      settings.background||"";
+ const openMinutes=
+  oh*60+om;
 
-    document.getElementById("settingHero")
-      .value=
-      settings.heroImage||"";
+ const closeMinutes=
+  ch*60+cm;
 
-    document.getElementById("settingQR")
-      .value=
-      settings.qr||"";
+ let isOpen=false;
 
-    document.getElementById("openTime")
-      .value=
-      settings.openTime||"16:00";
+ if(store.closedToday){
 
-    document.getElementById("closeTime")
-      .value=
-      settings.closeTime||"21:30";
+  isOpen=false;
 
-    updateShopUI();
+ }else if(store.open!==true){
 
-  }
-);
+  isOpen=false;
 
+ }else{
 
-window.saveSettings=async function(){
+  if(openMinutes<closeMinutes){
 
-  await setDoc(
-    doc(db,"settings","main"),
-    {
-      shopName:
-        document.getElementById("settingShopName").value,
-
-      logo:
-        document.getElementById("settingLogo").value,
-
-      background:
-        document.getElementById("settingBackground").value,
-
-      heroImage:
-        document.getElementById("settingHero").value,
-
-      qr:
-        document.getElementById("settingQR").value
-    },
-    {merge:true}
-  );
-
-  alert("บันทึกแล้ว");
-
-};
-
-
-/* =========================
-   SHOP
-========================= */
-
-let shopOpen=true;
-
-function updateShopUI(){
-
-  shopOpen=
-    settings.acceptingOrders!==false;
-
-  const status=
-    document.getElementById("shopStatus");
-
-  const button=
-    document.getElementById("shopButton");
-
-  const text=
-    document.getElementById("shopText");
-
-  if(shopOpen){
-
-    status.className="shop-status";
-    status.textContent="🟢 เปิดรับออเดอร์";
-
-    button.className="big-switch";
-    button.textContent="เปิดอยู่";
-
-    text.textContent=
-      "กำลังเปิดรับออเดอร์";
+   isOpen=
+    current>=openMinutes &&
+    current<closeMinutes;
 
   }else{
 
-    status.className=
-      "shop-status closed";
-
-    status.textContent="🔴 ปิดร้าน";
-
-    button.className=
-      "big-switch closed";
-
-    button.textContent="ปิดอยู่";
-
-    text.textContent=
-      "ขณะนี้ปิดรับออเดอร์";
+   isOpen=
+    current>=openMinutes ||
+    current<closeMinutes;
 
   }
+
+ }
+
+
+ const live=
+  document.getElementById("storeLive");
+
+ const liveText=
+  live.querySelector("span");
+
+ const dash=
+  document.getElementById(
+   "dashboardStatus"
+  );
+
+ const dashText=
+  dash.querySelector("span");
+
+ const big=
+  document.getElementById("bigStatus");
+
+ const dashBig=
+  document.getElementById(
+   "dashboardBigStatus"
+  );
+
+
+ [live,dash].forEach(el=>{
+  el.classList.toggle(
+   "closed",
+   !isOpen
+  );
+ });
+
+
+ liveText.textContent=
+  isOpen
+  ?"เปิดรับออเดอร์"
+  :"ปิดรับออเดอร์";
+
+ dashText.textContent=
+  isOpen
+  ?"เปิดรับออเดอร์"
+  :"ปิดรับออเดอร์";
+
+
+ big.classList.toggle(
+  "closed",
+  !isOpen
+ );
+
+ dashBig.classList.toggle(
+  "closed",
+  !isOpen
+ );
+
+
+ if(isOpen){
+
+  big.innerHTML=`
+   <strong>🟢 ร้านเปิด</strong>
+   <span>
+    เปิด ${store.openTime}
+    – ${store.closeTime}
+   </span>
+  `;
+
+  dashBig.innerHTML=`
+   <strong>🟢 ร้านเปิด</strong>
+   <span>
+    เปิด ${store.openTime}
+    – ${store.closeTime}
+   </span>
+  `;
+
+ }else{
+
+  let reason="ปิดรับออเดอร์";
+
+  if(store.closedToday){
+
+   reason=
+    store.message||
+    "วันนี้ร้านปิด";
+
+  }else if(
+   current<openMinutes
+  ){
+
+   reason=
+    "จะเปิดเวลา "+
+    store.openTime;
+
+  }else{
+
+   reason=
+    "หมดเวลารับออเดอร์";
+
+  }
+
+  big.innerHTML=`
+   <strong>🔴 ร้านปิด</strong>
+   <span>${reason}</span>
+  `;
+
+  dashBig.innerHTML=`
+   <strong>🔴 ร้านปิด</strong>
+   <span>${reason}</span>
+  `;
+
+ }
 
 }
 
 
-window.toggleShop=async function(){
+/* =========================
+ SAVE STORE
+========================= */
+
+window.saveStore=async function(){
+
+ const data={
+
+  open:
+   document.getElementById(
+    "openSwitch"
+   ).checked,
+
+  closedToday:
+   document.getElementById(
+    "closedToday"
+   ).checked,
+
+  openTime:
+   document.getElementById(
+    "openTime"
+   ).value||"16:00",
+
+  closeTime:
+   document.getElementById(
+    "closeTime"
+   ).value||"21:30",
+
+  message:
+   document.getElementById(
+    "closedMessage"
+   ).value.trim(),
+
+  updatedAt:
+   new Date()
+
+ };
+
+ try{
 
   await setDoc(
-    doc(db,"settings","main"),
-    {
-      acceptingOrders:!shopOpen
-    },
-    {merge:true}
+
+   doc(
+    db,
+    "settings",
+    "store"
+   ),
+
+   data,
+   {merge:true}
+
   );
 
-};
+  store={
+   ...store,
+   ...data
+  };
 
+  renderStoreStatus();
 
-window.saveShopTime=async function(){
-
-  await setDoc(
-    doc(db,"settings","main"),
-    {
-      openTime:
-        document.getElementById("openTime").value,
-
-      closeTime:
-        document.getElementById("closeTime").value
-    },
-    {merge:true}
+  toast(
+   "บันทึกสถานะร้านแล้ว ✓"
   );
 
-  alert("บันทึกเวลาร้านแล้ว");
+ }catch(error){
+
+  console.error(error);
+
+  toast(
+   "บันทึกไม่สำเร็จ"
+  );
+
+ }
 
 };
 
 
 /* =========================
-   TIME
+ OPEN NOW
 ========================= */
 
-function formatTime(timestamp){
+window.openShop=async function(){
 
-  if(!timestamp)
-    return "-";
+ document.getElementById(
+  "openSwitch"
+ ).checked=true;
 
-  const d=
-    timestamp.toDate
-    ? timestamp.toDate()
-    : new Date(timestamp);
+ document.getElementById(
+  "closedToday"
+ ).checked=false;
 
-  return d.toLocaleString("th-TH",{
-    day:"numeric",
-    month:"short",
-    hour:"2-digit",
-    minute:"2-digit"
-  });
+ await saveStore();
+
+};
+
+
+/* =========================
+ CLOSE NOW
+========================= */
+
+window.closeShop=async function(){
+
+ document.getElementById(
+  "openSwitch"
+ ).checked=false;
+
+ await saveStore();
+
+};
+
+
+/* =========================
+ TOGGLE
+========================= */
+
+window.toggleOpen=function(){
+
+ saveStore();
+
+};
+
+
+/* =========================
+ ORDERS
+========================= */
+
+function listenOrders(){
+
+ onSnapshot(
+
+  collection(db,"orders"),
+
+  snap=>{
+
+   orders=
+    snap.docs.map(d=>({
+     id:d.id,
+     ...d.data()
+    }));
+
+   orders.sort(
+    (a,b)=>{
+     const aa=
+      a.createdAt?.seconds||0;
+
+     const bb=
+      b.createdAt?.seconds||0;
+
+     return bb-aa;
+    }
+   );
+
+   renderOrders();
+   renderStats();
+
+  }
+
+ );
 
 }
+
+
+function renderStats(){
+
+ document.getElementById(
+  "allOrders"
+ ).textContent=orders.length;
+
+ document.getElementById(
+  "newOrders"
+ ).textContent=
+  orders.filter(
+   x=>x.status==="รับออเดอร์"
+  ).length;
+
+ document.getElementById(
+  "fryingOrders"
+ ).textContent=
+  orders.filter(
+   x=>x.status==="กำลังทอด"
+  ).length;
+
+ document.getElementById(
+  "readyOrders"
+ ).textContent=
+  orders.filter(
+   x=>x.status==="พร้อมรับ"
+  ).length;
+
+}
+
+
+function renderOrders(){
+
+ const box=
+  document.getElementById(
+   "orderList"
+  );
+
+ if(!orders.length){
+
+  box.innerHTML=`
+   <div style="
+    text-align:center;
+    padding:40px;
+    color:#999">
+
+    ยังไม่มีออเดอร์
+
+   </div>
+  `;
+
+  return;
+ }
+
+ box.innerHTML=
+  orders.map(o=>`
+
+   <div class="order">
+
+    <div class="order-top">
+
+     <div>
+
+      <div class="order-number">
+       #${o.orderNumber||"----"}
+      </div>
+
+      <div style="
+       color:#888;
+       font-size:11px;
+       margin-top:4px">
+
+       ${o.customer?.name||"-"}
+       ·
+       ${o.customer?.phone||"-"}
+
+      </div>
+
+     </div>
+
+     <span class="badge">
+      ${o.status||"รับออเดอร์"}
+     </span>
+
+    </div>
+
+
+    <div class="order-items">
+
+     ${
+      (o.items||[])
+      .map(i=>
+       `${i.name} × ${i.qty}`
+      )
+      .join("<br>")
+     }
+
+    </div>
+
+
+    <div class="order-total">
+     ฿${Number(o.total||0)}
+    </div>
+
+
+    ${
+     o.payment==="สแกนจ่าย"
+     ?`
+      <div style="
+       margin-top:8px;
+       color:#c77900;
+       font-size:11px">
+
+       💳 ชำระเงิน:
+       ${o.paymentStatus||"รอตรวจสอบ"}
+
+      </div>
+     `
+     :""
+    }
+
+
+    <div class="order-buttons">
+
+     ${
+      o.status==="รับออเดอร์"
+      ?`
+       <button
+        onclick="changeOrder('${o.id}','กำลังทอด')">
+        🔥 รับออเดอร์ / เริ่มทอด
+       </button>
+      `
+      :""
+     }
+
+     ${
+      o.status==="กำลังทอด"
+      ?`
+       <button
+        onclick="changeOrder('${o.id}','พร้อมรับ')">
+        ✅ พร้อมรับ
+       </button>
+      `
+      :""
+     }
+
+     ${
+      o.status==="พร้อมรับ"
+      ?`
+       <button
+        onclick="changeOrder('${o.id}','รับแล้ว')">
+        📦 รับแล้ว
+       </button>
+      `
+      :""
+     }
+
+    </div>
+
+   </div>
+
+  `).join("");
+
+}
+
+
+/* =========================
+ CHANGE ORDER
+========================= */
+
+window.changeOrder=async function(
+ id,status
+){
+
+ try{
+
+  await updateDoc(
+   doc(db,"orders",id),
+   {
+    status
+   }
+  );
+
+  toast(
+   "อัปเดตออเดอร์แล้ว"
+  );
+
+ }catch(error){
+
+  console.error(error);
+
+  toast(
+   "อัปเดตไม่สำเร็จ"
+  );
+
+ }
+
+};
+
+
+/* =========================
+ MENU
+========================= */
+
+function listenMenu(){
+
+ onSnapshot(
+
+  collection(db,"products"),
+
+  snap=>{
+
+   const products=
+    snap.docs.map(d=>({
+     id:d.id,
+     ...d.data()
+    }));
+
+   renderMenu(products);
+
+  }
+
+ );
+
+}
+
+
+function renderMenu(products){
+
+ const box=
+  document.getElementById(
+   "menuList"
+  );
+
+ if(!products.length){
+
+  box.innerHTML=`
+   <div style="
+    padding:40px;
+    text-align:center;
+    color:#999">
+
+    ยังไม่มีเมนู
+
+   </div>
+  `;
+
+  return;
+ }
+
+ box.innerHTML=
+  products.map(p=>`
+
+   <div class="menu-card">
+
+    <div class="menu-img">
+
+     ${
+      p.image
+      ?`
+       <img src="${p.image}">
+      `
+      :`
+       <div style="
+        height:100%;
+        display:grid;
+        place-items:center;
+        font-size:50px">
+
+        ${p.emoji||"🍢"}
+
+       </div>
+      `
+     }
+
+    </div>
+
+    <div class="menu-info">
+
+     <h3>
+      ${p.name||"เมนู"}
+     </h3>
+
+     <p>
+      ฿${p.price||0}
+      ·
+      สต็อก ${p.stock||0}
+     </p>
+
+     <span class="badge">
+      ${
+       p.active===false
+       ?"ปิดขาย"
+       :"เปิดขาย"
+      }
+     </span>
+
+    </div>
+
+   </div>
+
+  `).join("");
+
+}
+
+
+/* =========================
+ ADD MENU
+========================= */
+
+window.addMenu=function(){
+
+ const name=
+  prompt("ชื่อเมนู");
+
+ if(!name)return;
+
+ const price=
+  Number(
+   prompt("ราคา","10")
+  );
+
+ if(!price)return;
+
+ const id=
+  "p"+
+  Date.now();
+
+ setDoc(
+  doc(db,"products",id),
+  {
+   name,
+   price,
+   stock:100,
+   category:"meat",
+   active:true,
+   description:"",
+   image:"",
+   emoji:"🍢"
+  }
+ )
+ .then(()=>{
+  toast("เพิ่มเมนูแล้ว ✓");
+ })
+ .catch(error=>{
+  console.error(error);
+  toast("เพิ่มเมนูไม่สำเร็จ");
+ });
+
+};
+
+
+/* =========================
+ START
+========================= */
+
+listenStore();
+listenOrders();
+listenMenu();
+
+setInterval(
+ renderStoreStatus,
+ 30000
+);
 
 </script>
 
