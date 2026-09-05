@@ -131,61 +131,12 @@ header{padding:18px 17px 8px;display:flex;align-items:center;gap:11px}
 .payment-option.active{border-color:#111;background:#f0eee9}
 .payment-icon{font-size:25px;margin-bottom:5px}
 
-/* ===== ยืนยันการโอนเงินแบบ iOS ===== */
-
-.payment-confirm{
-background:#fff;
-border:1.5px solid #e5e2dc;
-border-radius:16px;
-padding:14px 15px;
-margin-top:12px;
-box-shadow:0 3px 12px #00000008;
-}
-
-.check-row{
-display:flex;
-align-items:center;
-gap:11px;
-font-size:13px;
-font-weight:800;
-cursor:pointer;
-width:100%;
-}
-
-.check-row input{
-appearance:none;
--webkit-appearance:none;
-width:22px;
-height:22px;
-flex:none;
-border:2px solid #bbb;
-border-radius:7px;
-background:#fff;
-position:relative;
-margin:0;
-cursor:pointer;
-transition:.18s ease;
-}
-
-.check-row input:checked{
-background:#111;
-border-color:#111;
-}
-
-.check-row input:checked:after{
-content:"✓";
-position:absolute;
-color:#fff;
-font-size:14px;
-font-weight:900;
-left:3px;
-top:-1px;
-}
-
-.check-row span{
-flex:1;
-color:#222;
-}
+.payment-confirm{background:#fff;border:1.5px solid #e5e2dc;border-radius:16px;padding:14px 15px;margin-top:12px;box-shadow:0 3px 12px #00000008}
+.check-row{display:flex;align-items:center;gap:11px;font-size:13px;font-weight:800;cursor:pointer;width:100%}
+.check-row input{appearance:none;-webkit-appearance:none;width:22px;height:22px;flex:none;border:2px solid #bbb;border-radius:7px;background:#fff;position:relative;margin:0;cursor:pointer;transition:.18s ease}
+.check-row input:checked{background:#111;border-color:#111}
+.check-row input:checked:after{content:"✓";position:absolute;color:#fff;font-size:14px;font-weight:900;left:3px;top:-1px}
+.check-row span{flex:1;color:#222}
 
 .order-head{display:flex;justify-content:space-between;gap:10px}
 .order-id{font-size:12px;font-weight:900}
@@ -208,6 +159,177 @@ color:#222;
 .toast{position:fixed;left:50%;bottom:88px;transform:translate(-50%,20px);background:#111;color:#fff;border-radius:13px;padding:11px 15px;font-size:12px;opacity:0;pointer-events:none;z-index:300;transition:.25s;max-width:calc(100% - 35px);text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .hidden{display:none!important}
+
+/* ===== TRACKING ===== */
+
+.track-card{
+background:#fff;
+border-radius:20px;
+padding:17px;
+margin-top:13px;
+box-shadow:0 4px 18px #00000008;
+}
+
+.track-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+}
+
+.track-number{
+font-size:15px;
+font-weight:900;
+}
+
+.track-live{
+font-size:9px;
+font-weight:900;
+padding:5px 8px;
+border-radius:99px;
+background:#e9f8ee;
+color:#198844;
+}
+
+.track-live:before{
+content:"";
+display:inline-block;
+width:6px;
+height:6px;
+background:#27ae60;
+border-radius:50%;
+margin-right:4px;
+}
+
+.track-cancelled{
+background:#fff0f0;
+color:#d71920;
+}
+
+.track-progress{
+margin-top:22px;
+position:relative;
+}
+
+.track-line{
+position:absolute;
+left:17px;
+top:17px;
+bottom:17px;
+width:2px;
+background:#e5e5e5;
+}
+
+.track-step{
+position:relative;
+display:flex;
+gap:13px;
+min-height:72px;
+}
+
+.track-step:last-child{
+min-height:48px;
+}
+
+.track-icon{
+width:35px;
+height:35px;
+flex:none;
+border-radius:50%;
+background:#eee;
+display:grid;
+place-items:center;
+font-size:14px;
+font-weight:900;
+z-index:2;
+border:3px solid #fff;
+}
+
+.track-step.done .track-icon{
+background:#111;
+color:#fff;
+}
+
+.track-step.current .track-icon{
+background:#d71920;
+color:#fff;
+box-shadow:0 0 0 5px #d7192020;
+}
+
+.track-step.cancelled .track-icon{
+background:#d71920;
+color:#fff;
+}
+
+.track-info{
+padding-top:2px;
+flex:1;
+}
+
+.track-title{
+font-size:13px;
+font-weight:900;
+}
+
+.track-sub{
+font-size:10px;
+color:#999;
+margin-top:3px;
+line-height:1.45;
+}
+
+.track-time{
+font-size:9px;
+color:#aaa;
+margin-top:3px;
+}
+
+.track-current{
+font-size:9px;
+font-weight:800;
+color:#d71920;
+margin-top:4px;
+}
+
+.track-detail{
+margin-top:15px;
+padding-top:12px;
+border-top:1px solid #eee;
+}
+
+.track-payment{
+background:#f7f5f1;
+border-radius:13px;
+padding:11px;
+margin-top:10px;
+font-size:10px;
+}
+
+.track-payment strong{
+font-size:11px;
+}
+
+.track-items{
+margin-top:10px;
+}
+
+.track-item{
+display:flex;
+justify-content:space-between;
+gap:10px;
+font-size:11px;
+padding:4px 0;
+}
+
+.track-total{
+display:flex;
+justify-content:space-between;
+border-top:1px solid #eee;
+margin-top:8px;
+padding-top:10px;
+font-size:15px;
+font-weight:900;
+}
 
 @media(max-width:380px){
 .products{grid-template-columns:1fr}
@@ -243,9 +365,7 @@ color:#222;
 <div id="closedBox" class="closed-box hidden">
 <div class="closed-box-icon">🔒</div>
 <div class="closed-box-title">ร้านปิดอยู่</div>
-<div class="closed-box-text" id="closedBoxText">
-ร้านยังไม่เปิดรับออเดอร์
-</div>
+<div class="closed-box-text" id="closedBoxText">ร้านยังไม่เปิดรับออเดอร์</div>
 </div>
 
 <section class="hero">
@@ -272,17 +392,13 @@ alt="food">
 
 <section class="section" style="margin-bottom:16px">
 <div class="mini-promo" id="miniPromo">
-
 <div class="promo-left">
 <div class="promo-label">SPECIAL OFFER</div>
 <div class="promo-name" id="promoName">10 ฟรี 1 ไม้</div>
 <div class="promo-rule" id="promoRule">หยิบครบ 11 ไม้ ฟรี 1 ไม้</div>
 </div>
 
-<button class="promo-btn" onclick="openPromotion()">
-ดูโปรโมชั่น
-</button>
-
+<button class="promo-btn" onclick="openPromotion()">ดูโปรโมชั่น</button>
 </div>
 </section>
 
@@ -322,8 +438,8 @@ alt="food">
 
 <div class="info">
 <div class="info-icon">🛵</div>
-<div class="info-title">รับออเดอร์</div>
-<div class="info-text">ตรวจสอบสถานะคำสั่งซื้อได้</div>
+<div class="info-title">ติดตามออเดอร์</div>
+<div class="info-text">ดูสถานะคำสั่งซื้อแบบเรียลไทม์</div>
 </div>
 
 </div>
@@ -342,9 +458,7 @@ alt="food">
 </div>
 </div>
 
-<button class="cart-open" onclick="openCart()">
-ดูตะกร้า →
-</button>
+<button class="cart-open" onclick="openCart()">ดูตะกร้า →</button>
 
 </div>
 
@@ -421,24 +535,14 @@ alt="food">
 
 <div class="payment-options">
 
-<button type="button"
-class="payment-option active"
-id="cashPaymentBtn"
-onclick="selectPayment('cash')">
-
+<button type="button" class="payment-option active" id="cashPaymentBtn" onclick="selectPayment('cash')">
 <div class="payment-icon">💵</div>
 เงินสด
-
 </button>
 
-<button type="button"
-class="payment-option"
-id="qrPaymentBtn"
-onclick="selectPayment('qr')">
-
+<button type="button" class="payment-option" id="qrPaymentBtn" onclick="selectPayment('qr')">
 <div class="payment-icon">📱</div>
 QR พร้อมเพย์
-
 </button>
 
 </div>
@@ -446,40 +550,27 @@ QR พร้อมเพย์
 
 <div class="pay-card">
 
-<div class="pay-title" id="paymentTitle">
-ชำระเงินสด
-</div>
+<div class="pay-title" id="paymentTitle">ชำระเงินสด</div>
 
-<div class="pay-price" id="checkoutTotal">
-฿0
-</div>
+<div class="pay-price" id="checkoutTotal">฿0</div>
 
-<div class="pay-note" id="paymentNote">
-ชำระเงินสดกับร้านเมื่อรับอาหาร
-</div>
+<div class="pay-note" id="paymentNote">ชำระเงินสดกับร้านเมื่อรับอาหาร</div>
 
 <div id="qrPaymentArea" class="hidden">
 
 <div class="qr" id="qrBox">
-<span style="color:#111;font-size:12px">
-กำลังสร้าง QR...
-</span>
+<span style="color:#111;font-size:12px">กำลังสร้าง QR...</span>
 </div>
 
 <div style="font-size:10px;color:#bbb;text-align:center">
 สแกน QR เพื่อชำระเงินตามยอดที่แสดง
 </div>
 
-<!-- ช่องยืนยันแบบใหม่ -->
-
 <div class="payment-confirm">
 
 <label class="check-row">
 
-<input
-type="checkbox"
-id="paidCheck"
-onchange="updatePaymentButton()">
+<input type="checkbox" id="paidCheck" onchange="updatePaymentButton()">
 
 <span>ฉันชำระเงินแล้ว</span>
 
@@ -491,12 +582,8 @@ onchange="updatePaymentButton()">
 
 </div>
 
-<button class="primary"
-id="submitOrderBtn"
-onclick="submitOrder()">
-
+<button class="primary" id="submitOrderBtn" onclick="submitOrder()">
 ยืนยันสั่งซื้อ
-
 </button>
 
 </div>
@@ -546,23 +633,15 @@ onclick="submitOrder()">
 
 <div class="account-content">
 
-<div class="account-name" id="accountName">
-ลูกค้า
-</div>
+<div class="account-name" id="accountName">ลูกค้า</div>
 
-<div class="account-text">
-ข้อมูลลูกค้าของคุณ
-</div>
+<div class="account-text">ข้อมูลลูกค้าของคุณ</div>
 
 <div class="account-actions">
 
-<button onclick="openHistory()">
-🧾 ประวัติ
-</button>
+<button onclick="openHistory()">🧾 ประวัติ</button>
 
-<button onclick="openTracking()">
-📦 ติดตามออเดอร์
-</button>
+<button onclick="openTracking()">📦 ติดตามออเดอร์</button>
 
 </div>
 </div>
@@ -585,25 +664,20 @@ onclick="submitOrder()">
 
 <div class="account-content">
 
-<div style="font-size:11px;opacity:.65">
-SPECIAL OFFER
-</div>
+<div style="font-size:11px;opacity:.65">SPECIAL OFFER</div>
 
-<div id="promotionModalName"
-style="font-size:25px;font-weight:900;margin-top:5px">
+<div id="promotionModalName" style="font-size:25px;font-weight:900;margin-top:5px">
 10 ฟรี 1 ไม้
 </div>
 
-<div id="promotionModalText"
-style="font-size:12px;color:#ccc;margin-top:7px">
+<div id="promotionModalText" style="font-size:12px;color:#ccc;margin-top:7px">
 หยิบครบ 11 ไม้ ฟรี 1 ไม้
 </div>
 
 </div>
 </div>
 
-<button class="primary"
-onclick="closeOverlay('promotionOverlay')">
+<button class="primary" onclick="closeOverlay('promotionOverlay')">
 เริ่มสั่งอาหาร
 </button>
 
@@ -672,6 +746,40 @@ let currentCategory="ทั้งหมด";
 let cart=[];
 let paymentMethod="cash";
 
+/* ===== ออเดอร์ที่กำลังติดตามแบบ Real-time ===== */
+
+let trackingUnsubscribe=null;
+let trackingOrderId=null;
+
+/* ===== สถานะออเดอร์มาตรฐาน ===== */
+
+const ORDER_STEPS=[
+{
+key:"pending",
+title:"รอรับออเดอร์",
+sub:"ร้านได้รับคำสั่งซื้อแล้ว กำลังรอร้านรับออเดอร์",
+icon:"1"
+},
+{
+key:"preparing",
+title:"กำลังทำ",
+sub:"ร้านกำลังเตรียมอาหารของคุณ",
+icon:"2"
+},
+{
+key:"ready",
+title:"พร้อมส่ง",
+sub:"อาหารพร้อมแล้ว รอรับอาหารหรือรอจัดส่ง",
+icon:"3"
+},
+{
+key:"completed",
+title:"เสร็จสิ้น",
+sub:"ออเดอร์นี้เสร็จสมบูรณ์แล้ว",
+icon:"4"
+}
+];
+
 function escapeHtml(v){
 return String(v??"")
 .replace(/&/g,"&amp;")
@@ -691,6 +799,53 @@ function formatMoney(v){
 return Number(v||0).toLocaleString("th-TH",{
 maximumFractionDigits:2
 });
+}
+
+function formatTime(v){
+
+if(!v)return "";
+
+try{
+
+return new Date(v).toLocaleTimeString(
+"th-TH",
+{
+hour:"2-digit",
+minute:"2-digit"
+}
+);
+
+}catch{
+
+return "";
+
+}
+
+}
+
+function formatDateTime(v){
+
+if(!v)return "";
+
+try{
+
+return new Date(v).toLocaleString(
+"th-TH",
+{
+day:"2-digit",
+month:"2-digit",
+year:"numeric",
+hour:"2-digit",
+minute:"2-digit"
+}
+);
+
+}catch{
+
+return "";
+
+}
+
 }
 
 function showToast(text){
@@ -725,10 +880,12 @@ cart=[];
 }
 
 function saveCart(){
+
 localStorage.setItem(
 "mala_cart",
 JSON.stringify(cart)
 );
+
 }
 
 function parseTime(v){
@@ -801,16 +958,11 @@ open
 ?"เปิดรับออเดอร์"
 :getClosedMessage();
 
-if(open){
-
+if(open)
 box.classList.add("hidden");
-
-}else{
-
+else{
 box.classList.remove("hidden");
-
 boxText.textContent=getClosedMessage();
-
 }
 
 renderProducts();
@@ -864,12 +1016,8 @@ document.getElementById("heroBadge").textContent=
 siteData.heroBadge||
 "🔥 หม่าล่าทอดกรอบ";
 
-if(siteData.heroImage){
-
-document.getElementById("heroImage").src=
-siteData.heroImage;
-
-}
+if(siteData.heroImage)
+document.getElementById("heroImage").src=siteData.heroImage;
 
 }
 
@@ -1530,6 +1678,39 @@ box.innerHTML=
 
 }
 
+/* =========================================================
+   สร้างประวัติสถานะตั้งแต่สร้างออเดอร์
+========================================================= */
+
+function createInitialStatusHistory(){
+
+const now=new Date().toISOString();
+
+return{
+pending:{
+label:"รอรับออเดอร์",
+time:now
+},
+preparing:{
+label:"กำลังทำ",
+time:null
+},
+ready:{
+label:"พร้อมส่ง",
+time:null
+},
+completed:{
+label:"เสร็จสิ้น",
+time:null
+}
+};
+
+}
+
+/* =========================================================
+   ส่งออเดอร์
+========================================================= */
+
 window.submitOrder=async function(){
 
 if(!cart.length){
@@ -1570,6 +1751,7 @@ return;
 const subtotal=cartSubtotal();
 const promo=getPromo();
 const total=finalTotal();
+const createdAt=new Date().toISOString();
 
 const btn=document.getElementById("submitOrderBtn");
 
@@ -1615,8 +1797,15 @@ paymentMethod==="qr",
 
 paymentConfirmed:false,
 
+/* ===== สถานะมาตรฐาน ===== */
+
 status:"pending",
-createdAt:new Date().toISOString(),
+statusLabel:"รอรับออเดอร์",
+statusUpdatedAt:createdAt,
+
+statusHistory:createInitialStatusHistory(),
+
+createdAt:createdAt,
 source:"website"
 
 };
@@ -1657,6 +1846,12 @@ showToast(
 `สั่งซื้อสำเร็จ #${ref.id.slice(-6).toUpperCase()}`
 );
 
+/* เปิดติดตามออเดอร์ให้อัตโนมัติ */
+
+setTimeout(()=>{
+openTracking();
+},500);
+
 }catch(err){
 
 console.error(err);
@@ -1674,77 +1869,172 @@ updatePaymentButton();
 
 };
 
-window.openTracking=async function(){
+/* =========================================================
+   แปลงสถานะเก่าให้เข้าระบบใหม่
+========================================================= */
 
-closeOverlay("accountOverlay");
+function normalizeStatus(o){
 
-const el=document.getElementById("trackingContent");
+let s=String(o.status||"pending").toLowerCase();
 
-el.innerHTML=
-`<div class="empty">กำลังโหลดข้อมูล...</div>`;
+if(s==="accepted")
+s="preparing";
 
-document.getElementById("trackingOverlay")
-.classList.add("show");
+if(s==="processing")
+s="preparing";
 
-const id=localStorage.getItem("mala_last_order");
+if(s==="cooking")
+s="preparing";
 
-if(!id){
+if(s==="ready")
+s="ready";
 
-el.innerHTML=
-`<div class="empty">
-<div class="empty-icon">📦</div>
-<div class="empty-title">ยังไม่มีออเดอร์</div>
+if(s==="completed")
+s="completed";
+
+if(s==="cancelled"||s==="canceled")
+return"cancelled";
+
+if(
+s!=="pending"&&
+s!=="preparing"&&
+s!=="ready"&&
+s!=="completed"
+)
+s="pending";
+
+return s;
+
+}
+
+function statusIndex(status){
+
+if(status==="pending")return 0;
+if(status==="preparing")return 1;
+if(status==="ready")return 2;
+if(status==="completed")return 3;
+
+return-1;
+
+}
+
+/* =========================================================
+   อ่านเวลาแต่ละสถานะ
+========================================================= */
+
+function getStatusTime(o,key){
+
+const history=o.statusHistory||{};
+
+const item=history[key];
+
+if(item){
+
+if(typeof item==="string")
+return item;
+
+if(item.time)
+return item.time;
+
+}
+
+if(key==="pending")
+return o.createdAt||null;
+
+return null;
+
+}
+
+/* =========================================================
+   สร้าง Timeline ติดตามออเดอร์
+========================================================= */
+
+function renderTrackingOrder(o){
+
+const status=normalizeStatus(o);
+
+const currentIndex=statusIndex(status);
+
+const cancelled=status==="cancelled";
+
+const stepsHtml=ORDER_STEPS.map((step,index)=>{
+
+const time=getStatusTime(o,step.key);
+
+let cls="";
+
+if(!cancelled){
+
+if(index<currentIndex)
+cls="done";
+
+if(index===currentIndex)
+cls="current";
+
+}
+
+let icon=step.icon;
+
+if(!cancelled&&index<currentIndex)
+icon="✓";
+
+if(!cancelled&&index===currentIndex)
+icon="●";
+
+return`
+<div class="track-step ${cls}">
+
+<div class="track-icon">
+${icon}
+</div>
+
+<div class="track-info">
+
+<div class="track-title">
+${escapeHtml(step.title)}
+</div>
+
+<div class="track-sub">
+${escapeHtml(step.sub)}
+</div>
+
+${time?
+`<div class="track-time">
+${escapeHtml(formatDateTime(time))}
+</div>`:""}
+
+${!cancelled&&index===currentIndex?
+`<div class="track-current">
+กำลังดำเนินการ
+</div>`:""}
+
+</div>
+
 </div>`;
 
-return;
+}).join("");
+
+let statusTop="";
+
+if(cancelled){
+
+statusTop=`
+<div class="track-live track-cancelled">
+ยกเลิกออเดอร์
+</div>`;
+
+}else{
+
+const currentStep=
+ORDER_STEPS[currentIndex]||
+ORDER_STEPS[0];
+
+statusTop=`
+<div class="track-live">
+${escapeHtml(currentStep.title)}
+</div>`;
 
 }
-
-try{
-
-const snap=await getDocs(
-query(
-collection(db,"orders"),
-limit(100)
-)
-);
-
-let found=null;
-
-snap.forEach(d=>{
-
-if(d.id===id)
-found={id:d.id,...d.data()};
-
-});
-
-if(!found){
-
-el.innerHTML=
-`<div class="empty">ไม่พบข้อมูลออเดอร์</div>`;
-
-return;
-
-}
-
-el.innerHTML=orderHtml(found);
-
-}catch(err){
-
-console.error(err);
-
-el.innerHTML=
-`<div class="empty">โหลดข้อมูลไม่สำเร็จ</div>`;
-
-}
-
-};
-
-function orderHtml(o){
-
-const date=o.createdAt?
-new Date(o.createdAt).toLocaleString("th-TH"):
-"";
 
 const payment=o.paymentMethod||"ไม่ระบุ";
 
@@ -1760,82 +2050,226 @@ payment==="เงินสด"
 ?"รอชำระเงินสด"
 :"รอตรวจสอบการชำระเงิน";
 
-const statusMap={
-pending:"รอร้านรับออเดอร์",
-accepted:"ร้านรับออเดอร์แล้ว",
-ready:"อาหารพร้อมรับ",
-completed:"เสร็จสิ้น",
-cancelled:"ยกเลิก"
-};
-
-return`
-<div class="order-card">
-
-<div class="order-head">
-
-<div>
-
-<div class="order-id">
-#${escapeHtml(
-String(o.id).slice(-6).toUpperCase()
-)}
-</div>
-
-<div class="order-date">
-${escapeHtml(date)}
-</div>
-
-</div>
-
-<div class="order-status">
-${escapeHtml(
-statusMap[o.status]||
-o.status||
-"รอร้านรับออเดอร์"
-)}
-</div>
-
-</div>
-
-<div style="margin-top:14px">
-
-${(o.items||[]).map(item=>
-`<div class="summary-row">
-
+const items=(o.items||[]).map(item=>
+`
+<div class="track-item">
 <span>
-${escapeHtml(item.name)} × ${item.qty}
+${escapeHtml(item.name)} × ${Number(item.qty||0)}
 </span>
-
 <span>
 ฿${formatMoney(
 Number(item.price||0)*
 Number(item.qty||0)
 )}
 </span>
+</div>
+`
+).join("");
 
-</div>`
-).join("")}
+return`
+<div class="track-card">
+
+<div class="track-head">
+
+<div>
+<div class="track-number">
+#${escapeHtml(
+String(o.id).slice(-6).toUpperCase()
+)}
+</div>
+
+<div class="order-date">
+สั่งเมื่อ ${escapeHtml(formatDateTime(o.createdAt))}
+</div>
+</div>
+
+${statusTop}
 
 </div>
 
-<div class="summary-row">
-<span>การชำระเงิน</span>
-<span>${escapeHtml(payment)}</span>
+<div class="track-progress">
+
+<div class="track-line"></div>
+
+${stepsHtml}
+
 </div>
 
-<div class="summary-row">
-<span>สถานะการชำระ</span>
-<span>${escapeHtml(paymentText)}</span>
+<div class="track-detail">
+
+${o.note?
+`<div style="font-size:10px;color:#888">
+หมายเหตุ: ${escapeHtml(o.note)}
+</div>`:""}
+
+<div class="track-payment">
+
+<div>
+<strong>การชำระเงิน</strong>
 </div>
 
-<div class="summary-row total">
-<span>รวม</span>
+<div style="margin-top:4px">
+${escapeHtml(payment)}
+ · ${escapeHtml(paymentText)}
+</div>
+
+</div>
+
+<div class="track-items">
+${items}
+</div>
+
+<div class="track-total">
+<span>รวมทั้งหมด</span>
 <span>฿${formatMoney(o.total)}</span>
 </div>
 
+</div>
+
+</div>
+
+${cancelled?
+`<div class="empty" style="padding:20px 5px">
+ออเดอร์นี้ถูกยกเลิกแล้ว
+</div>`:""}
+
+`;
+
+}
+
+/* =========================================================
+   ติดตามแบบ Real-time
+========================================================= */
+
+function startTrackingRealtime(id){
+
+if(trackingUnsubscribe){
+
+trackingUnsubscribe();
+trackingUnsubscribe=null;
+
+}
+
+trackingOrderId=id;
+
+const el=document.getElementById("trackingContent");
+
+el.innerHTML=
+`<div class="empty">กำลังเชื่อมต่อการติดตาม...</div>`;
+
+trackingUnsubscribe=
+onSnapshot(
+doc(db,"orders",id),
+snap=>{
+
+if(!snap.exists()){
+
+el.innerHTML=
+`<div class="empty">
+<div class="empty-icon">📦</div>
+<div class="empty-title">ไม่พบออเดอร์</div>
+</div>`;
+
+return;
+
+}
+
+const order={
+id:snap.id,
+...snap.data()
+};
+
+el.innerHTML=
+renderTrackingOrder(order);
+
+},
+err=>{
+
+console.error("tracking:",err);
+
+el.innerHTML=
+`<div class="empty">
+<div class="empty-icon">⚠️</div>
+<div class="empty-title">เชื่อมต่อการติดตามไม่ได้</div>
+<div style="font-size:10px;margin-top:5px">
+กรุณาลองเปิดหน้านี้อีกครั้ง
+</div>
 </div>`;
 
 }
+);
+
+}
+
+/* =========================================================
+   เปิดติดตามออเดอร์
+========================================================= */
+
+window.openTracking=function(){
+
+closeOverlay("accountOverlay");
+
+const el=document.getElementById("trackingContent");
+
+const id=
+localStorage.getItem("mala_last_order");
+
+document.getElementById("trackingOverlay")
+.classList.add("show");
+
+if(!id){
+
+el.innerHTML=
+`<div class="empty">
+<div class="empty-icon">📦</div>
+<div class="empty-title">ยังไม่มีออเดอร์</div>
+<div style="font-size:11px;margin-top:5px">
+เมื่อสั่งอาหารแล้ว สามารถติดตามสถานะได้ที่นี่
+</div>
+</div>`;
+
+return;
+
+}
+
+startTrackingRealtime(id);
+
+};
+
+/* =========================================================
+   ปิด Overlay
+========================================================= */
+
+window.closeOverlay=function(id){
+
+document.getElementById(id)
+.classList.remove("show");
+
+if(id==="trackingOverlay"){
+
+if(trackingUnsubscribe){
+
+trackingUnsubscribe();
+trackingUnsubscribe=null;
+
+}
+
+trackingOrderId=null;
+
+}
+
+};
+
+window.outsideClose=function(e,id){
+
+if(e.target.id===id)
+closeOverlay(id);
+
+};
+
+/* =========================================================
+   ประวัติออเดอร์
+========================================================= */
 
 window.openHistory=async function(){
 
@@ -1913,7 +2347,106 @@ return;
 }
 
 el.innerHTML=
-orders.map(orderHtml).join("");
+orders.map(order=>{
+
+const status=normalizeStatus(order);
+
+const statusName=
+status==="pending"
+?"รอรับออเดอร์":
+status==="preparing"
+?"กำลังทำ":
+status==="ready"
+?"พร้อมส่ง":
+status==="completed"
+?"เสร็จสิ้น":
+"ยกเลิก";
+
+return`
+<div class="order-card">
+
+<div class="order-head">
+
+<div>
+
+<div class="order-id">
+#${escapeHtml(
+String(order.id).slice(-6).toUpperCase()
+)}
+</div>
+
+<div class="order-date">
+${escapeHtml(
+formatDateTime(order.createdAt)
+)}
+</div>
+
+</div>
+
+<div class="order-status">
+${escapeHtml(statusName)}
+</div>
+
+</div>
+
+<div style="margin-top:12px">
+
+${(order.items||[]).map(item=>
+`<div class="summary-row">
+
+<span>
+${escapeHtml(item.name)} × ${item.qty}
+</span>
+
+<span>
+฿${formatMoney(
+Number(item.price||0)*
+Number(item.qty||0)
+)}
+</span>
+
+</div>`
+).join("")}
+
+</div>
+
+<div class="summary-row">
+<span>การชำระเงิน</span>
+<span>${escapeHtml(order.paymentMethod||"ไม่ระบุ")}</span>
+</div>
+
+<div class="summary-row">
+<span>สถานะการชำระ</span>
+<span>
+${
+order.paymentConfirmed===true
+?"ชำระเงินแล้ว":
+order.paymentReported===true
+?"แจ้งชำระแล้ว · รอตรวจสอบ":
+order.paymentMethod==="เงินสด"
+?"รอชำระเงินสด":
+"รอตรวจสอบ"
+}
+</span>
+</div>
+
+<div class="summary-row total">
+<span>รวม</span>
+<span>฿${formatMoney(order.total)}</span>
+</div>
+
+<button
+class="primary"
+style="margin-top:10px"
+onclick="trackSpecificOrder('${escapeJs(order.id)}')">
+
+ติดตามออเดอร์ →
+
+</button>
+
+</div>`;
+
+}).join("");
 
 }catch(err){
 
@@ -1927,6 +2460,29 @@ el.innerHTML=
 }
 
 };
+
+/* =========================================================
+   กดติดตามออเดอร์จากประวัติ
+========================================================= */
+
+window.trackSpecificOrder=function(id){
+
+localStorage.setItem(
+"mala_last_order",
+id
+);
+
+closeOverlay("historyOverlay");
+
+setTimeout(()=>{
+openTracking();
+},100);
+
+};
+
+/* =========================================================
+   Account
+========================================================= */
 
 window.openAccount=function(){
 
@@ -1963,19 +2519,9 @@ behavior:"smooth"
 
 };
 
-window.closeOverlay=function(id){
-
-document.getElementById(id)
-.classList.remove("show");
-
-};
-
-window.outsideClose=function(e,id){
-
-if(e.target.id===id)
-closeOverlay(id);
-
-};
+/* =========================================================
+   Firebase Store
+========================================================= */
 
 onSnapshot(
 doc(db,"settings/store"),
@@ -2007,6 +2553,10 @@ updateStoreStatus();
 }
 );
 
+/* =========================================================
+   Firebase Main
+========================================================= */
+
 onSnapshot(
 doc(db,"settings/main"),
 snap=>{
@@ -2030,6 +2580,10 @@ applySiteData();
 
 }
 );
+
+/* =========================================================
+   Firebase Promotion
+========================================================= */
 
 onSnapshot(
 doc(db,"settings/promotion"),
@@ -2067,6 +2621,10 @@ renderPromotion();
 }
 );
 
+/* =========================================================
+   Firebase Products
+========================================================= */
+
 onSnapshot(
 collection(db,"products"),
 snap=>{
@@ -2093,8 +2651,7 @@ err=>{
 console.error("products:",err);
 
 document.getElementById("products").innerHTML=
-`<div class="empty"
-style="grid-column:1/-1">
+`<div class="empty" style="grid-column:1/-1">
 
 <div class="empty-icon">⚠️</div>
 
