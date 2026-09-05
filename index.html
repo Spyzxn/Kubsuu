@@ -131,9 +131,61 @@ header{padding:18px 17px 8px;display:flex;align-items:center;gap:11px}
 .payment-option.active{border-color:#111;background:#f0eee9}
 .payment-icon{font-size:25px;margin-bottom:5px}
 
-.payment-confirm{background:#fff;border-radius:17px;padding:13px;margin-top:12px}
-.check-row{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:700}
-.check-row input{width:18px;height:18px;accent-color:#111}
+/* ===== ยืนยันการโอนเงินแบบ iOS ===== */
+
+.payment-confirm{
+background:#fff;
+border:1.5px solid #e5e2dc;
+border-radius:16px;
+padding:14px 15px;
+margin-top:12px;
+box-shadow:0 3px 12px #00000008;
+}
+
+.check-row{
+display:flex;
+align-items:center;
+gap:11px;
+font-size:13px;
+font-weight:800;
+cursor:pointer;
+width:100%;
+}
+
+.check-row input{
+appearance:none;
+-webkit-appearance:none;
+width:22px;
+height:22px;
+flex:none;
+border:2px solid #bbb;
+border-radius:7px;
+background:#fff;
+position:relative;
+margin:0;
+cursor:pointer;
+transition:.18s ease;
+}
+
+.check-row input:checked{
+background:#111;
+border-color:#111;
+}
+
+.check-row input:checked:after{
+content:"✓";
+position:absolute;
+color:#fff;
+font-size:14px;
+font-weight:900;
+left:3px;
+top:-1px;
+}
+
+.check-row span{
+flex:1;
+color:#222;
+}
 
 .order-head{display:flex;justify-content:space-between;gap:10px}
 .order-id{font-size:12px;font-weight:900}
@@ -418,11 +470,14 @@ QR พร้อมเพย์
 สแกน QR เพื่อชำระเงินตามยอดที่แสดง
 </div>
 
+<!-- ช่องยืนยันแบบใหม่ -->
+
 <div class="payment-confirm">
 
 <label class="check-row">
 
-<input type="checkbox"
+<input
+type="checkbox"
 id="paidCheck"
 onchange="updatePaymentButton()">
 
@@ -676,10 +731,6 @@ JSON.stringify(cart)
 );
 }
 
-/* =========================
-   เวลาเปิดร้านจาก ADMIN
-========================= */
-
 function parseTime(v){
 
 const m=String(v||"").match(
@@ -720,11 +771,9 @@ now.getMinutes();
 if(open===close)
 return true;
 
-/* เปิดและปิดในวันเดียวกัน */
 if(open<close)
 return current>=open&&current<close;
 
-/* เช่น 16:00 → 00:00 */
 return current>=open||current<close;
 
 }
@@ -765,14 +814,9 @@ boxText.textContent=getClosedMessage();
 }
 
 renderProducts();
-
 updateCartUI();
 
 }
-
-/* =========================
-   SITE SETTINGS
-========================= */
 
 function applySiteData(){
 
@@ -829,10 +873,6 @@ siteData.heroImage;
 
 }
 
-/* =========================
-   PROMOTION
-========================= */
-
 function renderPromotion(){
 
 const name=
@@ -846,24 +886,16 @@ promotionData.text||
 "";
 
 document.getElementById("promoName").textContent=name;
-
 document.getElementById("promoRule").textContent=text;
-
 document.getElementById("promotionModalName").textContent=name;
-
 document.getElementById("promotionModalText").textContent=text;
 
 const mini=document.getElementById("miniPromo");
 
-if(promotionData.enabled===false){
-
+if(promotionData.enabled===false)
 mini.classList.add("hidden");
-
-}else{
-
+else
 mini.classList.remove("hidden");
-
-}
 
 if(promotionData.background){
 
@@ -876,11 +908,8 @@ mini.style.backgroundImage=
 
 mini.style.color="#fff";
 
-const label=
-mini.querySelector(".promo-label");
-
-const rule=
-mini.querySelector(".promo-rule");
+const label=mini.querySelector(".promo-label");
+const rule=mini.querySelector(".promo-rule");
 
 if(label)label.style.color="#fff";
 if(rule)rule.style.color="#eee";
@@ -890,11 +919,8 @@ if(rule)rule.style.color="#eee";
 mini.style.backgroundImage="";
 mini.style.color="";
 
-const label=
-mini.querySelector(".promo-label");
-
-const rule=
-mini.querySelector(".promo-rule");
+const label=mini.querySelector(".promo-label");
+const rule=mini.querySelector(".promo-rule");
 
 if(label)label.style.color="";
 if(rule)rule.style.color="";
@@ -903,19 +929,12 @@ if(rule)rule.style.color="";
 
 }
 
-/* =========================
-   CATEGORIES
-========================= */
-
 function buildCategories(){
 
 const set=new Set(["ทั้งหมด"]);
 
 products.forEach(p=>{
-
-if(p.category)
-set.add(p.category);
-
+if(p.category)set.add(p.category);
 });
 
 categories=[...set];
@@ -939,15 +958,10 @@ ${escapeHtml(c)}
 window.selectCategory=function(category){
 
 currentCategory=category;
-
 renderCategories();
 renderProducts();
 
 };
-
-/* =========================
-   PRODUCTS
-========================= */
 
 function renderProducts(){
 
@@ -1008,7 +1022,6 @@ p.imageUrl||
 "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=70";
 
 const stock=Number(p.stock);
-
 const soldOut=
 Number.isFinite(stock)&&stock<=0;
 
@@ -1054,87 +1067,52 @@ ${closed?"×":"+"}
 
 }
 
-/* =========================
-   CART
-========================= */
-
 window.addToCart=function(id){
 
 if(!isStoreOpen()){
-
 showToast(getClosedMessage());
-
 return;
-
 }
 
-const p=
-products.find(
+const p=products.find(
 x=>String(x.id)===String(id)
 );
 
 if(!p){
-
 showToast("ไม่พบเมนู");
-
 return;
-
 }
 
-if(
-p.active===false||
-p.enabled===false
-){
-
+if(p.active===false||p.enabled===false){
 showToast("เมนูนี้ปิดขาย");
-
 return;
-
 }
 
 const stock=Number(p.stock);
 
-if(
-Number.isFinite(stock)&&
-stock<=0
-){
-
+if(Number.isFinite(stock)&&stock<=0){
 showToast("เมนูนี้หมดแล้ว");
-
 return;
-
 }
 
-let item=
-cart.find(
+let item=cart.find(
 x=>String(x.productId)===String(id)
 );
 
-if(item){
-
+if(item)
 item.qty++;
-
-}else{
-
-item={
+else
+cart.push({
 productId:p.id,
 name:p.name||"",
 price:Number(p.price||0),
 image:p.image||p.imageUrl||"",
 qty:1
-};
+});
 
-cart.push(item);
-
-}
-
-if(
-Number.isFinite(stock)&&
-item.qty>stock
-){
+if(Number.isFinite(stock)&&item&&item.qty>stock){
 
 item.qty=stock;
-
 showToast("จำนวนเกินสต็อก");
 
 }else{
@@ -1150,26 +1128,18 @@ updateCartUI();
 
 window.changeQty=function(id,amount){
 
-if(
-Number(amount)>0&&
-!isStoreOpen()
-){
-
+if(Number(amount)>0&&!isStoreOpen()){
 showToast(getClosedMessage());
-
 return;
-
 }
 
-const item=
-cart.find(
+const item=cart.find(
 x=>String(x.productId)===String(id)
 );
 
 if(!item)return;
 
-const p=
-products.find(
+const p=products.find(
 x=>String(x.id)===String(id)
 );
 
@@ -1179,13 +1149,9 @@ if(p){
 
 const stock=Number(p.stock);
 
-if(
-Number.isFinite(stock)&&
-item.qty>stock
-){
+if(Number.isFinite(stock)&&item.qty>stock){
 
 item.qty=stock;
-
 showToast("จำนวนเกินสต็อก");
 
 }
@@ -1220,8 +1186,7 @@ Number(item.qty||0),
 function cartQty(){
 
 return cart.reduce(
-(sum,item)=>
-sum+Number(item.qty||0),
+(sum,item)=>sum+Number(item.qty||0),
 0
 );
 
@@ -1231,11 +1196,8 @@ function getPromo(){
 
 const totalQty=cartQty();
 
-const buy=
-Number(promotionData.buyQty||10);
-
-const freeQty=
-Number(promotionData.freeQty||1);
+const buy=Number(promotionData.buyQty||10);
+const freeQty=Number(promotionData.freeQty||1);
 
 if(
 promotionData.enabled===false||
@@ -1253,16 +1215,11 @@ discount:0
 }
 
 const group=buy+freeQty;
-
-const groups=
-Math.floor(totalQty/group);
-
-const free=
-groups*freeQty;
+const groups=Math.floor(totalQty/group);
+const free=groups*freeQty;
 
 let sorted=[...cart].sort(
-(a,b)=>
-Number(a.price)-Number(b.price)
+(a,b)=>Number(a.price)-Number(b.price)
 );
 
 let remaining=free;
@@ -1278,8 +1235,7 @@ remaining
 );
 
 discount+=
-take*
-Number(item.price||0);
+take*Number(item.price||0);
 
 remaining-=take;
 
@@ -1304,24 +1260,18 @@ cartSubtotal()-getPromo().discount
 
 function renderCart(){
 
-const list=
-document.getElementById("cartList");
-
-const summary=
-document.getElementById("cartSummary");
+const list=document.getElementById("cartList");
+const summary=document.getElementById("cartSummary");
 
 if(!cart.length){
 
 list.innerHTML=
 `<div class="empty">
 <div class="empty-icon">🛒</div>
-<div class="empty-title">
-ตะกร้าของคุณยังว่าง
-</div>
+<div class="empty-title">ตะกร้าของคุณยังว่าง</div>
 </div>`;
 
 summary.innerHTML="";
-
 return;
 
 }
@@ -1351,15 +1301,9 @@ ${escapeHtml(item.name)}
 
 <div class="qty">
 
-<button onclick="changeQty('${escapeJs(item.productId)}',-1)">
-−
-</button>
-
+<button onclick="changeQty('${escapeJs(item.productId)}',-1)">−</button>
 <span>${item.qty}</span>
-
-<button onclick="changeQty('${escapeJs(item.productId)}',1)">
-+
-</button>
+<button onclick="changeQty('${escapeJs(item.productId)}',1)">+</button>
 
 </div>
 
@@ -1370,7 +1314,6 @@ ${escapeHtml(item.name)}
 const subtotal=cartSubtotal();
 const promo=getPromo();
 const total=finalTotal();
-
 const closed=!isStoreOpen();
 
 summary.innerHTML=
@@ -1412,66 +1355,45 @@ ${closed?"ร้านปิดอยู่":"ดำเนินการสั�
 function updateCartUI(){
 
 const count=cartQty();
-
 const total=finalTotal();
 
-document.getElementById("cartCount").textContent=
-count;
-
+document.getElementById("cartCount").textContent=count;
 document.getElementById("cartTotal").textContent=
 `฿${formatMoney(total)}`;
 
-const float=
-document.getElementById("cartFloat");
+const float=document.getElementById("cartFloat");
 
 if(count>0)
 float.classList.remove("hide");
 else
 float.classList.add("hide");
 
-if(
-document.getElementById("cartOverlay")
-.classList.contains("show")
-)
+if(document.getElementById("cartOverlay").classList.contains("show"))
 renderCart();
 
-if(
-document.getElementById("checkoutOverlay")
-.classList.contains("show")
-)
+if(document.getElementById("checkoutOverlay").classList.contains("show"))
 renderCheckoutSummary();
 
 }
-
-/* =========================
-   OPEN CART / CHECKOUT
-========================= */
 
 window.openCart=function(){
 
 renderCart();
 
-document.getElementById("cartOverlay")
-.classList.add("show");
+document.getElementById("cartOverlay").classList.add("show");
 
 };
 
 window.openCheckout=function(){
 
 if(!cart.length){
-
 showToast("กรุณาเลือกเมนูก่อน");
-
 return;
-
 }
 
 if(!isStoreOpen()){
-
 showToast(getClosedMessage());
-
 return;
-
 }
 
 paymentMethod="cash";
@@ -1484,20 +1406,16 @@ renderCheckoutSummary();
 
 closeOverlay("cartOverlay");
 
-document.getElementById("checkoutOverlay")
-.classList.add("show");
+document.getElementById("checkoutOverlay").classList.add("show");
 
 };
 
 function renderCheckoutSummary(){
 
-const el=
-document.getElementById("checkoutSummary");
+const el=document.getElementById("checkoutSummary");
 
 const subtotal=cartSubtotal();
-
 const promo=getPromo();
-
 const total=finalTotal();
 
 el.innerHTML=
@@ -1533,32 +1451,16 @@ updatePaymentButton();
 
 }
 
-/* =========================
-   PAYMENT
-========================= */
-
 window.selectPayment=function(method){
 
 paymentMethod=method;
 
-const cash=
-document.getElementById("cashPaymentBtn");
+const cash=document.getElementById("cashPaymentBtn");
+const qr=document.getElementById("qrPaymentBtn");
+const area=document.getElementById("qrPaymentArea");
 
-const qr=
-document.getElementById("qrPaymentBtn");
-
-const area=
-document.getElementById("qrPaymentArea");
-
-cash.classList.toggle(
-"active",
-method==="cash"
-);
-
-qr.classList.toggle(
-"active",
-method==="qr"
-);
+cash.classList.toggle("active",method==="cash");
+qr.classList.toggle("active",method==="qr");
 
 if(method==="qr"){
 
@@ -1590,11 +1492,8 @@ updatePaymentButton();
 
 function updatePaymentButton(){
 
-const btn=
-document.getElementById("submitOrderBtn");
-
-const paid=
-document.getElementById("paidCheck").checked;
+const btn=document.getElementById("submitOrderBtn");
+const paid=document.getElementById("paidCheck").checked;
 
 if(paymentMethod==="qr"){
 
@@ -1608,7 +1507,6 @@ paid
 }else{
 
 btn.disabled=false;
-
 btn.textContent="ยืนยันสั่งซื้อ";
 
 }
@@ -1618,10 +1516,7 @@ btn.textContent="ยืนยันสั่งซื้อ";
 function updateQR(){
 
 const total=finalTotal();
-
-const box=
-document.getElementById("qrBox");
-
+const box=document.getElementById("qrBox");
 const promptpay="0961237182";
 
 const url=
@@ -1635,79 +1530,48 @@ box.innerHTML=
 
 }
 
-/* =========================
-   SUBMIT ORDER
-========================= */
-
 window.submitOrder=async function(){
 
 if(!cart.length){
-
 showToast("ตะกร้าว่าง");
-
 return;
-
 }
 
 if(!isStoreOpen()){
-
 showToast(getClosedMessage());
-
 return;
-
 }
 
-const name=
-document.getElementById("customerName")
-.value.trim();
-
-const phone=
-document.getElementById("customerPhone")
-.value.trim();
-
-const note=
-document.getElementById("customerNote")
-.value.trim();
+const name=document.getElementById("customerName").value.trim();
+const phone=document.getElementById("customerPhone").value.trim();
+const note=document.getElementById("customerNote").value.trim();
 
 if(!name){
-
 showToast("กรุณากรอกชื่อ");
-
 return;
-
 }
 
 if(!phone){
-
 showToast("กรุณากรอกเบอร์โทร");
-
 return;
-
 }
 
 if(paymentMethod==="qr"){
 
-const paid=
-document.getElementById("paidCheck").checked;
+const paid=document.getElementById("paidCheck").checked;
 
 if(!paid){
-
 showToast("กรุณายืนยันว่าชำระเงินแล้ว");
-
 return;
-
 }
 
 }
 
 const subtotal=cartSubtotal();
-
 const promo=getPromo();
-
 const total=finalTotal();
 
-const btn=
-document.getElementById("submitOrderBtn");
+const btn=document.getElementById("submitOrderBtn");
 
 btn.disabled=true;
 btn.textContent="กำลังส่งออเดอร์...";
@@ -1717,29 +1581,19 @@ try{
 const order={
 
 customerName:name,
-
 customerPhone:phone,
-
 note:note,
 
 items:cart.map(x=>({
-
 productId:x.productId,
-
 name:x.name,
-
 price:Number(x.price||0),
-
 qty:Number(x.qty||0),
-
 image:x.image||""
-
 })),
 
 subtotal:subtotal,
-
 discount:promo.discount,
-
 total:total,
 
 promotion:
@@ -1751,11 +1605,6 @@ paymentMethod==="qr"
 ?"QR พร้อมเพย์"
 :"เงินสด",
 
-/*
-QR:
-ลูกค้าแจ้งว่าจ่ายแล้ว
-แต่แอดมินต้องตรวจเอง
-*/
 paymentStatus:
 paymentMethod==="qr"
 ?"ลูกค้าแจ้งว่าชำระเงินแล้ว"
@@ -1767,15 +1616,12 @@ paymentMethod==="qr",
 paymentConfirmed:false,
 
 status:"pending",
-
 createdAt:new Date().toISOString(),
-
 source:"website"
 
 };
 
-const ref=
-await addDoc(
+const ref=await addDoc(
 collection(db,"orders"),
 order
 );
@@ -1822,43 +1668,32 @@ showToast(
 }finally{
 
 btn.disabled=false;
-
 updatePaymentButton();
 
 }
 
 };
 
-/* =========================
-   TRACKING
-========================= */
-
 window.openTracking=async function(){
 
 closeOverlay("accountOverlay");
 
-const el=
-document.getElementById("trackingContent");
+const el=document.getElementById("trackingContent");
 
 el.innerHTML=
-`<div class="empty">
-กำลังโหลดข้อมูล...
-</div>`;
+`<div class="empty">กำลังโหลดข้อมูล...</div>`;
 
 document.getElementById("trackingOverlay")
 .classList.add("show");
 
-const id=
-localStorage.getItem("mala_last_order");
+const id=localStorage.getItem("mala_last_order");
 
 if(!id){
 
 el.innerHTML=
 `<div class="empty">
 <div class="empty-icon">📦</div>
-<div class="empty-title">
-ยังไม่มีออเดอร์
-</div>
+<div class="empty-title">ยังไม่มีออเดอร์</div>
 </div>`;
 
 return;
@@ -1867,8 +1702,7 @@ return;
 
 try{
 
-const snap=
-await getDocs(
+const snap=await getDocs(
 query(
 collection(db,"orders"),
 limit(100)
@@ -1880,35 +1714,27 @@ let found=null;
 snap.forEach(d=>{
 
 if(d.id===id)
-found={
-id:d.id,
-...d.data()
-};
+found={id:d.id,...d.data()};
 
 });
 
 if(!found){
 
 el.innerHTML=
-`<div class="empty">
-ไม่พบข้อมูลออเดอร์
-</div>`;
+`<div class="empty">ไม่พบข้อมูลออเดอร์</div>`;
 
 return;
 
 }
 
-el.innerHTML=
-orderHtml(found);
+el.innerHTML=orderHtml(found);
 
 }catch(err){
 
 console.error(err);
 
 el.innerHTML=
-`<div class="empty">
-โหลดข้อมูลไม่สำเร็จ
-</div>`;
+`<div class="empty">โหลดข้อมูลไม่สำเร็จ</div>`;
 
 }
 
@@ -1920,28 +1746,19 @@ const date=o.createdAt?
 new Date(o.createdAt).toLocaleString("th-TH"):
 "";
 
-const payment=
-o.paymentMethod||
-"ไม่ระบุ";
+const payment=o.paymentMethod||"ไม่ระบุ";
 
 let paymentText="";
 
-if(o.paymentConfirmed===true){
-
+if(o.paymentConfirmed===true)
 paymentText="ชำระเงินแล้ว";
-
-}else if(o.paymentReported===true){
-
+else if(o.paymentReported===true)
 paymentText="แจ้งชำระแล้ว · รอตรวจสอบ";
-
-}else{
-
+else
 paymentText=
 payment==="เงินสด"
 ?"รอชำระเงินสด"
 :"รอตรวจสอบการชำระเงิน";
-
-}
 
 const statusMap={
 pending:"รอร้านรับออเดอร์",
@@ -1960,9 +1777,7 @@ return`
 
 <div class="order-id">
 #${escapeHtml(
-String(o.id)
-.slice(-6)
-.toUpperCase()
+String(o.id).slice(-6).toUpperCase()
 )}
 </div>
 
@@ -2022,21 +1837,14 @@ Number(item.qty||0)
 
 }
 
-/* =========================
-   HISTORY
-========================= */
-
 window.openHistory=async function(){
 
 closeOverlay("accountOverlay");
 
-const el=
-document.getElementById("historyContent");
+const el=document.getElementById("historyContent");
 
 el.innerHTML=
-`<div class="empty">
-กำลังโหลด...
-</div>`;
+`<div class="empty">กำลังโหลด...</div>`;
 
 document.getElementById("historyOverlay")
 .classList.add("show");
@@ -2050,21 +1858,15 @@ if(!phone){
 
 el.innerHTML=
 `<div class="empty">
-
 <div class="empty-icon">🧾</div>
-
-<div class="empty-title">
-ยังไม่มีประวัติ
-</div>
-
+<div class="empty-title">ยังไม่มีประวัติ</div>
 </div>`;
 
 return;
 
 }
 
-const snap=
-await getDocs(
+const snap=await getDocs(
 query(
 collection(db,"orders"),
 limit(100)
@@ -2126,10 +1928,6 @@ el.innerHTML=
 
 };
 
-/* =========================
-   ACCOUNT / PROMO
-========================= */
-
 window.openAccount=function(){
 
 const name=
@@ -2154,9 +1952,7 @@ document.getElementById("promotionOverlay")
 window.goHome=function(btn){
 
 document.querySelectorAll(".nav")
-.forEach(x=>
-x.classList.remove("active")
-);
+.forEach(x=>x.classList.remove("active"));
 
 btn.classList.add("active");
 
@@ -2181,11 +1977,6 @@ closeOverlay(id);
 
 };
 
-/* =========================
-   FIREBASE STORE SETTINGS
-   เชื่อมกับ ADMIN โดยตรง
-========================= */
-
 onSnapshot(
 doc(db,"settings/store"),
 snap=>{
@@ -2203,12 +1994,6 @@ d.description||
 storeData.message
 };
 
-/*
-ไม่ใช้แล้ว:
-d.open
-d.openOrders
-*/
-
 }
 
 updateStoreStatus();
@@ -2217,15 +2002,10 @@ updateStoreStatus();
 err=>{
 
 console.error("store:",err);
-
 updateStoreStatus();
 
 }
 );
-
-/* =========================
-   MAIN SITE SETTINGS
-========================= */
 
 onSnapshot(
 doc(db,"settings/main"),
@@ -2246,15 +2026,10 @@ applySiteData();
 err=>{
 
 console.error("main:",err);
-
 applySiteData();
 
 }
 );
-
-/* =========================
-   PROMOTION
-========================= */
 
 onSnapshot(
 doc(db,"settings/promotion"),
@@ -2287,15 +2062,10 @@ updateCartUI();
 err=>{
 
 console.error("promotion:",err);
-
 renderPromotion();
 
 }
 );
-
-/* =========================
-   PRODUCTS
-========================= */
 
 onSnapshot(
 collection(db,"products"),
@@ -2314,9 +2084,7 @@ Number(b.sortOrder??999999)
 );
 
 buildCategories();
-
 renderProducts();
-
 updateCartUI();
 
 },
@@ -2339,21 +2107,11 @@ style="grid-column:1/-1">
 }
 );
 
-/* =========================
-   START
-========================= */
-
 applySiteData();
-
 renderPromotion();
-
 updateStoreStatus();
-
 updateCartUI();
 
-/*
-เช็กเวลาใหม่ทุก 30 วินาที
-*/
 setInterval(
 updateStoreStatus,
 30000
