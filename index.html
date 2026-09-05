@@ -78,7 +78,12 @@ header{padding:18px 17px 8px;display:flex;align-items:center;gap:11px}
 .nav span:first-child{font-size:21px}
 .nav.active{color:#111;font-weight:800}
 
-.cart-float{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);width:min(505px,calc(100% - 34px));background:#111;color:#fff;border-radius:18px;min-height:55px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 10px 35px #0004;z-index:45;transition:.25s}
+/* จุดแดงแจ้งเตือน */
+.track-nav-icon{position:relative;display:block;height:23px;line-height:23px}
+.track-alert{position:absolute;right:-6px;top:-2px;width:10px;height:10px;border-radius:50%;background:#d71920;border:2px solid #fff;display:none;box-shadow:0 1px 5px #0003}
+.track-alert.show{display:block}
+
+.cart-float{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);width:min(505px,calc(100% - 34px));background:#111;color:#fff;border-radius:18px;min-height:55px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 10px 35px #0004;z-index:55;transition:.25s}
 .cart-float.hide{opacity:0;pointer-events:none;transform:translate(-50%,15px)}
 .cart-info{display:flex;align-items:center;gap:10px}
 .cart-count{width:34px;height:34px;border-radius:11px;background:#d71920;display:grid;place-items:center;font-size:12px;font-weight:900}
@@ -162,174 +167,31 @@ header{padding:18px 17px 8px;display:flex;align-items:center;gap:11px}
 
 /* ===== TRACKING ===== */
 
-.track-card{
-background:#fff;
-border-radius:20px;
-padding:17px;
-margin-top:13px;
-box-shadow:0 4px 18px #00000008;
-}
-
-.track-head{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-}
-
-.track-number{
-font-size:15px;
-font-weight:900;
-}
-
-.track-live{
-font-size:9px;
-font-weight:900;
-padding:5px 8px;
-border-radius:99px;
-background:#e9f8ee;
-color:#198844;
-}
-
-.track-live:before{
-content:"";
-display:inline-block;
-width:6px;
-height:6px;
-background:#27ae60;
-border-radius:50%;
-margin-right:4px;
-}
-
-.track-cancelled{
-background:#fff0f0;
-color:#d71920;
-}
-
-.track-progress{
-margin-top:22px;
-position:relative;
-}
-
-.track-line{
-position:absolute;
-left:17px;
-top:17px;
-bottom:17px;
-width:2px;
-background:#e5e5e5;
-}
-
-.track-step{
-position:relative;
-display:flex;
-gap:13px;
-min-height:72px;
-}
-
-.track-step:last-child{
-min-height:48px;
-}
-
-.track-icon{
-width:35px;
-height:35px;
-flex:none;
-border-radius:50%;
-background:#eee;
-display:grid;
-place-items:center;
-font-size:14px;
-font-weight:900;
-z-index:2;
-border:3px solid #fff;
-}
-
-.track-step.done .track-icon{
-background:#111;
-color:#fff;
-}
-
-.track-step.current .track-icon{
-background:#d71920;
-color:#fff;
-box-shadow:0 0 0 5px #d7192020;
-}
-
-.track-step.cancelled .track-icon{
-background:#d71920;
-color:#fff;
-}
-
-.track-info{
-padding-top:2px;
-flex:1;
-}
-
-.track-title{
-font-size:13px;
-font-weight:900;
-}
-
-.track-sub{
-font-size:10px;
-color:#999;
-margin-top:3px;
-line-height:1.45;
-}
-
-.track-time{
-font-size:9px;
-color:#aaa;
-margin-top:3px;
-}
-
-.track-current{
-font-size:9px;
-font-weight:800;
-color:#d71920;
-margin-top:4px;
-}
-
-.track-detail{
-margin-top:15px;
-padding-top:12px;
-border-top:1px solid #eee;
-}
-
-.track-payment{
-background:#f7f5f1;
-border-radius:13px;
-padding:11px;
-margin-top:10px;
-font-size:10px;
-}
-
-.track-payment strong{
-font-size:11px;
-}
-
-.track-items{
-margin-top:10px;
-}
-
-.track-item{
-display:flex;
-justify-content:space-between;
-gap:10px;
-font-size:11px;
-padding:4px 0;
-}
-
-.track-total{
-display:flex;
-justify-content:space-between;
-border-top:1px solid #eee;
-margin-top:8px;
-padding-top:10px;
-font-size:15px;
-font-weight:900;
-}
+.track-card{background:#fff;border-radius:20px;padding:17px;margin-top:13px;box-shadow:0 4px 18px #00000008}
+.track-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.track-number{font-size:15px;font-weight:900}
+.track-live{font-size:9px;font-weight:900;padding:5px 8px;border-radius:99px;background:#e9f8ee;color:#198844}
+.track-live:before{content:"";display:inline-block;width:6px;height:6px;background:#27ae60;border-radius:50%;margin-right:4px}
+.track-cancelled{background:#fff0f0;color:#d71920}
+.track-progress{margin-top:22px;position:relative}
+.track-line{position:absolute;left:17px;top:17px;bottom:17px;width:2px;background:#e5e5e5}
+.track-step{position:relative;display:flex;gap:13px;min-height:72px}
+.track-step:last-child{min-height:48px}
+.track-icon{width:35px;height:35px;flex:none;border-radius:50%;background:#eee;display:grid;place-items:center;font-size:14px;font-weight:900;z-index:2;border:3px solid #fff}
+.track-step.done .track-icon{background:#111;color:#fff}
+.track-step.current .track-icon{background:#d71920;color:#fff;box-shadow:0 0 0 5px #d7192020}
+.track-step.cancelled .track-icon{background:#d71920;color:#fff}
+.track-info{padding-top:2px;flex:1}
+.track-title{font-size:13px;font-weight:900}
+.track-sub{font-size:10px;color:#999;margin-top:3px;line-height:1.45}
+.track-time{font-size:9px;color:#aaa;margin-top:3px}
+.track-current{font-size:9px;font-weight:800;color:#d71920;margin-top:4px}
+.track-detail{margin-top:15px;padding-top:12px;border-top:1px solid #eee}
+.track-payment{background:#f7f5f1;border-radius:13px;padding:11px;margin-top:10px;font-size:10px}
+.track-payment strong{font-size:11px}
+.track-items{margin-top:10px}
+.track-item{display:flex;justify-content:space-between;gap:10px;font-size:11px;padding:4px 0}
+.track-total{display:flex;justify-content:space-between;border-top:1px solid #eee;margin-top:8px;padding-top:10px;font-size:15px;font-weight:900}
 
 @media(max-width:380px){
 .products{grid-template-columns:1fr}
@@ -383,13 +245,7 @@ alt="food">
 </div>
 </section>
 
-<section class="section">
-<div class="section-head">
-<div class="section-title">หมวดหมู่</div>
-</div>
-<div class="categories" id="categories"></div>
-</section>
-
+<!-- โปรโมชั่นย้ายมาอยู่ก่อนหมวดหมู่ -->
 <section class="section" style="margin-bottom:16px">
 <div class="mini-promo" id="miniPromo">
 <div class="promo-left">
@@ -400,6 +256,13 @@ alt="food">
 
 <button class="promo-btn" onclick="openPromotion()">ดูโปรโมชั่น</button>
 </div>
+</section>
+
+<section class="section">
+<div class="section-head">
+<div class="section-title">หมวดหมู่</div>
+</div>
+<div class="categories" id="categories"></div>
 </section>
 
 <section class="section">
@@ -447,6 +310,7 @@ alt="food">
 
 </div>
 
+<!-- CART FLOAT -->
 <div class="cart-float hide" id="cartFloat">
 
 <div class="cart-info">
@@ -462,6 +326,7 @@ alt="food">
 
 </div>
 
+<!-- BOTTOM NAV -->
 <nav class="bottom">
 
 <button class="nav active" onclick="goHome(this)">
@@ -473,7 +338,11 @@ alt="food">
 </button>
 
 <button class="nav" onclick="openTracking()">
-<span>📦</span>ติดตาม
+<span class="track-nav-icon">
+📦
+<i class="track-alert" id="trackAlert"></i>
+</span>
+ติดตาม
 </button>
 
 <button class="nav" onclick="openHistory()">
@@ -488,7 +357,6 @@ alt="food">
 
 <!-- CART -->
 <div class="overlay" id="cartOverlay" onclick="outsideClose(event,'cartOverlay')">
-
 <div class="sheet">
 
 <div class="sheet-top">
@@ -504,7 +372,6 @@ alt="food">
 
 <!-- CHECKOUT -->
 <div class="overlay" id="checkoutOverlay" onclick="outsideClose(event,'checkoutOverlay')">
-
 <div class="sheet">
 
 <div class="sheet-top">
@@ -591,7 +458,6 @@ QR พร้อมเพย์
 
 <!-- TRACKING -->
 <div class="overlay" id="trackingOverlay" onclick="outsideClose(event,'trackingOverlay')">
-
 <div class="sheet">
 
 <div class="sheet-top">
@@ -606,7 +472,6 @@ QR พร้อมเพย์
 
 <!-- HISTORY -->
 <div class="overlay" id="historyOverlay" onclick="outsideClose(event,'historyOverlay')">
-
 <div class="sheet">
 
 <div class="sheet-top">
@@ -621,7 +486,6 @@ QR พร้อมเพย์
 
 <!-- ACCOUNT -->
 <div class="overlay" id="accountOverlay" onclick="outsideClose(event,'accountOverlay')">
-
 <div class="sheet">
 
 <div class="sheet-top">
@@ -652,7 +516,6 @@ QR พร้อมเพย์
 
 <!-- PROMOTION -->
 <div class="overlay" id="promotionOverlay" onclick="outsideClose(event,'promotionOverlay')">
-
 <div class="sheet">
 
 <div class="sheet-top">
@@ -746,10 +609,18 @@ let currentCategory="ทั้งหมด";
 let cart=[];
 let paymentMethod="cash";
 
-/* ===== ออเดอร์ที่กำลังติดตามแบบ Real-time ===== */
+/* ===== STORE LOADING ===== */
+
+let storeReady=false;
+
+/* ===== TRACKING ===== */
 
 let trackingUnsubscribe=null;
 let trackingOrderId=null;
+
+/* watcher ที่ทำงานแม้ไม่ได้เปิดหน้าติดตาม */
+let backgroundOrderUnsubscribe=null;
+let latestTrackingOrder=null;
 
 /* ===== สถานะออเดอร์มาตรฐาน ===== */
 
@@ -942,7 +813,26 @@ return storeData.message||
 
 }
 
+/* ===== แก้ร้านกระพริบเป็นปิดตอนโหลด ===== */
+
 function updateStoreStatus(){
+
+if(!storeReady){
+
+const dot=document.getElementById("statusDot");
+const text=document.getElementById("statusText");
+const box=document.getElementById("closedBox");
+
+dot.classList.remove("closed");
+text.textContent="กำลังตรวจสอบร้าน...";
+box.classList.add("hidden");
+
+renderProducts();
+updateCartUI();
+
+return;
+
+}
 
 const open=isStoreOpen();
 
@@ -1077,15 +967,49 @@ if(rule)rule.style.color="";
 
 }
 
+/* ===== หมวดหมู่ภาษาไทยแบบคงที่ ===== */
+
+const FIXED_CATEGORIES=[
+"ทั้งหมด",
+"เนื้อ",
+"ลูกชิ้น",
+"ปลา,กุ้ง,หมึก",
+"ผักและอื่นๆ"
+];
+
+function categoryMatch(p,cat){
+
+if(cat==="ทั้งหมด")
+return true;
+
+const c=String(p.category||"")
+.trim()
+.toLowerCase();
+
+if(cat==="เนื้อ")
+return /เนื้อ|หมู|ไก่|วัว|beef|pork|chicken/.test(c)
+&&!/ลูกชิ้น|meatball/.test(c)
+&&!/ปลา|กุ้ง|หมึก|ทะเล|fish|shrimp|squid|seafood/.test(c);
+
+if(cat==="ลูกชิ้น")
+return /ลูกชิ้น|meatball/.test(c);
+
+if(cat==="ปลา,กุ้ง,หมึก")
+return /ปลา|กุ้ง|หมึก|ทะเล|fish|shrimp|squid|seafood/.test(c);
+
+if(cat==="ผักและอื่นๆ")
+return !/เนื้อ|หมู|ไก่|วัว|ลูกชิ้น|ปลา|กุ้ง|หมึก|ทะเล|beef|pork|chicken|meatball|fish|shrimp|squid|seafood/.test(c);
+
+return false;
+
+}
+
 function buildCategories(){
 
-const set=new Set(["ทั้งหมด"]);
+categories=[...FIXED_CATEGORIES];
 
-products.forEach(p=>{
-if(p.category)set.add(p.category);
-});
-
-categories=[...set];
+if(!categories.includes(currentCategory))
+currentCategory="ทั้งหมด";
 
 renderCategories();
 
@@ -1132,8 +1056,7 @@ p.hidden!==true;
 if(!active)return false;
 
 const categoryOk=
-currentCategory==="ทั้งหมด"||
-String(p.category||"")===currentCategory;
+categoryMatch(p,currentCategory);
 
 const searchOk=
 !search||
@@ -1170,10 +1093,13 @@ p.imageUrl||
 "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=70";
 
 const stock=Number(p.stock);
+
 const soldOut=
 Number.isFinite(stock)&&stock<=0;
 
-const closed=!isStoreOpen();
+/* ยังไม่รู้สถานะร้าน = ไม่ล็อกปุ่ม */
+const closed=
+storeReady?!isStoreOpen():false;
 
 return`
 <div class="product">
@@ -1217,6 +1143,12 @@ ${closed?"×":"+"}
 
 window.addToCart=function(id){
 
+/* ถ้ายังตรวจสอบร้านไม่เสร็จ */
+if(!storeReady){
+showToast("กำลังตรวจสอบเวลาร้าน...");
+return;
+}
+
 if(!isStoreOpen()){
 showToast(getClosedMessage());
 return;
@@ -1247,9 +1179,19 @@ let item=cart.find(
 x=>String(x.productId)===String(id)
 );
 
-if(item)
+if(item){
+
+if(Number.isFinite(stock)&&item.qty>=stock){
+
+showToast("จำนวนเกินสต็อก");
+return;
+
+}
+
 item.qty++;
-else
+
+}else{
+
 cart.push({
 productId:p.id,
 name:p.name||"",
@@ -1258,27 +1200,36 @@ image:p.image||p.imageUrl||"",
 qty:1
 });
 
-if(Number.isFinite(stock)&&item&&item.qty>stock){
-
-item.qty=stock;
-showToast("จำนวนเกินสต็อก");
-
-}else{
-
-showToast(`เพิ่ม ${p.name||"เมนู"} แล้ว`);
-
 }
 
 saveCart();
+
+/* บังคับให้ตะกร้าลอยแสดงทันที */
 updateCartUI();
+
+const float=document.getElementById("cartFloat");
+
+if(cartQty()>0)
+float.classList.remove("hide");
+
+showToast(`เพิ่ม ${p.name||"เมนู"} แล้ว`);
 
 };
 
 window.changeQty=function(id,amount){
 
-if(Number(amount)>0&&!isStoreOpen()){
+if(Number(amount)>0){
+
+if(!storeReady){
+showToast("กำลังตรวจสอบเวลาร้าน...");
+return;
+}
+
+if(!isStoreOpen()){
 showToast(getClosedMessage());
 return;
+}
+
 }
 
 const item=cart.find(
@@ -1462,7 +1413,7 @@ ${escapeHtml(item.name)}
 const subtotal=cartSubtotal();
 const promo=getPromo();
 const total=finalTotal();
-const closed=!isStoreOpen();
+const closed=storeReady?!isStoreOpen():false;
 
 summary.innerHTML=
 `<div class="cart-summary">
@@ -1506,15 +1457,20 @@ const count=cartQty();
 const total=finalTotal();
 
 document.getElementById("cartCount").textContent=count;
+
 document.getElementById("cartTotal").textContent=
 `฿${formatMoney(total)}`;
 
 const float=document.getElementById("cartFloat");
 
+if(float){
+
 if(count>0)
 float.classList.remove("hide");
 else
 float.classList.add("hide");
+
+}
 
 if(document.getElementById("cartOverlay").classList.contains("show"))
 renderCart();
@@ -1536,6 +1492,11 @@ window.openCheckout=function(){
 
 if(!cart.length){
 showToast("กรุณาเลือกเมนูก่อน");
+return;
+}
+
+if(!storeReady){
+showToast("กำลังตรวจสอบเวลาร้าน...");
 return;
 }
 
@@ -1678,10 +1639,6 @@ box.innerHTML=
 
 }
 
-/* =========================================================
-   สร้างประวัติสถานะตั้งแต่สร้างออเดอร์
-========================================================= */
-
 function createInitialStatusHistory(){
 
 const now=new Date().toISOString();
@@ -1707,14 +1664,17 @@ time:null
 
 }
 
-/* =========================================================
-   ส่งออเดอร์
-========================================================= */
+/* ===== ส่งออเดอร์ ===== */
 
 window.submitOrder=async function(){
 
 if(!cart.length){
 showToast("ตะกร้าว่าง");
+return;
+}
+
+if(!storeReady){
+showToast("กำลังตรวจสอบเวลาร้าน...");
 return;
 }
 
@@ -1797,8 +1757,6 @@ paymentMethod==="qr",
 
 paymentConfirmed:false,
 
-/* ===== สถานะมาตรฐาน ===== */
-
 status:"pending",
 statusLabel:"รอรับออเดอร์",
 statusUpdatedAt:createdAt,
@@ -1830,6 +1788,13 @@ localStorage.setItem(
 phone
 );
 
+/* ออเดอร์ใหม่ = มีแจ้งเตือน */
+localStorage.removeItem(
+"mala_tracking_seen_status_"+ref.id
+);
+
+startBackgroundOrderWatch(ref.id);
+
 cart=[];
 
 saveCart();
@@ -1845,8 +1810,6 @@ closeOverlay("checkoutOverlay");
 showToast(
 `สั่งซื้อสำเร็จ #${ref.id.slice(-6).toUpperCase()}`
 );
-
-/* เปิดติดตามออเดอร์ให้อัตโนมัติ */
 
 setTimeout(()=>{
 openTracking();
@@ -1869,9 +1832,7 @@ updatePaymentButton();
 
 };
 
-/* =========================================================
-   แปลงสถานะเก่าให้เข้าระบบใหม่
-========================================================= */
+/* ===== STATUS ===== */
 
 function normalizeStatus(o){
 
@@ -1885,12 +1846,6 @@ s="preparing";
 
 if(s==="cooking")
 s="preparing";
-
-if(s==="ready")
-s="ready";
-
-if(s==="completed")
-s="completed";
 
 if(s==="cancelled"||s==="canceled")
 return"cancelled";
@@ -1918,10 +1873,6 @@ return-1;
 
 }
 
-/* =========================================================
-   อ่านเวลาแต่ละสถานะ
-========================================================= */
-
 function getStatusTime(o,key){
 
 const history=o.statusHistory||{};
@@ -1944,10 +1895,6 @@ return o.createdAt||null;
 return null;
 
 }
-
-/* =========================================================
-   สร้าง Timeline ติดตามออเดอร์
-========================================================= */
 
 function renderTrackingOrder(o){
 
@@ -2138,7 +2085,89 @@ ${cancelled?
 }
 
 /* =========================================================
-   ติดตามแบบ Real-time
+   WATCHER สำหรับจุดแดงแจ้งเตือน
+========================================================= */
+
+function setTrackingAlert(show){
+
+const el=document.getElementById("trackAlert");
+
+if(el)
+el.classList.toggle("show",!!show);
+
+}
+
+/* สถานะเปลี่ยนเมื่อไหร่ จุดแดงขึ้น */
+function startBackgroundOrderWatch(id){
+
+if(!id)
+return;
+
+if(backgroundOrderUnsubscribe){
+
+backgroundOrderUnsubscribe();
+backgroundOrderUnsubscribe=null;
+
+}
+
+backgroundOrderUnsubscribe=
+onSnapshot(
+doc(db,"orders",id),
+snap=>{
+
+if(!snap.exists()){
+
+latestTrackingOrder=null;
+setTrackingAlert(false);
+return;
+
+}
+
+const order={
+id:snap.id,
+...snap.data()
+};
+
+latestTrackingOrder=order;
+
+const status=normalizeStatus(order);
+
+const seen=localStorage.getItem(
+"mala_tracking_seen_status_"+id
+);
+
+/*
+ถ้ายังไม่เคยเปิดดู หรือสถานะเปลี่ยน
+ให้แสดงจุดแดง
+*/
+if(!seen||seen!==status)
+setTrackingAlert(true);
+else
+setTrackingAlert(false);
+
+/* ถ้าเปิดหน้าติดตามอยู่ ให้เปลี่ยนข้อมูลทันที */
+const overlay=
+document.getElementById("trackingOverlay");
+
+if(overlay.classList.contains("show")){
+
+document.getElementById("trackingContent").innerHTML=
+renderTrackingOrder(order);
+
+}
+
+},
+err=>{
+
+console.error("background tracking:",err);
+
+}
+);
+
+}
+
+/* =========================================================
+   Real-time ในหน้าติดตาม
 ========================================================= */
 
 function startTrackingRealtime(id){
@@ -2179,8 +2208,20 @@ id:snap.id,
 ...snap.data()
 };
 
+latestTrackingOrder=order;
+
 el.innerHTML=
 renderTrackingOrder(order);
+
+/*
+เมื่อเปิดหน้าติดตาม ถือว่าอ่านแจ้งเตือนแล้ว
+*/
+localStorage.setItem(
+"mala_tracking_seen_status_"+id,
+normalizeStatus(order)
+);
+
+setTrackingAlert(false);
 
 },
 err=>{
@@ -2202,7 +2243,7 @@ el.innerHTML=
 }
 
 /* =========================================================
-   เปิดติดตามออเดอร์
+   เปิดติดตาม
 ========================================================= */
 
 window.openTracking=function(){
@@ -2219,6 +2260,8 @@ document.getElementById("trackingOverlay")
 
 if(!id){
 
+setTrackingAlert(false);
+
 el.innerHTML=
 `<div class="empty">
 <div class="empty-icon">📦</div>
@@ -2231,6 +2274,9 @@ el.innerHTML=
 return;
 
 }
+
+/* ทำ watcher ต่อเนื่อง */
+startBackgroundOrderWatch(id);
 
 startTrackingRealtime(id);
 
@@ -2268,7 +2314,7 @@ closeOverlay(id);
 };
 
 /* =========================================================
-   ประวัติออเดอร์
+   HISTORY
 ========================================================= */
 
 window.openHistory=async function(){
@@ -2461,16 +2507,15 @@ el.innerHTML=
 
 };
 
-/* =========================================================
-   กดติดตามออเดอร์จากประวัติ
-========================================================= */
-
 window.trackSpecificOrder=function(id){
 
 localStorage.setItem(
 "mala_last_order",
 id
 );
+
+/* ออเดอร์นี้จะถูกดูเป็นออเดอร์ล่าสุด */
+startBackgroundOrderWatch(id);
 
 closeOverlay("historyOverlay");
 
@@ -2479,10 +2524,6 @@ openTracking();
 },100);
 
 };
-
-/* =========================================================
-   Account
-========================================================= */
 
 window.openAccount=function(){
 
@@ -2542,12 +2583,19 @@ storeData.message
 
 }
 
+/* สำคัญ: Firebase โหลดเสร็จแล้วค่อยคำนวณเปิด/ปิด */
+storeReady=true;
+
 updateStoreStatus();
 
 },
 err=>{
 
 console.error("store:",err);
+
+/* กันหน้าเว็บค้างที่กำลังตรวจสอบ */
+storeReady=true;
+
 updateStoreStatus();
 
 }
@@ -2664,10 +2712,25 @@ document.getElementById("products").innerHTML=
 }
 );
 
+/* =========================================================
+   เริ่มต้นหน้า
+========================================================= */
+
 applySiteData();
 renderPromotion();
+buildCategories();
 updateStoreStatus();
 updateCartUI();
+
+/* ถ้ามีออเดอร์เดิม ให้เริ่มฟังสถานะทันที */
+const savedOrderId=
+localStorage.getItem("mala_last_order");
+
+if(savedOrderId){
+
+startBackgroundOrderWatch(savedOrderId);
+
+}
 
 setInterval(
 updateStoreStatus,
