@@ -92,7 +92,6 @@ overflow:hidden;text-overflow:ellipsis;white-space:nowrap
 display:inline-block;padding:3px 7px;margin-bottom:4px;border-radius:7px;
 background:#111;color:#fff;font-size:10px;font-weight:800
 }
-.badge.red{background:#fee2e2;color:#b91c1c}
 .toolbar{
 display:flex;gap:7px;overflow-x:auto;padding-bottom:3px;margin-bottom:12px
 }
@@ -179,7 +178,8 @@ color:#777;font-size:11px;font-weight:750
 position:fixed;left:50%;bottom:90px;z-index:500;
 transform:translateX(-50%) translateY(20px);
 padding:11px 16px;border-radius:14px;background:#111;color:#fff;
-font-size:13px;opacity:0;pointer-events:none;transition:.25s
+font-size:13px;opacity:0;pointer-events:none;transition:.25s;
+max-width:90%;text-align:center
 }
 .toast.show{opacity:1;transform:translateX(-50%)}
 #loginScreen{
@@ -214,14 +214,12 @@ display:none;margin-top:12px;text-align:center;color:#e53935;font-size:12px
 
 <body>
 
-<!-- LOGIN -->
 <div id="loginScreen">
   <div class="loginBox">
     <div class="loginLogo">MALA FRIED</div>
     <div class="loginSub">เข้าสู่ระบบหลังร้าน</div>
 
-    <input
-      id="adminPassword"
+    <input id="adminPassword"
       class="loginInput"
       type="password"
       placeholder="รหัสผ่าน"
@@ -257,7 +255,6 @@ display:none;margin-top:12px;text-align:center;color:#e53935;font-size:12px
 
 <main>
 
-<!-- HOME -->
 <section id="home" class="page active">
   <h1 class="pageTitle">หลังร้าน</h1>
 
@@ -284,9 +281,14 @@ display:none;margin-top:12px;text-align:center;color:#e53935;font-size:12px
     <div class="statusBox">
       <div>
         <div class="statusTitle">สถานะร้าน</div>
-        <div id="homeStoreText" class="statusText">ร้านเปิดรับออเดอร์</div>
+        <div id="homeStoreText" class="statusText">
+          ร้านเปิดรับออเดอร์
+        </div>
       </div>
-      <button id="homeSwitch" class="switch on" onclick="toggleStore()">
+
+      <button id="homeSwitch"
+        class="switch on"
+        onclick="toggleStore()">
         <i></i>
       </button>
     </div>
@@ -298,7 +300,9 @@ display:none;margin-top:12px;text-align:center;color:#e53935;font-size:12px
         <div class="sectionTitle">ออเดอร์ล่าสุด</div>
         <div class="muted small">รายการสั่งซื้อที่เข้ามาล่าสุด</div>
       </div>
-      <button class="btn light sm" onclick="openPage('orders')">ดูทั้งหมด</button>
+      <button class="btn light sm" onclick="openPage('orders')">
+        ดูทั้งหมด
+      </button>
     </div>
     <div id="recentOrders"></div>
   </div>
@@ -314,7 +318,6 @@ display:none;margin-top:12px;text-align:center;color:#e53935;font-size:12px
   </div>
 </section>
 
-<!-- ORDERS -->
 <section id="orders" class="page">
   <h1 class="pageTitle">ออเดอร์</h1>
 
@@ -330,15 +333,14 @@ display:none;margin-top:12px;text-align:center;color:#e53935;font-size:12px
   <div id="ordersList"></div>
 </section>
 
-<!-- MENU -->
 <section id="menu" class="page">
+
   <div class="row">
     <h1 class="pageTitle">เมนู</h1>
     <button class="btn sm" onclick="openProduct()">+ เพิ่ม</button>
   </div>
 
-  <input
-    id="menuSearch"
+  <input id="menuSearch"
     class="search"
     placeholder="ค้นหาเมนู..."
     oninput="renderProducts()">
@@ -356,65 +358,89 @@ display:none;margin-top:12px;text-align:center;color:#e53935;font-size:12px
   </div>
 </section>
 
-<!-- SETTINGS -->
 <section id="settings" class="page">
+
   <h1 class="pageTitle">ตั้งค่า</h1>
 
   <div class="card">
+
     <div class="sectionTitle">ข้อมูลร้าน</div>
 
     <label>ชื่อร้าน</label>
     <input id="storeName" placeholder="ชื่อร้าน">
 
     <label>รายละเอียดร้าน</label>
-    <textarea id="storeDesc" placeholder="รายละเอียดร้าน"></textarea>
+    <textarea id="storeDesc"
+      placeholder="รายละเอียดร้าน"></textarea>
 
     <div class="formGrid">
+
       <div>
         <label>เวลาเปิด</label>
         <input id="openTime" type="time">
       </div>
+
       <div>
         <label>เวลาปิด</label>
         <input id="closeTime" type="time">
       </div>
+
     </div>
 
     <label>ข้อความตอนร้านปิด</label>
-    <textarea id="storeMessage" placeholder="ร้านปิดชั่วคราว"></textarea>
+    <textarea id="storeMessage"
+      placeholder="ร้านปิดชั่วคราว"></textarea>
 
     <label>รับออเดอร์</label>
+
     <div class="row">
-      <span class="small muted">เปิด/ปิดการรับออเดอร์</span>
-      <button id="orderSwitch" class="switch on" onclick="toggleOrders()">
+      <span class="small muted">
+        เปิด/ปิดการรับออเดอร์
+      </span>
+
+      <button id="orderSwitch"
+        class="switch on"
+        onclick="toggleOrders()">
         <i></i>
       </button>
     </div>
 
-    <button class="btn" style="width:100%;margin-top:18px"
+    <button class="btn"
+      style="width:100%;margin-top:18px"
       onclick="saveStore()">
       บันทึกข้อมูลร้าน
     </button>
+
   </div>
 
   <div class="card">
+
     <div class="sectionTitle">โปรโมชั่น</div>
 
     <label>ชื่อโปรโมชั่น</label>
-    <input id="promoName" placeholder="เช่น ซื้อ 10 แถม 1">
+    <input id="promoName"
+      placeholder="เช่น ซื้อ 10 แถม 1">
 
     <div class="formGrid">
+
       <div>
         <label>ซื้อ</label>
-        <input id="promoBuyQty" type="number" min="1">
+        <input id="promoBuyQty"
+          type="number"
+          min="1">
       </div>
+
       <div>
         <label>แถม</label>
-        <input id="promoFreeQty" type="number" min="0">
+        <input id="promoFreeQty"
+          type="number"
+          min="0">
       </div>
+
     </div>
 
     <label>รูปแบบ</label>
+
     <select id="promoMethod">
       <option value="buyfree">ซื้อ X แถม Y</option>
       <option value="percent">ลดเปอร์เซ็นต์</option>
@@ -422,10 +448,15 @@ display:none;margin-top:12px;text-align:center;color:#e53935;font-size:12px
     </select>
 
     <label>ข้อความที่ลูกค้าเห็น</label>
-    <input id="promoCustomerText" placeholder="ซื้อ 10 ไม้ แถมฟรี 1 ไม้">
+
+    <input id="promoCustomerText"
+      placeholder="ซื้อ 10 ไม้ แถมฟรี 1 ไม้">
 
     <label>รูปโปรโมชั่น</label>
-    <input id="promoImageFile" type="file" accept="image/*"
+
+    <input id="promoImageFile"
+      type="file"
+      accept="image/*"
       onchange="previewPromo(this)">
 
     <div id="promoPreview" class="preview">
@@ -433,52 +464,77 @@ display:none;margin-top:12px;text-align:center;color:#e53935;font-size:12px
     </div>
 
     <div class="row" style="margin-top:14px">
-      <span class="small muted">เปิดโปรโมชั่น</span>
-      <button id="promoSwitch" class="switch"
-        onclick="togglePromo()"><i></i></button>
+
+      <span class="small muted">
+        เปิดโปรโมชั่น
+      </span>
+
+      <button id="promoSwitch"
+        class="switch"
+        onclick="togglePromo()">
+        <i></i>
+      </button>
+
     </div>
 
-    <button class="btn" style="width:100%;margin-top:18px"
+    <button class="btn"
+      style="width:100%;margin-top:18px"
       onclick="savePromotion()">
       บันทึกโปรโมชั่น
     </button>
+
   </div>
 
   <div class="card">
+
     <div class="sectionTitle">ออกจากระบบ</div>
-    <button class="btn red" style="width:100%" onclick="logoutAdmin()">
+
+    <button class="btn red"
+      style="width:100%"
+      onclick="logoutAdmin()">
       ออกจาก Admin
     </button>
+
   </div>
+
 </section>
 
 </main>
 </div>
 
-<!-- NAV -->
 <nav class="nav">
+
   <button class="active" onclick="openPage('home')">
     <span class="navIcon">⌂</span>หน้าหลัก
   </button>
+
   <button onclick="openPage('orders')">
     <span class="navIcon">🧾</span>ออเดอร์
   </button>
+
   <button onclick="openPage('menu')">
     <span class="navIcon">🍢</span>เมนู
   </button>
+
   <button onclick="openPage('settings')">
     <span class="navIcon">⚙️</span>ตั้งค่า
   </button>
+
 </nav>
 
 </div>
 
-<!-- PRODUCT MODAL -->
-<div id="productModal" class="modalBg" onclick="closeModal(event)">
+<div id="productModal"
+  class="modalBg"
+  onclick="closeModal(event)">
+
   <div class="modal">
+
     <div class="modalHeader">
       <h3 id="productModalTitle">เพิ่มเมนู</h3>
-      <button class="close" onclick="closeProduct()">×</button>
+
+      <button class="close"
+        onclick="closeProduct()">×</button>
     </div>
 
     <input id="productId" type="hidden">
@@ -487,20 +543,29 @@ display:none;margin-top:12px;text-align:center;color:#e53935;font-size:12px
     <input id="productName" placeholder="ชื่อเมนู">
 
     <label>รายละเอียด</label>
-    <textarea id="productDesc" placeholder="รายละเอียดเมนู"></textarea>
+    <textarea id="productDesc"
+      placeholder="รายละเอียดเมนู"></textarea>
 
     <div class="formGrid">
+
       <div>
         <label>ราคา</label>
-        <input id="productPrice" type="number" min="0">
+        <input id="productPrice"
+          type="number"
+          min="0">
       </div>
+
       <div>
         <label>สต็อก</label>
-        <input id="productStock" type="number" min="0">
+        <input id="productStock"
+          type="number"
+          min="0">
       </div>
+
     </div>
 
     <label>หมวดหมู่</label>
+
     <select id="productCategory">
       <option value="meat">เนื้อ</option>
       <option value="seafood">ทะเล</option>
@@ -512,10 +577,14 @@ display:none;margin-top:12px;text-align:center;color:#e53935;font-size:12px
     <input id="productEmoji" placeholder="🍢">
 
     <label>ป้ายเมนู</label>
-    <input id="productBadge" placeholder="ขายดี / ใหม่ / DEAL">
+    <input id="productBadge"
+      placeholder="ขายดี / ใหม่ / DEAL">
 
     <label>รูปเมนู</label>
-    <input id="productImageFile" type="file" accept="image/*"
+
+    <input id="productImageFile"
+      type="file"
+      accept="image/*"
       onchange="previewProduct(this)">
 
     <div id="productPreview" class="preview">
@@ -523,33 +592,57 @@ display:none;margin-top:12px;text-align:center;color:#e53935;font-size:12px
     </div>
 
     <div class="row" style="margin-top:14px">
+
       <span class="small muted">เปิดขาย</span>
-      <button id="productActive" class="switch on"
-        onclick="toggleProductActive()"><i></i></button>
+
+      <button id="productActive"
+        class="switch on"
+        onclick="toggleProductActive()">
+        <i></i>
+      </button>
+
     </div>
 
     <div class="row" style="margin-top:12px">
+
       <span class="small muted">เมนูแนะนำ</span>
-      <button id="productFeatured" class="switch"
-        onclick="toggleProductFeatured()"><i></i></button>
+
+      <button id="productFeatured"
+        class="switch"
+        onclick="toggleProductFeatured()">
+        <i></i>
+      </button>
+
     </div>
 
-    <button class="btn green" style="width:100%;margin-top:20px"
+    <button class="btn green"
+      style="width:100%;margin-top:20px"
       onclick="saveProduct()">
       บันทึกเมนู
     </button>
+
   </div>
 </div>
 
 <div id="toast" class="toast"></div>
 
-<!-- FIREBASE -->
 <script type="module">
-import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import{
-getFirestore,collection,doc,getDocs,getDoc,setDoc,
-addDoc,updateDoc,deleteDoc,query,orderBy
-}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import {
+initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+doc,
+getDocs,
+getDoc,
+setDoc,
+addDoc,
+updateDoc,
+deleteDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig={
 apiKey:"AIzaSyAOcPmnQrhHh058ozPr1bCgvUI1pOesU",
@@ -566,6 +659,7 @@ const db=getFirestore(app);
 
 let products=[];
 let orders=[];
+
 let store={
 open:true,
 openOrders:true,
@@ -575,7 +669,11 @@ description:"",
 openTime:"13:00",
 closeTime:"24:00"
 };
-let promotion={enabled:false};
+
+let promotion={
+enabled:false
+};
+
 let orderFilter="all";
 let category="all";
 
@@ -598,31 +696,69 @@ return String(v??"")
 }
 
 function timeText(v){
+
 if(!v)return"-";
+
 try{
+
 return new Date(v).toLocaleString("th-TH",{
 dateStyle:"short",
 timeStyle:"short"
 });
-}catch{return"-"}
+
+}catch{
+return"-";
+}
+
 }
 
 function toast(t){
-$("toast").textContent=t;
-$("toast").classList.add("show");
-setTimeout(()=>$("toast").classList.remove("show"),2200);
+
+const el=$("toast");
+
+el.textContent=t;
+el.classList.add("show");
+
+clearTimeout(window.__toastTimer);
+
+window.__toastTimer=setTimeout(()=>{
+el.classList.remove("show");
+},2500);
+
+}
+
+function firebaseError(e){
+
+console.error(e);
+
+return e?.code
+?e.code+" · "+(e.message||"")
+:(e?.message||"เกิดข้อผิดพลาด");
+
 }
 
 window.openPage=function(page){
-document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
-$(page).classList.add("active");
 
-document.querySelectorAll(".nav button").forEach((b,i)=>{
-b.classList.remove("active");
-});
+document.querySelectorAll(".page")
+.forEach(x=>x.classList.remove("active"));
 
-const map={home:0,orders:1,menu:2,settings:3};
-document.querySelectorAll(".nav button")[map[page]].classList.add("active");
+const el=$(page);
+
+if(el)el.classList.add("active");
+
+document.querySelectorAll(".nav button")
+.forEach(x=>x.classList.remove("active"));
+
+const map={
+home:0,
+orders:1,
+menu:2,
+settings:3
+};
+
+const nav=document.querySelectorAll(".nav button");
+
+if(nav[map[page]])nav[map[page]].classList.add("active");
 
 if(page==="home")renderHome();
 if(page==="orders")renderOrders();
@@ -630,360 +766,736 @@ if(page==="menu")renderProducts();
 if(page==="settings")loadSettings();
 
 scrollTo(0,0);
+
 };
 
 async function loadAll(){
-try{
-const s=await getDoc(doc(db,"settings","store"));
-if(s.exists())store={...store,...s.data()};
 
-const p=await getDoc(doc(db,"settings","promotion"));
-if(p.exists())promotion={...promotion,...p.data()};
+try{
+
+const storeSnap=await getDoc(
+doc(db,"settings","store")
+);
+
+if(storeSnap.exists()){
+store={
+...store,
+...storeSnap.data()
+};
+}
+
+}catch(e){
+
+console.error("STORE LOAD:",e);
+
+}
+
+try{
+
+const promoSnap=await getDoc(
+doc(db,"settings","promotion")
+);
+
+if(promoSnap.exists()){
+promotion={
+...promotion,
+...promoSnap.data()
+};
+}
+
+}catch(e){
+
+console.error("PROMOTION LOAD:",e);
+
+}
+
+try{
 
 const ps=await getDocs(
-query(collection(db,"products"),orderBy("sortOrder","asc"))
+collection(db,"products")
 );
-products=ps.docs.map(x=>({id:x.id,...x.data()}));
+
+products=ps.docs
+.map(x=>({
+id:x.id,
+...x.data()
+}))
+.sort((a,b)=>
+Number(a.sortOrder??999999)-
+Number(b.sortOrder??999999)
+);
+
+}catch(e){
+
+console.error("PRODUCT LOAD:",e);
+products=[];
+
+}
+
+try{
 
 const os=await getDocs(
-query(collection(db,"orders"),orderBy("createdAt","desc"))
+collection(db,"orders")
 );
-orders=os.docs.map(x=>({id:x.id,...x.data()}));
+
+orders=os.docs
+.map(x=>({
+id:x.id,
+...x.data()
+}))
+.sort((a,b)=>{
+
+const da=new Date(a.createdAt||0).getTime();
+const dbb=new Date(b.createdAt||0).getTime();
+
+return dbb-da;
+
+});
+
+}catch(e){
+
+console.error("ORDER LOAD:",e);
+orders=[];
+
+}
 
 renderAll();
-}catch(e){
-console.error(e);
-toast("โหลดข้อมูลไม่สำเร็จ");
-}
+
 }
 
 function renderAll(){
+
 renderHome();
 renderProducts();
 renderOrders();
 loadSettings();
 updateStoreUI();
+
 }
 
 function renderHome(){
+
 $("statProducts").textContent=products.length;
-$("statActive").textContent=products.filter(x=>x.active!==false).length;
+
+$("statActive").textContent=
+products.filter(x=>x.active!==false).length;
+
 $("statOrders").textContent=orders.length;
-$("statLow").textContent=products.filter(x=>
-x.stock!==undefined&&x.stock!==null&&Number(x.stock)<=5
+
+$("statLow").textContent=
+products.filter(x=>
+x.stock!==undefined&&
+x.stock!==null&&
+Number(x.stock)<=5
 ).length;
 
 const recent=orders.slice(0,3);
 
-$("recentOrders").innerHTML=recent.length
+$("recentOrders").innerHTML=
+recent.length
 ?recent.map(orderHTML).join("")
 :'<div class="empty">ยังไม่มีออเดอร์</div>';
+
 }
 
 function updateStoreUI(){
-const open=store.open!==false;
 
-$("storeDot").className="dot "+(open?"on":"off");
-$("storeStatus").textContent=open?"ร้านเปิด":"ร้านปิด";
-$("homeStoreText").textContent=open
+const open=store.open===true;
+const receiving=store.openOrders!==false;
+
+$("storeDot").className=
+"dot "+(open?"on":"off");
+
+$("storeStatus").textContent=
+open?"ร้านเปิด":"ร้านปิด";
+
+$("homeStoreText").textContent=
+!open
+?(store.message||"ร้านปิดชั่วคราว")
+:receiving
 ?"ร้านเปิดรับออเดอร์"
-:(store.message||"ร้านปิดชั่วคราว");
+:"ร้านเปิด แต่ปิดรับออเดอร์";
 
-$("homeSwitch").className="switch "+(open?"on":"");
-$("orderSwitch").className="switch "+
-(store.openOrders!==false?"on":"");
+$("homeSwitch").className=
+"switch "+(open?"on":"");
+
+$("orderSwitch").className=
+"switch "+(receiving?"on":"");
+
 }
 
 window.toggleStore=async function(){
-store.open=store.open===false;
-await setDoc(doc(db,"settings","store"),store,{merge:true});
+
+const oldValue=store.open===true;
+const newValue=!oldValue;
+
+const btn=$("homeSwitch");
+
+if(btn){
+btn.disabled=true;
+}
+
+try{
+
+await setDoc(
+doc(db,"settings","store"),
+{
+open:newValue
+},
+{
+merge:true
+}
+);
+
+store.open=newValue;
+
 updateStoreUI();
-toast(store.open?"เปิดร้านแล้ว":"ปิดร้านแล้ว");
+
+toast(
+newValue
+?"เปิดร้านแล้ว"
+:"ปิดร้านแล้ว"
+);
+
+}catch(e){
+
+console.error("TOGGLE STORE ERROR:",e);
+
+toast(
+"เปลี่ยนสถานะร้านไม่ได้: "+
+firebaseError(e)
+);
+
+}finally{
+
+if(btn)btn.disabled=false;
+
+}
+
 };
 
 window.toggleOrders=async function(){
-store.openOrders=store.openOrders===false;
-await setDoc(doc(db,"settings","store"),store,{merge:true});
+
+const oldValue=store.openOrders!==false;
+const newValue=!oldValue;
+
+const btn=$("orderSwitch");
+
+if(btn){
+btn.disabled=true;
+}
+
+try{
+
+await setDoc(
+doc(db,"settings","store"),
+{
+openOrders:newValue
+},
+{
+merge:true
+}
+);
+
+store.openOrders=newValue;
+
 updateStoreUI();
-toast(store.openOrders?"เปิดรับออเดอร์":"ปิดรับออเดอร์");
+
+toast(
+newValue
+?"เปิดรับออเดอร์แล้ว"
+:"ปิดรับออเดอร์แล้ว"
+);
+
+}catch(e){
+
+console.error("TOGGLE ORDERS ERROR:",e);
+
+toast(
+"เปลี่ยนการรับออเดอร์ไม่ได้: "+
+firebaseError(e)
+);
+
+}finally{
+
+if(btn)btn.disabled=false;
+
+}
+
 };
 
 function loadSettings(){
-$("storeName").value=store.name||"";
-$("storeDesc").value=store.description||"";
-$("openTime").value=store.openTime||"13:00";
-$("closeTime").value=store.closeTime||"24:00";
-$("storeMessage").value=store.message||"";
 
-$("promoName").value=promotion.name||"";
-$("promoBuyQty").value=promotion.buyQty||"";
-$("promoFreeQty").value=promotion.freeQty||"";
-$("promoMethod").value=promotion.method||"buyfree";
-$("promoCustomerText").value=promotion.customerText||"";
+$("storeName").value=
+store.name||"";
+
+$("storeDesc").value=
+store.description||"";
+
+$("openTime").value=
+store.openTime||"13:00";
+
+$("closeTime").value=
+store.closeTime||"24:00";
+
+$("storeMessage").value=
+store.message||"";
+
+$("promoName").value=
+promotion.name||"";
+
+$("promoBuyQty").value=
+promotion.buyQty||"";
+
+$("promoFreeQty").value=
+promotion.freeQty||"";
+
+$("promoMethod").value=
+promotion.method||"buyfree";
+
+$("promoCustomerText").value=
+promotion.customerText||"";
 
 $("promoSwitch").className=
-"switch "+(promotion.enabled?"on":"");
+"switch "+(promotion.enabled===true?"on":"");
 
 if(promotion.image){
+
 $("promoPreview").innerHTML=
-`<img src="${promotion.image}">`;
-}else $("promoPreview").textContent="ไม่มีรูป";
+`<img src="${esc(promotion.image)}">`;
+
+}else{
+
+$("promoPreview").textContent="ไม่มีรูป";
+
+}
+
+updateStoreUI();
+
 }
 
 window.saveStore=async function(){
-store={
-...store,
+
+const data={
 name:$("storeName").value.trim(),
 description:$("storeDesc").value.trim(),
-openTime:$("openTime").value,
-closeTime:$("closeTime").value,
+openTime:$("openTime").value||"13:00",
+closeTime:$("closeTime").value||"24:00",
 message:$("storeMessage").value.trim()
 };
 
-await setDoc(doc(db,"settings","store"),store,{merge:true});
+try{
+
+await setDoc(
+doc(db,"settings","store"),
+data,
+{merge:true}
+);
+
+store={
+...store,
+...data
+};
+
 updateStoreUI();
+
 toast("บันทึกข้อมูลร้านแล้ว");
+
+}catch(e){
+
+console.error("SAVE STORE ERROR:",e);
+
+toast(
+"บันทึกข้อมูลร้านไม่ได้: "+
+firebaseError(e)
+);
+
+}
+
 };
 
 window.togglePromo=function(){
-promotion.enabled=!promotion.enabled;
+
+promotion.enabled=
+promotion.enabled!==true;
+
 $("promoSwitch").className=
 "switch "+(promotion.enabled?"on":"");
+
 };
 
 window.savePromotion=async function(){
-promotion={
-...promotion,
+
+const data={
 name:$("promoName").value.trim(),
 buyQty:Number($("promoBuyQty").value||0),
 freeQty:Number($("promoFreeQty").value||0),
 method:$("promoMethod").value,
-customerText:$("promoCustomerText").value.trim()
+customerText:$("promoCustomerText").value.trim(),
+enabled:promotion.enabled===true
 };
 
 const file=$("promoImageFile").files[0];
 
-if(file){
 try{
-promotion.image=await compressImage(file);
-}catch(e){
-toast("อัปโหลดรูปไม่สำเร็จ");
-return;
-}
+
+if(file){
+data.image=await compressImage(file);
+}else if(promotion.image){
+data.image=promotion.image;
 }
 
 await setDoc(
 doc(db,"settings","promotion"),
-promotion,
+data,
 {merge:true}
 );
 
+promotion={
+...promotion,
+...data
+};
+
 loadSettings();
+
 toast("บันทึกโปรโมชั่นแล้ว");
+
+}catch(e){
+
+console.error("SAVE PROMOTION ERROR:",e);
+
+toast(
+"บันทึกโปรโมชั่นไม่ได้: "+
+firebaseError(e)
+);
+
+}
+
 };
 
 window.previewPromo=function(input){
+
 const file=input.files[0];
+
 if(!file)return;
 
 const r=new FileReader();
 
 r.onload=e=>{
+
 $("promoPreview").innerHTML=
 `<img src="${e.target.result}">`;
+
 };
 
 r.readAsDataURL(file);
+
 };
 
-function setCategoryValue(c){
+window.setCategory=function(c){
+
 category=c;
 renderProducts();
-}
 
-window.setCategory=setCategoryValue;
+};
 
 function renderProducts(){
-const q=($("menuSearch")?.value||"").toLowerCase();
+
+const q=
+($("menuSearch")?.value||"")
+.toLowerCase()
+.trim();
 
 let list=products.filter(p=>{
-const okCat=category==="all"||p.category===category;
+
+const okCat=
+category==="all"||
+p.category===category;
+
+const text=
+String(p.name||"").toLowerCase()+" "+
+String(p.description||"").toLowerCase();
+
 const okSearch=
-!q||
-String(p.name||"").toLowerCase().includes(q)||
-String(p.description||"").toLowerCase().includes(q);
+!q||text.includes(q);
 
 return okCat&&okSearch;
+
 });
 
 if(!list.length){
+
 $("productsList").innerHTML=
 '<div class="empty">ไม่พบเมนู</div>';
+
 return;
+
 }
 
-$("productsList").innerHTML=list.map((p,i)=>`
+$("productsList").innerHTML=
+list.map(p=>`
+
 <div class="product">
 
 <div class="productImage">
-${p.image
-?`<img src="${p.image}" alt="">`
-:esc(p.emoji||"🍢")}
+
+${
+p.image
+?`<img src="${esc(p.image)}" alt="">`
+:esc(p.emoji||"🍢")
+}
+
 </div>
 
 <div class="productInfo">
-${p.badge?`<span class="badge">${esc(p.badge)}</span>`:""}
-<div class="productName">${esc(p.name)}</div>
-<div class="productDesc">${esc(p.description||"")}</div>
-<div class="price">${money(p.price)}</div>
+
+${p.badge
+?`<span class="badge">${esc(p.badge)}</span>`
+:""}
+
+<div class="productName">
+${esc(p.name)}
+</div>
+
+<div class="productDesc">
+${esc(p.description||"")}
+</div>
+
+<div class="price">
+${money(p.price)}
+</div>
+
 <div class="muted small">
-สต็อก: ${
-p.stock===undefined||p.stock===null
-?"ไม่จำกัด":esc(p.stock)
+สต็อก:
+${
+p.stock===undefined||
+p.stock===null
+?"ไม่จำกัด"
+:esc(p.stock)
 }
 </div>
+
 </div>
 
 <div class="productActions">
 
 <button
 class="btn sm ${p.active===false?"light":"green"}"
-onclick="toggleSale('${p.id}')">
-${p.active===false?"ปิดขาย":"เปิดขาย"}
+onclick="toggleSale('${esc(p.id)}')">
+${p.active===false?"เปิดขาย":"ปิดขาย"}
 </button>
 
-<button class="btn light sm"
-onclick="openProduct('${p.id}')">
+<button
+class="btn light sm"
+onclick="openProduct('${esc(p.id)}')">
 แก้ไข
 </button>
 
 <div style="display:flex;gap:4px">
-<button class="btn light sm"
-onclick="moveProduct('${p.id}',-1)">↑</button>
-<button class="btn light sm"
-onclick="moveProduct('${p.id}',1)">↓</button>
+
+<button
+class="btn light sm"
+onclick="moveProduct('${esc(p.id)}',-1)">
+↑
+</button>
+
+<button
+class="btn light sm"
+onclick="moveProduct('${esc(p.id)}',1)">
+↓
+</button>
+
 </div>
 
-<button class="btn red sm"
-onclick="deleteProduct('${p.id}')">
+<button
+class="btn red sm"
+onclick="deleteProduct('${esc(p.id)}')">
 ลบ
 </button>
 
 </div>
+
 </div>
+
 `).join("");
+
 }
 
 window.openProduct=function(id=""){
+
 const p=products.find(x=>x.id===id);
 
 $("productId").value=id;
-$("productModalTitle").textContent=id?"แก้ไขเมนู":"เพิ่มเมนู";
 
-$("productName").value=p?.name||"";
-$("productDesc").value=p?.description||"";
-$("productPrice").value=p?.price||"";
-$("productStock").value=p?.stock??"";
-$("productCategory").value=p?.category||"meat";
-$("productEmoji").value=p?.emoji||"🍢";
-$("productBadge").value=p?.badge||"";
+$("productModalTitle").textContent=
+id?"แก้ไขเมนู":"เพิ่มเมนู";
+
+$("productName").value=
+p?.name||"";
+
+$("productDesc").value=
+p?.description||"";
+
+$("productPrice").value=
+p?.price??"";
+
+$("productStock").value=
+p?.stock??"";
+
+$("productCategory").value=
+p?.category||"meat";
+
+$("productEmoji").value=
+p?.emoji||"🍢";
+
+$("productBadge").value=
+p?.badge||"";
 
 $("productActive").className=
 "switch "+(p?.active!==false?"on":"");
 
 $("productFeatured").className=
-"switch "+(p?.featured?"on":"");
+"switch "+(p?.featured===true?"on":"");
 
 if(p?.image){
+
 $("productPreview").innerHTML=
-`<img src="${p.image}">`;
+`<img src="${esc(p.image)}">`;
+
 }else{
-$("productPreview").textContent="ไม่มีรูป";
+
+$("productPreview").textContent=
+"ไม่มีรูป";
+
 }
 
 $("productImageFile").value="";
+
 $("productModal").classList.add("show");
+
 };
 
 window.closeProduct=function(){
+
 $("productModal").classList.remove("show");
+
 };
 
 window.closeModal=function(e){
-if(e.target===$("productModal"))closeProduct();
+
+if(e.target===$("productModal")){
+closeProduct();
+}
+
 };
 
 window.toggleProductActive=function(){
+
 $("productActive").classList.toggle("on");
+
 };
 
 window.toggleProductFeatured=function(){
+
 $("productFeatured").classList.toggle("on");
+
 };
 
 window.previewProduct=function(input){
+
 const file=input.files[0];
+
 if(!file)return;
 
 const r=new FileReader();
 
 r.onload=e=>{
+
 $("productPreview").innerHTML=
 `<img src="${e.target.result}">`;
+
 };
 
 r.readAsDataURL(file);
+
 };
 
 function compressImage(file,max=900,quality=.78){
+
 return new Promise((resolve,reject)=>{
+
 if(!file.type.startsWith("image/")){
-reject(new Error("not image"));
+
+reject(new Error("ไฟล์ไม่ใช่รูปภาพ"));
 return;
+
 }
 
 const reader=new FileReader();
 
 reader.onload=e=>{
+
 const img=new Image();
 
 img.onload=()=>{
-let w=img.width,h=img.height;
+
+let w=img.width;
+let h=img.height;
 
 if(w>max||h>max){
+
 const ratio=Math.min(max/w,max/h);
+
 w=Math.round(w*ratio);
 h=Math.round(h*ratio);
+
 }
 
 const canvas=document.createElement("canvas");
+
 canvas.width=w;
 canvas.height=h;
 
 const ctx=canvas.getContext("2d");
+
 ctx.drawImage(img,0,0,w,h);
 
-resolve(canvas.toDataURL("image/jpeg",quality));
+resolve(
+canvas.toDataURL("image/jpeg",quality)
+);
+
 };
 
-img.onerror=reject;
+img.onerror=()=>reject(
+new Error("อ่านรูปไม่ได้")
+);
+
 img.src=e.target.result;
+
 };
 
-reader.onerror=reject;
+reader.onerror=()=>reject(
+new Error("อ่านไฟล์ไม่ได้")
+);
+
 reader.readAsDataURL(file);
+
 });
+
 }
 
 window.saveProduct=async function(){
+
 const id=$("productId").value;
 
 const data={
 name:$("productName").value.trim(),
 description:$("productDesc").value.trim(),
 price:Number($("productPrice").value||0),
-stock:$("productStock").value===""
-?null:Number($("productStock").value),
+stock:
+$("productStock").value===""
+?null
+:Number($("productStock").value),
 category:$("productCategory").value,
 emoji:$("productEmoji").value||"🍢",
 badge:$("productBadge").value.trim(),
@@ -992,307 +1504,560 @@ featured:$("productFeatured").classList.contains("on")
 };
 
 if(!data.name){
+
 toast("กรุณาใส่ชื่อเมนู");
 return;
+
 }
 
-const file=$("productImageFile").files[0];
+const file=
+$("productImageFile").files[0];
+
+try{
 
 if(file){
-try{
-data.image=await compressImage(file);
-}catch(e){
-toast("รูปไม่ถูกต้อง");
-return;
-}
-}
 
-try{
+data.image=
+await compressImage(file);
+
+}
 
 if(id){
-const old=products.find(x=>x.id===id);
 
-if(!data.image&&old?.image)
+const old=
+products.find(x=>x.id===id);
+
+if(!data.image&&old?.image){
 data.image=old.image;
-
-await updateDoc(doc(db,"products",id),data);
-
-}else{
-
-data.sortOrder=products.length;
-data.createdAt=new Date().toISOString();
-
-await addDoc(collection(db,"products"),data);
 }
-
-toast("บันทึกเมนูแล้ว");
-closeProduct();
-await loadAll();
-
-}catch(e){
-console.error(e);
-toast("บันทึกไม่สำเร็จ");
-}
-};
-
-window.toggleSale=async function(id){
-const p=products.find(x=>x.id===id);
-if(!p)return;
 
 await updateDoc(
 doc(db,"products",id),
-{active:p.active===false}
+data
 );
 
+}else{
+
+data.sortOrder=
+products.length
+?Math.max(
+...products.map(x=>
+Number(x.sortOrder??0)
+)
+)+1
+:0;
+
+data.createdAt=
+new Date().toISOString();
+
+await addDoc(
+collection(db,"products"),
+data
+);
+
+}
+
+toast("บันทึกเมนูแล้ว");
+
+closeProduct();
+
 await loadAll();
-toast("เปลี่ยนสถานะเมนูแล้ว");
+
+}catch(e){
+
+console.error("SAVE PRODUCT ERROR:",e);
+
+toast(
+"บันทึกเมนูไม่ได้: "+
+firebaseError(e)
+);
+
+}
+
 };
 
-window.deleteProduct=async function(id){
+window.toggleSale=async function(id){
+
 const p=products.find(x=>x.id===id);
 
 if(!p)return;
 
-if(!confirm(`ลบ "${p.name}" ใช่หรือไม่?`))return;
+const newValue=
+p.active===false;
 
-await deleteDoc(doc(db,"products",id));
+try{
+
+await updateDoc(
+doc(db,"products",id),
+{
+active:newValue
+}
+);
+
+p.active=newValue;
+
+renderProducts();
+renderHome();
+
+toast(
+newValue
+?"เปิดขายเมนูแล้ว"
+:"ปิดขายเมนูแล้ว"
+);
+
+}catch(e){
+
+console.error("TOGGLE PRODUCT ERROR:",e);
+
+toast(
+"เปลี่ยนสถานะเมนูไม่ได้: "+
+firebaseError(e)
+);
+
+}
+
+};
+
+window.deleteProduct=async function(id){
+
+const p=products.find(x=>x.id===id);
+
+if(!p)return;
+
+if(!confirm(`ลบ "${p.name}" ใช่หรือไม่?`))
+return;
+
+try{
+
+await deleteDoc(
+doc(db,"products",id)
+);
+
+toast("ลบเมนูแล้ว");
 
 await loadAll();
-toast("ลบเมนูแล้ว");
+
+}catch(e){
+
+console.error("DELETE PRODUCT ERROR:",e);
+
+toast(
+"ลบเมนูไม่ได้: "+
+firebaseError(e)
+);
+
+}
+
 };
 
 window.moveProduct=async function(id,dir){
-const index=products.findIndex(x=>x.id===id);
+
+const index=
+products.findIndex(x=>x.id===id);
 
 if(index<0)return;
 
 const target=index+dir;
 
-if(target<0||target>=products.length)return;
+if(target<0||target>=products.length)
+return;
 
 const a=products[index];
 const b=products[target];
 
+const aSort=Number(a.sortOrder??index);
+const bSort=Number(b.sortOrder??target);
+
+try{
+
 await Promise.all([
-updateDoc(doc(db,"products",a.id),{sortOrder:b.sortOrder}),
-updateDoc(doc(db,"products",b.id),{sortOrder:a.sortOrder})
+
+updateDoc(
+doc(db,"products",a.id),
+{sortOrder:bSort}
+),
+
+updateDoc(
+doc(db,"products",b.id),
+{sortOrder:aSort}
+)
+
 ]);
 
 await loadAll();
+
+}catch(e){
+
+console.error("MOVE PRODUCT ERROR:",e);
+
+toast(
+"จัดลำดับเมนูไม่ได้: "+
+firebaseError(e)
+);
+
+}
+
 };
 
 function orderItemsArray(order){
+
 const items=order.items;
 
-if(Array.isArray(items))return items;
+if(Array.isArray(items))
+return items;
 
-if(items&&typeof items==="object"){
+if(items&&typeof items==="object")
 return Object.values(items);
-}
 
 return [];
+
 }
 
 function statusName(s){
+
 return{
+
 pending:"รอรับออเดอร์",
 accepted:"กำลังทำ",
 ready:"พร้อมส่ง",
 completed:"สำเร็จ",
 cancelled:"ยกเลิก"
+
 }[s]||s||"ไม่ทราบสถานะ";
+
 }
 
 function orderHTML(o){
-const items=orderItemsArray(o);
 
-const total=Number(
+const items=
+orderItemsArray(o);
+
+const total=
+Number(
 o.total||
 o.grandTotal||
-items.reduce((sum,x)=>
+items.reduce(
+(sum,x)=>
 sum+
 Number(x.price||0)*
-Number(x.qty||x.quantity||1),0)
+Number(x.qty||x.quantity||1),
+0
+)
 );
 
 let paymentClass="wait";
-let paymentText=o.paymentStatus||"รอตรวจสอบการชำระเงิน";
+
+let paymentText=
+o.paymentStatus||
+"รอตรวจสอบการชำระเงิน";
 
 if(o.paymentVerified){
+
 paymentClass="ok";
-paymentText="ยืนยันการชำระเงินแล้ว";
+
+paymentText=
+"ยืนยันการชำระเงินแล้ว";
+
 }
 
+const method=
+String(o.paymentMethod||"");
+
 const isQR=
-String(o.paymentMethod||"").toLowerCase().includes("qr")||
-String(o.paymentMethod||"").includes("พร้อมเพย์");
+method.toLowerCase().includes("qr")||
+method.includes("พร้อมเพย์");
 
 const isCash=
-String(o.paymentMethod||"").includes("สด");
+method.includes("สด");
 
 return`
+
 <div class="order">
 
 <div class="orderHeader">
+
 <div>
+
 <div class="orderId">
 #${esc(o.orderNumber||o.id.slice(-6))}
 </div>
+
 <div class="orderDate">
 ${timeText(o.createdAt)}
 </div>
+
 </div>
 
 <div class="orderStatus s-${esc(o.status||"pending")}">
 ${statusName(o.status||"pending")}
 </div>
+
 </div>
 
 <div class="orderItems">
 
-${items.map(x=>`
+${
+items.length
+?items.map(x=>`
+
 <div class="orderItem">
+
 <span>
 ${esc(x.name||x.title||"สินค้า")}
 × ${Number(x.qty||x.quantity||1)}
 </span>
+
 <strong>
 ${money(
 Number(x.price||0)*
 Number(x.qty||x.quantity||1)
 )}
 </strong>
+
 </div>
-`).join("")}
+
+`).join("")
+:'<div class="muted">ไม่มีรายการสินค้า</div>'
+}
 
 <div class="orderTotal">
+
 <span>รวม</span>
-<strong>${money(total)}</strong>
+
+<strong>
+${money(total)}
+</strong>
+
 </div>
+
 </div>
 
 <div class="payment ${paymentClass}">
+
 <div class="paymentTitle">
 การชำระเงิน
 </div>
+
 <div class="paymentStatus">
-${esc(o.paymentMethod||"-")}
+${esc(method||"-")}
  · ${paymentText}
 </div>
+
 </div>
 
 <div class="actions">
 
 ${
 isQR||isCash
+
 ?o.paymentVerified
+
 ?`<button class="btn light sm" disabled>
 ชำระเงินแล้ว
 </button>`
-:`<button class="btn green sm"
-onclick="verifyPayment('${o.id}')">
+
+:`<button
+class="btn green sm"
+onclick="verifyPayment('${esc(o.id)}')">
 ยืนยันชำระเงิน
 </button>`
+
 :""
 }
 
-${o.status==="pending"
-?`<button class="btn blue sm"
-onclick="changeOrderStatus('${o.id}','accepted')">
+${
+o.status==="pending"
+
+?`<button
+class="btn blue sm"
+onclick="changeOrderStatus('${esc(o.id)}','accepted')">
 รับออเดอร์
-</button>`:""}
+</button>`
 
-${o.status==="accepted"
-?`<button class="btn sm"
-onclick="changeOrderStatus('${o.id}','ready')">
+:""
+}
+
+${
+o.status==="accepted"
+
+?`<button
+class="btn sm"
+onclick="changeOrderStatus('${esc(o.id)}','ready')">
 ทำเสร็จแล้ว
-</button>`:""}
+</button>`
 
-${o.status==="ready"
-?`<button class="btn green sm"
-onclick="changeOrderStatus('${o.id}','completed')">
+:""
+}
+
+${
+o.status==="ready"
+
+?`<button
+class="btn green sm"
+onclick="changeOrderStatus('${esc(o.id)}','completed')">
 เสร็จสิ้น
-</button>`:""}
+</button>`
 
-${o.status!=="completed"&&o.status!=="cancelled"
-?`<button class="btn red sm"
-onclick="changeOrderStatus('${o.id}','cancelled')">
+:""
+}
+
+${
+o.status!=="completed"&&
+o.status!=="cancelled"
+
+?`<button
+class="btn red sm"
+onclick="changeOrderStatus('${esc(o.id)}','cancelled')">
 ยกเลิก
-</button>`:""}
+</button>`
+
+:""
+}
 
 </div>
+
 </div>
+
 `;
+
 }
 
 function renderOrders(){
+
 let list=orders;
 
-if(orderFilter!=="all")
-list=list.filter(x=>(x.status||"pending")===orderFilter);
+if(orderFilter!=="all"){
 
-$("ordersList").innerHTML=list.length
+list=list.filter(x=>
+(x.status||"pending")===orderFilter
+);
+
+}
+
+$("ordersList").innerHTML=
+list.length
 ?list.map(orderHTML).join("")
 :'<div class="empty">ไม่มีออเดอร์</div>';
+
 }
 
 window.setOrderFilter=function(v){
+
 orderFilter=v;
 renderOrders();
+
 };
 
 window.verifyPayment=async function(id){
+
+try{
+
 await updateDoc(
 doc(db,"orders",id),
 {
 paymentVerified:true,
 paymentStatus:"ยืนยันการชำระเงินแล้ว",
-paymentVerifiedAt:new Date().toISOString()
+paymentVerifiedAt:
+new Date().toISOString()
 }
 );
 
 await loadAll();
+
 toast("ยืนยันการชำระเงินแล้ว");
+
+}catch(e){
+
+console.error("PAYMENT ERROR:",e);
+
+toast(
+"ยืนยันการชำระเงินไม่ได้: "+
+firebaseError(e)
+);
+
+}
+
 };
 
 window.changeOrderStatus=async function(id,status){
+
 const o=orders.find(x=>x.id===id);
 
 if(!o)return;
 
-if(status==="accepted"&&!o.stockDeducted){
+try{
 
-const items=orderItemsArray(o);
+if(
+status==="accepted"&&
+!o.stockDeducted
+){
+
+const items=
+orderItemsArray(o);
+
 const need={};
 
 items.forEach(x=>{
-const pid=x.productId||x.id;
+
+const pid=
+x.productId||x.id;
+
 if(!pid)return;
 
-need[pid]=(need[pid]||0)+
+need[pid]=
+(need[pid]||0)+
 Number(x.qty||x.quantity||1);
+
 });
 
 for(const pid in need){
-const p=products.find(x=>x.id===pid);
 
-if(p&&p.stock!==null&&p.stock!==undefined){
-if(Number(p.stock)<need[pid]){
-toast(`สต็อก ${p.name} ไม่พอ`);
+const p=
+products.find(x=>x.id===pid);
+
+if(
+p&&
+p.stock!==null&&
+p.stock!==undefined
+){
+
+if(
+Number(p.stock)<need[pid]
+){
+
+toast(
+`สต็อก ${p.name} ไม่พอ`
+);
+
 return;
+
 }
+
 }
+
 }
 
 for(const pid in need){
-const p=products.find(x=>x.id===pid);
 
-if(p&&p.stock!==null&&p.stock!==undefined){
+const p=
+products.find(x=>x.id===pid);
+
+if(
+p&&
+p.stock!==null&&
+p.stock!==undefined
+){
+
 await updateDoc(
 doc(db,"products",pid),
-{stock:Number(p.stock)-need[pid]}
-);
+{
+stock:
+Number(p.stock)-need[pid]
 }
+);
+
+}
+
 }
 
 await updateDoc(
@@ -1300,7 +2065,8 @@ doc(db,"orders",id),
 {
 status,
 stockDeducted:true,
-updatedAt:new Date().toISOString()
+updatedAt:
+new Date().toISOString()
 }
 );
 
@@ -1310,52 +2076,98 @@ await updateDoc(
 doc(db,"orders",id),
 {
 status,
-updatedAt:new Date().toISOString()
+updatedAt:
+new Date().toISOString()
 }
 );
 
 }
 
 await loadAll();
+
 toast("อัปเดตออเดอร์แล้ว");
-};
+
+}catch(e){
+
+console.error("ORDER STATUS ERROR:",e);
+
+toast(
+"อัปเดตออเดอร์ไม่ได้: "+
+firebaseError(e)
+);
+
+}
+
+}
 
 loadAll();
 
 </script>
 
-<!-- PASSWORD SYSTEM -->
 <script>
+
 const ADMIN_PASSWORD="spyks12021999";
 
 function showAdmin(){
-document.getElementById("loginScreen").style.display="none";
-document.getElementById("adminApp").style.display="block";
+
+document.getElementById("loginScreen")
+.style.display="none";
+
+document.getElementById("adminApp")
+.style.display="block";
+
 }
 
 function loginAdmin(){
-const input=document.getElementById("adminPassword");
-const error=document.getElementById("loginError");
+
+const input=
+document.getElementById("adminPassword");
+
+const error=
+document.getElementById("loginError");
 
 if(input.value===ADMIN_PASSWORD){
-sessionStorage.setItem("mala_admin_login","1");
+
+sessionStorage.setItem(
+"mala_admin_login",
+"1"
+);
+
 error.style.display="none";
+
 showAdmin();
+
 }else{
+
 error.style.display="block";
+
 input.value="";
+
 input.focus();
+
 }
+
 }
 
 function logoutAdmin(){
-sessionStorage.removeItem("mala_admin_login");
+
+sessionStorage.removeItem(
+"mala_admin_login"
+);
+
 location.reload();
+
 }
 
-if(sessionStorage.getItem("mala_admin_login")==="1"){
+if(
+sessionStorage.getItem("mala_admin_login")
+==="1"
+){
+
 showAdmin();
+
 }
+
 </script>
 
 </body>
