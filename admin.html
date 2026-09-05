@@ -123,9 +123,7 @@ width:29px;height:29px;margin:auto;border-radius:50%;
 display:flex;align-items:center;justify-content:center;
 background:#e1e1e4;color:#888;font-size:11px;font-weight:900
 }
-.trackStep.active .trackNum{
-background:#111;color:#fff
-}
+.trackStep.active .trackNum{background:#111;color:#fff}
 .trackStep.current .trackNum{
 background:var(--red);color:#fff;
 box-shadow:0 0 0 5px #e5393515
@@ -133,14 +131,11 @@ box-shadow:0 0 0 5px #e5393515
 .trackLabel{
 margin-top:6px;font-size:9px;line-height:1.25;color:#888
 }
-.trackStep.active .trackLabel{
-color:#111;font-weight:750
-}
+.trackStep.active .trackLabel{color:#111;font-weight:750}
 .cancelTrack{
 padding:12px;border-radius:13px;background:#fee2e2;
 color:#b91c1c;font-size:12px;font-weight:800
 }
-
 .orderItems{
 margin:12px 0;padding:11px;border-radius:14px;
 background:#f7f7f8;font-size:13px
@@ -238,7 +233,6 @@ color:#e53935;font-size:12px
 }
 .timeNote{margin-top:7px;color:#888;font-size:11px}
 .muted{color:#777}.small{font-size:12px}
-
 .switch{
 width:48px;height:28px;padding:3px;border:0;border-radius:20px;
 background:#d1d1d6
@@ -249,7 +243,6 @@ background:#fff;transition:.2s
 }
 .switch.on{background:#16a34a}
 .switch.on i{transform:translateX(20px)}
-
 @media(max-width:420px){
 .pageTitle{font-size:25px}
 .productActions .btn{padding:7px 9px}
@@ -296,9 +289,7 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 </div>
 </div>
 
-<button class="btn light sm" onclick="openPage('settings')">
-⚙️
-</button>
+<button class="btn light sm" onclick="openPage('settings')">⚙️</button>
 </div>
 </header>
 
@@ -334,9 +325,7 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 <div class="statusBox">
 <div>
 <div class="statusTitle">สถานะร้าน</div>
-<div id="homeStoreText" class="statusText">
-กำลังตรวจสอบเวลา...
-</div>
+<div id="homeStoreText" class="statusText">กำลังตรวจสอบเวลา...</div>
 </div>
 </div>
 </div>
@@ -348,9 +337,7 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 <div class="muted small">รายการสั่งซื้อที่เข้ามาล่าสุด</div>
 </div>
 
-<button class="btn light sm" onclick="openPage('orders')">
-ดูทั้งหมด
-</button>
+<button class="btn light sm" onclick="openPage('orders')">ดูทั้งหมด</button>
 </div>
 
 <div id="recentOrders"></div>
@@ -363,9 +350,7 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 <div class="muted small">จัดการรายการอาหาร</div>
 </div>
 
-<button class="btn sm" onclick="openProduct()">
-+ เพิ่มเมนู
-</button>
+<button class="btn sm" onclick="openProduct()">+ เพิ่มเมนู</button>
 </div>
 </div>
 
@@ -395,11 +380,7 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 <button class="btn sm" onclick="openProduct()">+ เพิ่ม</button>
 </div>
 
-<input
-id="menuSearch"
-class="search"
-placeholder="ค้นหาเมนู..."
-oninput="renderProducts()">
+<input id="menuSearch" class="search" placeholder="ค้นหาเมนู..." oninput="renderProducts()">
 
 <div class="toolbar">
 <button class="btn sm" onclick="setCategory('all')">ทั้งหมด</button>
@@ -430,7 +411,6 @@ oninput="renderProducts()">
 <textarea id="storeDesc" placeholder="รายละเอียดร้าน"></textarea>
 
 <div class="formGrid">
-
 <div>
 <label>เวลาเปิด</label>
 <input id="openTime" type="time">
@@ -440,22 +420,14 @@ oninput="renderProducts()">
 <label>เวลาปิด</label>
 <input id="closeTime" type="time">
 </div>
-
 </div>
 
-<div class="timeNote">
-ตั้งเวลาปิดเป็น 00:00 = ปิดตอนเที่ยงคืน
-</div>
+<div class="timeNote">ตั้งเวลาปิดเป็น 00:00 = ปิดตอนเที่ยงคืน</div>
 
 <label>ข้อความตอนร้านปิด</label>
-<textarea
-id="storeMessage"
-placeholder="ขณะนี้ร้านปิด/ไม่ว่าง กรุณากลับมาใหม่ภายหลัง"></textarea>
+<textarea id="storeMessage" placeholder="ขณะนี้ร้านปิด/ไม่ว่าง กรุณากลับมาใหม่ภายหลัง"></textarea>
 
-<button
-class="btn"
-style="width:100%;margin-top:18px"
-onclick="saveStore()">
+<button class="btn" style="width:100%;margin-top:18px" onclick="saveStore()">
 บันทึกข้อมูลร้าน
 </button>
 
@@ -493,20 +465,11 @@ onclick="saveStore()">
 
 <label>รูปโปรโมชั่น</label>
 
-<input
-id="promoImageFile"
-type="file"
-accept="image/*"
-onchange="previewPromo(this)">
+<input id="promoImageFile" type="file" accept="image/*" onchange="previewPromo(this)">
 
-<div id="promoPreview" class="preview">
-ไม่มีรูป
-</div>
+<div id="promoPreview" class="preview">ไม่มีรูป</div>
 
-<button
-class="btn"
-style="width:100%;margin-top:18px"
-onclick="savePromotion()">
+<button class="btn" style="width:100%;margin-top:18px" onclick="savePromotion()">
 บันทึกโปรโมชั่น
 </button>
 
@@ -515,10 +478,7 @@ onclick="savePromotion()">
 <div class="card">
 <div class="sectionTitle">ออกจากระบบ</div>
 
-<button
-class="btn red"
-style="width:100%"
-onclick="logoutAdmin()">
+<button class="btn red" style="width:100%" onclick="logoutAdmin()">
 ออกจาก Admin
 </button>
 </div>
@@ -597,23 +557,14 @@ onclick="logoutAdmin()">
 
 <label>รูปเมนู</label>
 
-<input
-id="productImageFile"
-type="file"
-accept="image/*"
-onchange="previewProduct(this)">
+<input id="productImageFile" type="file" accept="image/*" onchange="previewProduct(this)">
 
-<div id="productPreview" class="preview">
-ไม่มีรูป
-</div>
+<div id="productPreview" class="preview">ไม่มีรูป</div>
 
 <div class="row" style="margin-top:14px">
 <span class="small muted">เปิดขาย</span>
 
-<button
-id="productActive"
-class="switch on"
-onclick="toggleProductActive()">
+<button id="productActive" class="switch on" onclick="toggleProductActive()">
 <i></i>
 </button>
 </div>
@@ -621,18 +572,12 @@ onclick="toggleProductActive()">
 <div class="row" style="margin-top:12px">
 <span class="small muted">เมนูแนะนำ</span>
 
-<button
-id="productFeatured"
-class="switch"
-onclick="toggleProductFeatured()">
+<button id="productFeatured" class="switch" onclick="toggleProductFeatured()">
 <i></i>
 </button>
 </div>
 
-<button
-class="btn green"
-style="width:100%;margin-top:20px"
-onclick="saveProduct()">
+<button class="btn green" style="width:100%;margin-top:20px" onclick="saveProduct()">
 บันทึกเมนู
 </button>
 
@@ -643,9 +588,7 @@ onclick="saveProduct()">
 
 <script type="module">
 
-import{
-initializeApp
-}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import{
 getFirestore,
@@ -709,19 +652,57 @@ return String(v??"")
 }
 
 function timeText(v){
+
 if(!v)return"-";
+
 try{
-return new Date(v).toLocaleString("th-TH",{
+
+if(typeof v==="object"&&v?.toDate)
+return v.toDate().toLocaleString("th-TH",{
 dateStyle:"short",
 timeStyle:"short"
 });
+
+const d=new Date(v);
+
+if(isNaN(d.getTime()))return"-";
+
+return d.toLocaleString("th-TH",{
+dateStyle:"short",
+timeStyle:"short"
+});
+
 }catch{
+
 return"-";
+
+}
+}
+
+function dateValue(v){
+
+if(!v)return 0;
+
+try{
+
+if(typeof v==="object"&&v?.toDate)
+return v.toDate().getTime();
+
+const d=new Date(v).getTime();
+
+return Number.isFinite(d)?d:0;
+
+}catch{
+
+return 0;
+
 }
 }
 
 function toast(t){
+
 const el=$("toast");
+
 el.textContent=t;
 el.classList.add("show");
 
@@ -729,14 +710,18 @@ clearTimeout(window.__toastTimer);
 
 window.__toastTimer=setTimeout(()=>{
 el.classList.remove("show");
-},2500);
+},3500);
+
 }
 
 function firebaseError(e){
+
 console.error(e);
+
 return e?.code
 ?e.code+" · "+(e.message||"")
 :(e?.message||"เกิดข้อผิดพลาด");
+
 }
 
 /* =========================
@@ -758,6 +743,7 @@ if(!Number.isFinite(h)||!Number.isFinite(m))
 return null;
 
 return h*60+m;
+
 }
 
 function isStoreOpenByTime(){
@@ -765,19 +751,18 @@ function isStoreOpenByTime(){
 const open=minutes(store.openTime);
 const close=minutes(store.closeTime);
 
-if(open===null||close===null)
-return true;
+if(open===null||close===null)return true;
 
 const now=new Date();
 const current=now.getHours()*60+now.getMinutes();
 
-if(open===close)
-return true;
+if(open===close)return true;
 
 if(open<close)
 return current>=open&&current<close;
 
 return current>=open||current<close;
+
 }
 
 function updateStoreUI(){
@@ -786,13 +771,13 @@ const open=isStoreOpenByTime();
 
 $("storeDot").className="dot "+(open?"on":"off");
 
-$("storeStatus").textContent=
-open?"ร้านเปิด":"ร้านปิด";
+$("storeStatus").textContent=open?"ร้านเปิด":"ร้านปิด";
 
 $("homeStoreText").textContent=
 open
 ?`ร้านเปิด · ${store.openTime||"--:--"} - ${store.closeTime||"--:--"}`
 :(store.message||"ร้านปิดชั่วคราว");
+
 }
 
 function startClock(){
@@ -801,8 +786,8 @@ updateStoreUI();
 
 clearInterval(window.__storeClock);
 
-window.__storeClock=
-setInterval(updateStoreUI,30000);
+window.__storeClock=setInterval(updateStoreUI,30000);
+
 }
 
 /* =========================
@@ -843,6 +828,7 @@ firstSettingsLoad=false;
 }
 
 scrollTo(0,0);
+
 };
 
 /* =========================
@@ -872,6 +858,7 @@ loadSettings();
 },
 err=>{
 console.error("STORE REALTIME:",err);
+toast("อ่านข้อมูลร้านไม่ได้: "+firebaseError(err));
 }
 );
 
@@ -890,6 +877,7 @@ loadSettings();
 },
 err=>{
 console.error("PROMOTION REALTIME:",err);
+toast("อ่านโปรโมชั่นไม่ได้: "+firebaseError(err));
 }
 );
 
@@ -916,6 +904,7 @@ renderHome();
 },
 err=>{
 console.error("PRODUCT REALTIME:",err);
+toast("อ่านเมนูไม่ได้: "+firebaseError(err));
 }
 );
 
@@ -931,9 +920,7 @@ id:x.id,
 ...x.data()
 }))
 .sort(
-(a,b)=>
-new Date(b.createdAt||0)-
-new Date(a.createdAt||0)
+(a,b)=>dateValue(b.createdAt)-dateValue(a.createdAt)
 );
 
 renderOrders();
@@ -941,12 +928,19 @@ renderHome();
 
 },
 err=>{
+
 console.error("ORDER REALTIME:",err);
-toast("เชื่อมต่อออเดอร์ไม่ได้");
+
+toast(
+"อ่านออเดอร์ไม่ได้: "+
+firebaseError(err)
+);
+
 }
 );
 
 startClock();
+
 }
 
 startRealtime();
@@ -981,6 +975,7 @@ $("promoPreview").textContent="ไม่มีรูป";
 }
 
 updateStoreUI();
+
 }
 
 window.saveStore=async function(){
@@ -1021,6 +1016,7 @@ firebaseError(e)
 );
 
 }
+
 };
 
 window.savePromotion=async function(){
@@ -1029,13 +1025,9 @@ const data={
 
 name:$("promoName").value.trim(),
 
-buyQty:Number(
-$("promoBuyQty").value||0
-),
+buyQty:Number($("promoBuyQty").value||0),
 
-freeQty:Number(
-$("promoFreeQty").value||0
-),
+freeQty:Number($("promoFreeQty").value||0),
 
 method:$("promoMethod").value,
 
@@ -1074,6 +1066,7 @@ firebaseError(e)
 );
 
 }
+
 };
 
 window.previewPromo=function(input){
@@ -1090,6 +1083,7 @@ $("promoPreview").innerHTML=
 };
 
 r.readAsDataURL(file);
+
 };
 
 /* =========================
@@ -1121,6 +1115,7 @@ String(p.description||"")
 ).toLowerCase();
 
 return okCat&&(!q||text.includes(q));
+
 });
 
 $("productsList").innerHTML=list.length
@@ -1213,6 +1208,7 @@ onclick="deleteProduct('${esc(p.id)}')">
 `).join("")
 
 :'<div class="empty">ไม่พบเมนู</div>';
+
 }
 
 window.openProduct=function(id=""){
@@ -1252,6 +1248,7 @@ $("productPreview").textContent="ไม่มีรูป";
 $("productImageFile").value="";
 
 $("productModal").classList.add("show");
+
 };
 
 window.closeProduct=function(){
@@ -1287,6 +1284,7 @@ $("productPreview").innerHTML=
 };
 
 r.readAsDataURL(file);
+
 };
 
 function compressImage(file,max=900,quality=.78){
@@ -1315,6 +1313,7 @@ const ratio=Math.min(max/w,max/h);
 
 w=Math.round(w*ratio);
 h=Math.round(h*ratio);
+
 }
 
 const canvas=document.createElement("canvas");
@@ -1347,6 +1346,7 @@ reject(new Error("อ่านไฟล์ไม่ได้"));
 reader.readAsDataURL(file);
 
 });
+
 }
 
 window.saveProduct=async function(){
@@ -1359,12 +1359,12 @@ name:$("productName").value.trim(),
 
 description:$("productDesc").value.trim(),
 
-price:Number(
-$("productPrice").value||0
-),
+price:Number($("productPrice").value||0),
 
 stock:$("productStock").value===""
+
 ?null
+
 :Number($("productStock").value),
 
 category:$("productCategory").value,
@@ -1373,11 +1373,9 @@ emoji:$("productEmoji").value||"🍢",
 
 badge:$("productBadge").value.trim(),
 
-active:$("productActive")
-.classList.contains("on"),
+active:$("productActive").classList.contains("on"),
 
-featured:$("productFeatured")
-.classList.contains("on")
+featured:$("productFeatured").classList.contains("on")
 
 };
 
@@ -1439,6 +1437,7 @@ firebaseError(e)
 );
 
 }
+
 };
 
 window.toggleSale=async function(id){
@@ -1470,6 +1469,7 @@ firebaseError(e)
 );
 
 }
+
 };
 
 window.deleteProduct=async function(id){
@@ -1497,6 +1497,7 @@ firebaseError(e)
 );
 
 }
+
 };
 
 window.moveProduct=async function(id,dir){
@@ -1540,6 +1541,7 @@ firebaseError(e)
 );
 
 }
+
 };
 
 /* =========================
@@ -1557,7 +1559,20 @@ if(items&&typeof items==="object")
 return Object.values(items);
 
 return [];
+
 }
+
+/*
+  สถานะภายในใหม่:
+  pending
+  preparing
+  ready
+  completed
+  cancelled
+
+  accepted = สถานะเก่าที่เคยใช้
+  และจะถูกแปลงเป็น preparing
+*/
 
 function normalizeStatus(s){
 
@@ -1577,7 +1592,7 @@ x==="cooking"||
 x==="doing"||
 x==="process"
 )
-return"accepted";
+return"preparing";
 
 if(
 x==="ready"||
@@ -1600,6 +1615,7 @@ x==="canceled"
 return"cancelled";
 
 return"pending";
+
 }
 
 function statusName(s){
@@ -1607,12 +1623,21 @@ function statusName(s){
 return{
 
 pending:"รอรับออเดอร์",
-accepted:"กำลังทำ",
+preparing:"กำลังทำ",
 ready:"พร้อมส่ง",
 completed:"สำเร็จ",
 cancelled:"ยกเลิก"
 
 }[normalizeStatus(s)]||"รอรับออเดอร์";
+
+}
+
+function statusClass(s){
+
+const x=normalizeStatus(s);
+
+return x==="preparing"?"accepted":x;
+
 }
 
 function paymentIsConfirmed(o){
@@ -1624,9 +1649,7 @@ o.paymentVerified===true;
 
 function paymentInfo(o){
 
-const method=String(
-o.paymentMethod||""
-);
+const method=String(o.paymentMethod||"");
 
 const confirmed=paymentIsConfirmed(o);
 
@@ -1706,7 +1729,7 @@ const steps=[
 
 const index={
 pending:0,
-accepted:1,
+preparing:1,
 ready:2,
 completed:3
 }[s]??0;
@@ -1743,6 +1766,7 @@ ${x[1]}
 </div>
 </div>
 `;
+
 }
 
 function orderHTML(o){
@@ -1761,9 +1785,7 @@ Number(x.qty||x.quantity||1),
 )
 );
 
-const method=String(
-o.paymentMethod||""
-);
+const method=String(o.paymentMethod||"");
 
 const isQR=
 method.toLowerCase().includes("qr")||
@@ -1799,7 +1821,7 @@ ${timeText(o.createdAt)}
 
 </div>
 
-<div class="orderStatus s-${status}">
+<div class="orderStatus s-${statusClass(status)}">
 ${statusName(status)}
 </div>
 
@@ -1909,7 +1931,7 @@ status==="pending"
 ?`
 <button
 class="btn blue sm"
-onclick="changeOrderStatus('${esc(o.id)}','accepted')">
+onclick="changeOrderStatus('${esc(o.id)}','preparing')">
 รับออเดอร์
 </button>
 `
@@ -1917,7 +1939,7 @@ onclick="changeOrderStatus('${esc(o.id)}','accepted')">
 }
 
 ${
-status==="accepted"
+status==="preparing"
 ?`
 <button
 class="btn sm"
@@ -1957,6 +1979,7 @@ onclick="changeOrderStatus('${esc(o.id)}','cancelled')">
 
 </div>
 `;
+
 }
 
 function renderOrders(){
@@ -1976,6 +1999,7 @@ $("ordersList").innerHTML=list.length
 ?list.map(orderHTML).join("")
 
 :'<div class="empty">ไม่มีออเดอร์</div>';
+
 }
 
 function renderHome(){
@@ -2004,6 +2028,7 @@ $("recentOrders").innerHTML=
 recent.length
 ?recent.map(orderHTML).join("")
 :'<div class="empty">ยังไม่มีออเดอร์</div>';
+
 }
 
 window.setOrderFilter=function(v){
@@ -2012,6 +2037,10 @@ orderFilter=v;
 renderOrders();
 
 };
+
+/* =========================
+   PAYMENT
+========================= */
 
 window.verifyPayment=async function(id){
 
@@ -2057,7 +2086,49 @@ firebaseError(e)
 );
 
 }
+
 };
+
+/* =========================
+   ORDER STATUS
+========================= */
+
+function statusLabelFor(s){
+
+return{
+
+pending:"รอรับออเดอร์",
+preparing:"กำลังทำ",
+ready:"พร้อมส่ง",
+completed:"เสร็จสิ้น",
+cancelled:"ยกเลิก"
+
+}[normalizeStatus(s)]||"รอรับออเดอร์";
+
+}
+
+function historyObject(oldHistory,status,label,now){
+
+let history={};
+
+if(
+oldHistory&&
+typeof oldHistory==="object"&&
+!Array.isArray(oldHistory)
+){
+
+history={...oldHistory};
+
+}
+
+history[status]={
+label:label,
+time:now
+};
+
+return history;
+
+}
 
 window.changeOrderStatus=async function(id,newStatus){
 
@@ -2076,6 +2147,8 @@ return;
 
 }
 
+const now=new Date().toISOString();
+
 try{
 
 /* =========================
@@ -2083,7 +2156,7 @@ try{
 ========================= */
 
 if(
-status==="accepted"&&
+status==="preparing"&&
 !o.stockDeducted
 ){
 
@@ -2159,12 +2232,22 @@ Number(p.stock)-need[pid]
 
 }
 
+/* อัปเดตออเดอร์หลังตัดสต็อกสำเร็จ */
+
 await updateDoc(
 doc(db,"orders",id),
 {
-status:"accepted",
+status:"preparing",
+statusLabel:"กำลังทำ",
+statusUpdatedAt:now,
+statusHistory:historyObject(
+o.statusHistory,
+"preparing",
+"กำลังทำ",
+now
+),
 stockDeducted:true,
-updatedAt:new Date().toISOString()
+updatedAt:now
 }
 );
 
@@ -2174,15 +2257,23 @@ await updateDoc(
 doc(db,"orders",id),
 {
 status,
-updatedAt:new Date().toISOString()
+statusLabel:statusLabelFor(status),
+statusUpdatedAt:now,
+statusHistory:historyObject(
+o.statusHistory,
+status,
+statusLabelFor(status),
+now
+),
+updatedAt:now
 }
 );
 
 }
 
 toast(
-status==="accepted"
-?"รับออเดอร์แล้ว"
+status==="preparing"
+?"รับออเดอร์แล้ว · กำลังทำ"
 :status==="ready"
 ?"ออเดอร์พร้อมส่งแล้ว"
 :status==="completed"
@@ -2205,6 +2296,7 @@ firebaseError(e)
 );
 
 }
+
 };
 
 </script>
