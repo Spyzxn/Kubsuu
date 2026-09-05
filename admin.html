@@ -97,9 +97,7 @@ textarea{min-height:90px;resize:vertical}
 padding:15px;margin-bottom:10px;border:1px solid var(--line);
 border-radius:18px;background:#fff
 }
-.orderHeader{
-display:flex;justify-content:space-between;align-items:flex-start;gap:10px
-}
+.orderHeader{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
 .orderId{font-size:14px;font-weight:850}
 .orderDate{margin-top:3px;color:var(--muted);font-size:11px}
 .orderStatus{
@@ -111,10 +109,7 @@ font-weight:800;white-space:nowrap
 .s-ready{background:#ede9fe;color:#6d28d9}
 .s-completed{background:#dcfce7;color:#166534}
 .s-cancelled{background:#fee2e2;color:#b91c1c}
-
-.track{
-margin:13px 0;padding:14px;border-radius:16px;background:#f7f7f8
-}
+.track{margin:13px 0;padding:14px;border-radius:16px;background:#f7f7f8}
 .trackTitle{font-size:12px;font-weight:850;margin-bottom:12px}
 .trackSteps{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
 .trackStep{text-align:center;position:relative}
@@ -124,33 +119,14 @@ display:flex;align-items:center;justify-content:center;
 background:#e1e1e4;color:#888;font-size:11px;font-weight:900
 }
 .trackStep.active .trackNum{background:#111;color:#fff}
-.trackStep.current .trackNum{
-background:var(--red);color:#fff;
-box-shadow:0 0 0 5px #e5393515
-}
-.trackLabel{
-margin-top:6px;font-size:9px;line-height:1.25;color:#888
-}
+.trackStep.current .trackNum{background:var(--red);color:#fff;box-shadow:0 0 0 5px #e5393515}
+.trackLabel{margin-top:6px;font-size:9px;line-height:1.25;color:#888}
 .trackStep.active .trackLabel{color:#111;font-weight:750}
-.cancelTrack{
-padding:12px;border-radius:13px;background:#fee2e2;
-color:#b91c1c;font-size:12px;font-weight:800
-}
-.orderItems{
-margin:12px 0;padding:11px;border-radius:14px;
-background:#f7f7f8;font-size:13px
-}
-.orderItem{
-display:flex;justify-content:space-between;gap:10px;margin:6px 0
-}
-.orderTotal{
-display:flex;justify-content:space-between;
-margin-top:10px;font-size:17px;font-weight:900
-}
-.payment{
-margin-top:11px;padding:12px;border-radius:14px;
-background:#f7f7f8;font-size:12px
-}
+.cancelTrack{padding:12px;border-radius:13px;background:#fee2e2;color:#b91c1c;font-size:12px;font-weight:800}
+.orderItems{margin:12px 0;padding:11px;border-radius:14px;background:#f7f7f8;font-size:13px}
+.orderItem{display:flex;justify-content:space-between;gap:10px;margin:6px 0}
+.orderTotal{display:flex;justify-content:space-between;margin-top:10px;font-size:17px;font-weight:900}
+.payment{margin-top:11px;padding:12px;border-radius:14px;background:#f7f7f8;font-size:12px}
 .payment.ok{background:#dcfce7;color:#166534}
 .payment.wait{background:#fef3c7;color:#92400e}
 .paymentTitle{font-weight:850;font-size:13px}
@@ -158,8 +134,7 @@ background:#f7f7f8;font-size:12px
 .actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
 .preview{
 width:100%;height:170px;margin-top:8px;border-radius:18px;
-overflow:hidden;background:#e8e8ea;
-display:flex;align-items:center;justify-content:center
+overflow:hidden;background:#e8e8ea;display:flex;align-items:center;justify-content:center
 }
 .preview img{width:100%;height:100%;object-fit:cover}
 .modalBg{
@@ -172,26 +147,17 @@ width:min(620px,100%);max-height:93vh;overflow:auto;
 padding:18px 16px 30px;border-radius:28px 28px 0 0;
 background:#f5f5f7;animation:slideUp .2s ease
 }
-@keyframes slideUp{
-from{transform:translateY(50px);opacity:0}
-to{transform:none;opacity:1}
-}
-.modalHeader{
-display:flex;justify-content:space-between;
-align-items:center;margin-bottom:10px
-}
+@keyframes slideUp{from{transform:translateY(50px);opacity:0}to{transform:none;opacity:1}}
+.modalHeader{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .modalHeader h3{margin:0;font-size:18px}
-.close{
-width:36px;height:36px;border:0;border-radius:50%;
-background:#e9e9eb;font-size:20px
-}
+.close{width:36px;height:36px;border:0;border-radius:50%;background:#e9e9eb;font-size:20px}
 .empty{padding:30px 10px;text-align:center;color:#888;font-size:13px}
 .nav{
 position:fixed;left:50%;bottom:12px;transform:translateX(-50%);
-z-index:100;width:min(590px,calc(100% - 24px));
-display:grid;grid-template-columns:repeat(4,1fr);padding:7px;
-border:1px solid #fff;border-radius:24px;background:#ffffffed;
-backdrop-filter:blur(25px);box-shadow:0 10px 35px #0002
+z-index:100;width:min(590px,calc(100% - 24px));display:grid;
+grid-template-columns:repeat(4,1fr);padding:7px;border:1px solid #fff;
+border-radius:24px;background:#ffffffed;backdrop-filter:blur(25px);
+box-shadow:0 10px 35px #0002
 }
 .nav button{
 border:0;background:none;padding:9px 4px;border-radius:17px;
@@ -203,18 +169,14 @@ color:#777;font-size:11px;font-weight:750
 position:fixed;left:50%;bottom:90px;z-index:500;
 transform:translateX(-50%) translateY(20px);padding:11px 16px;
 border-radius:14px;background:#111;color:#fff;font-size:13px;
-opacity:0;pointer-events:none;transition:.25s;
-max-width:90%;text-align:center
+opacity:0;pointer-events:none;transition:.25s;max-width:90%;text-align:center
 }
 .toast.show{opacity:1;transform:translateX(-50%)}
 #loginScreen{
 position:fixed;inset:0;z-index:9999;background:#f5f5f7;
 display:flex;align-items:center;justify-content:center;padding:20px
 }
-.loginBox{
-width:min(390px,100%);background:#fff;border-radius:28px;
-padding:28px;box-shadow:0 15px 50px #00000012
-}
+.loginBox{width:min(390px,100%);background:#fff;border-radius:28px;padding:28px;box-shadow:0 15px 50px #00000012}
 .loginLogo{font-size:28px;font-weight:900;letter-spacing:-1px}
 .loginSub{margin-top:5px;color:#777;font-size:13px}
 .loginInput{
@@ -224,25 +186,25 @@ background:#f7f7f8!important;font-size:16px!important
 }
 .loginBtn{
 width:100%;margin-top:10px;padding:14px;border:0;
-border-radius:15px;background:#111;color:#fff;
-font-weight:800;font-size:15px
+border-radius:15px;background:#111;color:#fff;font-weight:800;font-size:15px
 }
-.loginError{
-display:none;margin-top:12px;text-align:center;
-color:#e53935;font-size:12px
-}
+.loginError{display:none;margin-top:12px;text-align:center;color:#e53935;font-size:12px}
 .timeNote{margin-top:7px;color:#888;font-size:11px}
 .muted{color:#777}.small{font-size:12px}
 .switch{
-width:48px;height:28px;padding:3px;border:0;border-radius:20px;
-background:#d1d1d6
+width:48px;height:28px;padding:3px;border:0;border-radius:20px;background:#d1d1d6
 }
-.switch i{
-display:block;width:22px;height:22px;border-radius:50%;
-background:#fff;transition:.2s
-}
+.switch i{display:block;width:22px;height:22px;border-radius:50%;background:#fff;transition:.2s}
 .switch.on{background:#16a34a}
 .switch.on i{transform:translateX(20px)}
+.promoStatus{
+margin-top:8px;font-size:12px;font-weight:800
+}
+.promoStatus.on{color:var(--green)}
+.promoStatus.off{color:var(--red)}
+.categoryNote{
+margin-top:6px;color:#888;font-size:11px
+}
 @media(max-width:420px){
 .pageTitle{font-size:25px}
 .productActions .btn{padding:7px 9px}
@@ -258,21 +220,9 @@ background:#fff;transition:.2s
 <div class="loginBox">
 <div class="loginLogo">MALA FRIED</div>
 <div class="loginSub">เข้าสู่ระบบหลังร้าน</div>
-
-<input id="adminPassword"
-class="loginInput"
-type="password"
-placeholder="รหัสผ่าน"
-autocomplete="current-password"
-onkeydown="if(event.key==='Enter')loginAdmin()">
-
-<button class="loginBtn" onclick="loginAdmin()">
-เข้าสู่หลังร้าน
-</button>
-
-<div id="loginError" class="loginError">
-รหัสผ่านไม่ถูกต้อง
-</div>
+<input id="adminPassword" class="loginInput" type="password" placeholder="รหัสผ่าน" autocomplete="current-password" onkeydown="if(event.key==='Enter')loginAdmin()">
+<button class="loginBtn" onclick="loginAdmin()">เข้าสู่หลังร้าน</button>
+<div id="loginError" class="loginError">รหัสผ่านไม่ถูกต้อง</div>
 </div>
 </div>
 
@@ -288,7 +238,6 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 <span id="storeStatus">กำลังตรวจสอบเวลา...</span>
 </div>
 </div>
-
 <button class="btn light sm" onclick="openPage('settings')">⚙️</button>
 </div>
 </header>
@@ -300,25 +249,10 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 <h1 class="pageTitle">หลังร้าน</h1>
 
 <div class="stats">
-<div class="stat">
-<div class="statLabel">สินค้าทั้งหมด</div>
-<div id="statProducts" class="statValue">0</div>
-</div>
-
-<div class="stat">
-<div class="statLabel">เปิดขาย</div>
-<div id="statActive" class="statValue">0</div>
-</div>
-
-<div class="stat">
-<div class="statLabel">ออเดอร์</div>
-<div id="statOrders" class="statValue">0</div>
-</div>
-
-<div class="stat">
-<div class="statLabel">ใกล้หมด</div>
-<div id="statLow" class="statValue">0</div>
-</div>
+<div class="stat"><div class="statLabel">สินค้าทั้งหมด</div><div id="statProducts" class="statValue">0</div></div>
+<div class="stat"><div class="statLabel">เปิดขาย</div><div id="statActive" class="statValue">0</div></div>
+<div class="stat"><div class="statLabel">ออเดอร์</div><div id="statOrders" class="statValue">0</div></div>
+<div class="stat"><div class="statLabel">ใกล้หมด</div><div id="statLow" class="statValue">0</div></div>
 </div>
 
 <div class="card">
@@ -336,10 +270,8 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 <div class="sectionTitle">ออเดอร์ล่าสุด</div>
 <div class="muted small">รายการสั่งซื้อที่เข้ามาล่าสุด</div>
 </div>
-
 <button class="btn light sm" onclick="openPage('orders')">ดูทั้งหมด</button>
 </div>
-
 <div id="recentOrders"></div>
 </div>
 
@@ -349,7 +281,6 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 <div class="sectionTitle">เมนู</div>
 <div class="muted small">จัดการรายการอาหาร</div>
 </div>
-
 <button class="btn sm" onclick="openProduct()">+ เพิ่มเมนู</button>
 </div>
 </div>
@@ -382,12 +313,13 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 
 <input id="menuSearch" class="search" placeholder="ค้นหาเมนู..." oninput="renderProducts()">
 
+<!-- 5 หมวด ตรงกับเว็บลูกค้า -->
 <div class="toolbar">
 <button class="btn sm" onclick="setCategory('all')">ทั้งหมด</button>
-<button class="btn light sm" onclick="setCategory('meat')">🥩 เนื้อ</button>
-<button class="btn light sm" onclick="setCategory('seafood')">🦐 ทะเล</button>
-<button class="btn light sm" onclick="setCategory('vegetable')">🥬 ผัก</button>
-<button class="btn light sm" onclick="setCategory('other')">อื่นๆ</button>
+<button class="btn light sm" onclick="setCategory('เนื้อ')">🥩 เนื้อ</button>
+<button class="btn light sm" onclick="setCategory('ลูกชิ้น')">🍢 ลูกชิ้น</button>
+<button class="btn light sm" onclick="setCategory('ปลา,กุ้ง,หมึก')">🦐 ปลา,กุ้ง,หมึก</button>
+<button class="btn light sm" onclick="setCategory('ผักและอื่นๆ')">🥦 ผักและอื่นๆ</button>
 </div>
 
 <div class="card">
@@ -415,7 +347,6 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 <label>เวลาเปิด</label>
 <input id="openTime" type="time">
 </div>
-
 <div>
 <label>เวลาปิด</label>
 <input id="closeTime" type="time">
@@ -427,15 +358,24 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 <label>ข้อความตอนร้านปิด</label>
 <textarea id="storeMessage" placeholder="ขณะนี้ร้านปิด/ไม่ว่าง กรุณากลับมาใหม่ภายหลัง"></textarea>
 
-<button class="btn" style="width:100%;margin-top:18px" onclick="saveStore()">
-บันทึกข้อมูลร้าน
-</button>
+<button class="btn" style="width:100%;margin-top:18px" onclick="saveStore()">บันทึกข้อมูลร้าน</button>
 
 </div>
 
 <div class="card">
 
-<div class="sectionTitle">โปรโมชั่น</div>
+<div class="row">
+<div>
+<div class="sectionTitle" style="margin-bottom:3px">โปรโมชั่น</div>
+<div class="muted small">เปิดหรือปิดโปรโมชั่นบนเว็บลูกค้า</div>
+</div>
+
+<button id="promoEnabled" class="switch" onclick="togglePromotion()">
+<i></i>
+</button>
+</div>
+
+<div id="promoStatus" class="promoStatus off">โปรโมชั่นปิดอยู่</div>
 
 <label>ชื่อโปรโมชั่น</label>
 <input id="promoName" placeholder="เช่น ซื้อ 10 แถม 1">
@@ -445,7 +385,6 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 <label>ซื้อ</label>
 <input id="promoBuyQty" type="number" min="1">
 </div>
-
 <div>
 <label>แถม</label>
 <input id="promoFreeQty" type="number" min="0">
@@ -469,18 +408,13 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 
 <div id="promoPreview" class="preview">ไม่มีรูป</div>
 
-<button class="btn" style="width:100%;margin-top:18px" onclick="savePromotion()">
-บันทึกโปรโมชั่น
-</button>
+<button class="btn" style="width:100%;margin-top:18px" onclick="savePromotion()">บันทึกโปรโมชั่น</button>
 
 </div>
 
 <div class="card">
 <div class="sectionTitle">ออกจากระบบ</div>
-
-<button class="btn red" style="width:100%" onclick="logoutAdmin()">
-ออกจาก Admin
-</button>
+<button class="btn red" style="width:100%" onclick="logoutAdmin()">ออกจาก Admin</button>
 </div>
 
 </section>
@@ -510,7 +444,6 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 </div>
 
 <div id="productModal" class="modalBg" onclick="closeModal(event)">
-
 <div class="modal">
 
 <div class="modalHeader">
@@ -543,11 +476,15 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 <label>หมวดหมู่</label>
 
 <select id="productCategory">
-<option value="meat">เนื้อ</option>
-<option value="seafood">ทะเล</option>
-<option value="vegetable">ผัก</option>
-<option value="other">อื่นๆ</option>
+<option value="เนื้อ">เนื้อ</option>
+<option value="ลูกชิ้น">ลูกชิ้น</option>
+<option value="ปลา,กุ้ง,หมึก">ปลา,กุ้ง,หมึก</option>
+<option value="ผักและอื่นๆ">ผักและอื่นๆ</option>
 </select>
+
+<div class="categoryNote">
+หมวดหมู่นี้ตรงกับหมวดหมู่บนเว็บลูกค้าโดยตรง
+</div>
 
 <label>Emoji</label>
 <input id="productEmoji" placeholder="🍢">
@@ -563,23 +500,15 @@ onkeydown="if(event.key==='Enter')loginAdmin()">
 
 <div class="row" style="margin-top:14px">
 <span class="small muted">เปิดขาย</span>
-
-<button id="productActive" class="switch on" onclick="toggleProductActive()">
-<i></i>
-</button>
+<button id="productActive" class="switch on" onclick="toggleProductActive()"><i></i></button>
 </div>
 
 <div class="row" style="margin-top:12px">
 <span class="small muted">เมนูแนะนำ</span>
-
-<button id="productFeatured" class="switch" onclick="toggleProductFeatured()">
-<i></i>
-</button>
+<button id="productFeatured" class="switch" onclick="toggleProductFeatured()"><i></i></button>
 </div>
 
-<button class="btn green" style="width:100%;margin-top:20px" onclick="saveProduct()">
-บันทึกเมนู
-</button>
+<button class="btn green" style="width:100%;margin-top:20px" onclick="saveProduct()">บันทึกเมนู</button>
 
 </div>
 </div>
@@ -594,7 +523,6 @@ import{
 getFirestore,
 collection,
 doc,
-getDoc,
 addDoc,
 updateDoc,
 deleteDoc,
@@ -615,6 +543,39 @@ measurementId:"G-276HMQGECP"
 const app=initializeApp(firebaseConfig);
 const db=getFirestore(app);
 
+/* =========================
+   หมวดหมู่ตรงกับเว็บลูกค้า
+========================= */
+
+const CATEGORIES=[
+"เนื้อ",
+"ลูกชิ้น",
+"ปลา,กุ้ง,หมึก",
+"ผักและอื่นๆ"
+];
+
+/* รองรับข้อมูลเก่าที่เคยใช้หมวดเดิม */
+const OLD_CATEGORY_MAP={
+meat:"เนื้อ",
+seafood:"ปลา,กุ้ง,หมึก",
+vegetable:"ผักและอื่นๆ",
+other:"ผักและอื่นๆ"
+};
+
+function normalizeCategory(v){
+
+const x=String(v||"").trim();
+
+if(OLD_CATEGORY_MAP[x])
+return OLD_CATEGORY_MAP[x];
+
+if(CATEGORIES.includes(x))
+return x;
+
+return "ผักและอื่นๆ";
+
+}
+
 let products=[];
 let orders=[];
 
@@ -626,7 +587,14 @@ openTime:"13:00",
 closeTime:"00:00"
 };
 
-let promotion={enabled:false};
+let promotion={
+enabled:false,
+name:"",
+buyQty:10,
+freeQty:1,
+method:"buyfree",
+customerText:""
+};
 
 let orderFilter="all";
 let category="all";
@@ -869,7 +837,10 @@ doc(db,"settings","promotion"),
 snap=>{
 
 if(snap.exists())
-promotion={...promotion,...snap.data()};
+promotion={
+...promotion,
+...snap.data()
+};
 
 if(firstSettingsLoad)
 loadSettings();
@@ -888,10 +859,18 @@ collection(db,"products"),
 snap=>{
 
 products=snap.docs
-.map(x=>({
+.map(x=>{
+
+const data=x.data();
+const fixedCategory=normalizeCategory(data.category);
+
+return{
 id:x.id,
-...x.data()
-}))
+...data,
+category:fixedCategory
+};
+
+})
 .sort(
 (a,b)=>
 Number(a.sortOrder??999999)-
@@ -963,6 +942,8 @@ $("promoFreeQty").value=promotion.freeQty||"";
 $("promoMethod").value=promotion.method||"buyfree";
 $("promoCustomerText").value=promotion.customerText||"";
 
+setPromotionUI(promotion.enabled===true);
+
 if(promotion.image){
 
 $("promoPreview").innerHTML=
@@ -977,6 +958,31 @@ $("promoPreview").textContent="ไม่มีรูป";
 updateStoreUI();
 
 }
+
+function setPromotionUI(on){
+
+$("promoEnabled").className="switch "+(on?"on":"");
+
+$("promoStatus").className=
+"promoStatus "+(on?"on":"off");
+
+$("promoStatus").textContent=
+on
+?"โปรโมชั่นกำลังเปิดใช้งาน"
+:"โปรโมชั่นปิดอยู่";
+
+}
+
+window.togglePromotion=function(){
+
+promotion.enabled=
+!(
+promotion.enabled===true
+);
+
+setPromotionUI(promotion.enabled);
+
+};
 
 window.saveStore=async function(){
 
@@ -1056,7 +1062,11 @@ promotion={...promotion,...data};
 
 loadSettings();
 
-toast("บันทึกโปรโมชั่นแล้ว");
+toast(
+data.enabled
+?"บันทึกโปรโมชั่นแล้ว · เปิดใช้งาน"
+:"บันทึกโปรโมชั่นแล้ว · ปิดใช้งาน"
+);
 
 }catch(e){
 
@@ -1107,7 +1117,7 @@ const list=products.filter(p=>{
 
 const okCat=
 category==="all"||
-p.category===category;
+normalizeCategory(p.category)===category;
 
 const text=(
 String(p.name||"")+" "+
@@ -1152,6 +1162,10 @@ ${esc(p.description||"")}
 
 <div class="price">
 ${money(p.price)}
+</div>
+
+<div class="muted small">
+หมวด: ${esc(normalizeCategory(p.category))}
 </div>
 
 <div class="muted small">
@@ -1224,7 +1238,7 @@ $("productName").value=p?.name||"";
 $("productDesc").value=p?.description||"";
 $("productPrice").value=p?.price??"";
 $("productStock").value=p?.stock??"";
-$("productCategory").value=p?.category||"meat";
+$("productCategory").value=normalizeCategory(p?.category);
 $("productEmoji").value=p?.emoji||"🍢";
 $("productBadge").value=p?.badge||"";
 
@@ -1367,7 +1381,8 @@ stock:$("productStock").value===""
 
 :Number($("productStock").value),
 
-category:$("productCategory").value,
+/* บันทึกเป็นชื่อหมวดตรงกับเว็บลูกค้า */
+category:normalizeCategory($("productCategory").value),
 
 emoji:$("productEmoji").value||"🍢",
 
@@ -1382,6 +1397,13 @@ featured:$("productFeatured").classList.contains("on")
 if(!data.name){
 
 toast("กรุณาใส่ชื่อเมนู");
+return;
+
+}
+
+if(!CATEGORIES.includes(data.category)){
+
+toast("กรุณาเลือกหมวดหมู่");
 return;
 
 }
@@ -1562,56 +1584,23 @@ return [];
 
 }
 
-/*
-  สถานะภายในใหม่:
-  pending
-  preparing
-  ready
-  completed
-  cancelled
-
-  accepted = สถานะเก่าที่เคยใช้
-  และจะถูกแปลงเป็น preparing
-*/
-
 function normalizeStatus(s){
 
 const x=String(s||"pending").toLowerCase();
 
-if(
-x==="pending"||
-x==="waiting"||
-x==="new"
-)
+if(x==="pending"||x==="waiting"||x==="new")
 return"pending";
 
-if(
-x==="accepted"||
-x==="preparing"||
-x==="cooking"||
-x==="doing"||
-x==="process"
-)
+if(x==="accepted"||x==="preparing"||x==="cooking"||x==="doing"||x==="process")
 return"preparing";
 
-if(
-x==="ready"||
-x==="prepared"||
-x==="ready_for_pickup"
-)
+if(x==="ready"||x==="prepared"||x==="ready_for_pickup")
 return"ready";
 
-if(
-x==="completed"||
-x==="complete"||
-x==="done"
-)
+if(x==="completed"||x==="complete"||x==="done")
 return"completed";
 
-if(
-x==="cancelled"||
-x==="canceled"
-)
+if(x==="cancelled"||x==="canceled")
 return"cancelled";
 
 return"pending";
@@ -1621,13 +1610,11 @@ return"pending";
 function statusName(s){
 
 return{
-
 pending:"รอรับออเดอร์",
 preparing:"กำลังทำ",
 ready:"พร้อมส่ง",
 completed:"สำเร็จ",
 cancelled:"ยกเลิก"
-
 }[normalizeStatus(s)]||"รอรับออเดอร์";
 
 }
@@ -1697,10 +1684,6 @@ text:o.paymentStatus||
 
 }
 
-/* =========================
-   ORDER PROGRESS
-========================= */
-
 function orderProgress(status){
 
 const s=normalizeStatus(status);
@@ -1710,11 +1693,7 @@ if(s==="cancelled"){
 return`
 <div class="track">
 <div class="trackTitle">ความคืบหน้าออเดอร์</div>
-
-<div class="cancelTrack">
-✕ ออเดอร์นี้ถูกยกเลิก
-</div>
-
+<div class="cancelTrack">✕ ออเดอร์นี้ถูกยกเลิก</div>
 </div>
 `;
 
@@ -1737,9 +1716,7 @@ completed:3
 return`
 <div class="track">
 
-<div class="trackTitle">
-ความคืบหน้าออเดอร์
-</div>
+<div class="trackTitle">ความคืบหน้าออเดอร์</div>
 
 <div class="trackSteps">
 
@@ -1750,13 +1727,8 @@ steps.map((x,i)=>`
 ${i<=index?"active":""}
 ${i===index?"current":""}">
 
-<div class="trackNum">
-${x[0]}
-</div>
-
-<div class="trackLabel">
-${x[1]}
-</div>
+<div class="trackNum">${x[0]}</div>
+<div class="trackLabel">${x[1]}</div>
 
 </div>
 
@@ -1831,16 +1803,8 @@ ${
 o.customerName||o.customerPhone
 ?`
 <div style="margin-top:10px;font-size:12px">
-<strong>
-${esc(o.customerName||"ลูกค้า")}
-</strong>
-
-${
-o.customerPhone
-?` · ${esc(o.customerPhone)}`
-:""
-}
-
+<strong>${esc(o.customerName||"ลูกค้า")}</strong>
+${o.customerPhone?` · ${esc(o.customerPhone)}`:""}
 </div>
 `
 :""
@@ -1988,16 +1952,20 @@ let list=orders;
 
 if(orderFilter!=="all"){
 
+/* รองรับปุ่มเดิม accepted = preparing */
+const wanted=
+orderFilter==="accepted"
+?"preparing"
+:orderFilter;
+
 list=list.filter(
-x=>normalizeStatus(x.status)===orderFilter
+x=>normalizeStatus(x.status)===wanted
 );
 
 }
 
 $("ordersList").innerHTML=list.length
-
 ?list.map(orderHTML).join("")
-
 :'<div class="empty">ไม่มีออเดอร์</div>';
 
 }
@@ -2096,13 +2064,11 @@ firebaseError(e)
 function statusLabelFor(s){
 
 return{
-
 pending:"รอรับออเดอร์",
 preparing:"กำลังทำ",
 ready:"พร้อมส่ง",
 completed:"เสร็จสิ้น",
 cancelled:"ยกเลิก"
-
 }[normalizeStatus(s)]||"รอรับออเดอร์";
 
 }
@@ -2151,9 +2117,7 @@ const now=new Date().toISOString();
 
 try{
 
-/* =========================
-   ตัดสต็อกเมื่อรับออเดอร์
-========================= */
+/* ตัดสต็อกเมื่อรับออเดอร์ */
 
 if(
 status==="preparing"&&
@@ -2232,7 +2196,7 @@ Number(p.stock)-need[pid]
 
 }
 
-/* อัปเดตออเดอร์หลังตัดสต็อกสำเร็จ */
+/* อัปเดตออเดอร์ */
 
 await updateDoc(
 doc(db,"orders",id),
@@ -2308,7 +2272,6 @@ const ADMIN_PASSWORD="spyks12021999";
 function showAdmin(){
 
 document.getElementById("loginScreen").style.display="none";
-
 document.getElementById("adminApp").style.display="block";
 
 }
