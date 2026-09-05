@@ -47,13 +47,205 @@ header{padding:18px 17px 8px;display:flex;align-items:center;gap:11px}
 .cat{flex:none;background:#fff;border-radius:14px;padding:10px 15px;font-size:12px;font-weight:700;box-shadow:0 3px 15px #00000008}
 .cat.active{background:#111;color:#fff}
 
-.mini-promo{min-height:74px;background:#eee9df;border-radius:19px;padding:13px;display:flex;align-items:center;justify-content:space-between;gap:10px;overflow:hidden;background-size:cover;background-position:center;position:relative}
-.mini-promo>*{position:relative;z-index:1}
-.promo-left{min-width:0}
-.promo-label{font-size:10px;font-weight:800;color:#a10000}
-.promo-name{font-size:15px;font-weight:900;margin-top:2px}
-.promo-rule{font-size:10px;color:#777;margin-top:2px}
-.promo-btn{background:#111;color:#fff;border-radius:11px;padding:9px 12px;font-size:11px;font-weight:800;flex:none}
+
+/* =========================================================
+   PROMOTION — ปรับใหม่ให้เด่น แต่ไม่ใหญ่
+========================================================= */
+
+.promo-section{
+padding:0 17px;
+margin-bottom:18px;
+}
+
+.mini-promo{
+position:relative;
+min-height:92px;
+border-radius:21px;
+overflow:hidden;
+background:#111;
+color:#fff;
+display:flex;
+align-items:center;
+padding:12px 12px 12px 13px;
+box-shadow:0 8px 25px #00000014;
+}
+
+.promo-glow{
+position:absolute;
+width:150px;
+height:150px;
+right:-55px;
+top:-65px;
+border-radius:50%;
+background:#d71920;
+opacity:.9;
+}
+
+.promo-gift{
+position:relative;
+z-index:2;
+width:56px;
+height:56px;
+flex:none;
+border-radius:17px;
+background:#fff;
+display:grid;
+place-items:center;
+font-size:30px;
+box-shadow:0 5px 15px #0005;
+transform:rotate(-3deg);
+}
+
+.promo-left{
+position:relative;
+z-index:2;
+min-width:0;
+flex:1;
+padding:0 10px;
+}
+
+.promo-label{
+font-size:9px;
+font-weight:900;
+letter-spacing:.7px;
+color:#ffb2b2;
+}
+
+.promo-name{
+font-size:17px;
+font-weight:950;
+line-height:1.15;
+margin-top:2px;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+.promo-rule{
+font-size:10px;
+color:#ddd;
+margin-top:4px;
+line-height:1.35;
+}
+
+.promo-every{
+display:inline-flex;
+align-items:center;
+gap:4px;
+margin-top:5px;
+font-size:9px;
+font-weight:800;
+color:#fff;
+background:#ffffff18;
+border:1px solid #ffffff22;
+border-radius:99px;
+padding:4px 7px;
+}
+
+.promo-btn{
+position:relative;
+z-index:3;
+background:#fff;
+color:#111;
+border-radius:12px;
+padding:9px 10px;
+font-size:10px;
+font-weight:900;
+flex:none;
+box-shadow:0 4px 12px #0002;
+}
+
+.promo-btn:active{
+transform:scale(.96);
+}
+
+
+/* PROMOTION MODAL */
+
+.promotion-hero{
+background:#111;
+color:#fff;
+border-radius:24px;
+padding:18px;
+position:relative;
+overflow:hidden;
+box-shadow:0 8px 25px #00000014;
+}
+
+.promotion-hero:before{
+content:"";
+position:absolute;
+width:190px;
+height:190px;
+border-radius:50%;
+right:-80px;
+top:-85px;
+background:#d71920;
+}
+
+.promotion-gift-big{
+width:70px;
+height:70px;
+border-radius:21px;
+background:#fff;
+display:grid;
+place-items:center;
+font-size:39px;
+position:relative;
+z-index:2;
+box-shadow:0 8px 20px #0005;
+margin-bottom:13px;
+}
+
+.promotion-label{
+font-size:10px;
+font-weight:900;
+letter-spacing:.8px;
+color:#ffb2b2;
+position:relative;
+z-index:2;
+}
+
+.promotion-name{
+font-size:28px;
+font-weight:950;
+line-height:1.05;
+margin-top:4px;
+position:relative;
+z-index:2;
+}
+
+.promotion-text{
+font-size:12px;
+color:#ddd;
+line-height:1.6;
+margin-top:8px;
+position:relative;
+z-index:2;
+}
+
+.promotion-every{
+margin-top:12px;
+padding:10px 12px;
+border-radius:14px;
+background:#ffffff12;
+border:1px solid #ffffff18;
+font-size:11px;
+font-weight:800;
+line-height:1.5;
+position:relative;
+z-index:2;
+}
+
+.promotion-note{
+margin-top:9px;
+font-size:10px;
+color:#aaa;
+line-height:1.5;
+position:relative;
+z-index:2;
+}
+
 
 .products{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
 .product{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 5px 20px #0000000b;position:relative}
@@ -78,7 +270,6 @@ header{padding:18px 17px 8px;display:flex;align-items:center;gap:11px}
 .nav span:first-child{font-size:21px}
 .nav.active{color:#111;font-weight:800}
 
-/* จุดแดงแจ้งเตือน */
 .track-nav-icon{position:relative;display:block;height:23px;line-height:23px}
 .track-alert{position:absolute;right:-6px;top:-2px;width:10px;height:10px;border-radius:50%;background:#d71920;border:2px solid #fff;display:none;box-shadow:0 1px 5px #0003}
 .track-alert.show{display:block}
@@ -165,8 +356,7 @@ header{padding:18px 17px 8px;display:flex;align-items:center;gap:11px}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .hidden{display:none!important}
 
-/* ===== TRACKING ===== */
-
+/* TRACKING */
 .track-card{background:#fff;border-radius:20px;padding:17px;margin-top:13px;box-shadow:0 4px 18px #00000008}
 .track-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .track-number{font-size:15px;font-weight:900}
@@ -196,6 +386,9 @@ header{padding:18px 17px 8px;display:flex;align-items:center;gap:11px}
 @media(max-width:380px){
 .products{grid-template-columns:1fr}
 .hero h1{font-size:27px}
+.promo-gift{width:50px;height:50px;font-size:27px}
+.promo-name{font-size:15px}
+.promo-btn{padding:8px}
 }
 </style>
 </head>
@@ -206,16 +399,13 @@ header{padding:18px 17px 8px;display:flex;align-items:center;gap:11px}
 
 <header>
 <div class="logo" id="logo">MF</div>
-
 <div class="head-main">
 <div class="shop" id="shopName">MALA FRIED</div>
-
 <div class="status">
 <span class="dot" id="statusDot"></span>
 <span id="statusText">กำลังตรวจสอบร้าน...</span>
 </div>
 </div>
-
 <button class="profile" onclick="openAccount()">👤</button>
 </header>
 
@@ -232,12 +422,9 @@ header{padding:18px 17px 8px;display:flex;align-items:center;gap:11px}
 
 <section class="hero">
 <div class="hero-bg" id="heroBg"></div>
-
-<img id="heroImage"
-class="hero-food"
+<img id="heroImage" class="hero-food"
 src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=80"
 alt="food">
-
 <div class="hero-content">
 <div class="badge" id="heroBadge">🔥 หม่าล่าทอดกรอบ</div>
 <h1 id="heroTitle">กรอบ ถึงใจ</h1>
@@ -245,18 +432,47 @@ alt="food">
 </div>
 </section>
 
-<!-- โปรโมชั่นย้ายมาอยู่ก่อนหมวดหมู่ -->
-<section class="section" style="margin-bottom:16px">
+
+<!-- =====================================================
+     PROMOTION
+===================================================== -->
+
+<section class="promo-section">
 <div class="mini-promo" id="miniPromo">
-<div class="promo-left">
-<div class="promo-label">SPECIAL OFFER</div>
-<div class="promo-name" id="promoName">10 ฟรี 1 ไม้</div>
-<div class="promo-rule" id="promoRule">หยิบครบ 11 ไม้ ฟรี 1 ไม้</div>
+
+<div class="promo-glow"></div>
+
+<div class="promo-gift">
+🎁
 </div>
 
-<button class="promo-btn" onclick="openPromotion()">ดูโปรโมชั่น</button>
+<div class="promo-left">
+
+<div class="promo-label">
+SPECIAL OFFER
+</div>
+
+<div class="promo-name" id="promoName">
+10 ฟรี 1 ไม้
+</div>
+
+<div class="promo-rule" id="promoRule">
+ครบ 11 ไม้ ฟรี 1 ไม้
+</div>
+
+<div class="promo-every">
+✓ ใช้สิทธิ์ได้ทุกออเดอร์
+</div>
+
+</div>
+
+<button class="promo-btn" onclick="openPromotion()">
+รายละเอียด
+</button>
+
 </div>
 </section>
+
 
 <section class="section">
 <div class="section-head">
@@ -270,7 +486,6 @@ alt="food">
 <div class="section-title">เมนูทั้งหมด</div>
 <div class="section-more" id="productCount"></div>
 </div>
-
 <div class="products" id="products"></div>
 </section>
 
@@ -310,7 +525,9 @@ alt="food">
 
 </div>
 
+
 <!-- CART FLOAT -->
+
 <div class="cart-float hide" id="cartFloat">
 
 <div class="cart-info">
@@ -322,11 +539,15 @@ alt="food">
 </div>
 </div>
 
-<button class="cart-open" onclick="openCart()">ดูตะกร้า →</button>
+<button class="cart-open" onclick="openCart()">
+ดูตะกร้า →
+</button>
 
 </div>
 
+
 <!-- BOTTOM NAV -->
+
 <nav class="bottom">
 
 <button class="nav active" onclick="goHome(this)">
@@ -355,7 +576,9 @@ alt="food">
 
 </nav>
 
+
 <!-- CART -->
+
 <div class="overlay" id="cartOverlay" onclick="outsideClose(event,'cartOverlay')">
 <div class="sheet">
 
@@ -370,7 +593,9 @@ alt="food">
 </div>
 </div>
 
+
 <!-- CHECKOUT -->
+
 <div class="overlay" id="checkoutOverlay" onclick="outsideClose(event,'checkoutOverlay')">
 <div class="sheet">
 
@@ -397,7 +622,6 @@ alt="food">
 </div>
 
 <div class="form-group">
-
 <label class="form-label">วิธีชำระเงิน</label>
 
 <div class="payment-options">
@@ -421,12 +645,16 @@ QR พร้อมเพย์
 
 <div class="pay-price" id="checkoutTotal">฿0</div>
 
-<div class="pay-note" id="paymentNote">ชำระเงินสดกับร้านเมื่อรับอาหาร</div>
+<div class="pay-note" id="paymentNote">
+ชำระเงินสดกับร้านเมื่อรับอาหาร
+</div>
 
 <div id="qrPaymentArea" class="hidden">
 
 <div class="qr" id="qrBox">
-<span style="color:#111;font-size:12px">กำลังสร้าง QR...</span>
+<span style="color:#111;font-size:12px">
+กำลังสร้าง QR...
+</span>
 </div>
 
 <div style="font-size:10px;color:#bbb;text-align:center">
@@ -437,7 +665,7 @@ QR พร้อมเพย์
 
 <label class="check-row">
 
-<input type="checkbox" id="paidCheck" onchange="updatePaymentButton()">
+<input type="checkbox" id="paidCheck" onchange="updatePaymentButton">
 
 <span>ฉันชำระเงินแล้ว</span>
 
@@ -456,7 +684,9 @@ QR พร้อมเพย์
 </div>
 </div>
 
+
 <!-- TRACKING -->
+
 <div class="overlay" id="trackingOverlay" onclick="outsideClose(event,'trackingOverlay')">
 <div class="sheet">
 
@@ -470,7 +700,9 @@ QR พร้อมเพย์
 </div>
 </div>
 
+
 <!-- HISTORY -->
+
 <div class="overlay" id="historyOverlay" onclick="outsideClose(event,'historyOverlay')">
 <div class="sheet">
 
@@ -484,7 +716,9 @@ QR พร้อมเพย์
 </div>
 </div>
 
+
 <!-- ACCOUNT -->
+
 <div class="overlay" id="accountOverlay" onclick="outsideClose(event,'accountOverlay')">
 <div class="sheet">
 
@@ -499,13 +733,19 @@ QR พร้อมเพย์
 
 <div class="account-name" id="accountName">ลูกค้า</div>
 
-<div class="account-text">ข้อมูลลูกค้าของคุณ</div>
+<div class="account-text">
+ข้อมูลลูกค้าของคุณ
+</div>
 
 <div class="account-actions">
 
-<button onclick="openHistory()">🧾 ประวัติ</button>
+<button onclick="openHistory()">
+🧾 ประวัติ
+</button>
 
-<button onclick="openTracking()">📦 ติดตามออเดอร์</button>
+<button onclick="openTracking()">
+📦 ติดตามออเดอร์
+</button>
 
 </div>
 </div>
@@ -514,30 +754,48 @@ QR พร้อมเพย์
 </div>
 </div>
 
-<!-- PROMOTION -->
+
+<!-- =====================================================
+     PROMOTION MODAL
+===================================================== -->
+
 <div class="overlay" id="promotionOverlay" onclick="outsideClose(event,'promotionOverlay')">
+
 <div class="sheet">
 
 <div class="sheet-top">
-<div class="sheet-title">โปรโมชั่น</div>
+<div class="sheet-title">สิทธิ์โปรโมชั่น</div>
 <button class="close" onclick="closeOverlay('promotionOverlay')">×</button>
 </div>
 
-<div class="account-card" id="promotionCard">
+<div class="promotion-hero">
 
-<div class="account-content">
+<div class="promotion-gift-big">
+🎁
+</div>
 
-<div style="font-size:11px;opacity:.65">SPECIAL OFFER</div>
+<div class="promotion-label">
+SPECIAL OFFER
+</div>
 
-<div id="promotionModalName" style="font-size:25px;font-weight:900;margin-top:5px">
+<div class="promotion-name" id="promotionModalName">
 10 ฟรี 1 ไม้
 </div>
 
-<div id="promotionModalText" style="font-size:12px;color:#ccc;margin-top:7px">
-หยิบครบ 11 ไม้ ฟรี 1 ไม้
+<div class="promotion-text" id="promotionModalText">
+ครบ 11 ไม้ ฟรี 1 ไม้
 </div>
 
+<div class="promotion-every">
+🎁 โปรโมชั่นนี้ใช้สิทธิ์ได้ทุกออเดอร์<br>
+ซื้อครบตามเงื่อนไข รับของฟรีอัตโนมัติ
 </div>
+
+<div class="promotion-note">
+ระบบจะคำนวณส่วนลดให้เองในตะกร้า
+ไม่ต้องกรอกโค้ดโปรโมชั่น
+</div>
+
 </div>
 
 <button class="primary" onclick="closeOverlay('promotionOverlay')">
@@ -545,9 +803,12 @@ QR พร้อมเพย์
 </button>
 
 </div>
+
 </div>
 
+
 <div class="toast" id="toast"></div>
+
 
 <script type="module">
 
@@ -564,6 +825,7 @@ query,
 limit
 }from"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+
 const firebaseConfig={
 apiKey:"AIzaSyAOcPmnQrhHh058ozPr1bCgvUI1pOesU",
 authDomain:"mala-order-645ed.firebaseapp.com",
@@ -576,6 +838,7 @@ measurementId:"G-276HMQGECP"
 
 const app=initializeApp(firebaseConfig);
 const db=getFirestore(app);
+
 
 let siteData={
 shopName:"คุ๊ดคุด หม่าล่าทอด",
@@ -599,7 +862,7 @@ name:"10 ฟรี 1 ไม้",
 buyQty:10,
 freeQty:1,
 method:"cheapest",
-customerText:"หยิบครบ 11 ไม้ ฟรี 1 ไม้",
+customerText:"ครบ 11 ไม้ ฟรี 1 ไม้",
 background:""
 };
 
@@ -609,20 +872,14 @@ let currentCategory="ทั้งหมด";
 let cart=[];
 let paymentMethod="cash";
 
-/* ===== STORE LOADING ===== */
-
 let storeReady=false;
-
-/* ===== TRACKING ===== */
 
 let trackingUnsubscribe=null;
 let trackingOrderId=null;
 
-/* watcher ที่ทำงานแม้ไม่ได้เปิดหน้าติดตาม */
 let backgroundOrderUnsubscribe=null;
 let latestTrackingOrder=null;
 
-/* ===== สถานะออเดอร์มาตรฐาน ===== */
 
 const ORDER_STEPS=[
 {
@@ -650,6 +907,7 @@ sub:"ออเดอร์นี้เสร็จสมบูรณ์แล้
 icon:"4"
 }
 ];
+
 
 function escapeHtml(v){
 return String(v??"")
@@ -719,6 +977,7 @@ return "";
 
 }
 
+
 function showToast(text){
 
 const el=document.getElementById("toast");
@@ -735,6 +994,7 @@ window.toastTimer=setTimeout(
 
 }
 
+
 try{
 
 cart=JSON.parse(
@@ -750,6 +1010,7 @@ cart=[];
 
 }
 
+
 function saveCart(){
 
 localStorage.setItem(
@@ -758,6 +1019,7 @@ JSON.stringify(cart)
 );
 
 }
+
 
 function parseTime(v){
 
@@ -776,6 +1038,7 @@ return null;
 return h*60+min;
 
 }
+
 
 function isStoreOpen(){
 
@@ -806,6 +1069,7 @@ return current>=open||current<close;
 
 }
 
+
 function getClosedMessage(){
 
 return storeData.message||
@@ -813,7 +1077,6 @@ return storeData.message||
 
 }
 
-/* ===== แก้ร้านกระพริบเป็นปิดตอนโหลด ===== */
 
 function updateStoreStatus(){
 
@@ -851,14 +1114,17 @@ open
 if(open)
 box.classList.add("hidden");
 else{
+
 box.classList.remove("hidden");
 boxText.textContent=getClosedMessage();
+
 }
 
 renderProducts();
 updateCartUI();
 
 }
+
 
 function applySiteData(){
 
@@ -911,6 +1177,11 @@ document.getElementById("heroImage").src=siteData.heroImage;
 
 }
 
+
+/* =====================================================
+   PROMOTION RENDER
+===================================================== */
+
 function renderPromotion(){
 
 const name=
@@ -924,50 +1195,27 @@ promotionData.text||
 "";
 
 document.getElementById("promoName").textContent=name;
+
 document.getElementById("promoRule").textContent=text;
+
 document.getElementById("promotionModalName").textContent=name;
+
 document.getElementById("promotionModalText").textContent=text;
 
 const mini=document.getElementById("miniPromo");
 
-if(promotionData.enabled===false)
+if(promotionData.enabled===false){
+
 mini.classList.add("hidden");
-else
-mini.classList.remove("hidden");
-
-if(promotionData.background){
-
-const bg=
-String(promotionData.background)
-.replace(/"/g,'\\"');
-
-mini.style.backgroundImage=
-`linear-gradient(90deg,rgba(0,0,0,.68),rgba(0,0,0,.20)),url("${bg}")`;
-
-mini.style.color="#fff";
-
-const label=mini.querySelector(".promo-label");
-const rule=mini.querySelector(".promo-rule");
-
-if(label)label.style.color="#fff";
-if(rule)rule.style.color="#eee";
 
 }else{
 
-mini.style.backgroundImage="";
-mini.style.color="";
-
-const label=mini.querySelector(".promo-label");
-const rule=mini.querySelector(".promo-rule");
-
-if(label)label.style.color="";
-if(rule)rule.style.color="";
+mini.classList.remove("hidden");
 
 }
 
 }
 
-/* ===== หมวดหมู่ภาษาไทยแบบคงที่ ===== */
 
 const FIXED_CATEGORIES=[
 "ทั้งหมด",
@@ -976,6 +1224,7 @@ const FIXED_CATEGORIES=[
 "ปลา,กุ้ง,หมึก",
 "ผักและอื่นๆ"
 ];
+
 
 function categoryMatch(p,cat){
 
@@ -1004,6 +1253,7 @@ return false;
 
 }
 
+
 function buildCategories(){
 
 categories=[...FIXED_CATEGORIES];
@@ -1014,6 +1264,7 @@ currentCategory="ทั้งหมด";
 renderCategories();
 
 }
+
 
 function renderCategories(){
 
@@ -1027,13 +1278,17 @@ ${escapeHtml(c)}
 
 }
 
+
 window.selectCategory=function(category){
 
 currentCategory=category;
+
 renderCategories();
+
 renderProducts();
 
 };
+
 
 function renderProducts(){
 
@@ -1097,7 +1352,6 @@ const stock=Number(p.stock);
 const soldOut=
 Number.isFinite(stock)&&stock<=0;
 
-/* ยังไม่รู้สถานะร้าน = ไม่ล็อกปุ่ม */
 const closed=
 storeReady?!isStoreOpen():false;
 
@@ -1141,17 +1395,21 @@ ${closed?"×":"+"}
 
 }
 
+
 window.addToCart=function(id){
 
-/* ถ้ายังตรวจสอบร้านไม่เสร็จ */
 if(!storeReady){
+
 showToast("กำลังตรวจสอบเวลาร้าน...");
 return;
+
 }
 
 if(!isStoreOpen()){
+
 showToast(getClosedMessage());
 return;
+
 }
 
 const p=products.find(
@@ -1159,20 +1417,26 @@ x=>String(x.id)===String(id)
 );
 
 if(!p){
+
 showToast("ไม่พบเมนู");
 return;
+
 }
 
 if(p.active===false||p.enabled===false){
+
 showToast("เมนูนี้ปิดขาย");
 return;
+
 }
 
 const stock=Number(p.stock);
 
 if(Number.isFinite(stock)&&stock<=0){
+
 showToast("เมนูนี้หมดแล้ว");
 return;
+
 }
 
 let item=cart.find(
@@ -1204,7 +1468,6 @@ qty:1
 
 saveCart();
 
-/* บังคับให้ตะกร้าลอยแสดงทันที */
 updateCartUI();
 
 const float=document.getElementById("cartFloat");
@@ -1216,18 +1479,23 @@ showToast(`เพิ่ม ${p.name||"เมนู"} แล้ว`);
 
 };
 
+
 window.changeQty=function(id,amount){
 
 if(Number(amount)>0){
 
 if(!storeReady){
+
 showToast("กำลังตรวจสอบเวลาร้าน...");
 return;
+
 }
 
 if(!isStoreOpen()){
+
 showToast(getClosedMessage());
 return;
+
 }
 
 }
@@ -1251,6 +1519,7 @@ const stock=Number(p.stock);
 if(Number.isFinite(stock)&&item.qty>stock){
 
 item.qty=stock;
+
 showToast("จำนวนเกินสต็อก");
 
 }
@@ -1266,9 +1535,11 @@ x=>String(x.productId)!==String(id)
 }
 
 saveCart();
+
 updateCartUI();
 
 };
+
 
 function cartSubtotal(){
 
@@ -1282,6 +1553,7 @@ Number(item.qty||0),
 
 }
 
+
 function cartQty(){
 
 return cart.reduce(
@@ -1291,11 +1563,18 @@ return cart.reduce(
 
 }
 
+
+/* =====================================================
+   PROMOTION CALCULATION
+   ทุกออเดอร์ / ทุกชุด
+===================================================== */
+
 function getPromo(){
 
 const totalQty=cartQty();
 
 const buy=Number(promotionData.buyQty||10);
+
 const freeQty=Number(promotionData.freeQty||1);
 
 if(
@@ -1314,7 +1593,9 @@ discount:0
 }
 
 const group=buy+freeQty;
+
 const groups=Math.floor(totalQty/group);
+
 const free=groups*freeQty;
 
 let sorted=[...cart].sort(
@@ -1322,6 +1603,7 @@ let sorted=[...cart].sort(
 );
 
 let remaining=free;
+
 let discount=0;
 
 for(const item of sorted){
@@ -1348,6 +1630,7 @@ discount
 
 }
 
+
 function finalTotal(){
 
 return Math.max(
@@ -1357,9 +1640,11 @@ cartSubtotal()-getPromo().discount
 
 }
 
+
 function renderCart(){
 
 const list=document.getElementById("cartList");
+
 const summary=document.getElementById("cartSummary");
 
 if(!cart.length){
@@ -1371,6 +1656,7 @@ list.innerHTML=
 </div>`;
 
 summary.innerHTML="";
+
 return;
 
 }
@@ -1400,9 +1686,15 @@ ${escapeHtml(item.name)}
 
 <div class="qty">
 
-<button onclick="changeQty('${escapeJs(item.productId)}',-1)">−</button>
+<button onclick="changeQty('${escapeJs(item.productId)}',-1)">
+−
+</button>
+
 <span>${item.qty}</span>
-<button onclick="changeQty('${escapeJs(item.productId)}',1)">+</button>
+
+<button onclick="changeQty('${escapeJs(item.productId)}',1)">
++
+</button>
 
 </div>
 
@@ -1410,10 +1702,16 @@ ${escapeHtml(item.name)}
 
 }).join("");
 
+
 const subtotal=cartSubtotal();
+
 const promo=getPromo();
+
 const total=finalTotal();
-const closed=storeReady?!isStoreOpen():false;
+
+const closed=
+storeReady?!isStoreOpen():false;
+
 
 summary.innerHTML=
 `<div class="cart-summary">
@@ -1451,9 +1749,11 @@ ${closed?"ร้านปิดอยู่":"ดำเนินการสั�
 
 }
 
+
 function updateCartUI(){
 
 const count=cartQty();
+
 const total=finalTotal();
 
 document.getElementById("cartCount").textContent=count;
@@ -1472,37 +1772,52 @@ float.classList.add("hide");
 
 }
 
-if(document.getElementById("cartOverlay").classList.contains("show"))
+if(
+document.getElementById("cartOverlay")
+.classList.contains("show")
+)
 renderCart();
 
-if(document.getElementById("checkoutOverlay").classList.contains("show"))
+if(
+document.getElementById("checkoutOverlay")
+.classList.contains("show")
+)
 renderCheckoutSummary();
 
 }
+
 
 window.openCart=function(){
 
 renderCart();
 
-document.getElementById("cartOverlay").classList.add("show");
+document.getElementById("cartOverlay")
+.classList.add("show");
 
 };
+
 
 window.openCheckout=function(){
 
 if(!cart.length){
+
 showToast("กรุณาเลือกเมนูก่อน");
 return;
+
 }
 
 if(!storeReady){
+
 showToast("กำลังตรวจสอบเวลาร้าน...");
 return;
+
 }
 
 if(!isStoreOpen()){
+
 showToast(getClosedMessage());
 return;
+
 }
 
 paymentMethod="cash";
@@ -1515,16 +1830,20 @@ renderCheckoutSummary();
 
 closeOverlay("cartOverlay");
 
-document.getElementById("checkoutOverlay").classList.add("show");
+document.getElementById("checkoutOverlay")
+.classList.add("show");
 
 };
+
 
 function renderCheckoutSummary(){
 
 const el=document.getElementById("checkoutSummary");
 
 const subtotal=cartSubtotal();
+
 const promo=getPromo();
+
 const total=finalTotal();
 
 el.innerHTML=
@@ -1542,7 +1861,7 @@ el.innerHTML=
 
 ${promo.discount>0?
 `<div class="summary-row discount">
-<span>ส่วนลด</span>
+<span>🎁 ส่วนลดโปรโมชั่น</span>
 <span>-฿${formatMoney(promo.discount)}</span>
 </div>`:""}
 
@@ -1560,25 +1879,30 @@ updatePaymentButton();
 
 }
 
+
 window.selectPayment=function(method){
 
 paymentMethod=method;
 
 const cash=document.getElementById("cashPaymentBtn");
+
 const qr=document.getElementById("qrPaymentBtn");
+
 const area=document.getElementById("qrPaymentArea");
 
 cash.classList.toggle("active",method==="cash");
+
 qr.classList.toggle("active",method==="qr");
 
 if(method==="qr"){
 
 area.classList.remove("hidden");
 
-document.getElementById("paymentTitle").textContent=
-"ชำระด้วย QR พร้อมเพย์";
+document.getElementById("paymentTitle")
+.textContent="ชำระด้วย QR พร้อมเพย์";
 
-document.getElementById("paymentNote").textContent=
+document.getElementById("paymentNote")
+.textContent=
 "สแกน QR ตามยอดที่แสดง แล้วกดว่า “ฉันชำระเงินแล้ว”";
 
 updateQR();
@@ -1587,10 +1911,11 @@ updateQR();
 
 area.classList.add("hidden");
 
-document.getElementById("paymentTitle").textContent=
-"ชำระเงินสด";
+document.getElementById("paymentTitle")
+.textContent="ชำระเงินสด";
 
-document.getElementById("paymentNote").textContent=
+document.getElementById("paymentNote")
+.textContent=
 "ชำระเงินสดกับร้านเมื่อรับอาหาร";
 
 }
@@ -1599,10 +1924,14 @@ updatePaymentButton();
 
 };
 
+
 function updatePaymentButton(){
 
-const btn=document.getElementById("submitOrderBtn");
-const paid=document.getElementById("paidCheck").checked;
+const btn=
+document.getElementById("submitOrderBtn");
+
+const paid=
+document.getElementById("paidCheck").checked;
 
 if(paymentMethod==="qr"){
 
@@ -1616,16 +1945,20 @@ paid
 }else{
 
 btn.disabled=false;
+
 btn.textContent="ยืนยันสั่งซื้อ";
 
 }
 
 }
 
+
 function updateQR(){
 
 const total=finalTotal();
+
 const box=document.getElementById("qrBox");
+
 const promptpay="0961237182";
 
 const url=
@@ -1638,6 +1971,7 @@ box.innerHTML=
 `<img src="${url}" alt="PromptPay QR">`;
 
 }
+
 
 function createInitialStatusHistory(){
 
@@ -1664,83 +1998,120 @@ time:null
 
 }
 
-/* ===== ส่งออเดอร์ ===== */
 
 window.submitOrder=async function(){
 
 if(!cart.length){
+
 showToast("ตะกร้าว่าง");
 return;
+
 }
 
 if(!storeReady){
+
 showToast("กำลังตรวจสอบเวลาร้าน...");
 return;
+
 }
 
 if(!isStoreOpen()){
+
 showToast(getClosedMessage());
 return;
+
 }
 
-const name=document.getElementById("customerName").value.trim();
-const phone=document.getElementById("customerPhone").value.trim();
-const note=document.getElementById("customerNote").value.trim();
+const name=
+document.getElementById("customerName")
+.value.trim();
+
+const phone=
+document.getElementById("customerPhone")
+.value.trim();
+
+const note=
+document.getElementById("customerNote")
+.value.trim();
 
 if(!name){
+
 showToast("กรุณากรอกชื่อ");
 return;
+
 }
 
 if(!phone){
+
 showToast("กรุณากรอกเบอร์โทร");
 return;
+
 }
 
 if(paymentMethod==="qr"){
 
-const paid=document.getElementById("paidCheck").checked;
+const paid=
+document.getElementById("paidCheck").checked;
 
 if(!paid){
+
 showToast("กรุณายืนยันว่าชำระเงินแล้ว");
 return;
+
 }
 
 }
 
 const subtotal=cartSubtotal();
-const promo=getPromo();
-const total=finalTotal();
-const createdAt=new Date().toISOString();
 
-const btn=document.getElementById("submitOrderBtn");
+const promo=getPromo();
+
+const total=finalTotal();
+
+const createdAt=
+new Date().toISOString();
+
+const btn=
+document.getElementById("submitOrderBtn");
 
 btn.disabled=true;
+
 btn.textContent="กำลังส่งออเดอร์...";
+
 
 try{
 
 const order={
 
 customerName:name,
+
 customerPhone:phone,
+
 note:note,
 
 items:cart.map(x=>({
+
 productId:x.productId,
+
 name:x.name,
+
 price:Number(x.price||0),
+
 qty:Number(x.qty||0),
+
 image:x.image||""
+
 })),
 
 subtotal:subtotal,
+
 discount:promo.discount,
+
 total:total,
 
 promotion:
 promo.discount>0?
-promotionData.name||"":"",
+promotionData.name||"": "",
 
 paymentMethod:
 paymentMethod==="qr"
@@ -1758,20 +2129,26 @@ paymentMethod==="qr",
 paymentConfirmed:false,
 
 status:"pending",
+
 statusLabel:"รอรับออเดอร์",
+
 statusUpdatedAt:createdAt,
 
-statusHistory:createInitialStatusHistory(),
+statusHistory:
+createInitialStatusHistory(),
 
 createdAt:createdAt,
+
 source:"website"
 
 };
+
 
 const ref=await addDoc(
 collection(db,"orders"),
 order
 );
+
 
 localStorage.setItem(
 "mala_last_order",
@@ -1788,21 +2165,26 @@ localStorage.setItem(
 phone
 );
 
-/* ออเดอร์ใหม่ = มีแจ้งเตือน */
+
 localStorage.removeItem(
 "mala_tracking_seen_status_"+ref.id
 );
+
 
 startBackgroundOrderWatch(ref.id);
 
 cart=[];
 
 saveCart();
+
 updateCartUI();
 
 document.getElementById("customerName").value="";
+
 document.getElementById("customerPhone").value="";
+
 document.getElementById("customerNote").value="";
+
 document.getElementById("paidCheck").checked=false;
 
 closeOverlay("checkoutOverlay");
@@ -1815,6 +2197,7 @@ setTimeout(()=>{
 openTracking();
 },500);
 
+
 }catch(err){
 
 console.error(err);
@@ -1826,17 +2209,19 @@ showToast(
 }finally{
 
 btn.disabled=false;
+
 updatePaymentButton();
 
 }
 
 };
 
-/* ===== STATUS ===== */
 
 function normalizeStatus(o){
 
-let s=String(o.status||"pending").toLowerCase();
+let s=
+String(o.status||"pending")
+.toLowerCase();
 
 if(s==="accepted")
 s="preparing";
@@ -1862,16 +2247,21 @@ return s;
 
 }
 
+
 function statusIndex(status){
 
 if(status==="pending")return 0;
+
 if(status==="preparing")return 1;
+
 if(status==="ready")return 2;
+
 if(status==="completed")return 3;
 
 return-1;
 
 }
+
 
 function getStatusTime(o,key){
 
@@ -1896,6 +2286,7 @@ return null;
 
 }
 
+
 function renderTrackingOrder(o){
 
 const status=normalizeStatus(o);
@@ -1903,6 +2294,7 @@ const status=normalizeStatus(o);
 const currentIndex=statusIndex(status);
 
 const cancelled=status==="cancelled";
+
 
 const stepsHtml=ORDER_STEPS.map((step,index)=>{
 
@@ -1927,6 +2319,7 @@ icon="✓";
 
 if(!cancelled&&index===currentIndex)
 icon="●";
+
 
 return`
 <div class="track-step ${cls}">
@@ -1961,6 +2354,7 @@ ${!cancelled&&index===currentIndex?
 
 }).join("");
 
+
 let statusTop="";
 
 if(cancelled){
@@ -1983,35 +2377,46 @@ ${escapeHtml(currentStep.title)}
 
 }
 
+
 const payment=o.paymentMethod||"ไม่ระบุ";
 
 let paymentText="";
 
 if(o.paymentConfirmed===true)
+
 paymentText="ชำระเงินแล้ว";
+
 else if(o.paymentReported===true)
+
 paymentText="แจ้งชำระแล้ว · รอตรวจสอบ";
+
 else
+
 paymentText=
 payment==="เงินสด"
 ?"รอชำระเงินสด"
 :"รอตรวจสอบการชำระเงิน";
 
+
 const items=(o.items||[]).map(item=>
 `
 <div class="track-item">
+
 <span>
 ${escapeHtml(item.name)} × ${Number(item.qty||0)}
 </span>
+
 <span>
 ฿${formatMoney(
 Number(item.price||0)*
 Number(item.qty||0)
 )}
 </span>
+
 </div>
 `
 ).join("");
+
 
 return`
 <div class="track-card">
@@ -2019,6 +2424,7 @@ return`
 <div class="track-head">
 
 <div>
+
 <div class="track-number">
 #${escapeHtml(
 String(o.id).slice(-6).toUpperCase()
@@ -2028,6 +2434,7 @@ String(o.id).slice(-6).toUpperCase()
 <div class="order-date">
 สั่งเมื่อ ${escapeHtml(formatDateTime(o.createdAt))}
 </div>
+
 </div>
 
 ${statusTop}
@@ -2084,28 +2491,26 @@ ${cancelled?
 
 }
 
-/* =========================================================
-   WATCHER สำหรับจุดแดงแจ้งเตือน
-========================================================= */
 
 function setTrackingAlert(show){
 
-const el=document.getElementById("trackAlert");
+const el=
+document.getElementById("trackAlert");
 
 if(el)
 el.classList.toggle("show",!!show);
 
 }
 
-/* สถานะเปลี่ยนเมื่อไหร่ จุดแดงขึ้น */
+
 function startBackgroundOrderWatch(id){
 
-if(!id)
-return;
+if(!id)return;
 
 if(backgroundOrderUnsubscribe){
 
 backgroundOrderUnsubscribe();
+
 backgroundOrderUnsubscribe=null;
 
 }
@@ -2118,7 +2523,9 @@ snap=>{
 if(!snap.exists()){
 
 latestTrackingOrder=null;
+
 setTrackingAlert(false);
+
 return;
 
 }
@@ -2136,22 +2543,23 @@ const seen=localStorage.getItem(
 "mala_tracking_seen_status_"+id
 );
 
-/*
-ถ้ายังไม่เคยเปิดดู หรือสถานะเปลี่ยน
-ให้แสดงจุดแดง
-*/
 if(!seen||seen!==status)
+
 setTrackingAlert(true);
+
 else
+
 setTrackingAlert(false);
 
-/* ถ้าเปิดหน้าติดตามอยู่ ให้เปลี่ยนข้อมูลทันที */
+
 const overlay=
 document.getElementById("trackingOverlay");
 
 if(overlay.classList.contains("show")){
 
-document.getElementById("trackingContent").innerHTML=
+document.getElementById(
+"trackingContent"
+).innerHTML=
 renderTrackingOrder(order);
 
 }
@@ -2159,32 +2567,36 @@ renderTrackingOrder(order);
 },
 err=>{
 
-console.error("background tracking:",err);
+console.error(
+"background tracking:",
+err
+);
 
 }
 );
 
 }
 
-/* =========================================================
-   Real-time ในหน้าติดตาม
-========================================================= */
 
 function startTrackingRealtime(id){
 
 if(trackingUnsubscribe){
 
 trackingUnsubscribe();
+
 trackingUnsubscribe=null;
 
 }
 
 trackingOrderId=id;
 
-const el=document.getElementById("trackingContent");
+const el=
+document.getElementById("trackingContent");
 
 el.innerHTML=
-`<div class="empty">กำลังเชื่อมต่อการติดตาม...</div>`;
+`<div class="empty">
+กำลังเชื่อมต่อการติดตาม...
+</div>`;
 
 trackingUnsubscribe=
 onSnapshot(
@@ -2195,8 +2607,13 @@ if(!snap.exists()){
 
 el.innerHTML=
 `<div class="empty">
+
 <div class="empty-icon">📦</div>
-<div class="empty-title">ไม่พบออเดอร์</div>
+
+<div class="empty-title">
+ไม่พบออเดอร์
+</div>
+
 </div>`;
 
 return;
@@ -2213,9 +2630,6 @@ latestTrackingOrder=order;
 el.innerHTML=
 renderTrackingOrder(order);
 
-/*
-เมื่อเปิดหน้าติดตาม ถือว่าอ่านแจ้งเตือนแล้ว
-*/
 localStorage.setItem(
 "mala_tracking_seen_status_"+id,
 normalizeStatus(order)
@@ -2226,15 +2640,24 @@ setTrackingAlert(false);
 },
 err=>{
 
-console.error("tracking:",err);
+console.error(
+"tracking:",
+err
+);
 
 el.innerHTML=
 `<div class="empty">
+
 <div class="empty-icon">⚠️</div>
-<div class="empty-title">เชื่อมต่อการติดตามไม่ได้</div>
+
+<div class="empty-title">
+เชื่อมต่อการติดตามไม่ได้
+</div>
+
 <div style="font-size:10px;margin-top:5px">
 กรุณาลองเปิดหน้านี้อีกครั้ง
 </div>
+
 </div>`;
 
 }
@@ -2242,21 +2665,20 @@ el.innerHTML=
 
 }
 
-/* =========================================================
-   เปิดติดตาม
-========================================================= */
 
 window.openTracking=function(){
 
 closeOverlay("accountOverlay");
 
-const el=document.getElementById("trackingContent");
+const el=
+document.getElementById("trackingContent");
 
 const id=
 localStorage.getItem("mala_last_order");
 
-document.getElementById("trackingOverlay")
-.classList.add("show");
+document.getElementById(
+"trackingOverlay"
+).classList.add("show");
 
 if(!id){
 
@@ -2264,27 +2686,29 @@ setTrackingAlert(false);
 
 el.innerHTML=
 `<div class="empty">
+
 <div class="empty-icon">📦</div>
-<div class="empty-title">ยังไม่มีออเดอร์</div>
+
+<div class="empty-title">
+ยังไม่มีออเดอร์
+</div>
+
 <div style="font-size:11px;margin-top:5px">
 เมื่อสั่งอาหารแล้ว สามารถติดตามสถานะได้ที่นี่
 </div>
+
 </div>`;
 
 return;
 
 }
 
-/* ทำ watcher ต่อเนื่อง */
 startBackgroundOrderWatch(id);
 
 startTrackingRealtime(id);
 
 };
 
-/* =========================================================
-   ปิด Overlay
-========================================================= */
 
 window.closeOverlay=function(id){
 
@@ -2296,6 +2720,7 @@ if(id==="trackingOverlay"){
 if(trackingUnsubscribe){
 
 trackingUnsubscribe();
+
 trackingUnsubscribe=null;
 
 }
@@ -2306,40 +2731,50 @@ trackingOrderId=null;
 
 };
 
+
 window.outsideClose=function(e,id){
 
 if(e.target.id===id)
+
 closeOverlay(id);
 
 };
 
-/* =========================================================
-   HISTORY
-========================================================= */
 
 window.openHistory=async function(){
 
 closeOverlay("accountOverlay");
 
-const el=document.getElementById("historyContent");
+const el=
+document.getElementById("historyContent");
 
 el.innerHTML=
-`<div class="empty">กำลังโหลด...</div>`;
+`<div class="empty">
+กำลังโหลด...
+</div>`;
 
-document.getElementById("historyOverlay")
-.classList.add("show");
+document.getElementById(
+"historyOverlay"
+).classList.add("show");
 
 try{
 
 const phone=
-localStorage.getItem("mala_customer_phone");
+localStorage.getItem(
+"mala_customer_phone"
+);
 
 if(!phone){
 
 el.innerHTML=
 `<div class="empty">
+
 <div class="empty-icon">🧾</div>
-<div class="empty-title">ยังไม่มีประวัติ</div>
+
+<div class="empty-title">
+ยังไม่มีประวัติ
+</div>
+
 </div>`;
 
 return;
@@ -2395,7 +2830,8 @@ return;
 el.innerHTML=
 orders.map(order=>{
 
-const status=normalizeStatus(order);
+const status=
+normalizeStatus(order);
 
 const statusName=
 status==="pending"
@@ -2407,6 +2843,7 @@ status==="ready"
 status==="completed"
 ?"เสร็จสิ้น":
 "ยกเลิก";
+
 
 return`
 <div class="order-card">
@@ -2458,7 +2895,9 @@ Number(item.qty||0)
 
 <div class="summary-row">
 <span>การชำระเงิน</span>
-<span>${escapeHtml(order.paymentMethod||"ไม่ระบุ")}</span>
+<span>
+${escapeHtml(order.paymentMethod||"ไม่ระบุ")}
+</span>
 </div>
 
 <div class="summary-row">
@@ -2478,7 +2917,9 @@ order.paymentMethod==="เงินสด"
 
 <div class="summary-row total">
 <span>รวม</span>
-<span>฿${formatMoney(order.total)}</span>
+<span>
+฿${formatMoney(order.total)}
+</span>
 </div>
 
 <button
@@ -2507,6 +2948,7 @@ el.innerHTML=
 
 };
 
+
 window.trackSpecificOrder=function(id){
 
 localStorage.setItem(
@@ -2514,7 +2956,6 @@ localStorage.setItem(
 id
 );
 
-/* ออเดอร์นี้จะถูกดูเป็นออเดอร์ล่าสุด */
 startBackgroundOrderWatch(id);
 
 closeOverlay("historyOverlay");
@@ -2525,31 +2966,41 @@ openTracking();
 
 };
 
+
 window.openAccount=function(){
 
 const name=
-localStorage.getItem("mala_customer_name")||
+localStorage.getItem(
+"mala_customer_name"
+)||
 "ลูกค้า";
 
-document.getElementById("accountName")
-.textContent=name;
+document.getElementById(
+"accountName"
+).textContent=name;
 
-document.getElementById("accountOverlay")
-.classList.add("show");
+document.getElementById(
+"accountOverlay"
+).classList.add("show");
 
 };
+
 
 window.openPromotion=function(){
 
-document.getElementById("promotionOverlay")
-.classList.add("show");
+document.getElementById(
+"promotionOverlay"
+).classList.add("show");
 
 };
+
 
 window.goHome=function(btn){
 
 document.querySelectorAll(".nav")
-.forEach(x=>x.classList.remove("active"));
+.forEach(x=>
+x.classList.remove("active")
+);
 
 btn.classList.add("active");
 
@@ -2560,9 +3011,10 @@ behavior:"smooth"
 
 };
 
-/* =========================================================
-   Firebase Store
-========================================================= */
+
+/* =====================================================
+   FIREBASE STORE
+===================================================== */
 
 onSnapshot(
 doc(db,"settings/store"),
@@ -2583,7 +3035,6 @@ storeData.message
 
 }
 
-/* สำคัญ: Firebase โหลดเสร็จแล้วค่อยคำนวณเปิด/ปิด */
 storeReady=true;
 
 updateStoreStatus();
@@ -2593,7 +3044,6 @@ err=>{
 
 console.error("store:",err);
 
-/* กันหน้าเว็บค้างที่กำลังตรวจสอบ */
 storeReady=true;
 
 updateStoreStatus();
@@ -2601,9 +3051,8 @@ updateStoreStatus();
 }
 );
 
-/* =========================================================
-   Firebase Main
-========================================================= */
+
+/* MAIN */
 
 onSnapshot(
 doc(db,"settings/main"),
@@ -2624,14 +3073,14 @@ applySiteData();
 err=>{
 
 console.error("main:",err);
+
 applySiteData();
 
 }
 );
 
-/* =========================================================
-   Firebase Promotion
-========================================================= */
+
+/* PROMOTION */
 
 onSnapshot(
 doc(db,"settings/promotion"),
@@ -2644,6 +3093,7 @@ const d=snap.data();
 promotionData={
 ...promotionData,
 ...d,
+
 name:
 d.name||
 d.text||
@@ -2653,25 +3103,30 @@ customerText:
 d.customerText||
 d.text||
 promotionData.customerText
+
 };
 
 }
 
 renderPromotion();
+
 updateCartUI();
 
 },
 err=>{
 
-console.error("promotion:",err);
+console.error(
+"promotion:",
+err
+);
+
 renderPromotion();
 
 }
 );
 
-/* =========================================================
-   Firebase Products
-========================================================= */
+
+/* PRODUCTS */
 
 onSnapshot(
 collection(db,"products"),
@@ -2690,15 +3145,22 @@ Number(b.sortOrder??999999)
 );
 
 buildCategories();
+
 renderProducts();
+
 updateCartUI();
 
 },
 err=>{
 
-console.error("products:",err);
+console.error(
+"products:",
+err
+);
 
-document.getElementById("products").innerHTML=
+document.getElementById(
+"products"
+).innerHTML=
 `<div class="empty" style="grid-column:1/-1">
 
 <div class="empty-icon">⚠️</div>
@@ -2712,25 +3174,33 @@ document.getElementById("products").innerHTML=
 }
 );
 
-/* =========================================================
-   เริ่มต้นหน้า
-========================================================= */
+
+/* INITIAL */
 
 applySiteData();
+
 renderPromotion();
+
 buildCategories();
+
 updateStoreStatus();
+
 updateCartUI();
 
-/* ถ้ามีออเดอร์เดิม ให้เริ่มฟังสถานะทันที */
+
 const savedOrderId=
-localStorage.getItem("mala_last_order");
+localStorage.getItem(
+"mala_last_order"
+);
 
 if(savedOrderId){
 
-startBackgroundOrderWatch(savedOrderId);
+startBackgroundOrderWatch(
+savedOrderId
+);
 
 }
+
 
 setInterval(
 updateStoreStatus,
