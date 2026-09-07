@@ -247,17 +247,115 @@ z-index:2;
 }
 
 
-.products{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
-.product{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 5px 20px #0000000b;position:relative}
-.product-img{width:100%;aspect-ratio:1.08;object-fit:cover;display:block;background:#eee}
-.product-body{padding:11px}
-.product-name{font-size:14px;font-weight:800;min-height:36px}
-.product-desc{color:#888;font-size:10px;margin-top:3px;height:15px;overflow:hidden}
-.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:5px;margin-top:9px}
-.price{font-size:15px;font-weight:900}
-.add{width:33px;height:33px;border-radius:12px;background:#111;color:#fff;font-size:20px;line-height:1}
-.add:disabled{background:#ccc;cursor:not-allowed}
-.sold{position:absolute;top:9px;left:9px;background:#111d;color:#fff;border-radius:9px;padding:5px 8px;font-size:10px;font-weight:800}
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.products{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:11px
+}
+
+.product{
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 5px 20px #0000000b;
+position:relative
+}
+
+.product-img{
+width:100%;
+aspect-ratio:1.08;
+object-fit:cover;
+display:block;
+background:#eee
+}
+
+.product-body{
+padding:11px
+}
+
+.product-name{
+font-size:14px;
+font-weight:800;
+min-height:36px
+}
+
+.product-desc{
+color:#888;
+font-size:10px;
+margin-top:3px;
+height:15px;
+overflow:hidden
+}
+
+.product-bottom{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:5px;
+margin-top:9px
+}
+
+.price{
+font-size:15px;
+font-weight:900
+}
+
+.add{
+width:33px;
+height:33px;
+border-radius:12px;
+background:#111;
+color:#fff;
+font-size:20px;
+line-height:1
+}
+
+.add:disabled{
+background:#ccc;
+cursor:not-allowed
+}
+
+
+/* =========================================================
+   PRODUCT BADGE
+   รับค่าจาก Admin เช่น ขายดี / เมนูใหม่ / HOT / DEAL
+========================================================= */
+
+.product-badge{
+position:absolute;
+top:9px;
+right:9px;
+z-index:3;
+background:#d71920;
+color:#fff;
+border-radius:10px;
+padding:6px 9px;
+font-size:10px;
+font-weight:900;
+line-height:1.2;
+box-shadow:0 4px 12px #0003;
+max-width:75%;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis
+}
+
+.sold{
+position:absolute;
+top:9px;
+left:9px;
+z-index:3;
+background:#111d;
+color:#fff;
+border-radius:9px;
+padding:5px 8px;
+font-size:10px;
+font-weight:800
+}
 
 .info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .info{background:#fff;border-radius:17px;padding:14px;box-shadow:0 4px 18px #00000008}
@@ -667,7 +765,7 @@ QR พร้อมเพย์
 
 <label class="check-row">
 
-<input type="checkbox" id="paidCheck" onchange="updatePaymentButton">
+<input type="checkbox" id="paidCheck" onchange="updatePaymentButton()">
 
 <span>ฉันชำระเงินแล้ว</span>
 
@@ -829,7 +927,7 @@ limit
 
 
 const firebaseConfig={
-apiKey:"AIzaSyAOcPmnQrhHh058ozPr1bCgvUI1pOesU",
+apiKey:"AIzaSyAOcPmnQrhHh058pr1bCgvUI1pOesU",
 authDomain:"mala-order-645ed.firebaseapp.com",
 projectId:"mala-order-645ed",
 storageBucket:"mala-order-645ed.firebasestorage.app",
@@ -1292,6 +1390,11 @@ renderProducts();
 };
 
 
+/* =====================================================
+   PRODUCTS RENDER
+   แก้ให้ดึง p.badge จาก Firestore และแสดงบนสินค้า
+===================================================== */
+
 function renderProducts(){
 
 const el=document.getElementById("products");
@@ -1357,10 +1460,28 @@ Number.isFinite(stock)&&stock<=0;
 const closed=
 storeReady?!isStoreOpen():false;
 
+/*
+  สำคัญ:
+  p.badge มาจาก Admin โดยตรง
+  ถ้ามีข้อความ เช่น "ขายดี" จะแสดง
+  ถ้าไม่มี badge จะไม่สร้างกล่องขึ้นมา
+*/
+
+const badge=
+String(p.badge??"").trim();
+
 return`
 <div class="product">
 
-${soldOut?`<div class="sold">หมด</div>`:""}
+${soldOut?`
+<div class="sold">หมด</div>
+`:""}
+
+${badge?`
+<div class="product-badge">
+${escapeHtml(badge)}
+</div>
+`:""}
 
 <img class="product-img"
 src="${escapeHtml(image)}"
@@ -2053,7 +2174,8 @@ return;
 if(paymentMethod==="qr"){
 
 const paid=
-document.getElementById("paidCheck").checked;
+document.getElementById("paidCheck")
+.checked;
 
 if(!paid){
 
