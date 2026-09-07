@@ -8,208 +8,814 @@
 
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
 :root{
---bg:#f5f5f7;--card:#fff;--text:#111;--muted:#777;
---line:#e5e5e7;--red:#e53935;--green:#16a34a;
---blue:#2563eb;--orange:#f59e0b;
---shadow:0 8px 30px #0000000b;--radius:22px
+--bg:#f5f5f7;
+--card:#fff;
+--text:#111;
+--muted:#777;
+--line:#e5e5e7;
+--red:#e53935;
+--green:#16a34a;
+--blue:#2563eb;
+--orange:#f59e0b;
+--shadow:0 8px 30px #0000000b;
+--radius:22px
 }
+
 html{scroll-behavior:smooth}
+
 body{
-margin:0;background:var(--bg);color:var(--text);
+margin:0;
+background:var(--bg);
+color:var(--text);
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
 }
+
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
-.app{width:min(620px,100%);margin:auto;padding-bottom:100px}
+
+.app{
+width:min(620px,100%);
+margin:auto;
+padding-bottom:100px
+}
+
 header{
-position:sticky;top:0;z-index:50;padding:16px;
-background:#f5f5f7ef;backdrop-filter:blur(22px);
--webkit-backdrop-filter:blur(22px);border-bottom:1px solid #fff
+position:sticky;
+top:0;
+z-index:50;
+padding:16px;
+background:#f5f5f7ef;
+backdrop-filter:blur(22px);
+-webkit-backdrop-filter:blur(22px);
+border-bottom:1px solid #fff
 }
-.header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{font-size:21px;font-weight:850;letter-spacing:-.6px}
-.sub{display:flex;align-items:center;gap:5px;margin-top:3px;color:var(--muted);font-size:12px}
-.dot{width:9px;height:9px;border-radius:50%;background:#aaa}
-.dot.on{background:var(--green);box-shadow:0 0 0 5px #16a34a18}
-.dot.off{background:var(--red);box-shadow:0 0 0 5px #e5393518}
+
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px
+}
+
+.brand{
+font-size:21px;
+font-weight:850;
+letter-spacing:-.6px
+}
+
+.sub{
+display:flex;
+align-items:center;
+gap:5px;
+margin-top:3px;
+color:var(--muted);
+font-size:12px
+}
+
+.dot{
+width:9px;
+height:9px;
+border-radius:50%;
+background:#aaa
+}
+
+.dot.on{
+background:var(--green);
+box-shadow:0 0 0 5px #16a34a18
+}
+
+.dot.off{
+background:var(--red);
+box-shadow:0 0 0 5px #e5393518
+}
+
 main{padding:18px 16px}
-.page{display:none}.page.active{display:block}
-.pageTitle{margin:3px 0 18px;font-size:28px;line-height:1.1;letter-spacing:-1px}
-.sectionTitle{margin:0 0 12px;font-size:17px}
+
+.page{display:none}
+.page.active{display:block}
+
+.pageTitle{
+margin:3px 0 18px;
+font-size:28px;
+line-height:1.1;
+letter-spacing:-1px
+}
+
+.sectionTitle{
+margin:0 0 12px;
+font-size:17px
+}
+
 .card{
-background:var(--card);border:1px solid #fff;border-radius:var(--radius);
-padding:17px;margin-bottom:14px;box-shadow:var(--shadow)
+background:var(--card);
+border:1px solid #fff;
+border-radius:var(--radius);
+padding:17px;
+margin-bottom:14px;
+box-shadow:var(--shadow)
 }
+
 .btn{
-border:0;border-radius:13px;padding:11px 14px;background:#111;color:#fff;
-font-weight:750;transition:.15s
+border:0;
+border-radius:13px;
+padding:11px 14px;
+background:#111;
+color:#fff;
+font-weight:750;
+transition:.15s
 }
+
 .btn:active{transform:scale(.97)}
-.btn.light{background:#f0f0f2;color:#111}
+
+.btn.light{
+background:#f0f0f2;
+color:#111
+}
+
 .btn.red{background:var(--red)}
 .btn.green{background:var(--green)}
 .btn.blue{background:var(--blue)}
-.btn.orange{background:var(--orange);color:#111}
-.btn.sm{padding:8px 11px;font-size:12px;border-radius:11px}
-.btn:disabled{opacity:.55;cursor:not-allowed}
-.row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.btn.orange{
+background:var(--orange);
+color:#111
+}
+
+.btn.sm{
+padding:8px 11px;
+font-size:12px;
+border-radius:11px
+}
+
+.btn:disabled{
+opacity:.55;
+cursor:not-allowed
+}
+
+.row{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px
+}
+
 .row.wrap{flex-wrap:wrap}
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
-.stat{padding:16px;background:#fff;border:1px solid var(--line);border-radius:19px}
-.statLabel{color:var(--muted);font-size:12px}
-.statValue{margin-top:5px;font-size:28px;line-height:1;font-weight:850}
-.statusBox{display:flex;align-items:center;gap:12px}
-.statusTitle{font-size:16px;font-weight:800}
-.statusText{margin-top:3px;color:var(--muted);font-size:12px}
-.product{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-bottom:14px
+}
+
+.stat{
+padding:16px;
+background:#fff;
+border:1px solid var(--line);
+border-radius:19px
+}
+
+.statLabel{
+color:var(--muted);
+font-size:12px
+}
+
+.statValue{
+margin-top:5px;
+font-size:28px;
+line-height:1;
+font-weight:850
+}
+
+.statusBox{
+display:flex;
+align-items:center;
+gap:12px
+}
+
+.statusTitle{
+font-size:16px;
+font-weight:800
+}
+
+.statusText{
+margin-top:3px;
+color:var(--muted);
+font-size:12px
+}
+
+.product{
+display:flex;
+gap:12px;
+padding:13px 0;
+border-bottom:1px solid var(--line)
+}
+
 .product:last-child{border-bottom:0}
+
 .productImage{
-width:72px;height:72px;flex:none;border-radius:17px;overflow:hidden;
-display:flex;align-items:center;justify-content:center;
-background:#f0f0f2;font-size:28px
+width:72px;
+height:72px;
+flex:none;
+border-radius:17px;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#f0f0f2;
+font-size:28px
 }
-.productImage img{width:100%;height:100%;object-fit:cover}
-.productInfo{flex:1;min-width:0}
-.productName{font-weight:850;font-size:14px}
+
+.productImage img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.productInfo{
+flex:1;
+min-width:0
+}
+
+.productName{
+font-weight:850;
+font-size:14px
+}
+
 .productDesc{
-margin-top:3px;color:var(--muted);font-size:12px;
-overflow:hidden;text-overflow:ellipsis;white-space:nowrap
+margin-top:3px;
+color:var(--muted);
+font-size:12px;
+overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap
 }
-.price{margin-top:5px;font-weight:850}
-.productActions{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+
+.price{
+margin-top:5px;
+font-weight:850
+}
+
+.productActions{
+display:flex;
+flex-direction:column;
+align-items:flex-end;
+gap:6px
+}
+
 .badge{
-display:inline-block;padding:3px 7px;margin-bottom:4px;border-radius:7px;
-background:#111;color:#fff;font-size:10px;font-weight:800
+display:inline-block;
+padding:3px 7px;
+margin-bottom:4px;
+border-radius:7px;
+background:#111;
+color:#fff;
+font-size:10px;
+font-weight:800
 }
-.toolbar{display:flex;gap:7px;overflow-x:auto;padding-bottom:3px;margin-bottom:12px}
+
+.toolbar{
+display:flex;
+gap:7px;
+overflow-x:auto;
+padding-bottom:3px;
+margin-bottom:12px
+}
+
 .toolbar>*{flex:none}
+
 .search{margin-bottom:10px}
-label{display:block;margin:14px 0 6px;color:#666;font-size:12px;font-weight:750}
+
+label{
+display:block;
+margin:14px 0 6px;
+color:#666;
+font-size:12px;
+font-weight:750
+}
+
 input,select,textarea{
-width:100%;border:1px solid var(--line);border-radius:14px;
-padding:12px 13px;background:#f8f8fa;color:#111;outline:none
+width:100%;
+border:1px solid var(--line);
+border-radius:14px;
+padding:12px 13px;
+background:#f8f8fa;
+color:#111;
+outline:none
 }
-input:focus,select:focus,textarea:focus{border-color:#aaa;background:#fff}
-textarea{min-height:90px;resize:vertical}
-.formGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+input:focus,select:focus,textarea:focus{
+border-color:#aaa;
+background:#fff
+}
+
+textarea{
+min-height:90px;
+resize:vertical
+}
+
+.formGrid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px
+}
+
 .order{
-padding:15px;margin-bottom:10px;border:1px solid var(--line);
-border-radius:18px;background:#fff
+padding:15px;
+margin-bottom:10px;
+border:1px solid var(--line);
+border-radius:18px;
+background:#fff
 }
-.orderHeader{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
-.orderId{font-size:14px;font-weight:850}
-.orderDate{margin-top:3px;color:var(--muted);font-size:11px}
+
+.orderHeader{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:10px
+}
+
+.orderId{
+font-size:14px;
+font-weight:850
+}
+
+.orderDate{
+margin-top:3px;
+color:var(--muted);
+font-size:11px
+}
+
 .orderStatus{
-padding:5px 9px;border-radius:9px;font-size:10px;
-font-weight:800;white-space:nowrap
+padding:5px 9px;
+border-radius:9px;
+font-size:10px;
+font-weight:800;
+white-space:nowrap
 }
-.s-pending{background:#fef3c7;color:#92400e}
-.s-accepted{background:#dbeafe;color:#1d4ed8}
-.s-ready{background:#ede9fe;color:#6d28d9}
-.s-completed{background:#dcfce7;color:#166534}
-.s-cancelled{background:#fee2e2;color:#b91c1c}
-.track{margin:13px 0;padding:14px;border-radius:16px;background:#f7f7f8}
-.trackTitle{font-size:12px;font-weight:850;margin-bottom:12px}
-.trackSteps{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
-.trackStep{text-align:center;position:relative}
+
+.s-pending{
+background:#fef3c7;
+color:#92400e
+}
+
+.s-accepted{
+background:#dbeafe;
+color:#1d4ed8
+}
+
+.s-ready{
+background:#ede9fe;
+color:#6d28d9
+}
+
+.s-completed{
+background:#dcfce7;
+color:#166534
+}
+
+.s-cancelled{
+background:#fee2e2;
+color:#b91c1c
+}
+
+.track{
+margin:13px 0;
+padding:14px;
+border-radius:16px;
+background:#f7f7f8
+}
+
+.trackTitle{
+font-size:12px;
+font-weight:850;
+margin-bottom:12px
+}
+
+.trackSteps{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:4px
+}
+
+.trackStep{
+text-align:center;
+position:relative
+}
+
 .trackNum{
-width:29px;height:29px;margin:auto;border-radius:50%;
-display:flex;align-items:center;justify-content:center;
-background:#e1e1e4;color:#888;font-size:11px;font-weight:900
+width:29px;
+height:29px;
+margin:auto;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#e1e1e4;
+color:#888;
+font-size:11px;
+font-weight:900
 }
-.trackStep.active .trackNum{background:#111;color:#fff}
-.trackStep.current .trackNum{background:var(--red);color:#fff;box-shadow:0 0 0 5px #e5393515}
-.trackLabel{margin-top:6px;font-size:9px;line-height:1.25;color:#888}
-.trackStep.active .trackLabel{color:#111;font-weight:750}
-.cancelTrack{padding:12px;border-radius:13px;background:#fee2e2;color:#b91c1c;font-size:12px;font-weight:800}
-.orderItems{margin:12px 0;padding:11px;border-radius:14px;background:#f7f7f8;font-size:13px}
-.orderItem{display:flex;justify-content:space-between;gap:10px;margin:6px 0}
-.orderTotal{display:flex;justify-content:space-between;margin-top:10px;font-size:17px;font-weight:900}
-.payment{margin-top:11px;padding:12px;border-radius:14px;background:#f7f7f8;font-size:12px}
-.payment.ok{background:#dcfce7;color:#166534}
-.payment.wait{background:#fef3c7;color:#92400e}
-.paymentTitle{font-weight:850;font-size:13px}
-.paymentStatus{margin-top:4px}
-.actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+
+.trackStep.active .trackNum{
+background:#111;
+color:#fff
+}
+
+.trackStep.current .trackNum{
+background:var(--red);
+color:#fff;
+box-shadow:0 0 0 5px #e5393515
+}
+
+.trackLabel{
+margin-top:6px;
+font-size:9px;
+line-height:1.25;
+color:#888
+}
+
+.trackStep.active .trackLabel{
+color:#111;
+font-weight:750
+}
+
+.cancelTrack{
+padding:12px;
+border-radius:13px;
+background:#fee2e2;
+color:#b91c1c;
+font-size:12px;
+font-weight:800
+}
+
+.orderItems{
+margin:12px 0;
+padding:11px;
+border-radius:14px;
+background:#f7f7f8;
+font-size:13px
+}
+
+.orderItem{
+display:flex;
+justify-content:space-between;
+gap:10px;
+margin:6px 0
+}
+
+.orderTotal{
+display:flex;
+justify-content:space-between;
+margin-top:10px;
+font-size:17px;
+font-weight:900
+}
+
+.payment{
+margin-top:11px;
+padding:12px;
+border-radius:14px;
+background:#f7f7f8;
+font-size:12px
+}
+
+.payment.ok{
+background:#dcfce7;
+color:#166534
+}
+
+.payment.wait{
+background:#fef3c7;
+color:#92400e
+}
+
+.paymentTitle{
+font-weight:850;
+font-size:13px
+}
+
+.paymentStatus{
+margin-top:4px
+}
+
+.actions{
+display:flex;
+flex-wrap:wrap;
+gap:7px;
+margin-top:12px
+}
+
 .preview{
-width:100%;height:170px;margin-top:8px;border-radius:18px;
-overflow:hidden;background:#e8e8ea;display:flex;align-items:center;justify-content:center
+width:100%;
+height:170px;
+margin-top:8px;
+border-radius:18px;
+overflow:hidden;
+background:#e8e8ea;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#888;
+font-size:12px
 }
-.preview img{width:100%;height:100%;object-fit:cover}
+
+.preview img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+/* =========================
+   รูปหน้าร้านออนไลน์
+========================= */
+
+.mainPreview{
+width:100%;
+height:190px;
+margin-top:8px;
+border-radius:18px;
+overflow:hidden;
+background:#e8e8ea;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#888;
+font-size:12px
+}
+
+.mainPreview img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.mainPreview.logo{
+height:150px
+}
+
+.mainPreview.logo img{
+object-fit:contain;
+padding:15px
+}
+
+.mainHint{
+margin-top:8px;
+color:#888;
+font-size:11px;
+line-height:1.5
+}
+
 .modalBg{
-display:none;position:fixed;inset:0;z-index:200;background:#0008;
-align-items:flex-end;justify-content:center
+display:none;
+position:fixed;
+inset:0;
+z-index:200;
+background:#0008;
+align-items:flex-end;
+justify-content:center
 }
+
 .modalBg.show{display:flex}
+
 .modal{
-width:min(620px,100%);max-height:93vh;overflow:auto;
-padding:18px 16px 30px;border-radius:28px 28px 0 0;
-background:#f5f5f7;animation:slideUp .2s ease
+width:min(620px,100%);
+max-height:93vh;
+overflow:auto;
+padding:18px 16px 30px;
+border-radius:28px 28px 0 0;
+background:#f5f5f7;
+animation:slideUp .2s ease
 }
-@keyframes slideUp{from{transform:translateY(50px);opacity:0}to{transform:none;opacity:1}}
-.modalHeader{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.modalHeader h3{margin:0;font-size:18px}
-.close{width:36px;height:36px;border:0;border-radius:50%;background:#e9e9eb;font-size:20px}
-.empty{padding:30px 10px;text-align:center;color:#888;font-size:13px}
+
+@keyframes slideUp{
+from{
+transform:translateY(50px);
+opacity:0
+}
+to{
+transform:none;
+opacity:1
+}
+}
+
+.modalHeader{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px
+}
+
+.modalHeader h3{
+margin:0;
+font-size:18px
+}
+
+.close{
+width:36px;
+height:36px;
+border:0;
+border-radius:50%;
+background:#e9e9eb;
+font-size:20px
+}
+
+.empty{
+padding:30px 10px;
+text-align:center;
+color:#888;
+font-size:13px
+}
+
 .nav{
-position:fixed;left:50%;bottom:12px;transform:translateX(-50%);
-z-index:100;width:min(590px,calc(100% - 24px));display:grid;
-grid-template-columns:repeat(4,1fr);padding:7px;border:1px solid #fff;
-border-radius:24px;background:#ffffffed;backdrop-filter:blur(25px);
+position:fixed;
+left:50%;
+bottom:12px;
+transform:translateX(-50%);
+z-index:100;
+width:min(590px,calc(100% - 24px));
+display:grid;
+grid-template-columns:repeat(4,1fr);
+padding:7px;
+border:1px solid #fff;
+border-radius:24px;
+background:#ffffffed;
+backdrop-filter:blur(25px);
 box-shadow:0 10px 35px #0002
 }
+
 .nav button{
-border:0;background:none;padding:9px 4px;border-radius:17px;
-color:#777;font-size:11px;font-weight:750
+border:0;
+background:none;
+padding:9px 4px;
+border-radius:17px;
+color:#777;
+font-size:11px;
+font-weight:750
 }
-.nav button.active{background:#111;color:#fff}
-.navIcon{display:block;margin-bottom:2px;font-size:19px}
+
+.nav button.active{
+background:#111;
+color:#fff
+}
+
+.navIcon{
+display:block;
+margin-bottom:2px;
+font-size:19px
+}
+
 .toast{
-position:fixed;left:50%;bottom:90px;z-index:500;
-transform:translateX(-50%) translateY(20px);padding:11px 16px;
-border-radius:14px;background:#111;color:#fff;font-size:13px;
-opacity:0;pointer-events:none;transition:.25s;max-width:90%;text-align:center
+position:fixed;
+left:50%;
+bottom:90px;
+z-index:500;
+transform:translateX(-50%) translateY(20px);
+padding:11px 16px;
+border-radius:14px;
+background:#111;
+color:#fff;
+font-size:13px;
+opacity:0;
+pointer-events:none;
+transition:.25s;
+max-width:90%;
+text-align:center
 }
-.toast.show{opacity:1;transform:translateX(-50%)}
+
+.toast.show{
+opacity:1;
+transform:translateX(-50%)
+}
+
 #loginScreen{
-position:fixed;inset:0;z-index:9999;background:#f5f5f7;
-display:flex;align-items:center;justify-content:center;padding:20px
+position:fixed;
+inset:0;
+z-index:9999;
+background:#f5f5f7;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px
 }
-.loginBox{width:min(390px,100%);background:#fff;border-radius:28px;padding:28px;box-shadow:0 15px 50px #00000012}
-.loginLogo{font-size:28px;font-weight:900;letter-spacing:-1px}
-.loginSub{margin-top:5px;color:#777;font-size:13px}
+
+.loginBox{
+width:min(390px,100%);
+background:#fff;
+border-radius:28px;
+padding:28px;
+box-shadow:0 15px 50px #00000012
+}
+
+.loginLogo{
+font-size:28px;
+font-weight:900;
+letter-spacing:-1px
+}
+
+.loginSub{
+margin-top:5px;
+color:#777;
+font-size:13px
+}
+
 .loginInput{
-width:100%;margin-top:22px!important;padding:15px!important;
-border:1px solid #ddd!important;border-radius:15px!important;
-background:#f7f7f8!important;font-size:16px!important
+width:100%;
+margin-top:22px!important;
+padding:15px!important;
+border:1px solid #ddd!important;
+border-radius:15px!important;
+background:#f7f7f8!important;
+font-size:16px!important
 }
+
 .loginBtn{
-width:100%;margin-top:10px;padding:14px;border:0;
-border-radius:15px;background:#111;color:#fff;font-weight:800;font-size:15px
+width:100%;
+margin-top:10px;
+padding:14px;
+border:0;
+border-radius:15px;
+background:#111;
+color:#fff;
+font-weight:800;
+font-size:15px
 }
-.loginError{display:none;margin-top:12px;text-align:center;color:#e53935;font-size:12px}
-.timeNote{margin-top:7px;color:#888;font-size:11px}
-.muted{color:#777}.small{font-size:12px}
+
+.loginError{
+display:none;
+margin-top:12px;
+text-align:center;
+color:#e53935;
+font-size:12px
+}
+
+.timeNote{
+margin-top:7px;
+color:#888;
+font-size:11px
+}
+
+.muted{color:#777}
+.small{font-size:12px}
+
 .switch{
-width:48px;height:28px;padding:3px;border:0;border-radius:20px;background:#d1d1d6
+width:48px;
+height:28px;
+padding:3px;
+border:0;
+border-radius:20px;
+background:#d1d1d6
 }
-.switch i{display:block;width:22px;height:22px;border-radius:50%;background:#fff;transition:.2s}
-.switch.on{background:#16a34a}
-.switch.on i{transform:translateX(20px)}
+
+.switch i{
+display:block;
+width:22px;
+height:22px;
+border-radius:50%;
+background:#fff;
+transition:.2s
+}
+
+.switch.on{
+background:#16a34a
+}
+
+.switch.on i{
+transform:translateX(20px)
+}
+
 .promoStatus{
-margin-top:8px;font-size:12px;font-weight:800
+margin-top:8px;
+font-size:12px;
+font-weight:800
 }
+
 .promoStatus.on{color:var(--green)}
 .promoStatus.off{color:var(--red)}
+
 .categoryNote{
-margin-top:6px;color:#888;font-size:11px
+margin-top:6px;
+color:#888;
+font-size:11px
 }
+
 @media(max-width:420px){
+
 .pageTitle{font-size:25px}
-.productActions .btn{padding:7px 9px}
-.formGrid{grid-template-columns:1fr}
-.trackLabel{font-size:8px}
+
+.productActions .btn{
+padding:7px 9px
+}
+
+.formGrid{
+grid-template-columns:1fr
+}
+
+.trackLabel{
+font-size:8px
+}
+
 }
 </style>
 </head>
@@ -217,307 +823,972 @@ margin-top:6px;color:#888;font-size:11px
 <body>
 
 <div id="loginScreen">
+
 <div class="loginBox">
+
 <div class="loginLogo">MALA FRIED</div>
-<div class="loginSub">เข้าสู่ระบบหลังร้าน</div>
-<input id="adminPassword" class="loginInput" type="password" placeholder="รหัสผ่าน" autocomplete="current-password" onkeydown="if(event.key==='Enter')loginAdmin()">
-<button class="loginBtn" onclick="loginAdmin()">เข้าสู่หลังร้าน</button>
-<div id="loginError" class="loginError">รหัสผ่านไม่ถูกต้อง</div>
-</div>
+
+<div class="loginSub">
+เข้าสู่ระบบหลังร้าน
 </div>
 
+<input
+id="adminPassword"
+class="loginInput"
+type="password"
+placeholder="รหัสผ่าน"
+autocomplete="current-password"
+onkeydown="if(event.key==='Enter')loginAdmin()">
+
+<button
+class="loginBtn"
+onclick="loginAdmin()">
+เข้าสู่หลังร้าน
+</button>
+
+<div id="loginError" class="loginError">
+รหัสผ่านไม่ถูกต้อง
+</div>
+
+</div>
+
+</div>
+
+
 <div id="adminApp" style="display:none">
+
 <div class="app">
 
 <header>
+
 <div class="header">
+
 <div>
-<div class="brand">MALA FRIED</div>
+
+<div class="brand">
+MALA FRIED
+</div>
+
 <div class="sub">
+
 <span id="storeDot" class="dot"></span>
-<span id="storeStatus">กำลังตรวจสอบเวลา...</span>
+
+<span id="storeStatus">
+กำลังตรวจสอบเวลา...
+</span>
+
 </div>
+
 </div>
-<button class="btn light sm" onclick="openPage('settings')">⚙️</button>
+
+<button
+class="btn light sm"
+onclick="openPage('settings')">
+⚙️
+</button>
+
 </div>
+
 </header>
+
 
 <main>
 
+
+<!-- =========================
+     HOME
+========================= -->
+
 <section id="home" class="page active">
 
-<h1 class="pageTitle">หลังร้าน</h1>
+<h1 class="pageTitle">
+หลังร้าน
+</h1>
+
 
 <div class="stats">
-<div class="stat"><div class="statLabel">สินค้าทั้งหมด</div><div id="statProducts" class="statValue">0</div></div>
-<div class="stat"><div class="statLabel">เปิดขาย</div><div id="statActive" class="statValue">0</div></div>
-<div class="stat"><div class="statLabel">ออเดอร์</div><div id="statOrders" class="statValue">0</div></div>
-<div class="stat"><div class="statLabel">ใกล้หมด</div><div id="statLow" class="statValue">0</div></div>
+
+<div class="stat">
+<div class="statLabel">สินค้าทั้งหมด</div>
+<div id="statProducts" class="statValue">0</div>
 </div>
 
+<div class="stat">
+<div class="statLabel">เปิดขาย</div>
+<div id="statActive" class="statValue">0</div>
+</div>
+
+<div class="stat">
+<div class="statLabel">ออเดอร์</div>
+<div id="statOrders" class="statValue">0</div>
+</div>
+
+<div class="stat">
+<div class="statLabel">ใกล้หมด</div>
+<div id="statLow" class="statValue">0</div>
+</div>
+
+</div>
+
+
 <div class="card">
+
 <div class="statusBox">
+
 <div>
-<div class="statusTitle">สถานะร้าน</div>
-<div id="homeStoreText" class="statusText">กำลังตรวจสอบเวลา...</div>
-</div>
-</div>
+
+<div class="statusTitle">
+สถานะร้าน
 </div>
 
+<div id="homeStoreText" class="statusText">
+กำลังตรวจสอบเวลา...
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
 <div class="card">
+
 <div class="row">
+
 <div>
-<div class="sectionTitle">ออเดอร์ล่าสุด</div>
-<div class="muted small">รายการสั่งซื้อที่เข้ามาล่าสุด</div>
+
+<div class="sectionTitle">
+ออเดอร์ล่าสุด
 </div>
-<button class="btn light sm" onclick="openPage('orders')">ดูทั้งหมด</button>
+
+<div class="muted small">
+รายการสั่งซื้อที่เข้ามาล่าสุด
 </div>
+
+</div>
+
+<button
+class="btn light sm"
+onclick="openPage('orders')">
+ดูทั้งหมด
+</button>
+
+</div>
+
 <div id="recentOrders"></div>
+
 </div>
 
+
 <div class="card">
+
 <div class="row">
+
 <div>
-<div class="sectionTitle">เมนู</div>
-<div class="muted small">จัดการรายการอาหาร</div>
+
+<div class="sectionTitle">
+เมนู
 </div>
-<button class="btn sm" onclick="openProduct()">+ เพิ่มเมนู</button>
+
+<div class="muted small">
+จัดการรายการอาหาร
 </div>
+
+</div>
+
+<button
+class="btn sm"
+onclick="openProduct()">
++ เพิ่มเมนู
+</button>
+
+</div>
+
 </div>
 
 </section>
 
+
+<!-- =========================
+     ORDERS
+========================= -->
+
 <section id="orders" class="page">
 
-<h1 class="pageTitle">ออเดอร์</h1>
+<h1 class="pageTitle">
+ออเดอร์
+</h1>
 
 <div class="toolbar">
-<button class="btn sm" onclick="setOrderFilter('all')">ทั้งหมด</button>
-<button class="btn light sm" onclick="setOrderFilter('pending')">รอรับ</button>
-<button class="btn light sm" onclick="setOrderFilter('accepted')">กำลังทำ</button>
-<button class="btn light sm" onclick="setOrderFilter('ready')">พร้อมส่ง</button>
-<button class="btn light sm" onclick="setOrderFilter('completed')">สำเร็จ</button>
-<button class="btn light sm" onclick="setOrderFilter('cancelled')">ยกเลิก</button>
+
+<button
+class="btn sm"
+onclick="setOrderFilter('all')">
+ทั้งหมด
+</button>
+
+<button
+class="btn light sm"
+onclick="setOrderFilter('pending')">
+รอรับ
+</button>
+
+<button
+class="btn light sm"
+onclick="setOrderFilter('accepted')">
+กำลังทำ
+</button>
+
+<button
+class="btn light sm"
+onclick="setOrderFilter('ready')">
+พร้อมส่ง
+</button>
+
+<button
+class="btn light sm"
+onclick="setOrderFilter('completed')">
+สำเร็จ
+</button>
+
+<button
+class="btn light sm"
+onclick="setOrderFilter('cancelled')">
+ยกเลิก
+</button>
+
 </div>
 
 <div id="ordersList"></div>
 
 </section>
 
+
+<!-- =========================
+     MENU
+========================= -->
+
 <section id="menu" class="page">
 
 <div class="row">
-<h1 class="pageTitle">เมนู</h1>
-<button class="btn sm" onclick="openProduct()">+ เพิ่ม</button>
+
+<h1 class="pageTitle">
+เมนู
+</h1>
+
+<button
+class="btn sm"
+onclick="openProduct()">
++ เพิ่ม
+</button>
+
 </div>
 
-<input id="menuSearch" class="search" placeholder="ค้นหาเมนู..." oninput="renderProducts()">
 
-<!-- 5 หมวด ตรงกับเว็บลูกค้า -->
+<input
+id="menuSearch"
+class="search"
+placeholder="ค้นหาเมนู..."
+oninput="renderProducts()">
+
+
 <div class="toolbar">
-<button class="btn sm" onclick="setCategory('all')">ทั้งหมด</button>
-<button class="btn light sm" onclick="setCategory('เนื้อ')">🥩 เนื้อ</button>
-<button class="btn light sm" onclick="setCategory('ลูกชิ้น')">🍢 ลูกชิ้น</button>
-<button class="btn light sm" onclick="setCategory('ปลา,กุ้ง,หมึก')">🦐 ปลา,กุ้ง,หมึก</button>
-<button class="btn light sm" onclick="setCategory('ผักและอื่นๆ')">🥦 ผักและอื่นๆ</button>
+
+<button
+class="btn sm"
+onclick="setCategory('all')">
+ทั้งหมด
+</button>
+
+<button
+class="btn light sm"
+onclick="setCategory('เนื้อ')">
+🥩 เนื้อ
+</button>
+
+<button
+class="btn light sm"
+onclick="setCategory('ลูกชิ้น')">
+🍢 ลูกชิ้น
+</button>
+
+<button
+class="btn light sm"
+onclick="setCategory('ปลา,กุ้ง,หมึก')">
+🦐 ปลา,กุ้ง,หมึก
+</button>
+
+<button
+class="btn light sm"
+onclick="setCategory('ผักและอื่นๆ')">
+🥦 ผักและอื่นๆ
+</button>
+
 </div>
+
 
 <div class="card">
+
 <div id="productsList"></div>
+
 </div>
 
 </section>
 
+
+<!-- =========================
+     SETTINGS
+========================= -->
+
 <section id="settings" class="page">
 
-<h1 class="pageTitle">ตั้งค่า</h1>
+<h1 class="pageTitle">
+ตั้งค่า
+</h1>
+
+
+<!-- =========================
+     MAIN WEBSITE SETTINGS
+========================= -->
 
 <div class="card">
 
-<div class="sectionTitle">ข้อมูลร้าน</div>
+<div class="sectionTitle">
+หน้าร้านออนไลน์
+</div>
 
-<label>ชื่อร้าน</label>
-<input id="storeName" placeholder="ชื่อร้าน">
+<div class="muted small">
+ตั้งค่ารูปภาพและข้อความที่แสดงบนเว็บลูกค้า
+</div>
 
-<label>รายละเอียดร้าน</label>
-<textarea id="storeDesc" placeholder="รายละเอียดร้าน"></textarea>
+
+<label>
+โลโก้ร้าน
+</label>
+
+<input
+id="mainLogoFile"
+type="file"
+accept="image/*"
+onchange="previewMainImage(this,'mainLogoPreview')">
+
+<div
+id="mainLogoPreview"
+class="mainPreview logo">
+ไม่มีรูป
+</div>
+
+<div class="mainHint">
+รูปนี้จะใช้เป็นโลโก้บนเว็บลูกค้า
+</div>
+
+
+<label>
+รูป Hero
+</label>
+
+<input
+id="mainHeroFile"
+type="file"
+accept="image/*"
+onchange="previewMainImage(this,'mainHeroPreview')">
+
+<div
+id="mainHeroPreview"
+class="mainPreview">
+ไม่มีรูป
+</div>
+
+<div class="mainHint">
+รูปอาหาร/แบนเนอร์หลักที่แสดงบริเวณด้านบนเว็บลูกค้า
+</div>
+
+
+<label>
+รูปพื้นหลัง
+</label>
+
+<input
+id="mainBackgroundFile"
+type="file"
+accept="image/*"
+onchange="previewMainImage(this,'mainBackgroundPreview')">
+
+<div
+id="mainBackgroundPreview"
+class="mainPreview">
+ไม่มีรูป
+</div>
+
+<div class="mainHint">
+ใช้เป็นพื้นหลังของเว็บลูกค้า
+</div>
+
+
+<label>
+หัวข้อ Hero
+</label>
+
+<input
+id="mainHeroTitle"
+placeholder="กรอบ เผ็ด ชา ถึงใจ">
+
+
+<label>
+คำอธิบาย Hero
+</label>
+
+<input
+id="mainHeroSubtitle"
+placeholder="เลือกเมนูที่ชอบ ใส่ตะกร้า แล้วสั่งได้เลย">
+
+
+<label>
+Badge Hero
+</label>
+
+<input
+id="mainHeroBadge"
+placeholder="🔥 หม่าล่าทอดกรอบ">
+
+
+<button
+class="btn"
+style="width:100%;margin-top:18px"
+onclick="saveMainSettings()">
+
+บันทึกหน้าร้านออนไลน์
+
+</button>
+
+</div>
+
+
+<!-- =========================
+     STORE
+========================= -->
+
+<div class="card">
+
+<div class="sectionTitle">
+ข้อมูลร้าน
+</div>
+
+
+<label>
+ชื่อร้าน
+</label>
+
+<input
+id="storeName"
+placeholder="ชื่อร้าน">
+
+
+<label>
+รายละเอียดร้าน
+</label>
+
+<textarea
+id="storeDesc"
+placeholder="รายละเอียดร้าน"></textarea>
+
 
 <div class="formGrid">
+
 <div>
-<label>เวลาเปิด</label>
-<input id="openTime" type="time">
+
+<label>
+เวลาเปิด
+</label>
+
+<input
+id="openTime"
+type="time">
+
 </div>
+
+
 <div>
-<label>เวลาปิด</label>
-<input id="closeTime" type="time">
-</div>
-</div>
 
-<div class="timeNote">ตั้งเวลาปิดเป็น 00:00 = ปิดตอนเที่ยงคืน</div>
+<label>
+เวลาปิด
+</label>
 
-<label>ข้อความตอนร้านปิด</label>
-<textarea id="storeMessage" placeholder="ขณะนี้ร้านปิด/ไม่ว่าง กรุณากลับมาใหม่ภายหลัง"></textarea>
-
-<button class="btn" style="width:100%;margin-top:18px" onclick="saveStore()">บันทึกข้อมูลร้าน</button>
+<input
+id="closeTime"
+type="time">
 
 </div>
+
+</div>
+
+
+<div class="timeNote">
+ตั้งเวลาปิดเป็น 00:00 = ปิดตอนเที่ยงคืน
+</div>
+
+
+<label>
+ข้อความตอนร้านปิด
+</label>
+
+<textarea
+id="storeMessage"
+placeholder="ขณะนี้ร้านปิด/ไม่ว่าง กรุณากลับมาใหม่ภายหลัง"></textarea>
+
+
+<button
+class="btn"
+style="width:100%;margin-top:18px"
+onclick="saveStore()">
+
+บันทึกข้อมูลร้าน
+
+</button>
+
+</div>
+
+
+<!-- =========================
+     PROMOTION
+========================= -->
 
 <div class="card">
 
 <div class="row">
+
 <div>
-<div class="sectionTitle" style="margin-bottom:3px">โปรโมชั่น</div>
-<div class="muted small">เปิดหรือปิดโปรโมชั่นบนเว็บลูกค้า</div>
+
+<div
+class="sectionTitle"
+style="margin-bottom:3px">
+โปรโมชั่น
 </div>
 
-<button id="promoEnabled" class="switch" onclick="togglePromotion()">
+<div class="muted small">
+เปิดหรือปิดโปรโมชั่นบนเว็บลูกค้า
+</div>
+
+</div>
+
+
+<button
+id="promoEnabled"
+class="switch"
+onclick="togglePromotion()">
+
 <i></i>
+
 </button>
+
 </div>
 
-<div id="promoStatus" class="promoStatus off">โปรโมชั่นปิดอยู่</div>
 
-<label>ชื่อโปรโมชั่น</label>
-<input id="promoName" placeholder="เช่น ซื้อ 10 แถม 1">
+<div
+id="promoStatus"
+class="promoStatus off">
+โปรโมชั่นปิดอยู่
+</div>
+
+
+<label>
+ชื่อโปรโมชั่น
+</label>
+
+<input
+id="promoName"
+placeholder="เช่น ซื้อ 10 แถม 1">
+
 
 <div class="formGrid">
+
 <div>
-<label>ซื้อ</label>
-<input id="promoBuyQty" type="number" min="1">
-</div>
-<div>
-<label>แถม</label>
-<input id="promoFreeQty" type="number" min="0">
-</div>
+
+<label>
+ซื้อ
+</label>
+
+<input
+id="promoBuyQty"
+type="number"
+min="1">
+
 </div>
 
-<label>รูปแบบ</label>
+
+<div>
+
+<label>
+แถม
+</label>
+
+<input
+id="promoFreeQty"
+type="number"
+min="0">
+
+</div>
+
+</div>
+
+
+<label>
+รูปแบบ
+</label>
 
 <select id="promoMethod">
-<option value="buyfree">ซื้อ X แถม Y</option>
-<option value="percent">ลดเปอร์เซ็นต์</option>
-<option value="amount">ลดเป็นบาท</option>
+
+<option value="buyfree">
+ซื้อ X แถม Y
+</option>
+
+<option value="percent">
+ลดเปอร์เซ็นต์
+</option>
+
+<option value="amount">
+ลดเป็นบาท
+</option>
+
 </select>
 
-<label>ข้อความที่ลูกค้าเห็น</label>
-<input id="promoCustomerText" placeholder="ซื้อ 10 ไม้ แถมฟรี 1 ไม้">
 
-<label>รูปโปรโมชั่น</label>
+<label>
+ข้อความที่ลูกค้าเห็น
+</label>
 
-<input id="promoImageFile" type="file" accept="image/*" onchange="previewPromo(this)">
+<input
+id="promoCustomerText"
+placeholder="ซื้อ 10 ไม้ แถมฟรี 1 ไม้">
 
-<div id="promoPreview" class="preview">ไม่มีรูป</div>
 
-<button class="btn" style="width:100%;margin-top:18px" onclick="savePromotion()">บันทึกโปรโมชั่น</button>
+<label>
+รูปโปรโมชั่น
+</label>
+
+<input
+id="promoImageFile"
+type="file"
+accept="image/*"
+onchange="previewPromo(this)">
+
+
+<div
+id="promoPreview"
+class="preview">
+ไม่มีรูป
+</div>
+
+
+<button
+class="btn"
+style="width:100%;margin-top:18px"
+onclick="savePromotion()">
+
+บันทึกโปรโมชั่น
+
+</button>
 
 </div>
+
+
+<!-- =========================
+     LOGOUT
+========================= -->
 
 <div class="card">
-<div class="sectionTitle">ออกจากระบบ</div>
-<button class="btn red" style="width:100%" onclick="logoutAdmin()">ออกจาก Admin</button>
+
+<div class="sectionTitle">
+ออกจากระบบ
 </div>
+
+<button
+class="btn red"
+style="width:100%"
+onclick="logoutAdmin()">
+
+ออกจาก Admin
+
+</button>
+
+</div>
+
 
 </section>
 
 </main>
+
 </div>
+
+
+<!-- =========================
+     NAV
+========================= -->
 
 <nav class="nav">
 
-<button class="active" onclick="openPage('home')">
-<span class="navIcon">⌂</span>หน้าหลัก
+<button
+class="active"
+onclick="openPage('home')">
+
+<span class="navIcon">
+⌂
+</span>
+
+หน้าหลัก
+
 </button>
 
-<button onclick="openPage('orders')">
-<span class="navIcon">🧾</span>ออเดอร์
+
+<button
+onclick="openPage('orders')">
+
+<span class="navIcon">
+🧾
+</span>
+
+ออเดอร์
+
 </button>
 
-<button onclick="openPage('menu')">
-<span class="navIcon">🍢</span>เมนู
+
+<button
+onclick="openPage('menu')">
+
+<span class="navIcon">
+🍢
+</span>
+
+เมนู
+
 </button>
 
-<button onclick="openPage('settings')">
-<span class="navIcon">⚙️</span>ตั้งค่า
+
+<button
+onclick="openPage('settings')">
+
+<span class="navIcon">
+⚙️
+</span>
+
+ตั้งค่า
+
 </button>
 
 </nav>
+
 </div>
 
-<div id="productModal" class="modalBg" onclick="closeModal(event)">
+
+<!-- =========================
+     PRODUCT MODAL
+========================= -->
+
+<div
+id="productModal"
+class="modalBg"
+onclick="closeModal(event)">
+
 <div class="modal">
 
 <div class="modalHeader">
-<h3 id="productModalTitle">เพิ่มเมนู</h3>
-<button class="close" onclick="closeProduct()">×</button>
+
+<h3 id="productModalTitle">
+เพิ่มเมนู
+</h3>
+
+<button
+class="close"
+onclick="closeProduct()">
+×
+</button>
+
 </div>
 
-<input id="productId" type="hidden">
 
-<label>ชื่อเมนู</label>
-<input id="productName" placeholder="ชื่อเมนู">
+<input
+id="productId"
+type="hidden">
 
-<label>รายละเอียด</label>
-<textarea id="productDesc" placeholder="รายละเอียดเมนู"></textarea>
+
+<label>
+ชื่อเมนู
+</label>
+
+<input
+id="productName"
+placeholder="ชื่อเมนู">
+
+
+<label>
+รายละเอียด
+</label>
+
+<textarea
+id="productDesc"
+placeholder="รายละเอียดเมนู"></textarea>
+
 
 <div class="formGrid">
 
 <div>
-<label>ราคา</label>
-<input id="productPrice" type="number" min="0">
+
+<label>
+ราคา
+</label>
+
+<input
+id="productPrice"
+type="number"
+min="0">
+
 </div>
+
 
 <div>
-<label>สต็อก</label>
-<input id="productStock" type="number" min="0">
-</div>
+
+<label>
+สต็อก
+</label>
+
+<input
+id="productStock"
+type="number"
+min="0">
 
 </div>
 
-<label>หมวดหมู่</label>
+</div>
+
+
+<label>
+หมวดหมู่
+</label>
 
 <select id="productCategory">
-<option value="เนื้อ">เนื้อ</option>
-<option value="ลูกชิ้น">ลูกชิ้น</option>
-<option value="ปลา,กุ้ง,หมึก">ปลา,กุ้ง,หมึก</option>
-<option value="ผักและอื่นๆ">ผักและอื่นๆ</option>
+
+<option value="เนื้อ">
+เนื้อ
+</option>
+
+<option value="ลูกชิ้น">
+ลูกชิ้น
+</option>
+
+<option value="ปลา,กุ้ง,หมึก">
+ปลา,กุ้ง,หมึก
+</option>
+
+<option value="ผักและอื่นๆ">
+ผักและอื่นๆ
+</option>
+
 </select>
+
 
 <div class="categoryNote">
 หมวดหมู่นี้ตรงกับหมวดหมู่บนเว็บลูกค้าโดยตรง
 </div>
 
-<label>Emoji</label>
-<input id="productEmoji" placeholder="🍢">
 
-<label>ป้ายเมนู</label>
-<input id="productBadge" placeholder="ขายดี / ใหม่ / DEAL">
+<label>
+Emoji
+</label>
 
-<label>รูปเมนู</label>
+<input
+id="productEmoji"
+placeholder="🍢">
 
-<input id="productImageFile" type="file" accept="image/*" onchange="previewProduct(this)">
 
-<div id="productPreview" class="preview">ไม่มีรูป</div>
+<label>
+ป้ายเมนู
+</label>
 
-<div class="row" style="margin-top:14px">
-<span class="small muted">เปิดขาย</span>
-<button id="productActive" class="switch on" onclick="toggleProductActive()"><i></i></button>
+<input
+id="productBadge"
+placeholder="ขายดี / ใหม่ / DEAL">
+
+
+<label>
+รูปเมนู
+</label>
+
+<input
+id="productImageFile"
+type="file"
+accept="image/*"
+onchange="previewProduct(this)">
+
+
+<div
+id="productPreview"
+class="preview">
+ไม่มีรูป
 </div>
 
-<div class="row" style="margin-top:12px">
-<span class="small muted">เมนูแนะนำ</span>
-<button id="productFeatured" class="switch" onclick="toggleProductFeatured()"><i></i></button>
+
+<div
+class="row"
+style="margin-top:14px">
+
+<span class="small muted">
+เปิดขาย
+</span>
+
+<button
+id="productActive"
+class="switch on"
+onclick="toggleProductActive()">
+
+<i></i>
+
+</button>
+
 </div>
 
-<button class="btn green" style="width:100%;margin-top:20px" onclick="saveProduct()">บันทึกเมนู</button>
+
+<div
+class="row"
+style="margin-top:12px">
+
+<span class="small muted">
+เมนูแนะนำ
+</span>
+
+<button
+id="productFeatured"
+class="switch"
+onclick="toggleProductFeatured()">
+
+<i></i>
+
+</button>
 
 </div>
+
+
+<button
+class="btn green"
+style="width:100%;margin-top:20px"
+onclick="saveProduct()">
+
+บันทึกเมนู
+
+</button>
+
 </div>
+
+</div>
+
 
 <div id="toast" class="toast"></div>
 
+
 <script type="module">
 
-import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{initializeApp}
+from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import{
 getFirestore,
@@ -528,20 +1799,38 @@ updateDoc,
 deleteDoc,
 setDoc,
 onSnapshot
-}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+}
+from"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
 
 const firebaseConfig={
-apiKey:"AIzaSyAOcPmnQrhHh058ozPr1bCgvUI1pOesU",
-authDomain:"mala-order-645ed.firebaseapp.com",
-projectId:"mala-order-645ed",
-storageBucket:"mala-order-645ed.firebasestorage.app",
-messagingSenderId:"897411378069",
-appId:"1:897411378069:web:81c0db8a0b5c899a4c649c",
-measurementId:"G-276HMQGECP"
+
+apiKey:"AIzaSyAOcPmnQrhHh058pr1bCgvUI1pOesU",
+
+authDomain:
+"mala-order-645ed.firebaseapp.com",
+
+projectId:
+"mala-order-645ed",
+
+storageBucket:
+"mala-order-645ed.firebasestorage.app",
+
+messagingSenderId:
+"897411378069",
+
+appId:
+"1:897411378069:web:81c0db8a0b5c899a4c649c",
+
+measurementId:
+"G-276HMQGECP"
+
 };
+
 
 const app=initializeApp(firebaseConfig);
 const db=getFirestore(app);
+
 
 /* =========================
    หมวดหมู่ตรงกับเว็บลูกค้า
@@ -554,13 +1843,21 @@ const CATEGORIES=[
 "ผักและอื่นๆ"
 ];
 
+
 /* รองรับข้อมูลเก่าที่เคยใช้หมวดเดิม */
+
 const OLD_CATEGORY_MAP={
+
 meat:"เนื้อ",
+
 seafood:"ปลา,กุ้ง,หมึก",
+
 vegetable:"ผักและอื่นๆ",
+
 other:"ผักและอื่นๆ"
+
 };
+
 
 function normalizeCategory(v){
 
@@ -572,52 +1869,111 @@ return OLD_CATEGORY_MAP[x];
 if(CATEGORIES.includes(x))
 return x;
 
-return "ผักและอื่นๆ";
+return"ผักและอื่นๆ";
 
 }
+
 
 let products=[];
 let orders=[];
 
+
 let store={
+
 message:"",
+
 name:"MALA FRIED",
+
 description:"",
+
 openTime:"13:00",
+
 closeTime:"00:00"
+
 };
+
 
 let promotion={
+
 enabled:false,
+
 name:"",
+
 buyQty:10,
+
 freeQty:1,
+
 method:"buyfree",
+
 customerText:""
+
 };
 
+
+/* =========================
+   ตั้งค่าหน้าร้านออนไลน์
+   ตรงกับ settings/main
+========================= */
+
+let mainSettings={
+
+logo:"",
+
+background:"",
+
+heroImage:"",
+
+heroTitle:"กรอบ เผ็ด ชา ถึงใจ",
+
+heroSubtitle:
+"เลือกเมนูที่ชอบ ใส่ตะกร้า แล้วสั่งได้เลย",
+
+heroBadge:
+"🔥 หม่าล่าทอดกรอบ"
+
+};
+
+
 let orderFilter="all";
+
 let category="all";
+
 let realtimeStarted=false;
+
 let firstSettingsLoad=true;
+
 
 const $=id=>document.getElementById(id);
 
+
+/* =========================
+   UTIL
+========================= */
+
 function money(v){
-return Number(v||0).toLocaleString("th-TH",{
+
+return Number(v||0).toLocaleString(
+"th-TH",
+{
 minimumFractionDigits:0,
 maximumFractionDigits:2
-})+" บาท";
+}
+)+" บาท";
+
 }
 
+
 function esc(v){
+
 return String(v??"")
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
 .replace(/"/g,"&quot;")
 .replace(/'/g,"&#039;");
+
 }
+
 
 function timeText(v){
 
@@ -625,27 +1981,42 @@ if(!v)return"-";
 
 try{
 
-if(typeof v==="object"&&v?.toDate)
-return v.toDate().toLocaleString("th-TH",{
+if(
+typeof v==="object"&&
+v?.toDate
+){
+
+return v.toDate().toLocaleString(
+"th-TH",
+{
 dateStyle:"short",
 timeStyle:"short"
-});
+}
+);
+
+}
 
 const d=new Date(v);
 
-if(isNaN(d.getTime()))return"-";
+if(isNaN(d.getTime()))
+return"-";
 
-return d.toLocaleString("th-TH",{
+return d.toLocaleString(
+"th-TH",
+{
 dateStyle:"short",
 timeStyle:"short"
-});
+}
+);
 
 }catch{
 
 return"-";
 
 }
+
 }
+
 
 function dateValue(v){
 
@@ -653,8 +2024,14 @@ if(!v)return 0;
 
 try{
 
-if(typeof v==="object"&&v?.toDate)
+if(
+typeof v==="object"&&
+v?.toDate
+){
+
 return v.toDate().getTime();
+
+}
 
 const d=new Date(v).getTime();
 
@@ -665,22 +2042,29 @@ return Number.isFinite(d)?d:0;
 return 0;
 
 }
+
 }
+
 
 function toast(t){
 
 const el=$("toast");
 
 el.textContent=t;
+
 el.classList.add("show");
 
 clearTimeout(window.__toastTimer);
 
-window.__toastTimer=setTimeout(()=>{
+window.__toastTimer=setTimeout(
+()=>{
 el.classList.remove("show");
-},3500);
+},
+3500
+);
 
 }
+
 
 function firebaseError(e){
 
@@ -692,6 +2076,7 @@ return e?.code
 
 }
 
+
 /* =========================
    เวลาเปิด-ปิดร้าน
 ========================= */
@@ -702,29 +2087,44 @@ if(!v)return null;
 
 const a=String(v).split(":");
 
-if(a.length!==2)return null;
+if(a.length!==2)
+return null;
 
 const h=Number(a[0]);
+
 const m=Number(a[1]);
 
-if(!Number.isFinite(h)||!Number.isFinite(m))
+if(
+!Number.isFinite(h)||
+!Number.isFinite(m)
+)
 return null;
 
 return h*60+m;
 
 }
 
+
 function isStoreOpenByTime(){
 
 const open=minutes(store.openTime);
+
 const close=minutes(store.closeTime);
 
-if(open===null||close===null)return true;
+if(
+open===null||
+close===null
+)
+return true;
 
 const now=new Date();
-const current=now.getHours()*60+now.getMinutes();
 
-if(open===close)return true;
+const current=
+now.getHours()*60+
+now.getMinutes();
+
+if(open===close)
+return true;
 
 if(open<close)
 return current>=open&&current<close;
@@ -733,13 +2133,16 @@ return current>=open||current<close;
 
 }
 
+
 function updateStoreUI(){
 
 const open=isStoreOpenByTime();
 
-$("storeDot").className="dot "+(open?"on":"off");
+$("storeDot").className=
+"dot "+(open?"on":"off");
 
-$("storeStatus").textContent=open?"ร้านเปิด":"ร้านปิด";
+$("storeStatus").textContent=
+open?"ร้านเปิด":"ร้านปิด";
 
 $("homeStoreText").textContent=
 open
@@ -748,15 +2151,21 @@ open
 
 }
 
+
 function startClock(){
 
 updateStoreUI();
 
 clearInterval(window.__storeClock);
 
-window.__storeClock=setInterval(updateStoreUI,30000);
+window.__storeClock=
+setInterval(
+updateStoreUI,
+30000
+);
 
 }
+
 
 /* =========================
    PAGE
@@ -764,15 +2173,24 @@ window.__storeClock=setInterval(updateStoreUI,30000);
 
 window.openPage=function(page){
 
-document.querySelectorAll(".page")
-.forEach(x=>x.classList.remove("active"));
+document
+.querySelectorAll(".page")
+.forEach(
+x=>x.classList.remove("active")
+);
 
 const el=$(page);
 
-if(el)el.classList.add("active");
+if(el)
+el.classList.add("active");
 
-document.querySelectorAll(".nav button")
-.forEach(x=>x.classList.remove("active"));
+
+document
+.querySelectorAll(".nav button")
+.forEach(
+x=>x.classList.remove("active")
+);
+
 
 const map={
 home:0,
@@ -781,23 +2199,40 @@ menu:2,
 settings:3
 };
 
-const nav=document.querySelectorAll(".nav button");
+
+const nav=
+document.querySelectorAll(".nav button");
+
 
 if(nav[map[page]])
 nav[map[page]].classList.add("active");
 
-if(page==="home")renderHome();
-if(page==="orders")renderOrders();
-if(page==="menu")renderProducts();
 
-if(page==="settings"&&firstSettingsLoad){
+if(page==="home")
+renderHome();
+
+if(page==="orders")
+renderOrders();
+
+if(page==="menu")
+renderProducts();
+
+
+if(page==="settings"){
+
 loadSettings();
+
+loadMainSettings();
+
 firstSettingsLoad=false;
+
 }
+
 
 scrollTo(0,0);
 
 };
+
 
 /* =========================
    REALTIME FIREBASE
@@ -805,18 +2240,71 @@ scrollTo(0,0);
 
 function startRealtime(){
 
-if(realtimeStarted)return;
+if(realtimeStarted)
+return;
 
 realtimeStarted=true;
 
-/* ร้าน */
+
+/* =========================
+   หน้าร้านออนไลน์
+   settings/main
+========================= */
 
 onSnapshot(
-doc(db,"settings","store"),
+
+doc(db,"settings","main"),
+
 snap=>{
 
-if(snap.exists())
-store={...store,...snap.data()};
+if(snap.exists()){
+
+mainSettings={
+...mainSettings,
+...snap.data()
+};
+
+}
+
+loadMainSettings();
+
+},
+
+err=>{
+
+console.error(
+"MAIN SETTINGS REALTIME:",
+err
+);
+
+toast(
+"อ่านหน้าร้านออนไลน์ไม่ได้: "+
+firebaseError(err)
+);
+
+}
+
+);
+
+
+/* =========================
+   ร้าน
+========================= */
+
+onSnapshot(
+
+doc(db,"settings","store"),
+
+snap=>{
+
+if(snap.exists()){
+
+store={
+...store,
+...snap.data()
+};
+
+}
 
 updateStoreUI();
 
@@ -824,91 +2312,169 @@ if(firstSettingsLoad)
 loadSettings();
 
 },
+
 err=>{
-console.error("STORE REALTIME:",err);
-toast("อ่านข้อมูลร้านไม่ได้: "+firebaseError(err));
-}
+
+console.error(
+"STORE REALTIME:",
+err
 );
 
-/* โปรโมชั่น */
+toast(
+"อ่านข้อมูลร้านไม่ได้: "+
+firebaseError(err)
+);
+
+}
+
+);
+
+
+/* =========================
+   โปรโมชั่น
+========================= */
 
 onSnapshot(
+
 doc(db,"settings","promotion"),
+
 snap=>{
 
-if(snap.exists())
+if(snap.exists()){
+
 promotion={
 ...promotion,
 ...snap.data()
 };
 
+}
+
 if(firstSettingsLoad)
 loadSettings();
 
 },
+
 err=>{
-console.error("PROMOTION REALTIME:",err);
-toast("อ่านโปรโมชั่นไม่ได้: "+firebaseError(err));
-}
+
+console.error(
+"PROMOTION REALTIME:",
+err
 );
 
-/* สินค้า */
+toast(
+"อ่านโปรโมชั่นไม่ได้: "+
+firebaseError(err)
+);
+
+}
+
+);
+
+
+/* =========================
+   สินค้า
+========================= */
 
 onSnapshot(
+
 collection(db,"products"),
+
 snap=>{
 
 products=snap.docs
+
 .map(x=>{
 
 const data=x.data();
-const fixedCategory=normalizeCategory(data.category);
+
+const fixedCategory=
+normalizeCategory(data.category);
 
 return{
+
 id:x.id,
+
 ...data,
+
 category:fixedCategory
+
 };
 
 })
+
 .sort(
+
 (a,b)=>
 Number(a.sortOrder??999999)-
 Number(b.sortOrder??999999)
+
 );
 
+
 renderProducts();
+
 renderHome();
 
 },
+
 err=>{
-console.error("PRODUCT REALTIME:",err);
-toast("อ่านเมนูไม่ได้: "+firebaseError(err));
-}
+
+console.error(
+"PRODUCT REALTIME:",
+err
 );
 
-/* ออเดอร์ */
+toast(
+"อ่านเมนูไม่ได้: "+
+firebaseError(err)
+);
+
+}
+
+);
+
+
+/* =========================
+   ออเดอร์
+========================= */
 
 onSnapshot(
+
 collection(db,"orders"),
+
 snap=>{
 
 orders=snap.docs
+
 .map(x=>({
+
 id:x.id,
+
 ...x.data()
+
 }))
+
 .sort(
-(a,b)=>dateValue(b.createdAt)-dateValue(a.createdAt)
+
+(a,b)=>
+dateValue(b.createdAt)-
+dateValue(a.createdAt)
+
 );
 
+
 renderOrders();
+
 renderHome();
 
 },
+
 err=>{
 
-console.error("ORDER REALTIME:",err);
+console.error(
+"ORDER REALTIME:",
+err
+);
 
 toast(
 "อ่านออเดอร์ไม่ได้: "+
@@ -916,13 +2482,17 @@ firebaseError(err)
 );
 
 }
+
 );
+
 
 startClock();
 
 }
 
+
 startRealtime();
+
 
 /* =========================
    SETTINGS
@@ -930,19 +2500,42 @@ startRealtime();
 
 function loadSettings(){
 
-$("storeName").value=store.name||"";
-$("storeDesc").value=store.description||"";
-$("openTime").value=store.openTime||"13:00";
-$("closeTime").value=store.closeTime||"00:00";
-$("storeMessage").value=store.message||"";
+$("storeName").value=
+store.name||"";
 
-$("promoName").value=promotion.name||"";
-$("promoBuyQty").value=promotion.buyQty||"";
-$("promoFreeQty").value=promotion.freeQty||"";
-$("promoMethod").value=promotion.method||"buyfree";
-$("promoCustomerText").value=promotion.customerText||"";
+$("storeDesc").value=
+store.description||"";
 
-setPromotionUI(promotion.enabled===true);
+$("openTime").value=
+store.openTime||"13:00";
+
+$("closeTime").value=
+store.closeTime||"00:00";
+
+$("storeMessage").value=
+store.message||"";
+
+
+$("promoName").value=
+promotion.name||"";
+
+$("promoBuyQty").value=
+promotion.buyQty||"";
+
+$("promoFreeQty").value=
+promotion.freeQty||"";
+
+$("promoMethod").value=
+promotion.method||"buyfree";
+
+$("promoCustomerText").value=
+promotion.customerText||"";
+
+
+setPromotionUI(
+promotion.enabled===true
+);
+
 
 if(promotion.image){
 
@@ -951,20 +2544,275 @@ $("promoPreview").innerHTML=
 
 }else{
 
-$("promoPreview").textContent="ไม่มีรูป";
+$("promoPreview").textContent=
+"ไม่มีรูป";
 
 }
+
 
 updateStoreUI();
 
 }
 
+
+/* =========================
+   MAIN WEBSITE SETTINGS
+========================= */
+
+function loadMainSettings(){
+
+if(!$("mainHeroTitle"))
+return;
+
+
+$("mainHeroTitle").value=
+mainSettings.heroTitle||"";
+
+$("mainHeroSubtitle").value=
+mainSettings.heroSubtitle||"";
+
+$("mainHeroBadge").value=
+mainSettings.heroBadge||"";
+
+
+if(mainSettings.logo){
+
+$("mainLogoPreview").innerHTML=
+`<img src="${esc(mainSettings.logo)}">`;
+
+}else{
+
+$("mainLogoPreview").textContent=
+"ไม่มีรูป";
+
+}
+
+
+if(mainSettings.heroImage){
+
+$("mainHeroPreview").innerHTML=
+`<img src="${esc(mainSettings.heroImage)}">`;
+
+}else{
+
+$("mainHeroPreview").textContent=
+"ไม่มีรูป";
+
+}
+
+
+if(mainSettings.background){
+
+$("mainBackgroundPreview").innerHTML=
+`<img src="${esc(mainSettings.background)}">`;
+
+}else{
+
+$("mainBackgroundPreview").textContent=
+"ไม่มีรูป";
+
+}
+
+}
+
+
+/* =========================
+   Preview รูปหน้าร้าน
+========================= */
+
+window.previewMainImage=
+function(input,previewId){
+
+const file=input.files[0];
+
+if(!file)
+return;
+
+
+if(!file.type.startsWith("image/")){
+
+toast("กรุณาเลือกรูปภาพ");
+
+input.value="";
+
+return;
+
+}
+
+
+const r=new FileReader();
+
+
+r.onload=e=>{
+
+$(previewId).innerHTML=
+`<img src="${e.target.result}">`;
+
+};
+
+
+r.onerror=()=>{
+
+toast("อ่านรูปไม่ได้");
+
+};
+
+
+r.readAsDataURL(file);
+
+};
+
+
+/* =========================
+   SAVE MAIN SETTINGS
+========================= */
+
+window.saveMainSettings=
+async function(){
+
+const data={
+
+logo:mainSettings.logo||"",
+
+background:mainSettings.background||"",
+
+heroImage:mainSettings.heroImage||"",
+
+heroTitle:
+$("mainHeroTitle").value.trim(),
+
+heroSubtitle:
+$("mainHeroSubtitle").value.trim(),
+
+heroBadge:
+$("mainHeroBadge").value.trim()
+
+};
+
+
+const logoFile=
+$("mainLogoFile").files[0];
+
+const heroFile=
+$("mainHeroFile").files[0];
+
+const backgroundFile=
+$("mainBackgroundFile").files[0];
+
+
+try{
+
+
+/* โลโก้ */
+
+if(logoFile){
+
+data.logo=
+await compressImage(
+logoFile,
+900,
+.78
+);
+
+}
+
+
+/* Hero */
+
+if(heroFile){
+
+data.heroImage=
+await compressImage(
+heroFile,
+1200,
+.78
+);
+
+}
+
+
+/* Background */
+
+if(backgroundFile){
+
+data.background=
+await compressImage(
+backgroundFile,
+1200,
+.70
+);
+
+}
+
+
+/* บันทึก settings/main */
+
+await setDoc(
+
+doc(db,"settings","main"),
+
+data,
+
+{merge:true}
+
+);
+
+
+/* อัปเดตค่าฝั่ง Admin ทันที */
+
+mainSettings={
+...mainSettings,
+...data
+};
+
+
+loadMainSettings();
+
+
+/* ล้างช่องไฟล์ */
+
+$("mainLogoFile").value="";
+
+$("mainHeroFile").value="";
+
+$("mainBackgroundFile").value="";
+
+
+toast(
+"บันทึกหน้าร้านออนไลน์แล้ว"
+);
+
+
+}catch(e){
+
+console.error(
+"MAIN SETTINGS SAVE ERROR:",
+e
+);
+
+toast(
+"บันทึกหน้าร้านไม่ได้: "+
+firebaseError(e)
+);
+
+}
+
+};
+
+
+/* =========================
+   PROMOTION
+========================= */
+
 function setPromotionUI(on){
 
-$("promoEnabled").className="switch "+(on?"on":"");
+$("promoEnabled").className=
+"switch "+(on?"on":"");
+
 
 $("promoStatus").className=
-"promoStatus "+(on?"on":"off");
+"promoStatus "+(on?"on":"");
+
 
 $("promoStatus").textContent=
 on
@@ -973,6 +2821,7 @@ on
 
 }
 
+
 window.togglePromotion=function(){
 
 promotion.enabled=
@@ -980,39 +2829,61 @@ promotion.enabled=
 promotion.enabled===true
 );
 
-setPromotionUI(promotion.enabled);
+setPromotionUI(
+promotion.enabled
+);
 
 };
+
 
 window.saveStore=async function(){
 
 const data={
 
-name:$("storeName").value.trim(),
+name:
+$("storeName").value.trim(),
 
-description:$("storeDesc").value.trim(),
+description:
+$("storeDesc").value.trim(),
 
-openTime:$("openTime").value||"13:00",
+openTime:
+$("openTime").value||"13:00",
 
-closeTime:$("closeTime").value||"00:00",
+closeTime:
+$("closeTime").value||"00:00",
 
-message:$("storeMessage").value.trim()
+message:
+$("storeMessage").value.trim()
 
 };
+
 
 try{
 
 await setDoc(
+
 doc(db,"settings","store"),
+
 data,
+
 {merge:true}
+
 );
 
-store={...store,...data};
+
+store={
+...store,
+...data
+};
+
 
 updateStoreUI();
 
-toast("บันทึกข้อมูลร้านแล้ว");
+
+toast(
+"บันทึกข้อมูลร้านแล้ว"
+);
+
 
 }catch(e){
 
@@ -1025,48 +2896,79 @@ firebaseError(e)
 
 };
 
+
 window.savePromotion=async function(){
 
 const data={
 
-name:$("promoName").value.trim(),
+name:
+$("promoName").value.trim(),
 
-buyQty:Number($("promoBuyQty").value||0),
+buyQty:
+Number($("promoBuyQty").value||0),
 
-freeQty:Number($("promoFreeQty").value||0),
+freeQty:
+Number($("promoFreeQty").value||0),
 
-method:$("promoMethod").value,
+method:
+$("promoMethod").value,
 
-customerText:$("promoCustomerText").value.trim(),
+customerText:
+$("promoCustomerText").value.trim(),
 
-enabled:promotion.enabled===true
+enabled:
+promotion.enabled===true
 
 };
 
-const file=$("promoImageFile").files[0];
+
+const file=
+$("promoImageFile").files[0];
+
 
 try{
 
-if(file)
-data.image=await compressImage(file);
-else if(promotion.image)
-data.image=promotion.image;
+if(file){
+
+data.image=
+await compressImage(file);
+
+}else if(promotion.image){
+
+data.image=
+promotion.image;
+
+}
+
 
 await setDoc(
+
 doc(db,"settings","promotion"),
+
 data,
+
 {merge:true}
+
 );
 
-promotion={...promotion,...data};
+
+promotion={
+...promotion,
+...data
+};
+
 
 loadSettings();
 
+
 toast(
+
 data.enabled
 ?"บันทึกโปรโมชั่นแล้ว · เปิดใช้งาน"
 :"บันทึกโปรโมชั่นแล้ว · ปิดใช้งาน"
+
 );
+
 
 }catch(e){
 
@@ -1079,22 +2981,30 @@ firebaseError(e)
 
 };
 
+
 window.previewPromo=function(input){
 
 const file=input.files[0];
 
-if(!file)return;
+if(!file)
+return;
+
 
 const r=new FileReader();
 
+
 r.onload=e=>{
+
 $("promoPreview").innerHTML=
 `<img src="${e.target.result}">`;
+
 };
+
 
 r.readAsDataURL(file);
 
 };
+
 
 /* =========================
    PRODUCTS
@@ -1103,15 +3013,20 @@ r.readAsDataURL(file);
 window.setCategory=function(c){
 
 category=c;
+
 renderProducts();
 
 };
 
+
 function renderProducts(){
 
 const q=(
+
 $("menuSearch")?.value||""
+
 ).toLowerCase().trim();
+
 
 const list=products.filter(p=>{
 
@@ -1119,16 +3034,24 @@ const okCat=
 category==="all"||
 normalizeCategory(p.category)===category;
 
+
 const text=(
+
 String(p.name||"")+" "+
+
 String(p.description||"")
+
 ).toLowerCase();
+
 
 return okCat&&(!q||text.includes(q));
 
 });
 
-$("productsList").innerHTML=list.length
+
+$("productsList").innerHTML=
+
+list.length
 
 ?list.map(p=>`
 
@@ -1138,84 +3061,150 @@ $("productsList").innerHTML=list.length
 
 ${
 p.image
+
 ?`<img src="${esc(p.image)}" alt="">`
+
 :esc(p.emoji||"🍢")
+
 }
 
 </div>
+
 
 <div class="productInfo">
 
+
 ${
 p.badge
+
 ?`<span class="badge">${esc(p.badge)}</span>`
+
 :""
 }
 
+
 <div class="productName">
+
 ${esc(p.name)}
+
 </div>
+
 
 <div class="productDesc">
+
 ${esc(p.description||"")}
+
 </div>
+
 
 <div class="price">
+
 ${money(p.price)}
+
 </div>
 
-<div class="muted small">
-หมวด: ${esc(normalizeCategory(p.category))}
-</div>
 
 <div class="muted small">
+
+หมวด:
+${esc(normalizeCategory(p.category))}
+
+</div>
+
+
+<div class="muted small">
+
 สต็อก:
+
 ${
-p.stock===undefined||p.stock===null
+p.stock===undefined||
+p.stock===null
+
 ?"ไม่จำกัด"
+
 :esc(p.stock)
+
 }
-</div>
 
 </div>
+
+
+</div>
+
 
 <div class="productActions">
 
+
 <button
-class="btn sm ${p.active===false?"light":"green"}"
+
+class="btn sm ${
+p.active===false
+?"light"
+:"green"
+}"
+
 onclick="toggleSale('${esc(p.id)}')">
-${p.active===false?"เปิดขาย":"ปิดขาย"}
+
+${
+p.active===false
+?"เปิดขาย"
+:"ปิดขาย"
+}
+
 </button>
 
+
 <button
+
 class="btn light sm"
+
 onclick="openProduct('${esc(p.id)}')">
+
 แก้ไข
+
 </button>
 
-<div style="display:flex;gap:4px">
+
+<div
+style="display:flex;gap:4px">
 
 <button
+
 class="btn light sm"
+
 onclick="moveProduct('${esc(p.id)}',-1)">
+
 ↑
+
 </button>
 
+
 <button
+
 class="btn light sm"
+
 onclick="moveProduct('${esc(p.id)}',1)">
+
 ↓
+
 </button>
 
 </div>
+
 
 <button
+
 class="btn red sm"
+
 onclick="deleteProduct('${esc(p.id)}')">
+
 ลบ
+
 </button>
 
+
 </div>
+
 
 </div>
 
@@ -1225,28 +3214,58 @@ onclick="deleteProduct('${esc(p.id)}')">
 
 }
 
+
 window.openProduct=function(id=""){
 
-const p=products.find(x=>x.id===id);
+const p=products.find(
+x=>x.id===id
+);
+
 
 $("productId").value=id;
+
 
 $("productModalTitle").textContent=
 id?"แก้ไขเมนู":"เพิ่มเมนู";
 
-$("productName").value=p?.name||"";
-$("productDesc").value=p?.description||"";
-$("productPrice").value=p?.price??"";
-$("productStock").value=p?.stock??"";
-$("productCategory").value=normalizeCategory(p?.category);
-$("productEmoji").value=p?.emoji||"🍢";
-$("productBadge").value=p?.badge||"";
+
+$("productName").value=
+p?.name||"";
+
+$("productDesc").value=
+p?.description||"";
+
+$("productPrice").value=
+p?.price??"";
+
+$("productStock").value=
+p?.stock??"";
+
+$("productCategory").value=
+normalizeCategory(p?.category);
+
+$("productEmoji").value=
+p?.emoji||"🍢";
+
+$("productBadge").value=
+p?.badge||"";
+
 
 $("productActive").className=
-"switch "+(p?.active!==false?"on":"");
+"switch "+(
+p?.active!==false
+?"on"
+:""
+);
+
 
 $("productFeatured").className=
-"switch "+(p?.featured===true?"on":"");
+"switch "+(
+p?.featured===true
+?"on"
+:""
+);
+
 
 if(p?.image){
 
@@ -1255,107 +3274,198 @@ $("productPreview").innerHTML=
 
 }else{
 
-$("productPreview").textContent="ไม่มีรูป";
+$("productPreview").textContent=
+"ไม่มีรูป";
 
 }
 
+
 $("productImageFile").value="";
+
 
 $("productModal").classList.add("show");
 
 };
 
+
 window.closeProduct=function(){
-$("productModal").classList.remove("show");
+
+$("productModal")
+.classList.remove("show");
+
 };
+
 
 window.closeModal=function(e){
 
-if(e.target===$("productModal"))
+if(
+e.target===
+$("productModal")
+)
 closeProduct();
 
 };
 
+
 window.toggleProductActive=function(){
-$("productActive").classList.toggle("on");
+
+$("productActive")
+.classList.toggle("on");
+
 };
 
+
 window.toggleProductFeatured=function(){
-$("productFeatured").classList.toggle("on");
+
+$("productFeatured")
+.classList.toggle("on");
+
 };
+
 
 window.previewProduct=function(input){
 
 const file=input.files[0];
 
-if(!file)return;
+if(!file)
+return;
+
 
 const r=new FileReader();
 
+
 r.onload=e=>{
+
 $("productPreview").innerHTML=
 `<img src="${e.target.result}">`;
+
 };
+
 
 r.readAsDataURL(file);
 
 };
 
-function compressImage(file,max=900,quality=.78){
 
-return new Promise((resolve,reject)=>{
+/* =========================
+   IMAGE COMPRESS
+========================= */
 
-if(!file.type.startsWith("image/")){
-reject(new Error("ไฟล์ไม่ใช่รูปภาพ"));
+function compressImage(
+file,
+max=900,
+quality=.78
+){
+
+return new Promise(
+(resolve,reject)=>{
+
+if(
+!file.type.startsWith("image/")
+){
+
+reject(
+new Error("ไฟล์ไม่ใช่รูปภาพ")
+);
+
 return;
+
 }
 
-const reader=new FileReader();
+
+const reader=
+new FileReader();
+
 
 reader.onload=e=>{
 
 const img=new Image();
 
+
 img.onload=()=>{
 
 let w=img.width;
+
 let h=img.height;
 
-if(w>max||h>max){
 
-const ratio=Math.min(max/w,max/h);
+if(
+w>max||
+h>max
+){
 
-w=Math.round(w*ratio);
-h=Math.round(h*ratio);
+const ratio=
+Math.min(
+max/w,
+max/h
+);
+
+
+w=Math.round(
+w*ratio
+);
+
+h=Math.round(
+h*ratio
+);
 
 }
 
-const canvas=document.createElement("canvas");
+
+const canvas=
+document.createElement("canvas");
+
 
 canvas.width=w;
+
 canvas.height=h;
+
 
 canvas
 .getContext("2d")
-.drawImage(img,0,0,w,h);
+.drawImage(
+img,
+0,
+0,
+w,
+h
+);
+
 
 resolve(
-canvas.toDataURL("image/jpeg",quality)
+
+canvas.toDataURL(
+"image/jpeg",
+quality
+)
+
 );
 
 };
 
+
 img.onerror=()=>{
-reject(new Error("อ่านรูปไม่ได้"));
+
+reject(
+new Error("อ่านรูปไม่ได้")
+);
+
 };
+
 
 img.src=e.target.result;
 
 };
 
+
 reader.onerror=()=>{
-reject(new Error("อ่านไฟล์ไม่ได้"));
+
+reject(
+new Error("อ่านไฟล์ไม่ได้")
+);
+
 };
+
 
 reader.readAsDataURL(file);
 
@@ -1363,93 +3473,172 @@ reader.readAsDataURL(file);
 
 }
 
+
 window.saveProduct=async function(){
 
-const id=$("productId").value;
+const id=
+$("productId").value;
+
 
 const data={
 
-name:$("productName").value.trim(),
+name:
+$("productName").value.trim(),
 
-description:$("productDesc").value.trim(),
+description:
+$("productDesc").value.trim(),
 
-price:Number($("productPrice").value||0),
+price:
+Number(
+$("productPrice").value||0
+),
 
-stock:$("productStock").value===""
+stock:
+$("productStock").value===""
 
 ?null
 
-:Number($("productStock").value),
+:Number(
+$("productStock").value
+),
 
-/* บันทึกเป็นชื่อหมวดตรงกับเว็บลูกค้า */
-category:normalizeCategory($("productCategory").value),
+category:
+normalizeCategory(
+$("productCategory").value
+),
 
-emoji:$("productEmoji").value||"🍢",
+emoji:
+$("productEmoji").value||"🍢",
 
-badge:$("productBadge").value.trim(),
+badge:
+$("productBadge").value.trim(),
 
-active:$("productActive").classList.contains("on"),
+active:
+$("productActive")
+.classList
+.contains("on"),
 
-featured:$("productFeatured").classList.contains("on")
+featured:
+$("productFeatured")
+.classList
+.contains("on")
 
 };
 
+
 if(!data.name){
 
-toast("กรุณาใส่ชื่อเมนู");
+toast(
+"กรุณาใส่ชื่อเมนู"
+);
+
 return;
 
 }
 
-if(!CATEGORIES.includes(data.category)){
 
-toast("กรุณาเลือกหมวดหมู่");
+if(!CATEGORIES.includes(
+data.category
+)){
+
+toast(
+"กรุณาเลือกหมวดหมู่"
+);
+
 return;
 
 }
 
-const file=$("productImageFile").files[0];
+
+const file=
+$("productImageFile").files[0];
+
 
 try{
 
-if(file)
-data.image=await compressImage(file);
+
+if(file){
+
+data.image=
+await compressImage(file);
+
+}
+
 
 if(id){
 
-const old=products.find(x=>x.id===id);
+const old=
+products.find(
+x=>x.id===id
+);
 
-if(!data.image&&old?.image)
-data.image=old.image;
+
+if(
+!data.image&&
+old?.image
+){
+
+data.image=
+old.image;
+
+}
+
 
 await updateDoc(
-doc(db,"products",id),
+
+doc(
+db,
+"products",
+id
+),
+
 data
+
 );
+
 
 }else{
 
-data.sortOrder=products.length
+
+data.sortOrder=
+products.length
+
 ?Math.max(
 ...products.map(
-x=>Number(x.sortOrder??0)
+x=>Number(
+x.sortOrder??0
+)
 )
 )+1
+
 :0;
+
 
 data.createdAt=
 new Date().toISOString();
 
+
 await addDoc(
-collection(db,"products"),
+
+collection(
+db,
+"products"
+),
+
 data
+
 );
 
 }
 
+
 closeProduct();
 
-toast("บันทึกเมนูแล้ว");
+
+toast(
+"บันทึกเมนูแล้ว"
+);
+
 
 }catch(e){
 
@@ -1462,26 +3651,48 @@ firebaseError(e)
 
 };
 
+
 window.toggleSale=async function(id){
 
-const p=products.find(x=>x.id===id);
+const p=
+products.find(
+x=>x.id===id
+);
 
-if(!p)return;
 
-const newValue=p.active===false;
+if(!p)
+return;
+
+
+const newValue=
+p.active===false;
+
 
 try{
 
 await updateDoc(
-doc(db,"products",id),
-{active:newValue}
+
+doc(
+db,
+"products",
+id
+),
+
+{
+active:newValue
+}
+
 );
 
+
 toast(
+
 newValue
 ?"เปิดขายเมนูแล้ว"
 :"ปิดขายเมนูแล้ว"
+
 );
+
 
 }catch(e){
 
@@ -1494,22 +3705,44 @@ firebaseError(e)
 
 };
 
+
 window.deleteProduct=async function(id){
 
-const p=products.find(x=>x.id===id);
+const p=
+products.find(
+x=>x.id===id
+);
 
-if(!p)return;
 
-if(!confirm(`ลบ "${p.name}" ใช่หรือไม่?`))
+if(!p)
 return;
+
+
+if(
+!confirm(
+`ลบ "${p.name}" ใช่หรือไม่?`
+)
+)
+return;
+
 
 try{
 
 await deleteDoc(
-doc(db,"products",id)
+
+doc(
+db,
+"products",
+id
+)
+
 );
 
-toast("ลบเมนูแล้ว");
+
+toast(
+"ลบเมนูแล้ว"
+);
+
 
 }catch(e){
 
@@ -1522,38 +3755,85 @@ firebaseError(e)
 
 };
 
-window.moveProduct=async function(id,dir){
 
-const index=products.findIndex(x=>x.id===id);
+window.moveProduct=async function(
+id,
+dir
+){
 
-if(index<0)return;
+const index=
+products.findIndex(
+x=>x.id===id
+);
 
-const target=index+dir;
 
-if(target<0||target>=products.length)
+if(index<0)
 return;
 
-const a=products[index];
-const b=products[target];
 
-const aSort=Number(a.sortOrder??index);
-const bSort=Number(b.sortOrder??target);
+const target=
+index+dir;
+
+
+if(
+target<0||
+target>=products.length
+)
+return;
+
+
+const a=
+products[index];
+
+const b=
+products[target];
+
+
+const aSort=
+Number(
+a.sortOrder??index
+);
+
+const bSort=
+Number(
+b.sortOrder??target
+);
+
 
 try{
 
 await Promise.all([
 
 updateDoc(
-doc(db,"products",a.id),
-{sortOrder:bSort}
+
+doc(
+db,
+"products",
+a.id
+),
+
+{
+sortOrder:bSort
+}
+
 ),
 
 updateDoc(
-doc(db,"products",b.id),
-{sortOrder:aSort}
+
+doc(
+db,
+"products",
+b.id
+),
+
+{
+sortOrder:aSort
+}
+
 )
 
 ]);
+
 
 }catch(e){
 
@@ -1566,6 +3846,7 @@ firebaseError(e)
 
 };
 
+
 /* =========================
    ORDER
 ========================= */
@@ -1574,58 +3855,109 @@ function orderItemsArray(order){
 
 const items=order.items;
 
+
 if(Array.isArray(items))
 return items;
 
-if(items&&typeof items==="object")
+
+if(
+items&&
+typeof items==="object"
+)
 return Object.values(items);
 
-return [];
+
+return[];
 
 }
+
 
 function normalizeStatus(s){
 
-const x=String(s||"pending").toLowerCase();
+const x=
+String(
+s||"pending"
+).toLowerCase();
 
-if(x==="pending"||x==="waiting"||x==="new")
+
+if(
+x==="pending"||
+x==="waiting"||
+x==="new"
+)
 return"pending";
 
-if(x==="accepted"||x==="preparing"||x==="cooking"||x==="doing"||x==="process")
+
+if(
+x==="accepted"||
+x==="preparing"||
+x==="cooking"||
+x==="doing"||
+x==="process"
+)
 return"preparing";
 
-if(x==="ready"||x==="prepared"||x==="ready_for_pickup")
+
+if(
+x==="ready"||
+x==="prepared"||
+x==="ready_for_pickup"
+)
 return"ready";
 
-if(x==="completed"||x==="complete"||x==="done")
+
+if(
+x==="completed"||
+x==="complete"||
+x==="done"
+)
 return"completed";
 
-if(x==="cancelled"||x==="canceled")
+
+if(
+x==="cancelled"||
+x==="canceled"
+)
 return"cancelled";
+
 
 return"pending";
 
 }
+
 
 function statusName(s){
 
 return{
+
 pending:"รอรับออเดอร์",
+
 preparing:"กำลังทำ",
+
 ready:"พร้อมส่ง",
+
 completed:"สำเร็จ",
+
 cancelled:"ยกเลิก"
-}[normalizeStatus(s)]||"รอรับออเดอร์";
+
+}[normalizeStatus(s)]
+||
+"รอรับออเดอร์";
 
 }
+
 
 function statusClass(s){
 
-const x=normalizeStatus(s);
+const x=
+normalizeStatus(s);
 
-return x==="preparing"?"accepted":x;
+return x==="preparing"
+?"accepted"
+:x;
 
 }
+
 
 function paymentIsConfirmed(o){
 
@@ -1634,417 +3966,715 @@ o.paymentVerified===true;
 
 }
 
+
 function paymentInfo(o){
 
-const method=String(o.paymentMethod||"");
+const method=
+String(
+o.paymentMethod||""
+);
 
-const confirmed=paymentIsConfirmed(o);
+
+const confirmed=
+paymentIsConfirmed(o);
+
 
 const isQR=
-method.toLowerCase().includes("qr")||
+method
+.toLowerCase()
+.includes("qr")||
 method.includes("พร้อมเพย์");
+
 
 const isCash=
 method.includes("สด");
 
+
 if(confirmed){
 
 return{
+
 className:"ok",
+
 text:"ชำระเงินแล้ว"
+
 };
 
 }
+
 
 if(isQR){
 
 return{
+
 className:"wait",
-text:o.paymentReported
+
+text:
+o.paymentReported
 ?"ลูกค้าแจ้งว่าชำระเงินแล้ว · รอตรวจสอบ"
 :"รอตรวจสอบการชำระเงิน"
+
 };
 
 }
+
 
 if(isCash){
 
 return{
+
 className:"wait",
+
 text:"รอชำระเงินสด"
+
 };
 
 }
+
 
 return{
+
 className:"wait",
-text:o.paymentStatus||
+
+text:
+o.paymentStatus||
 "รอตรวจสอบการชำระเงิน"
+
 };
 
 }
+
 
 function orderProgress(status){
 
-const s=normalizeStatus(status);
+const s=
+normalizeStatus(status);
+
 
 if(s==="cancelled"){
 
 return`
+
 <div class="track">
-<div class="trackTitle">ความคืบหน้าออเดอร์</div>
-<div class="cancelTrack">✕ ออเดอร์นี้ถูกยกเลิก</div>
+
+<div class="trackTitle">
+ความคืบหน้าออเดอร์
 </div>
+
+<div class="cancelTrack">
+✕ ออเดอร์นี้ถูกยกเลิก
+</div>
+
+</div>
+
 `;
 
 }
 
+
 const steps=[
+
 ["1","รอรับออเดอร์"],
+
 ["2","กำลังทำ"],
+
 ["3","พร้อมส่ง"],
+
 ["4","เสร็จสิ้น"]
+
 ];
 
+
 const index={
+
 pending:0,
+
 preparing:1,
+
 ready:2,
+
 completed:3
+
 }[s]??0;
 
+
 return`
+
 <div class="track">
 
-<div class="trackTitle">ความคืบหน้าออเดอร์</div>
+<div class="trackTitle">
+ความคืบหน้าออเดอร์
+</div>
+
 
 <div class="trackSteps">
 
+
 ${
-steps.map((x,i)=>`
+steps.map(
+(x,i)=>`
 
 <div class="trackStep
 ${i<=index?"active":""}
 ${i===index?"current":""}">
 
-<div class="trackNum">${x[0]}</div>
-<div class="trackLabel">${x[1]}</div>
+<div class="trackNum">
+${x[0]}
+</div>
+
+<div class="trackLabel">
+${x[1]}
+</div>
 
 </div>
 
-`).join("")
+`
+).join("")
 }
 
+
 </div>
+
 </div>
+
 `;
 
 }
 
+
 function orderHTML(o){
 
-const items=orderItemsArray(o);
+const items=
+orderItemsArray(o);
 
-const total=Number(
+
+const total=
+Number(
+
 o.total||
 o.grandTotal||
+
 items.reduce(
+
 (sum,x)=>
 sum+
 Number(x.price||0)*
-Number(x.qty||x.quantity||1),
+Number(
+x.qty||
+x.quantity||
+1
+),
+
 0
+
 )
+
 );
 
-const method=String(o.paymentMethod||"");
+
+const method=
+String(
+o.paymentMethod||""
+);
+
 
 const isQR=
-method.toLowerCase().includes("qr")||
+method
+.toLowerCase()
+.includes("qr")||
 method.includes("พร้อมเพย์");
+
 
 const isCash=
 method.includes("สด");
 
-const pay=paymentInfo(o);
 
-const confirmed=paymentIsConfirmed(o);
+const pay=
+paymentInfo(o);
 
-const status=normalizeStatus(o.status);
+
+const confirmed=
+paymentIsConfirmed(o);
+
+
+const status=
+normalizeStatus(o.status);
+
 
 return`
 
 <div class="order">
+
 
 <div class="orderHeader">
 
 <div>
 
 <div class="orderId">
-#${esc(
+
+#${
+esc(
 o.orderNumber||
 o.id.slice(-6).toUpperCase()
-)}
+)
+}
+
 </div>
+
 
 <div class="orderDate">
+
 ${timeText(o.createdAt)}
+
 </div>
 
 </div>
+
 
 <div class="orderStatus s-${statusClass(status)}">
+
 ${statusName(status)}
+
 </div>
 
 </div>
+
 
 ${
-o.customerName||o.customerPhone
+o.customerName||
+o.customerPhone
+
 ?`
-<div style="margin-top:10px;font-size:12px">
-<strong>${esc(o.customerName||"ลูกค้า")}</strong>
-${o.customerPhone?` · ${esc(o.customerPhone)}`:""}
-</div>
-`
+
+<div
+style="margin-top:10px;font-size:12px">
+
+<strong>
+${esc(
+o.customerName||
+"ลูกค้า"
+)}
+</strong>
+
+${
+o.customerPhone
+?` · ${esc(o.customerPhone)}`
 :""
 }
 
+</div>
+
+`
+
+:""
+}
+
+
 ${orderProgress(status)}
 
+
 <div class="orderItems">
+
 
 ${
 items.length
 
-?items.map(x=>`
+?items.map(
+x=>`
 
 <div class="orderItem">
 
 <span>
-${esc(x.name||x.title||"สินค้า")}
-× ${Number(x.qty||x.quantity||1)}
+
+${esc(
+x.name||
+x.title||
+"สินค้า"
+)}
+
+×
+${Number(
+x.qty||
+x.quantity||
+1
+)}
+
 </span>
 
+
 <strong>
+
 ${money(
+
 Number(x.price||0)*
-Number(x.qty||x.quantity||1)
+Number(
+x.qty||
+x.quantity||
+1
+)
+
 )}
+
 </strong>
 
 </div>
 
-`).join("")
+`
+).join("")
 
 :'<div class="muted">ไม่มีรายการสินค้า</div>'
 }
 
+
 <div class="orderTotal">
-<span>รวม</span>
-<strong>${money(total)}</strong>
-</div>
+
+<span>
+รวม
+</span>
+
+<strong>
+${money(total)}
+</strong>
 
 </div>
 
-<div class="payment ${pay.className}">
+
+</div>
+
+
+<div
+class="payment ${pay.className}">
 
 <div class="paymentTitle">
 การชำระเงิน
 </div>
 
+
 <div class="paymentStatus">
-${esc(method||"-")} · ${esc(pay.text)}
+
+${esc(method||"-")}
+·
+${esc(pay.text)}
+
 </div>
+
 
 ${
 o.paymentReported&&!confirmed
+
 ?`
-<div style="margin-top:6px;font-size:11px">
+
+<div
+style="margin-top:6px;font-size:11px">
+
 ⚠️ ลูกค้าแจ้งว่าชำระเงินแล้ว กรุณาตรวจสอบยอดเงินจริง
+
 </div>
+
 `
+
 :""
 }
 
+
 </div>
 
+
 <div class="actions">
+
 
 ${
 isQR||isCash
 
 ?confirmed
+
 ?`
-<button class="btn light sm" disabled>
-✓ ชำระเงินแล้ว
-</button>
-`
-:`
+
 <button
-class="btn green sm"
-onclick="verifyPayment('${esc(o.id)}')">
-✓ ${isQR?"ยืนยันได้รับเงิน":"รับเงินแล้ว"}
+class="btn light sm"
+disabled>
+
+✓ ชำระเงินแล้ว
+
 </button>
+
 `
+
+:`
+
+<button
+
+class="btn green sm"
+
+onclick="verifyPayment('${esc(o.id)}')">
+
+✓
+${
+isQR
+?"ยืนยันได้รับเงิน"
+:"รับเงินแล้ว"
+}
+
+</button>
+
+`
+
 :""
 }
+
 
 ${
 status==="pending"
+
 ?`
+
 <button
+
 class="btn blue sm"
+
 onclick="changeOrderStatus('${esc(o.id)}','preparing')">
+
 รับออเดอร์
+
 </button>
+
 `
+
 :""
 }
+
 
 ${
 status==="preparing"
+
 ?`
+
 <button
+
 class="btn sm"
+
 onclick="changeOrderStatus('${esc(o.id)}','ready')">
+
 ทำเสร็จแล้ว
+
 </button>
+
 `
+
 :""
 }
 
+
 ${
 status==="ready"
+
 ?`
+
 <button
+
 class="btn green sm"
+
 onclick="changeOrderStatus('${esc(o.id)}','completed')">
+
 เสร็จสิ้น
+
 </button>
+
 `
+
 :""
 }
+
 
 ${
 status!=="completed"&&
 status!=="cancelled"
+
 ?`
+
 <button
+
 class="btn red sm"
+
 onclick="changeOrderStatus('${esc(o.id)}','cancelled')">
+
 ยกเลิก
+
 </button>
+
 `
+
 :""
 }
 
-</div>
 
 </div>
+
+
+</div>
+
 `;
 
 }
+
 
 function renderOrders(){
 
 let list=orders;
 
+
 if(orderFilter!=="all"){
 
-/* รองรับปุ่มเดิม accepted = preparing */
 const wanted=
 orderFilter==="accepted"
 ?"preparing"
 :orderFilter;
 
+
 list=list.filter(
-x=>normalizeStatus(x.status)===wanted
+x=>
+normalizeStatus(x.status)===
+wanted
 );
 
 }
 
-$("ordersList").innerHTML=list.length
+
+$("ordersList").innerHTML=
+
+list.length
+
 ?list.map(orderHTML).join("")
+
 :'<div class="empty">ไม่มีออเดอร์</div>';
 
 }
+
 
 function renderHome(){
 
 $("statProducts").textContent=
 products.length;
 
+
 $("statActive").textContent=
 products.filter(
 x=>x.active!==false
 ).length;
 
+
 $("statOrders").textContent=
 orders.length;
 
+
 $("statLow").textContent=
-products.filter(x=>
+products.filter(
+x=>
 x.stock!==undefined&&
 x.stock!==null&&
 Number(x.stock)<=5
 ).length;
 
-const recent=orders.slice(0,3);
+
+const recent=
+orders.slice(0,3);
+
 
 $("recentOrders").innerHTML=
+
 recent.length
+
 ?recent.map(orderHTML).join("")
+
 :'<div class="empty">ยังไม่มีออเดอร์</div>';
 
 }
 
+
 window.setOrderFilter=function(v){
 
 orderFilter=v;
+
 renderOrders();
 
 };
+
 
 /* =========================
    PAYMENT
 ========================= */
 
-window.verifyPayment=async function(id){
+window.verifyPayment=
+async function(id){
 
-const o=orders.find(x=>x.id===id);
+const o=
+orders.find(
+x=>x.id===id
+);
 
-if(!o)return;
 
-if(paymentIsConfirmed(o)){
+if(!o)
+return;
 
-toast("ออเดอร์นี้ยืนยันเงินแล้ว");
+
+if(
+paymentIsConfirmed(o)
+){
+
+toast(
+"ออเดอร์นี้ยืนยันเงินแล้ว"
+);
+
 return;
 
 }
 
-if(!confirm(
+
+if(
+!confirm(
 "ตรวจสอบยอดเงินเรียบร้อยแล้วใช่หรือไม่?"
-))
+)
+)
 return;
+
 
 try{
 
-const now=new Date().toISOString();
+const now=
+new Date().toISOString();
+
 
 await updateDoc(
-doc(db,"orders",id),
+
+doc(
+db,
+"orders",
+id
+),
+
 {
+
 paymentConfirmed:true,
+
 paymentStatus:"ชำระเงินแล้ว",
+
 paymentConfirmedAt:now,
+
 paymentVerified:true,
+
 paymentVerifiedAt:now,
+
 updatedAt:now
+
 }
+
 );
 
-toast("ยืนยันได้รับเงินแล้ว");
+
+toast(
+"ยืนยันได้รับเงินแล้ว"
+);
+
 
 }catch(e){
 
@@ -2057,6 +4687,7 @@ firebaseError(e)
 
 };
 
+
 /* =========================
    ORDER STATUS
 ========================= */
@@ -2064,98 +4695,168 @@ firebaseError(e)
 function statusLabelFor(s){
 
 return{
+
 pending:"รอรับออเดอร์",
+
 preparing:"กำลังทำ",
+
 ready:"พร้อมส่ง",
+
 completed:"เสร็จสิ้น",
+
 cancelled:"ยกเลิก"
-}[normalizeStatus(s)]||"รอรับออเดอร์";
+
+}[normalizeStatus(s)]
+||
+"รอรับออเดอร์";
 
 }
 
-function historyObject(oldHistory,status,label,now){
+
+function historyObject(
+oldHistory,
+status,
+label,
+now
+){
 
 let history={};
 
+
 if(
+
 oldHistory&&
 typeof oldHistory==="object"&&
 !Array.isArray(oldHistory)
+
 ){
 
-history={...oldHistory};
+history={
+...oldHistory
+};
 
 }
 
+
 history[status]={
+
 label:label,
+
 time:now
+
 };
+
 
 return history;
 
 }
 
-window.changeOrderStatus=async function(id,newStatus){
 
-const o=orders.find(x=>x.id===id);
+window.changeOrderStatus=
+async function(
+id,
+newStatus
+){
 
-if(!o)return;
+const o=
+orders.find(
+x=>x.id===id
+);
 
-const status=normalizeStatus(newStatus);
 
-const oldStatus=normalizeStatus(o.status);
+if(!o)
+return;
+
+
+const status=
+normalizeStatus(newStatus);
+
+
+const oldStatus=
+normalizeStatus(o.status);
+
 
 if(oldStatus===status){
 
-toast("ออเดอร์อยู่สถานะนี้แล้ว");
+toast(
+"ออเดอร์อยู่สถานะนี้แล้ว"
+);
+
 return;
 
 }
 
-const now=new Date().toISOString();
+
+const now=
+new Date().toISOString();
+
 
 try{
 
-/* ตัดสต็อกเมื่อรับออเดอร์ */
+
+/* =========================
+   ตัดสต็อกเมื่อรับออเดอร์
+========================= */
 
 if(
+
 status==="preparing"&&
 !o.stockDeducted
+
 ){
 
-const items=orderItemsArray(o);
+const items=
+orderItemsArray(o);
+
 
 const need={};
 
+
 items.forEach(x=>{
 
-const pid=x.productId||x.id;
+const pid=
+x.productId||
+x.id;
 
-if(!pid)return;
+
+if(!pid)
+return;
+
 
 need[pid]=
 (need[pid]||0)+
-Number(x.qty||x.quantity||1);
+Number(
+x.qty||
+x.quantity||
+1
+);
 
 });
 
+
 /* ตรวจสต็อกก่อน */
 
-for(const pid in need){
+for(
+const pid in need
+){
 
-const p=products.find(
+const p=
+products.find(
 x=>x.id===pid
 );
 
+
 if(
+
 p&&
 p.stock!==null&&
 p.stock!==undefined
+
 ){
 
 if(
-Number(p.stock)<need[pid]
+Number(p.stock)<
+need[pid]
 ){
 
 toast(
@@ -2170,82 +4871,154 @@ return;
 
 }
 
+
 /* ตัดสต็อก */
 
-for(const pid in need){
+for(
+const pid in need
+){
 
-const p=products.find(
+const p=
+products.find(
 x=>x.id===pid
 );
 
+
 if(
+
 p&&
 p.stock!==null&&
 p.stock!==undefined
+
 ){
 
 await updateDoc(
-doc(db,"products",pid),
+
+doc(
+db,
+"products",
+pid
+),
+
 {
+
 stock:
-Number(p.stock)-need[pid]
+Number(p.stock)-
+need[pid]
+
 }
+
 );
 
 }
 
 }
+
 
 /* อัปเดตออเดอร์ */
 
 await updateDoc(
-doc(db,"orders",id),
-{
-status:"preparing",
-statusLabel:"กำลังทำ",
-statusUpdatedAt:now,
-statusHistory:historyObject(
-o.statusHistory,
-"preparing",
-"กำลังทำ",
-now
+
+doc(
+db,
+"orders",
+id
 ),
+
+{
+
+status:"preparing",
+
+statusLabel:"กำลังทำ",
+
+statusUpdatedAt:now,
+
+statusHistory:
+historyObject(
+
+o.statusHistory,
+
+"preparing",
+
+"กำลังทำ",
+
+now
+
+),
+
 stockDeducted:true,
+
 updatedAt:now
+
 }
+
 );
+
 
 }else{
 
+
 await updateDoc(
-doc(db,"orders",id),
-{
-status,
-statusLabel:statusLabelFor(status),
-statusUpdatedAt:now,
-statusHistory:historyObject(
-o.statusHistory,
-status,
-statusLabelFor(status),
-now
+
+doc(
+db,
+"orders",
+id
 ),
+
+{
+
+status,
+
+statusLabel:
+statusLabelFor(status),
+
+statusUpdatedAt:now,
+
+statusHistory:
+historyObject(
+
+o.statusHistory,
+
+status,
+
+statusLabelFor(status),
+
+now
+
+),
+
 updatedAt:now
+
 }
+
 );
 
 }
+
 
 toast(
+
 status==="preparing"
+
 ?"รับออเดอร์แล้ว · กำลังทำ"
+
 :status==="ready"
+
 ?"ออเดอร์พร้อมส่งแล้ว"
+
 :status==="completed"
+
 ?"ออเดอร์เสร็จสิ้นแล้ว"
+
 :status==="cancelled"
+
 ?"ยกเลิกออเดอร์แล้ว"
+
 :"อัปเดตออเดอร์แล้ว"
+
 );
+
 
 }catch(e){
 
@@ -2265,41 +5038,69 @@ firebaseError(e)
 
 </script>
 
+
 <script>
 
-const ADMIN_PASSWORD="spyks12021999";
+/* =========================
+   ADMIN LOGIN
+========================= */
+
+const ADMIN_PASSWORD=
+"spyks12021999";
+
 
 function showAdmin(){
 
-document.getElementById("loginScreen").style.display="none";
-document.getElementById("adminApp").style.display="block";
+document.getElementById(
+"loginScreen"
+).style.display="none";
+
+
+document.getElementById(
+"adminApp"
+).style.display="block";
 
 }
+
 
 function loginAdmin(){
 
 const input=
-document.getElementById("adminPassword");
+document.getElementById(
+"adminPassword"
+);
+
 
 const error=
-document.getElementById("loginError");
+document.getElementById(
+"loginError"
+);
 
-if(input.value===ADMIN_PASSWORD){
+
+if(
+input.value===
+ADMIN_PASSWORD
+){
 
 sessionStorage.setItem(
 "mala_admin_login",
 "1"
 );
 
+
 error.style.display="none";
 
+
 showAdmin();
+
 
 }else{
 
 error.style.display="block";
 
+
 input.value="";
+
 
 input.focus();
 
@@ -2307,18 +5108,23 @@ input.focus();
 
 }
 
+
 function logoutAdmin(){
 
 sessionStorage.removeItem(
 "mala_admin_login"
 );
 
+
 location.reload();
 
 }
 
+
 if(
-sessionStorage.getItem("mala_admin_login")==="1"
+sessionStorage.getItem(
+"mala_admin_login"
+)==="1"
 ){
 
 showAdmin();
