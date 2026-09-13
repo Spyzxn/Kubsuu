@@ -527,10 +527,6 @@ height:100%;
 object-fit:cover
 }
 
-/* =========================
-   รูปหน้าร้านออนไลน์
-========================= */
-
 .mainPreview{
 width:100%;
 height:190px;
@@ -894,17 +890,11 @@ onclick="openPage('settings')">
 
 <main>
 
-
-<!-- =========================
-     HOME
-========================= -->
-
 <section id="home" class="page active">
 
 <h1 class="pageTitle">
 หลังร้าน
 </h1>
-
 
 <div class="stats">
 
@@ -930,7 +920,6 @@ onclick="openPage('settings')">
 
 </div>
 
-
 <div class="card">
 
 <div class="statusBox">
@@ -950,7 +939,6 @@ onclick="openPage('settings')">
 </div>
 
 </div>
-
 
 <div class="card">
 
@@ -979,7 +967,6 @@ onclick="openPage('orders')">
 <div id="recentOrders"></div>
 
 </div>
-
 
 <div class="card">
 
@@ -1010,10 +997,6 @@ onclick="openProduct()">
 </section>
 
 
-<!-- =========================
-     ORDERS
-========================= -->
-
 <section id="orders" class="page">
 
 <h1 class="pageTitle">
@@ -1022,39 +1005,27 @@ onclick="openProduct()">
 
 <div class="toolbar">
 
-<button
-class="btn sm"
-onclick="setOrderFilter('all')">
+<button class="btn sm" onclick="setOrderFilter('all')">
 ทั้งหมด
 </button>
 
-<button
-class="btn light sm"
-onclick="setOrderFilter('pending')">
+<button class="btn light sm" onclick="setOrderFilter('pending')">
 รอรับ
 </button>
 
-<button
-class="btn light sm"
-onclick="setOrderFilter('accepted')">
+<button class="btn light sm" onclick="setOrderFilter('accepted')">
 กำลังทำ
 </button>
 
-<button
-class="btn light sm"
-onclick="setOrderFilter('ready')">
+<button class="btn light sm" onclick="setOrderFilter('ready')">
 พร้อมส่ง
 </button>
 
-<button
-class="btn light sm"
-onclick="setOrderFilter('completed')">
+<button class="btn light sm" onclick="setOrderFilter('completed')">
 สำเร็จ
 </button>
 
-<button
-class="btn light sm"
-onclick="setOrderFilter('cancelled')">
+<button class="btn light sm" onclick="setOrderFilter('cancelled')">
 ยกเลิก
 </button>
 
@@ -1064,10 +1035,6 @@ onclick="setOrderFilter('cancelled')">
 
 </section>
 
-
-<!-- =========================
-     MENU
-========================= -->
 
 <section id="menu" class="page">
 
@@ -1085,48 +1052,35 @@ onclick="openProduct()">
 
 </div>
 
-
 <input
 id="menuSearch"
 class="search"
 placeholder="ค้นหาเมนู..."
 oninput="renderProducts()">
 
-
 <div class="toolbar">
 
-<button
-class="btn sm"
-onclick="setCategory('all')">
+<button class="btn sm" onclick="setCategory('all')">
 ทั้งหมด
 </button>
 
-<button
-class="btn light sm"
-onclick="setCategory('เนื้อ')">
+<button class="btn light sm" onclick="setCategory('เนื้อ')">
 🥩 เนื้อ
 </button>
 
-<button
-class="btn light sm"
-onclick="setCategory('ลูกชิ้น')">
+<button class="btn light sm" onclick="setCategory('ลูกชิ้น')">
 🍢 ลูกชิ้น
 </button>
 
-<button
-class="btn light sm"
-onclick="setCategory('ปลา,กุ้ง,หมึก')">
+<button class="btn light sm" onclick="setCategory('ปลา,กุ้ง,หมึก')">
 🦐 ปลา,กุ้ง,หมึก
 </button>
 
-<button
-class="btn light sm"
-onclick="setCategory('ผักและอื่นๆ')">
+<button class="btn light sm" onclick="setCategory('ผักและอื่นๆ')">
 🥦 ผักและอื่นๆ
 </button>
 
 </div>
-
 
 <div class="card">
 
@@ -1137,20 +1091,11 @@ onclick="setCategory('ผักและอื่นๆ')">
 </section>
 
 
-<!-- =========================
-     SETTINGS
-========================= -->
-
 <section id="settings" class="page">
 
 <h1 class="pageTitle">
 ตั้งค่า
 </h1>
-
-
-<!-- =========================
-     MAIN WEBSITE SETTINGS
-========================= -->
 
 <div class="card">
 
@@ -1162,7 +1107,6 @@ onclick="setCategory('ผักและอื่นๆ')">
 ตั้งค่ารูปภาพและข้อความที่แสดงบนเว็บลูกค้า
 </div>
 
-
 <label>
 โลโก้ร้าน
 </label>
@@ -1173,16 +1117,13 @@ type="file"
 accept="image/*"
 onchange="previewMainImage(this,'mainLogoPreview')">
 
-<div
-id="mainLogoPreview"
-class="mainPreview logo">
+<div id="mainLogoPreview" class="mainPreview logo">
 ไม่มีรูป
 </div>
 
 <div class="mainHint">
 รูปนี้จะใช้เป็นโลโก้บนเว็บลูกค้า
 </div>
-
 
 <label>
 รูป Hero
@@ -1194,16 +1135,13 @@ type="file"
 accept="image/*"
 onchange="previewMainImage(this,'mainHeroPreview')">
 
-<div
-id="mainHeroPreview"
-class="mainPreview">
+<div id="mainHeroPreview" class="mainPreview">
 ไม่มีรูป
 </div>
 
 <div class="mainHint">
 รูปอาหาร/แบนเนอร์หลักที่แสดงบริเวณด้านบนเว็บลูกค้า
 </div>
-
 
 <label>
 รูปพื้นหลัง
@@ -1215,16 +1153,13 @@ type="file"
 accept="image/*"
 onchange="previewMainImage(this,'mainBackgroundPreview')">
 
-<div
-id="mainBackgroundPreview"
-class="mainPreview">
+<div id="mainBackgroundPreview" class="mainPreview">
 ไม่มีรูป
 </div>
 
 <div class="mainHint">
 ใช้เป็นพื้นหลังของเว็บลูกค้า
 </div>
-
 
 <label>
 หัวข้อ Hero
@@ -1234,7 +1169,6 @@ class="mainPreview">
 id="mainHeroTitle"
 placeholder="กรอบ เผ็ด ชา ถึงใจ">
 
-
 <label>
 คำอธิบาย Hero
 </label>
@@ -1243,7 +1177,6 @@ placeholder="กรอบ เผ็ด ชา ถึงใจ">
 id="mainHeroSubtitle"
 placeholder="เลือกเมนูที่ชอบ ใส่ตะกร้า แล้วสั่งได้เลย">
 
-
 <label>
 Badge Hero
 </label>
@@ -1251,7 +1184,6 @@ Badge Hero
 <input
 id="mainHeroBadge"
 placeholder="🔥 หม่าล่าทอดกรอบ">
-
 
 <button
 class="btn"
@@ -1265,34 +1197,23 @@ onclick="saveMainSettings()">
 </div>
 
 
-<!-- =========================
-     STORE
-========================= -->
-
 <div class="card">
 
 <div class="sectionTitle">
 ข้อมูลร้าน
 </div>
 
-
 <label>
 ชื่อร้าน
 </label>
 
-<input
-id="storeName"
-placeholder="ชื่อร้าน">
-
+<input id="storeName" placeholder="ชื่อร้าน">
 
 <label>
 รายละเอียดร้าน
 </label>
 
-<textarea
-id="storeDesc"
-placeholder="รายละเอียดร้าน"></textarea>
-
+<textarea id="storeDesc" placeholder="รายละเอียดร้าน"></textarea>
 
 <div class="formGrid">
 
@@ -1302,12 +1223,9 @@ placeholder="รายละเอียดร้าน"></textarea>
 เวลาเปิด
 </label>
 
-<input
-id="openTime"
-type="time">
+<input id="openTime" type="time">
 
 </div>
-
 
 <div>
 
@@ -1315,19 +1233,15 @@ type="time">
 เวลาปิด
 </label>
 
-<input
-id="closeTime"
-type="time">
+<input id="closeTime" type="time">
 
 </div>
 
 </div>
-
 
 <div class="timeNote">
 ตั้งเวลาปิดเป็น 00:00 = ปิดตอนเที่ยงคืน
 </div>
-
 
 <label>
 ข้อความตอนร้านปิด
@@ -1336,7 +1250,6 @@ type="time">
 <textarea
 id="storeMessage"
 placeholder="ขณะนี้ร้านปิด/ไม่ว่าง กรุณากลับมาใหม่ภายหลัง"></textarea>
-
 
 <button
 class="btn"
@@ -1350,19 +1263,13 @@ onclick="saveStore()">
 </div>
 
 
-<!-- =========================
-     PROMOTION
-========================= -->
-
 <div class="card">
 
 <div class="row">
 
 <div>
 
-<div
-class="sectionTitle"
-style="margin-bottom:3px">
+<div class="sectionTitle" style="margin-bottom:3px">
 โปรโมชั่น
 </div>
 
@@ -1371,7 +1278,6 @@ style="margin-bottom:3px">
 </div>
 
 </div>
-
 
 <button
 id="promoEnabled"
@@ -1384,13 +1290,9 @@ onclick="togglePromotion()">
 
 </div>
 
-
-<div
-id="promoStatus"
-class="promoStatus off">
+<div id="promoStatus" class="promoStatus off">
 โปรโมชั่นปิดอยู่
 </div>
-
 
 <label>
 ชื่อโปรโมชั่น
@@ -1399,7 +1301,6 @@ class="promoStatus off">
 <input
 id="promoName"
 placeholder="เช่น ซื้อ 10 แถม 1">
-
 
 <div class="formGrid">
 
@@ -1416,7 +1317,6 @@ min="1">
 
 </div>
 
-
 <div>
 
 <label>
@@ -1431,7 +1331,6 @@ min="0">
 </div>
 
 </div>
-
 
 <label>
 รูปแบบ
@@ -1453,7 +1352,6 @@ min="0">
 
 </select>
 
-
 <label>
 ข้อความที่ลูกค้าเห็น
 </label>
@@ -1461,7 +1359,6 @@ min="0">
 <input
 id="promoCustomerText"
 placeholder="ซื้อ 10 ไม้ แถมฟรี 1 ไม้">
-
 
 <label>
 รูปโปรโมชั่น
@@ -1473,13 +1370,9 @@ type="file"
 accept="image/*"
 onchange="previewPromo(this)">
 
-
-<div
-id="promoPreview"
-class="preview">
+<div id="promoPreview" class="preview">
 ไม่มีรูป
 </div>
-
 
 <button
 class="btn"
@@ -1492,10 +1385,6 @@ onclick="savePromotion()">
 
 </div>
 
-
-<!-- =========================
-     LOGOUT
-========================= -->
 
 <div class="card">
 
@@ -1514,7 +1403,6 @@ onclick="logoutAdmin()">
 
 </div>
 
-
 </section>
 
 </main>
@@ -1522,68 +1410,32 @@ onclick="logoutAdmin()">
 </div>
 
 
-<!-- =========================
-     NAV
-========================= -->
-
 <nav class="nav">
 
-<button
-class="active"
-onclick="openPage('home')">
-
-<span class="navIcon">
-⌂
-</span>
-
+<button class="active" onclick="openPage('home')">
+<span class="navIcon">⌂</span>
 หน้าหลัก
-
 </button>
 
-
-<button
-onclick="openPage('orders')">
-
-<span class="navIcon">
-🧾
-</span>
-
+<button onclick="openPage('orders')">
+<span class="navIcon">🧾</span>
 ออเดอร์
-
 </button>
 
-
-<button
-onclick="openPage('menu')">
-
-<span class="navIcon">
-🍢
-</span>
-
+<button onclick="openPage('menu')">
+<span class="navIcon">🍢</span>
 เมนู
-
 </button>
 
-
-<button
-onclick="openPage('settings')">
-
-<span class="navIcon">
-⚙️
-</span>
-
+<button onclick="openPage('settings')">
+<span class="navIcon">⚙️</span>
 ตั้งค่า
-
 </button>
 
 </nav>
 
 </div>
 
-
-<!-- =========================
-     PRODUCT MODAL
-========================= -->
 
 <div
 id="productModal"
@@ -1606,37 +1458,23 @@ onclick="closeProduct()">
 
 </div>
 
+<input id="productId" type="hidden">
 
-<input
-id="productId"
-type="hidden">
+<label>ชื่อเมนู</label>
 
+<input id="productName" placeholder="ชื่อเมนู">
 
-<label>
-ชื่อเมนู
-</label>
-
-<input
-id="productName"
-placeholder="ชื่อเมนู">
-
-
-<label>
-รายละเอียด
-</label>
+<label>รายละเอียด</label>
 
 <textarea
 id="productDesc"
 placeholder="รายละเอียดเมนู"></textarea>
 
-
 <div class="formGrid">
 
 <div>
 
-<label>
-ราคา
-</label>
+<label>ราคา</label>
 
 <input
 id="productPrice"
@@ -1645,12 +1483,9 @@ min="0">
 
 </div>
 
-
 <div>
 
-<label>
-สต็อก
-</label>
+<label>สต็อก</label>
 
 <input
 id="productStock"
@@ -1661,58 +1496,33 @@ min="0">
 
 </div>
 
-
-<label>
-หมวดหมู่
-</label>
+<label>หมวดหมู่</label>
 
 <select id="productCategory">
 
-<option value="เนื้อ">
-เนื้อ
-</option>
+<option value="เนื้อ">เนื้อ</option>
 
-<option value="ลูกชิ้น">
-ลูกชิ้น
-</option>
+<option value="ลูกชิ้น">ลูกชิ้น</option>
 
-<option value="ปลา,กุ้ง,หมึก">
-ปลา,กุ้ง,หมึก
-</option>
+<option value="ปลา,กุ้ง,หมึก">ปลา,กุ้ง,หมึก</option>
 
-<option value="ผักและอื่นๆ">
-ผักและอื่นๆ
-</option>
+<option value="ผักและอื่นๆ">ผักและอื่นๆ</option>
 
 </select>
-
 
 <div class="categoryNote">
 หมวดหมู่นี้ตรงกับหมวดหมู่บนเว็บลูกค้าโดยตรง
 </div>
 
+<label>Emoji</label>
 
-<label>
-Emoji
-</label>
+<input id="productEmoji" placeholder="🍢">
 
-<input
-id="productEmoji"
-placeholder="🍢">
+<label>ป้ายเมนู</label>
 
+<input id="productBadge" placeholder="ขายดี / ใหม่ / DEAL">
 
-<label>
-ป้ายเมนู
-</label>
-
-<input
-id="productBadge"
-placeholder="ขายดี / ใหม่ / DEAL">
-
-
-<label>
-รูปเมนู
-</label>
+<label>รูปเมนู</label>
 
 <input
 id="productImageFile"
@@ -1720,17 +1530,11 @@ type="file"
 accept="image/*"
 onchange="previewProduct(this)">
 
-
-<div
-id="productPreview"
-class="preview">
+<div id="productPreview" class="preview">
 ไม่มีรูป
 </div>
 
-
-<div
-class="row"
-style="margin-top:14px">
+<div class="row" style="margin-top:14px">
 
 <span class="small muted">
 เปิดขาย
@@ -1747,10 +1551,7 @@ onclick="toggleProductActive()">
 
 </div>
 
-
-<div
-class="row"
-style="margin-top:12px">
+<div class="row" style="margin-top:12px">
 
 <span class="small muted">
 เมนูแนะนำ
@@ -1766,7 +1567,6 @@ onclick="toggleProductFeatured()">
 </button>
 
 </div>
-
 
 <button
 class="btn green"
@@ -1833,7 +1633,7 @@ const db=getFirestore(app);
 
 
 /* =========================
-   หมวดหมู่ตรงกับเว็บลูกค้า
+   หมวดหมู่
 ========================= */
 
 const CATEGORIES=[
@@ -1843,8 +1643,6 @@ const CATEGORIES=[
 "ผักและอื่นๆ"
 ];
 
-
-/* รองรับข้อมูลเก่าที่เคยใช้หมวดเดิม */
 
 const OLD_CATEGORY_MAP={
 
@@ -1909,11 +1707,6 @@ customerText:""
 
 };
 
-
-/* =========================
-   ตั้งค่าหน้าร้านออนไลน์
-   ตรงกับ settings/main
-========================= */
 
 let mainSettings={
 
@@ -2217,7 +2010,6 @@ renderOrders();
 if(page==="menu")
 renderProducts();
 
-
 if(page==="settings"){
 
 loadSettings();
@@ -2227,7 +2019,6 @@ loadMainSettings();
 firstSettingsLoad=false;
 
 }
-
 
 scrollTo(0,0);
 
@@ -2245,11 +2036,6 @@ return;
 
 realtimeStarted=true;
 
-
-/* =========================
-   หน้าร้านออนไลน์
-   settings/main
-========================= */
 
 onSnapshot(
 
@@ -2286,10 +2072,6 @@ firebaseError(err)
 
 );
 
-
-/* =========================
-   ร้าน
-========================= */
 
 onSnapshot(
 
@@ -2330,10 +2112,6 @@ firebaseError(err)
 );
 
 
-/* =========================
-   โปรโมชั่น
-========================= */
-
 onSnapshot(
 
 doc(db,"settings","promotion"),
@@ -2370,10 +2148,6 @@ firebaseError(err)
 
 );
 
-
-/* =========================
-   สินค้า
-========================= */
 
 onSnapshot(
 
@@ -2435,7 +2209,7 @@ firebaseError(err)
 
 
 /* =========================
-   ออเดอร์
+   ⭐ ออเดอร์
 ========================= */
 
 onSnapshot(
@@ -2555,10 +2329,6 @@ updateStoreUI();
 }
 
 
-/* =========================
-   MAIN WEBSITE SETTINGS
-========================= */
-
 function loadMainSettings(){
 
 if(!$("mainHeroTitle"))
@@ -2616,10 +2386,6 @@ $("mainBackgroundPreview").textContent=
 }
 
 
-/* =========================
-   Preview รูปหน้าร้าน
-========================= */
-
 window.previewMainImage=
 function(input,previewId){
 
@@ -2663,10 +2429,6 @@ r.readAsDataURL(file);
 };
 
 
-/* =========================
-   SAVE MAIN SETTINGS
-========================= */
-
 window.saveMainSettings=
 async function(){
 
@@ -2702,9 +2464,6 @@ $("mainBackgroundFile").files[0];
 
 try{
 
-
-/* โลโก้ */
-
 if(logoFile){
 
 data.logo=
@@ -2716,9 +2475,6 @@ logoFile,
 
 }
 
-
-/* Hero */
-
 if(heroFile){
 
 data.heroImage=
@@ -2729,9 +2485,6 @@ heroFile,
 );
 
 }
-
-
-/* Background */
 
 if(backgroundFile){
 
@@ -2745,8 +2498,6 @@ backgroundFile,
 }
 
 
-/* บันทึก settings/main */
-
 await setDoc(
 
 doc(db,"settings","main"),
@@ -2758,8 +2509,6 @@ data,
 );
 
 
-/* อัปเดตค่าฝั่ง Admin ทันที */
-
 mainSettings={
 ...mainSettings,
 ...data
@@ -2768,8 +2517,6 @@ mainSettings={
 
 loadMainSettings();
 
-
-/* ล้างช่องไฟล์ */
 
 $("mainLogoFile").value="";
 
@@ -3073,7 +2820,6 @@ p.image
 
 <div class="productInfo">
 
-
 ${
 p.badge
 
@@ -3084,31 +2830,23 @@ p.badge
 
 
 <div class="productName">
-
 ${esc(p.name)}
-
 </div>
 
 
 <div class="productDesc">
-
 ${esc(p.description||"")}
-
 </div>
 
 
 <div class="price">
-
 ${money(p.price)}
-
 </div>
 
 
 <div class="muted small">
-
 หมวด:
 ${esc(normalizeCategory(p.category))}
-
 </div>
 
 
@@ -3165,8 +2903,7 @@ onclick="openProduct('${esc(p.id)}')">
 </button>
 
 
-<div
-style="display:flex;gap:4px">
+<div style="display:flex;gap:4px">
 
 <button
 
@@ -3556,7 +3293,6 @@ $("productImageFile").files[0];
 
 try{
 
-
 if(file){
 
 data.image=
@@ -3598,7 +3334,6 @@ data
 
 
 }else{
-
 
 data.sortOrder=
 products.length
@@ -4106,9 +3841,7 @@ return`
 ความคืบหน้าออเดอร์
 </div>
 
-
 <div class="trackSteps">
-
 
 ${
 steps.map(
@@ -4132,7 +3865,6 @@ ${x[1]}
 ).join("")
 }
 
-
 </div>
 
 </div>
@@ -4141,6 +3873,10 @@ ${x[1]}
 
 }
 
+
+/* =====================================================
+   ⭐⭐ จุดที่แก้หลัก: แสดงหมายเหตุลูกค้า ⭐⭐
+===================================================== */
 
 function orderHTML(o){
 
@@ -4201,6 +3937,19 @@ const status=
 normalizeStatus(o.status);
 
 
+/* =========================
+   ⭐ อ่านหมายเหตุลูกค้า
+   รองรับทั้ง note และ customerNote
+========================= */
+
+const customerNote=
+String(
+o.note||
+o.customerNote||
+""
+).trim();
+
+
 return`
 
 <div class="order">
@@ -4240,6 +3989,10 @@ ${statusName(status)}
 </div>
 
 
+<!-- =========================
+     ข้อมูลลูกค้า
+========================= -->
+
 ${
 o.customerName||
 o.customerPhone
@@ -4247,7 +4000,10 @@ o.customerPhone
 ?`
 
 <div
-style="margin-top:10px;font-size:12px">
+style="
+margin-top:10px;
+font-size:12px;
+">
 
 <strong>
 ${esc(
@@ -4261,6 +4017,55 @@ o.customerPhone
 ?` · ${esc(o.customerPhone)}`
 :""
 }
+
+</div>
+
+`
+
+:""
+}
+
+
+<!-- =================================================
+     ⭐⭐⭐ หมายเหตุลูกค้า ⭐⭐⭐
+================================================= -->
+
+${
+customerNote
+
+?`
+
+<div
+style="
+margin-top:10px;
+padding:11px 12px;
+border-radius:14px;
+background:#fff7ed;
+border:1px solid #fed7aa;
+font-size:12px;
+"
+>
+
+<div
+style="
+font-weight:900;
+color:#c2410c;
+margin-bottom:6px;
+"
+>
+📝 หมายเหตุลูกค้า
+</div>
+
+<div
+style="
+color:#7c2d12;
+white-space:pre-wrap;
+line-height:1.55;
+word-break:break-word;
+"
+>
+${esc(customerNote)}
+</div>
 
 </div>
 
@@ -4293,6 +4098,7 @@ x.title||
 )}
 
 ×
+
 ${Number(
 x.qty||
 x.quantity||
@@ -4834,8 +4640,6 @@ x.quantity||
 });
 
 
-/* ตรวจสต็อกก่อน */
-
 for(
 const pid in need
 ){
@@ -4871,8 +4675,6 @@ return;
 
 }
 
-
-/* ตัดสต็อก */
 
 for(
 const pid in need
@@ -4914,8 +4716,6 @@ need[pid]
 
 }
 
-
-/* อัปเดตออเดอร์ */
 
 await updateDoc(
 
